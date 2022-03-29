@@ -1,151 +1,165 @@
-# <mark>Geometria e algebra 08/03/22</mark>
-
+# <mark>Appunti del corso di algebra e geometria</mark>
+Questi appunti sono scritti da Adriano Oliviero durante le lezioni della prof.ssa [Anna Iezzi](https://aiezzi.it/) e sono distribuiti sotto la [licenza GPL-v3](../LICENSE). Il repository originario per questi (ed altri appunti) è su [github](https://github.com/TheDarkBug/notes).
+# <mark>08/03/22</mark>
 ## Richiami di logica
-
 Proposizione logica: **V**/**F**, **1**/**0** valore di verità
 
 P = "Napoli è in Campania": **V**
 
 P(n) = "n è pari"
 
-P(2):**V**
+P(2): **V**
 
-P(3):**F**
+P(3): **F**
 
 ## Connettivi logici
-
 - Negazione: $\neg$, "non"
-
-- Congiunzione: ^, "e"
-
-- Disgiunzione: $\bigvee$, "o"
-
-- Implicazione: $\Rightarrow$, "se ... allora ..."
-
+- Congiunzione: $\wedge$, "e"
+- Disgiunzione: $\vee$, "o"
+- Implicazione: $\Rightarrow$, "se \cdots allora \cdots"
 - Doppia implicazione: $\Leftrightarrow$, "se e solo se"
-
 ## Tavole di verità
-
-| $P$ | $Q$ | $\neg P$ | $P\land Q$ | $P\bigvee Q$ | $P\Rightarrow Q$ | $P\Leftrightarrow Q$ |
-| --- | --- | -------- | ---------- | ------------ | ---------------- | -------------------- |
-| 1   | 1   | 0        | 1          | 1            | 1                | 1                    |
-| 1   | 0   | 0        | 0          | 1            | 0                | 0                    |
-| 0   | 1   | 1        | 0          | 1            | 1                | 0                    |
-| 0   | 0   | 1        | 0          | 0            | 1                | 1                    |
-
+| $P$ | $Q$ | $\neg P$ | $P\wedge Q$ | $P\vee Q$ | $P\Rightarrow Q$ | $P\Leftrightarrow Q$ |
+| --- | --- | -------- | ----------- | --------- | ---------------- | -------------------- |
+| 1   | 1   | 0        | 1           | 1         | 1                | 1                    |
+| 1   | 0   | 0        | 0           | 1         | 0                | 0                    |
+| 0   | 1   | 1        | 0           | 1         | 1                | 0                    |
+| 0   | 0   | 1        | 0           | 0         | 1                | 1                    |
 ## Quantificatori
-
 - $\forall$: "Per ogni"
-
 - $\exist$: "Esiste almeno uno"
-
 - $\exist$!: "Esiste ed è unico"
 
-**Esempi**:
+<u>Esempi</u>:
+1. "$\forall n$ naturale, $n$ è pari": F
 
-1. "$\bigvee$n naturale, *n* è pari": F
-   
-   "$\exist$n naturale: ($\leftarrow$tale che) *n* è pari": V
+   "$\exist$n naturale: ($\leftarrow$tale che) $n$ è pari": V
+2. $P(x)=\{x$ è uno studente in aula A3-T2$\}$
 
-2. P(x)={x è uno studente in aula A3-T2}
-   
-   Q(x)={x è iscritto ad un corso di ingegneria}
-   
-   $\bigvee$x, P(x)$\Rightarrow$Q(x)
+   $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$
 
-3. P(n)={*n* è un numero pari}
-   
-   Q(n)={*n* è divisibile per 4}
-   
-   $\bigvee$n naturale, Q(n)$\Rightarrow$P(n)
+   $\forall x, P(x)\Rightarrow Q(x)$
+3. $P(n)=\{n$ è un numero pari$\}$
 
+   $Q(n)=\{n$ è divisibile per $4\}$
+
+   $\forall n$ naturale, $Q(n)\Rightarrow P(n)$
 ---
-
-# Teoria degli insiemi
-
+## Teoria degli insiemi
 Un **insieme** è una collezione di oggetti detti **elementi** dell'insieme.
 
 Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi con lettere minuscole.
+### Descrizione di un insieme
+1. Per elencazione (se l'insieme ha un numero finito di elementi):
 
-## Descrizione di un insieme
-
-1. per elencazione (se l'insieme ha un numero finito di elementi):
-   
    $\mathbb{A} = \{0, 2, 4, 6, 8, 10\}$
-   
+
    $4\in \mathbb{A}$
-   
+
    $5\notin \mathbb{A}$
+2. Per proprietà caratteristica
 
-2. per proprietà caratteristica
-   
    $\mathbb{A}=\{n: n$ è un numero pari: $0\le n \le 10\}$
-
-3. diagramma di *Eulero-Venn* (ancora una volta se l'insieme ha un numero finito di elementi)
-
-## Roba degli insiemi
-
+3. Diagramma di *Eulero-Venn* (ancora una volta se l'insieme ha un numero finito di elementi)
+### Alcune informazioni sugli insiemi
 - La **cardinalità** di un insieme è il numero di elementi che un insieme contiene e si denota: $\mathbb{A}$ ha cardinalità $|\mathbb{A}|$
-
 - Insieme vuoto: insieme che non contiene nessun elemento, si denota con $\empty$, $\{\}$ e ha cardinalità $|\empty|=0$
-
 - I principali insiemi numerici:
   
-  $\mathbb{N}=\{0, 1, 2, 3, ...\}$: numeri naturali
+  $\mathbb{N}=\{0, 1, 2, 3, \cdots\}$: numeri naturali
   
-  $\mathbb{Z}=\{..., -3, -2, -1, 0, 1, 2, 3, ...\}$: numeri naturali
+  $\mathbb{Z}=\{\cdots, -3, -2, -1, 0, 1, 2, 3, \cdots\}$: numeri naturali
   
   $\mathbb{Q}=\{\frac{a}{b}:a,b$ e $\mathbb{Z}, b\not= 0\}$
   
-  $\mathbb{R}:$numeri reali
+  $\R$: numeri reali
   
   $\mathbb{C}$: numeri complessi
+### Operazioni tra gli insiemi
+1. Inclusione
 
-## Inclusione di insiemi
+    $\mathbb{A}\subseteq\mathbb{B}$ $(\mathbb{A}$ è contenuto in $\mathbb{B})$
 
-- $\mathbb{A}\subseteq\mathbb{B}$ ($\mathbb{A}$ è contenuto in $\mathbb{B}$)
-  
-  $\mathbb{B}\supseteq\mathbb{A}$ ($\mathbb{B}$ contiene $\mathbb{A}$)
-  
-  **Esempio**: $\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\mathbb{R}\subseteq\mathbb{C}$
+    $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$
 
-- $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in \mathbb{A}\Leftrightarrow x \in \mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}$ ^ $\mathbb{B}\subseteq\mathbb{A})$
+    <u>Esempio</u>:
+    $\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$
 
+    <u>Proprietà</u>:
+    - $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in \mathbb{A}\Leftrightarrow x \in \mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}$ ^ $\mathbb{B}\subseteq\mathbb{A})$
+2. Intersezione $\leftrightarrow\wedge$
+
+    $\mathbb{A}\cap\mathbb{B}=\{x:x\in\mathbb{A}\wedge x\in\mathbb{B}\}$
+
+    <u>Proprietà</u>:
+    - $\mathbb{A}\cap\empty=\empty$
+    - $\mathbb{A}\cap\mathbb{B}=\mathbb{B}\cap\mathbb{A}$
+    - $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cap\mathbb{B}=\mathbb{A}$
+3. Unione $\leftrightarrow\vee$
+
+    $\mathbb{A}\cup\mathbb{B}=\{x:x\in\mathbb{A}\vee x\in\mathbb{B}\}$
+
+    <u>Proprietà</u>:
+    - $\mathbb{A}\cup\empty=\mathbb{A}$
+    - $\mathbb{A}\cup\mathbb{B}=\mathbb{B}\cup\mathbb{A}$
+    - $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cup\mathbb{B}=\mathbb{B}$
+    - $\mathbb{A}\subseteq\mathbb{A}\cup\mathbb{B},\ \mathbb{B}\subseteq\mathbb{A}\cup\mathbb{B}$
+4. Differenza
+
+    $\mathbb{B}\backslash \mathbb{A}=\{x:x\in\mathbb{B}\wedge x\not\in\mathbb{A}\}$
+5. Prodotto cartesiano:
+    $\mathbb{A}\times\mathbb{B}:=\{(a,\ b):a\in\mathbb{A},\ b\in\mathbb{B}\}$ con $(a,\ b)$ coppie ordinate
+
+    <u>Proprietà</u>:
+    - $|\mathbb{A}\times\mathbb{B}|=|\mathbb{A}|\cdot|\mathbb{B}|$
+    - $\mathbb{A}\times\empty=\empty=\empty\times\mathbb{A}$
 ---
+## Funzioni
+<u>Def</u>: Siano $\mathbb{A},\ \mathbb{B}$ due insiemi:
+  Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ è una legge che associa ad ogni elemento di $\mathbb{A}$, uno ed un solo elemento di $\mathbb{B}$.
 
----
+  $f:\mathbb{A}\rightarrow\mathbb{B}\\ \ \ \ \ \ \ x\rightarrow y$: $x$ è la controimmagine di $y$
 
-# ROBA NUOVA, DEVO ANCORA RICOPIARE LA PRIMA LEZIONE
+<u>Def</u>: Sia $f:\mathbb{A}\rightarrow\mathbb{B}$ una funzione e sia $\mathbb{X}\subseteq\mathbb{A}$
 
-# <mark>Geometria e algebra 09/03/22</mark>
+  $f(x):=\{f(x):x\in\mathbb{X}\}$ è l'insieme di $\mathbb{X}$ tramite $f$
 
-**<u>Def</u>**: Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice <u>iniettiva</u> se $\forall x\not=y\Rightarrow f(x)\not=f(y)$ (elementi distinti di $\mathbb{A}$ hanno immagini distinte)$\Leftrightarrow f(x)=f(y)\Rightarrow x=y$
+  $Im(f):=f(\mathbb{A})$ è l'insieme della funzione
 
-**<u>Def</u>**: Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice <u>suriettiva</u> se $Im(f)=B$, o equivalentemente se $\forall y\in \mathbb{B}, \exist x\in\mathbb{A}:f(x)=y$
+  $Im(f)$ non è necessariamente $=Dom(f)$
 
-**<u>Def</u>**: Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice <u>biettiva</u> o <u>biunivoca</u> se è al tempo stesso iniettiva e suriettiva
+  $Im(f)=Dom(f)\Rightarrow f$ è suriettiva
 
-<u>esempio</u>: $f:\mathbb{R}\rightarrow\mathbb{R}$
+  $f(1)=f(2)=a\Rightarrow f$ non è iniettiva
+# <mark>09/03/22</mark>
+## Funzioni (continuo)
+<u>Def</u>: Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice <u>iniettiva</u> se $\forall x\not=y\Rightarrow f(x)\not=f(y)$ (elementi distinti di $\mathbb{A}$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$
 
-                        $x\rightarrow x^2$
+<u>Def</u>: Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice <u>suriettiva</u> se $Im(f)=B$, o equivalentemente se $\forall y\in \mathbb{B}, \exist x\in\mathbb{A}:f(x)=y$
 
-iniettiva? No, perchè $f(-1)=1=f(1)$
+<u>Def</u>: Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice <u>biettiva</u> o <u>biunivoca</u> se è al tempo stesso iniettiva e suriettiva
 
-suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\mathbb{R}\Rightarrow Im(f)\subseteq\mathbb{R^+}\Rightarrow Im(f)\not=\mathbb{R}$
+<u>Esempio</u>:
 
----
+$f:\R\rightarrow\R\\\ \ \ \ \ \ x\rightarrow x^2$
+
+È iniettiva? No, perchè $f(-1)=1=f(1)$
+
+È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\R\Rightarrow Im(f)\subseteq\R^+\Rightarrow Im(f)\not=\R$
+
+<br>
 
 Se un insieme possiede delle operazioni che verificano certe proprietà, è una struttura algebrica.
 
-**<u>Def</u>**: Sia $\mathbb{X}$ un insieme, un'<u>operazione binaria interna</u> è una funzione dal prodotto cartesiano $x\times x$ in $\mathbb{X}$.
+<u>Def</u>: Sia $\mathbb{X}$ un insieme, un'<u>operazione binaria interna</u> è una funzione dal prodotto cartesiano $x\times x$ in $\mathbb{X}$.
 
 $*:x\times x \rightarrow x$
 
 $(x,y)\rightarrow x*y$
 
-$\mathbb{X}=\mathbb{R}$
+$\mathbb{X}=\R$
 
-$+:\mathbb{R}\times\mathbb{R}\rightarrow\mathbb{R}$
+$+:\R\times\R\rightarrow\R$
 
 $(x,y)\rightarrow x+y$
 
@@ -173,7 +187,7 @@ $(x,y)\rightarrow x\cdot y$
 
 4. Esistenza dell'inverso: $\exist x'\in\R:x\cdot x'=x'\cdot x=0,\forall x\in\R, (x'=\frac{1}{x})$
 
-5. Infine $+$ e $\cdot$ soddisfano la proprietà distributiva: $\forall x,y,z\in\R,x\cdot(y+z)=x\cdot y+x\cdot z$
+Infine $+$ e $\cdot$ soddisfano la proprietà distributiva: $\forall x,y,z\in\R,x\cdot(y+z)=x\cdot y+x\cdot z$
 
 Sia $\mathbb{K}\not=\empty$ un insieme dotato di due operazioni binarie:
 
@@ -181,69 +195,65 @@ Sia $\mathbb{K}\not=\empty$ un insieme dotato di due operazioni binarie:
 
 - $\cdot:\mathbb{K}\times\mathbb{K}\rightarrow\mathbb{K}$
 
-$(\mathbb{K},+,\cdot)$ è detto un <u>campo</u> se verifica le proprietà elencate prima, con $+$ distributiva con $\mathbb{K}$ al posto di $\R$
+$(\mathbb{K},+,\cdot)$ è detto un <u>campo</u> se verificano le proprietà elencate prima, con $+$ distributiva con $\mathbb{K}$ al posto di $\R$
 
-4. $\mathbb{F_2}=\{0, 1\}$
-   
-   - $\cdot:\mathbb{F_2}\cdot\mathbb{F_2}$
-   
-   - copia le cose di sotto con solo l'ultimo con valore 1
-   
-   - $+:\mathbb{F_2}\times\mathbb{F_2}\rightarrow\mathbb{F_2}$
-     
-     $(0, 0)\rightarrow 0$
-     
-     $(0, 1)\rightarrow 1$
-     
-     $(1, 0)\rightarrow 1$
-     
-     $(1, 1)\rightarrow 1$
+<u>Esempio</u>:
 
-# Algebra lineare
+$\mathbb{F}_2=\{0, 1\}$
+  - $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2$
 
-Wikipedia: "Branca della matematica che si occupa dello studio di spazi vettoriali (o anche detti spazi lineari), di trasformazioni lineari e di sistemi di equazioni lineari."
+    $\ \ \ \ \ \ \ \ \ \ \ (0, 0)\rightarrow 0$
 
-Molti problemo di matematica e fisica verificano la seguente proprietà:
+    $\ \ \ \ \ \ \ \ \ \ \ (0, 1)\rightarrow 0$
+
+    $\ \ \ \ \ \ \ \ \ \ \ (1, 0)\rightarrow 0$
+
+    $\ \ \ \ \ \ \ \ \ \ \ (1, 1)\rightarrow 1$
+  - $+:\mathbb{F}_2\times\mathbb{F}_2\rightarrow\mathbb{F}_2$
+
+    $\ \ \ \ \ \ \ \ \ \ \ (0, 0)\rightarrow 0$
+
+    $\ \ \ \ \ \ \ \ \ \ \ (0, 1)\rightarrow 1$
+
+    $\ \ \ \ \ \ \ \ \ \ \ (1, 0)\rightarrow 1$
+
+    $\ \ \ \ \ \ \ \ \ \ \ (1, 1)\rightarrow 1$
+## Algebra lineare
+Wikipedia:
+> Branca della matematica che si occupa dello studio di spazi vettoriali (o anche detti spazi lineari), di trasformazioni lineari e di sistemi di equazioni lineari.
+
+Molti problemi di matematica e fisica verificano la seguente proprietà:
 
 Se $v,w\in\mathbb{X}$ sono due soluzioni del problema, allora anche $v+w$ e $\lambda v, \lambda\in\R$  ($+$ e $\cdot$ operazioni su $\mathbb{X}$) sono soluzioni del problema.
 
 Problemi di questo tipo sono detti *lineari*.
 
-**Nozione base: <u>spazio vettoriale</u>**
+### Nozione base: <u>spazio vettoriale</u>
 
 I vettori sono usati in fisica per rappresentare, grandezze fisiche caratterizzate da:
-
 - una direzione
-
 - un verso
-
-- un' intensità
+- un'intensità
 
 Tali grandezze sono *grandezze vettoriali* e si differenziano dalle *grandezze scalari*, definite unicamente dall'intensità.
 
 Geometricamente, un vettore si rappresenta tramite un *segmento orientato* nel piano euclideo, denotato $\Pi$.
 
-**<u>Def</u>**: Un segmento orientato è una coppia di punti ordinata $(A,B\in\Pi\times\Pi)$.
+<u>Def</u>: Un segmento orientato è una coppia di punti ordinata $(A,B\in\Pi\times\Pi)$.
 
 $\vec{AB}:=(A,B)$.
 
-**<u>Def</u>**: Due segmenti orientati $\vec{AB}$ e $\vec{CD}$ si dicono <u>equipollenti</u> se il quadrilatero avente vertici, ordinatamente, $ABDC$ è un parallelogramma, quindi se hanno:
-
+<u>Def</u>: Due segmenti orientati $\vec{AB}$ e $\vec{CD}$ si dicono <u>equipollenti</u> se il quadrilatero avente vertici, ordinatamente, $ABDC$ è un parallelogramma, quindi se hanno:
 - stella lunghezza
-
 - direzione parallela
-
 - stesso verso
 
 L'equipollenza è una relazione di equivalenza, e verifica 3 proprietà:
-
 - riflessiva
-
 - simmetrica
-
 - transitiva
 
-**<u>Def</u>**: Un vettore geometrico è una classe di equipollenza
+<u>Def</u>: Un vettore geometrico è una classe di equipollenza
 
 Sia $O$ un punto fissato nel piano $\Pi$, per ogni segmento orientato $\vec{AB}$ esiste un punto $P\in\Pi$ tale che $\vec{OP}$ è equipollente ad $\vec{AB}$.
 
@@ -251,111 +261,94 @@ $\vec{OP}$ è equipollente a tutti i segmenti orientati equipollenti ad $\vec{AB
 
 Quindi abbiamo una biezione:
 
-$V=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP}, P\in\Pi\}$
+$\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP}, P\in\Pi\}$
 
-Classi di equipollenza $\uparrow$                                              $\uparrow$ Stesso punto di applicazione
-
-# <mark>Geometria e algebra 09/03/22</mark>
-
+Classi di equipollenza $\uparrow\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \uparrow$ Stesso punto di applicazione
+# <mark>09/03/22</mark>
+## Algebra lineare (continuo)
+### Nozione base: <u>spazio vettoriale</u> (continuo)
 Correzione della definizione di campo:
-
 - Esistenza dell'elemento neutro
-  
+
   $\exist 0\in\R:x+0=0+x=x,\forall x\in\R$
-
 - Esistenza dell'opposto:
-  
+
   $\exist x'\in\R:x+x'=x'+x=0,\forall x\in\R$
-
 ---
-
 Fissiamo $O\in\pi$ (piano ordinario).
 
-$V=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orientati$\vec{OP},P\in\pi\}$
+$\mathbb{V}=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orientati$\vec{OP},P\in\pi\}$
 
 Con un abuso di notazione, consideriamo:
 
-$V=\{$segmenti orientati$\vec{OP},P\in\pi\}$
+$\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}$
 
 $\forall\vec{v}\in V,\exist P\in\pi:\vec{v}=\vec{OP}$
 
-<u>Operazioni su $V$</u>:
-
+<u>Operazioni su $\mathbb{V}$</u>:
 - <u>somma di vettori</u>
-  
-  siano $\vec{v},\vec{w}\in V$ e siano $P,Q\in\pi:$
-  
+  siano $\vec{v},\vec{w}\in \mathbb{V}$ e siano $P,Q\in\pi:$
   $\vec{v}=\vec{OP}$
-  
   $\vec{w}=\vec{OQ}$
-  
-  Definiamo:
-  
-  $\vec{v}+\vec{w}=\vec{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)
-  
-  <u>Nota</u>: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione),  costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza
-  
-  Operazione binaria interna: $+: V\times V\rightarrow V$
-  
-                                                            $(\vec{v},\vec{w})\rightarrow \vec{v}+\vec{w}$
 
+  Definiamo:
+
+  $\vec{v}+\vec{w}=\vec{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)
+
+  <u>Nota</u>: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione),  costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza
+
+  Operazione binaria interna: $+:\mathbb{V}\times\mathbb{V}\rightarrow\mathbb{V}$
+
+  $(\vec{v},\vec{w})\rightarrow \vec{v}+\vec{w}$
 - <u>Moltiplicazione per scalari</u>
   
-  Sia $\vec{v}\in V$ e sia $P\in\pi:\vec{v}=\vec{OP}$.
-  
+  Sia $\vec{v}\in\mathbb{V}$ e sia $P\in\pi:\vec{v}=\vec{OP}$.
+
   Definiamo $\lambda\cdot\vec{v}=\vec{OR}$
-  
   - $O,P,R$ sono collineari
-  
   - $OR (simbolo\ di\ segmento\ su\ OP)=|\lambda|OP$
+  - $\vec{OR}$ è orientato concordemente a $\vec{OP}\\\vec{OR}$ è orientato discordemente a $\vec{OP}$ se
+
+    $\lambda<0\vee\lambda=0, R=O$
+
+  Questa è un'operazione binaria <u>esterna</u>:
   
-  - $\vec{OR}$ è orientato concordemente a $\vec{OP}$
-    
-    $\vec{OR}$ è orientato discordemente a $\vec{OP}$ se $\lambda<0$
-    
-    se $\lambda=0, R=O$
-  
-  Questa è un'operazione binaria <u>esterna</u>: $\cdot:\R\times\mathbb{V}\rightarrow V$
-                                                                                     $(\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
+    $\cdot:\R\times\mathbb{V}\rightarrow \mathbb{V}\\\ \ \ \ \ \ (\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
 
-        <u>Piano Cartesiano</u>
+## Piano Cartesiano
 
-        $\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$
+$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$
 
-        $V=\{$segmenti orientati$\vec{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$
+$\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$
 
-        In particolare esiste una blezione:
+In particolare esiste una blezione:
 
-                        $V\leftrightarrow\R^2$
+$\mathbb{V}\leftrightarrow\R^2$
 
-              $\forall P\in\pi,\vec{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$
+$\forall P\in\pi,\vec{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$
 
-                        $\vec{OP}\leftarrow(x,y)$ dove $P(x,y)$
+$\vec{OP}\leftarrow(x,y)$ dove $P(x,y)$
 
-        Vogliamo tradurre le operazioni su $V$ in operazioni su $\R^2$:
+Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
 
-        1. $\vec{v}=\vec{OP},P(x_P,y_P)$
+1. $\vec{v}=\vec{OP},P(x_P,y_P)$
 
-            $\vec{w}=\vec{OQ},Q(x_Q,y_Q)$
+    $\vec{w}=\vec{OQ},Q(x_Q,y_Q)$
 
-            $\vec{v}+\vec{w}=\vec{OR}:$ quali sono le coordinate di R?
+    $\vec{v}+\vec{w}=\vec{OR}:$ quali sono le coordinate di R?
 
-            $OPQR\Rightarrow A(x_A,y_A)$ parallelogramma con punto medio di $PQ$ e $OR$
+    $OPQR\Rightarrow A(x_A,y_A)$ parallelogramma con punto medio di $PQ$ e $OR$
 
-            $A$ punto medio di $PQ\Rightarrow\{x_A=\frac{x_P+x_Q}{2}, y_A=\frac{y_P+x_Q}{2}\}$
+    $A$ punto medio di $PQ\Rightarrow\{x_A=\frac{x_P+x_Q}{2}, y_A=\frac{y_P+x_Q}{2}\}$
 
-            $A$ punto medio di $OR\Rightarrow\{x_A=\frac{x_R}{2},y_A=\frac{y_R}{2}\}$
+    $A$ punto medio di $OR\Rightarrow\{x_A=\frac{x_R}{2},y_A=\frac{y_R}{2}\}$
 
-            $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$
+    $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$
 
-            Operazione binaria <u>interna</u>: $+:\R^2\times\R^2\rightarrow\R^2$
+    Operazione binaria <u>interna</u>: $+:\R^2\times\R^2\rightarrow\R^2$
 
-                                                                      $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
-
----
-# Da qui scrivo su vscode
-
-2. $\vec{v}\in V,\vec{v}=\vec{OP},P(x_P,y_P), \lambda\in\R$
+    $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
+2. $\vec{v}\in\mathbb{V},\vec{v}=\vec{OP},P(x_P,y_P), \lambda\in\R$
 
     $\lambda\cdot\vec{v}=\vec{OR}:$ quali sono le coordinate di R?
 
@@ -364,21 +357,22 @@ $\forall\vec{v}\in V,\exist P\in\pi:\vec{v}=\vec{OP}$
     $OPH$ e $ORK$ sono simili per costruzione con rapporto di proporzioni $|\lambda|$.
 
     <u>Due casi</u>:
-    - $\lambda\ge0$ $\vec{OR}$ è concord con $\vec{OP}$ e quindi:
+    1. $\lambda\ge0$ $\vec{OR}$ è concord con $\vec{OP}$ e quindi:
 
         $x_R=|\lambda|x_P=\lambda x_P$
 
         $y_R=|\lambda|y_P=\lambda y_P$
-    - $\lambda<0$ $\vec{OR}$ è discorde con $\vec{OP}$ e quindi:
+    2. $\lambda<0$ $\vec{OR}$ è discorde con $\vec{OP}$ e quindi:
+
         $x_R=-|\lambda|x_P=\lambda x_P$
 
         $y_R=-|\lambda|y_P=\lambda y_P$
-    
+
     Operazione binaria <u>esterna</u>: $\cdot:\R\times\R^2\rightarrow\R^2$
 
     $(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
     
-    In conclusione abbiamo definito due operaizoni su $\R^2$ "compatibili" con le operazioni definite su $V$:
+    In conclusione abbiamo definito due operaizoni su $\R^2$ "compatibili" con le operazioni definite su $\mathbb{V}$:
 
       - $+: \R^2\times\R^2\rightarrow\R^2$
 
@@ -422,8 +416,8 @@ $\forall\vec{v}\in V,\exist P\in\pi:\vec{v}=\vec{OP}$
       
       $(\R^2,+,\cdot)$ è il primo insieme di <MARK>INCOMPLETO</MARK>
 
-    <mark>Def</mark>: Sia $K$ (lettera K da "korper" in tedesco) un campo. Uno spazio vettoriale su $K$ è un insieme $V$ dotato di due operazioni:
-      
+    <u>Def</u>: Sia $\mathbb{K}$ (lettera K da "korper" in tedesco) un campo. Uno spazio vettoriale su $\mathbb{K}$ è un insieme $\mathbb{V}$ dotato di due operazioni:
+      # <mark>Revisione conclusa qui (29/03/22 19:42:57)</mark>
     - $+: V\times V\rightarrow V$
     - $\cdot: K\times V\rightarrow V$
 
@@ -445,20 +439,20 @@ $\forall\vec{v}\in V,\exist P\in\pi:\vec{v}=\vec{OP}$
     7. $\forall v\in V,\forall\lambda,\mu\in K,\lambda\mu\cdot v=\lambda\cdot(\mu\cdot v)$
     8. $1\cdot v=v,\forall v\in V$.
 
-    Gli elementi di $V$ sono chiamati vettori e gli elementi di $K$ son chiamati scalari.
+    Gli elementi di $\mathbb{V}$ sono chiamati vettori e gli elementi di $\mathbb{K}$ son chiamati scalari.
 
     $K=\R:$ spazio vettoriale reale
 
     $K=\mathbb{C}:$ spazio vettoriale complesso
     
-    <u>Osservazioni</u>: Sia $V$ un K-spazio vettiruake:
+    <u>Osservazioni</u>: Sia $\mathbb{V}$ un K-spazio vettiruake:
 
-    - in $V$ esiste un unico vettore nullo che denotiamo <u>0</u>.
+    - in $\mathbb{V}$ esiste un unico vettore nullo che denotiamo <u>0</u>.
     - $\forall v\in V$ esiste un unico opposto che denotiamo $-v$
     - $\forall v\in V$ si ha $0\cdot v=$ <u>0</u>
     - $\forall\lambda\in K$ si ha $\lambda\cdot$ <u>0</u> $=$ <u>0</u>
     - Siano $\lambda\in K,v\in K: \lambda\cdot v=$ <u>0</u> $\Rightarrow$ o $v=$ <u>0</u>
-# <mark>Geometria e algebra 16/03/22</mark>
+# <mark>16/03/22</mark>
 $+:\R^2\times\R^2\rightarrow\R^2$
 
 $((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+x_2,y_1+y_2)$
@@ -483,7 +477,7 @@ $(a,b)\mapsto a+ib$
 Nota che $\mathbb{C}$ è un campo
 
 ### <u>Esempi di spazi vettoriali</u>
-1. $V=\{$Vettori geometrici nello spazio$\}=\{$segmenti orientati $\vec{OP},\ P$ nello spazio$\}\longleftrightarrow\R^3$
+1. $\mathbb{V}=\{$Vettori geometrici nello spazio$\}=\{$segmenti orientati $\vec{OP},\ P$ nello spazio$\}\longleftrightarrow\R^3$
 
    Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(V,+,\cdot)$ è uno spazio vettoriale reale.
 2. L'$n$-spazio vettoriale su $\R$ (o su $\mathbb{K}$)
@@ -509,7 +503,7 @@ Nota che $\mathbb{C}$ è un campo
 
     $k^n=\{(x_1,\cdots,x_n):x_i\in K\forall i\}$
 
-    $(k^n,+,\cdot)$ è uno spazio vettoriale su $K$ chiamato $n$-spazio vettoriale numerico su $K$.
+    $(k^n,+,\cdot)$ è uno spazio vettoriale su $\mathbb{K}$ chiamato $n$-spazio vettoriale numerico su $\mathbb{K}$.
 
     <u>Esempio</u>: $k=\mathbb{C},\ \mathbb{C}^n\\k=\mathbb{F}_2,\ \mathbb{F}^n_2$
 
@@ -517,7 +511,7 @@ Nota che $\mathbb{C}$ è un campo
 
      Sia $\mathbb{X}$ un insieme <u>qualunque</u> e $\mathbb{K}$ un campo
 
-     $V=\{$funzioni $f:\mathbb{X}\to\mathbb{K}\}$
+     $\mathbb{V}=\{$funzioni $f:\mathbb{X}\to\mathbb{K}\}$
 
      - Binaria interna: $+:V\times V\to V\\(f,g)\to f+g$
 
@@ -544,7 +538,7 @@ Nota che $\mathbb{C}$ è un campo
      
      In modo analogo si definisce $(K[x],+,\cdot)$ dove
      
-     $K[x]=\{$polinomi a coefficienti in $K$ in un'indetermiinata$\}$
+     $K[x]=\{$polinomi a coefficienti in $\mathbb{K}$ in un'indetermiinata$\}$
 
      Molti problemi di matemadica/fisica hanno la proprietà che l'insieme delle soluzioni ha una struttura di spazio vettoriale.
 
@@ -555,7 +549,7 @@ Nota che $\mathbb{C}$ è un campo
        $S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$
        $S$ ha una struttuta di spazio vettoriale (<mark>cose che vedremo più avanti</mark>)
 
-# <mark>Geometria e algebra 22/03/22</mark>
+# <mark>22/03/22</mark>
 ## <u>Sistemi di equazioni lineari</u> (accenni)
 
 Equazione lineare in $n$ incognite:
@@ -588,10 +582,10 @@ Supponiamo di avere un sistema lineare:
 - Un esempio di spazio vettoriale
 - Uno strumento conciso per rappresentare oggetti *parola incomprensibile*, tra cui molti dell'algebra lineare
 
-Sia $K$ un campo.
+Sia $\mathbb{K}$ un campo.
 Siano $m,n\ge1$ due numeri
 
-<u>Def</u>: Una matrice $m\times n$ a elementi in $K$ è una tabella rettangolare di $m\cdot n$ elementi di $K$, disposti su $m$ righe e $n$ colonne
+<u>Def</u>: Una matrice $m\times n$ a elementi in $\mathbb{K}$ è una tabella rettangolare di $m\cdot n$ elementi di $\mathbb{K}$, disposti su $m$ righe e $n$ colonne
 
 <u>Notazione</u>:
 
@@ -668,7 +662,7 @@ Definiamo due operazioni su $M_{m,n}$
 6. $(\lambda+\mu)\cdot A=\lambda\cdot A+\mu\cdot A$
 7. $(\lambda\mu)\cdot A=\lambda\cdot(\mu\cdot A)$
 8. $1\cdot A = A$
-  $\forall m,n\ge1$ interi, $(M_{m,n}(K),+,\cdot)$ è uno spazio vettoriale su $K$
+  $\forall m,n\ge1$ interi, $(M_{m,n}(K),+,\cdot)$ è uno spazio vettoriale su $\mathbb{K}$
 
 <u>Prodotto di matrici</u> (prodotto riga per colonna):
 
@@ -717,7 +711,7 @@ $C=AB=(c_{ij}): 1\le i\le m,\ 1\le j\le p$
 
 $n=p=m:$ otteniamo un'operazione binaria interna su $M_n(K)$
 
-# <mark>Geometria e algebra 23/03/22</mark>
+# <mark>23/03/22</mark>
 
 ## Operazioni tra matrici
 ### <u>Proprietà</u>
@@ -906,3 +900,137 @@ $\begin{bmatrix}
 - scalare se $A$ è diagonale con tutti gli elementi uguali sulla diagonale, cioè:
   
   $A=\lambda I_n, \lambda\in K$.
+# <mark>29/03/22</mark>
+## Sistemi di equazioni lineari
+<u>Def</u>: Siano $x_1,\cdots,x_n$ n indeterminante.
+
+Un'<u>equazione lineare</u> nelle indeterminate $x_1,\cdots,x_n$ a coefficienti in $\mathbb{K}$ è un'equazione della forma:
+
+  (*) $a_1x_1+a_2x_2+\cdots+a_nx_n=b, a_i\in K\forall i,\ b\in K$
+
+  Una <u>soluzione</u> di (*) è un elemento $(x_1,\cdots,x_n)\in K^n$ che sostituito alla $n$-upla $(x_1,\cdots,x_n)$ dà luogo ad un'identità.
+
+  L'equazione (*) si dice <u>omogenea</u> (risp non omogenea) se $b=0$ (se $b\not=0$).
+
+<u>Sistema di eq lineari</u>: consideriamo simmetricamente un eq. lineari in $x_1,\cdots,x_n$.
+
+$\begin{cases}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1n}=b_1\\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2n}=b_2\\
+\vdots\\
+a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}=b_m\\
+\end{cases}$
+
+$a_{ij}$ equazione $i$-esima, variabile $x_j$
+
+<u>Def</u>: il sistema (**) si deice omogeneo (risp non omogeneo) se $b_i=0\ \forall i$ (se $\exist i\in\{1,\cdots,m\}$)
+
+<u>Def</u>:
+- Una soluzione di (**) è un elemento $(x_1,\cdots,x_n)\in K^n$ che è soluzione simultanea di tutte le eq. lineari.
+- Un sistema si dice <u>compatibile</u> se possiede almeno una soluzione. Si dice <u>incompatibile</u> se non possiede soluzioni.
+- Due sistemi si dicono <u>equivalenti</u> se hanno lo stesso sistema di soluzioni.
+
+
+<u>Esempi</u> $(K=\R)$:
+1. Un sistema omogeneo in $n$ indeterminante è sempre compatibile in quanto $(0,\cdots,0)\in K^n$ è sempre soluzione.
+2. non lo segno
+3. $\begin{cases}x_1+x_2=0\\x_1-x_2=1\end{cases}$
+
+    "addizionando le due equazioni" otteniamo:
+
+    $x_1+x_2+(x_1-x_2)=0+(1)\Rightarrow2x_1=1\Rightarrow x_1=\frac{1}{2}$
+
+    sostituendo $x_1=\frac{1}{2}$ nella I equazione, trovo $x_2=-\frac{1}{2}$.
+
+    Quindi il sistema possiede l'unica soluzione $(\frac{1}{2},-\frac{1}{2})\in\R^2$
+4. $\begin{cases}x_1+x_2=2\\3x_1-3x_2=6\end{cases}$
+
+    è compatibile e possiede infinite soluzioni date dalle soluzioni di
+
+    $x_1+x_2=2\Rightarrow x_1=2-x_2$
+
+    L'insieme delle soluzioni $S$ è costituito dalle coppie ordinate $(x_1,x_2)\in\R^2$ tali che:
+
+    $\begin{cases}x_1=2-t\\x_2=t\end{cases},\ t\in\R\\S=\{(2-t,t),\ t\in\R\}\subseteq\R^2$
+
+<u>Notazione matriciale di un sistema</u>:
+
+$\begin{cases}
+a_{11}x_1+\cdots+a_{1n}x_n=b_1\\
+\vdots\\
+a_{m1}x_1+\cdots+a_{mn}x_n=b_m
+\end{cases}$
+
+$A=(a_{ij})=\begin{bmatrix}
+a_{11}&\cdots&a_{1n}\\
+\vdots\\
+a_{m1}&\cdots&a_{mn}
+\end{bmatrix}\in M_{m,n}(K)$
+
+Vettore (colonnna) della indeterminante:
+$x=\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}$
+
+Vettore dei termini noti: $b=\begin{bmatrix}b_1\\\vdots\\b_n\end{bmatrix}\in M_{m,1}(K)$
+
+Riscriviamo (**) come:
+$AX=b$
+
+La matrice: $(A\ \vdots\ b)=\begin{bmatrix}
+a_{11}&a_{1n}&\vdots&b_1\\
+\vdots&&\vdots&\vdots\\
+a_{m1}&a_{mn}&\vdots&b_m\\
+\end{bmatrix}$
+
+Consideriamo il sistema seguente:
+
+$\begin{cases}
+x_1+x_2+x_3=3\\
+2x_2-x_3=1\\
+3x_3=-3
+\end{cases}$
+
+La sua matrice orlata:
+
+$\begin{bmatrix}
+1&1&1&\vdots&3\\
+0&2&-1&\vdots&1\\
+0&0&3&\vdots&-3\\
+\end{bmatrix}$
+
+Risolvo per sostituzione:
+
+$\begin{cases}
+x_1=4\\
+x_2=0\\
+x_3=-1
+\end{cases}$
+
+Procedendo dal basso verso l'alto trovo che il sistema possiede l'unica soluzione $(4,0,-1)\in\R^3$
+
+Un sistema di questo tipo è detto "a scalini" o "a gradini".
+
+<u>Def</u>: Una <u>matrice a scalini</u> (o a gradini) è una matrice avente le seguenti proprietà:
+1. Ogni riga, dopo la prima, inizia con almeno uno zero in più rispetto alla riga precedente
+2. Se una riga è nulla allora ogni riga sottostante è nulla
+
+Il primo elemento <u>diverso da zero</u> su ogni riga (se presente) è detto <u>pivot</u>.
+
+<u>Def</u>: Un sistema lineare si dice <u>a scalini</u> (o a gradini) se la sua matrice orlata è una matrice a scalini.
+
+Esempi:
+1. $\begin{bmatrix}
+1&1&1&\vdots&3\\
+0&2&-3&\vdots&1\\
+0&0&3&\vdots&-3
+\end{bmatrix}$ è una matrice a scalini.
+
+    pivot: $1,2,3$
+2. $\begin{bmatrix}
+1&-1&2&4&5&&\vdots&3\\
+0&2&-3&\vdots&1\\
+0&0&3&\vdots&-3
+\end{bmatrix}$ è una matrice a scalini.
+
+# <mark>INCOMPLETO: SI È SPENTO IL PC</mark>
+
+
