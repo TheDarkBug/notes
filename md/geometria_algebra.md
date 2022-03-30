@@ -1161,3 +1161,135 @@ $\begin{bmatrix}
   0&-4&-8&-12\\
   0&0&0&0
 \end{bmatrix}$
+
+<u>NB</u>: L'output dell'algoritmo non è unico perchè dipende dalle scelte effettuate
+
+#### Risoluzione di un sistema lineare con il metodo di eliminazione di Gauss-Jordan
+
+Supponiamo di avere un sistema lineare qualsiasi:
+
+1. Scriviamo la corrispondente matrice orlata $\mathbb{A}$
+2. Utilizziamo l'algoritmo di Gauss-Jordan per ottenere da $\mathbb{A}$ una matrice $\mathbb{B}$ a scalini equivalente per righe
+3. Se l'ultimo pivot di $\mathbb{B}$ appartiene all'ultima colonna, il sistema non è compatibile.
+4. Scriviamo il sistema a scalini corrispondente a $\mathbb{B}$ e lo risolviamo introducendo delle eventuali variabili libere
+
+<u>Esempio</u>:
+1. Con numeri:
+   1.  $\begin{cases}
+         x_3+2x_4=3\\
+         2x_1+4x_2-2x_3=4\\
+         2x_1+4x_2-x_3+2x_4=7
+       \end{cases}\Rightarrow
+       \begin{bmatrix}
+         0&0&1&2&3\\
+         2&4&-2&0&4\\
+         2&4&-1&2&7
+       \end{bmatrix}\xRightarrow{R_1\leftrightarrow R_2}$
+
+   2.  $\begin{bmatrix}
+         2&4&-2&0&4\\
+         0&0&1&2&3\\
+         2&4&-1&2&7
+       \end{bmatrix}\xRightarrow{R_3\leftarrow R_3-R_1}
+       \begin{bmatrix}
+         2&4&-2&0&4\\
+         0&0&1&2&3\\
+         0&0&1&2&3
+       \end{bmatrix}\xRightarrow{R_3\leftarrow R_3-R_2}$
+
+       $\begin{bmatrix}
+         2&4&-2&0&4\\
+         0&0&1&2&3\\
+         0&0&0&0&0
+       \end{bmatrix}$
+   3. È compatibile (l'ultimo pivot (1) non appartiene all'ultima colonna).
+
+      Variabili libere: $x_2,\ x_4$
+
+      Risolvo:
+
+      $\begin{cases}
+       2x_1+4x_2-2x_3=4\\
+       x_3+2x_4=3\\
+       0=0
+      \end{cases}\Rightarrow
+      \begin{cases}
+       2x_1+4x_2-2x_3=4\\
+       x_3=3-2x_4
+      \end{cases}\Rightarrow
+      \begin{cases}
+       2x_1+4x_2-6-4x_4=4\\
+       x_3=3-2x_4
+      \end{cases}\Rightarrow
+      \begin{cases}
+       x_1=5-2s-2t\\
+       x_2=s\\
+       x_3=3-2t\\
+       x_4=t
+      \end{cases}s,t\in\R$
+
+      $\mathbb{S}=\{(5-2s-2t,s,3-2t,t),\ s,t\in\R\}:\infty^2$ soluzioni
+2. Con parametro: <mark>INCOMPLETO</mark>
+    1. $\Rightarrow\begin{pmatrix}
+         a&-a&0&1&1-a\\
+         1&-2&-1&0&0\\
+         0&1&a&1&a-1
+       \end{pmatrix}$
+    2. $\xRightarrow{R_1\leftrightarrow R_2}
+       \begin{pmatrix}
+         1&-2&-1&0&0\\
+         a&-a&0&1&1-a\\
+         0&1&a&1&a-1
+       \end{pmatrix}\xRightarrow{R_2\leftrightarrow R_2-aR_1}
+       \begin{pmatrix}
+         1&-2&-1&0&0\\
+         0&a&a&1&1-a\\
+         0&1&a&1&a-1
+       \end{pmatrix}\xRightarrow{R_2\leftrightarrow R_3}$
+
+       $\begin{pmatrix}
+         1&-2&-1&0&0\\
+         0&1&a&1&a-1\\
+         0&a&a&1&1-a
+       \end{pmatrix}\xRightarrow{R_3\leftrightarrow R_3-aR_2}
+       \begin{pmatrix}
+         1&-2&-1&0&0\\
+         0&1&a&1&a-1\\
+         0&0&a-a^2&1-a&1-a^2
+       \end{pmatrix}\leftarrow$ a scalini $\forall a$
+
+       $a-a^2=0\Leftrightarrow a=0\vee a=1$
+
+       $a=0\rightarrow
+       \begin{pmatrix}
+         1&-2&-1&0&0\\
+         0&1&0&1&-1\\
+         0&0&0&1&1
+       \end{pmatrix}\leftarrow$ compatibile
+
+       $a=1\rightarrow
+       \begin{pmatrix}
+         1&-2&-1&0&0\\
+         0&1&1&1&0\\
+         0&0&0&0&0
+       \end{pmatrix}\leftarrow$ compatibile
+
+       $a\not=0,\ a\not=1\\
+       \begin{pmatrix}
+        1&-2&-1&0&0\\
+        0&1&a&1&a-1\\
+        0&0&a-a^2&1-a&1-a^2
+       \end{pmatrix}\rightarrow
+       \begin{cases}
+        x_1-2x_2-x_3=0\\
+        x_2+ax_3=a-1-x_4\\
+        (a-a^2)x_3=1-a^2-(1-a)x_4
+       \end{cases}$
+
+
+
+
+
+
+
+
