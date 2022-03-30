@@ -118,7 +118,7 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 <u>Def</u>: Siano $\mathbb{A},\ \mathbb{B}$ due insiemi:
   Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ è una legge che associa ad ogni elemento di $\mathbb{A}$, uno ed un solo elemento di $\mathbb{B}$.
 
-  $f:\mathbb{A}\rightarrow\mathbb{B}\\ \ \ \ \ \ \ x\rightarrow y$: $x$ è la controimmagine di $y$
+  $f:\mathbb{A}\rightarrow\mathbb{B}\\\qquad\!\!x\rightarrow y$: $x$ è la controimmagine di $y$
 
 <u>Def</u>: Sia $f:\mathbb{A}\rightarrow\mathbb{B}$ una funzione e sia $\mathbb{X}\subseteq\mathbb{A}$
 
@@ -141,7 +141,7 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 
 <u>Esempio</u>:
 
-$f:\R\rightarrow\R\\\ \ \ \ \ \ x\rightarrow x^2$
+$f:\R\rightarrow\R\\\qquad\!\!x\rightarrow x^2$
 
 È iniettiva? No, perchè $f(-1)=1=f(1)$
 
@@ -155,13 +155,13 @@ Se un insieme possiede delle operazioni che verificano certe proprietà, è una 
 
 $*:x\times x \rightarrow x$
 
-$(x,y)\rightarrow x*y$
+$\qquad\!\!\!(x,y)\rightarrow x*y$
 
 $\mathbb{X}=\R$
 
 $+:\R\times\R\rightarrow\R$
 
-$(x,y)\rightarrow x+y$
+$\qquad(x,y)\rightarrow x+y$
 
 <u>Proprietà</u> di $(\R,+)$:
 
@@ -175,7 +175,7 @@ $(x,y)\rightarrow x+y$
 
 $\R\times\R\rightarrow\R$ operazione binaria interna
 
-$(x,y)\rightarrow x\cdot y$
+$\quad\!\!\!\!(x,y)\rightarrow x\cdot y$
 
 <u>Proprietà</u> di $(\R,\cdot)$:
 
@@ -200,24 +200,24 @@ $(\mathbb{K},+,\cdot)$ è detto un <u>campo</u> se verificano le proprietà elen
 <u>Esempio</u>:
 
 $\mathbb{F}_2=\{0, 1\}$
-  - $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2$
+  - $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2\rightarrow\mathbb{F_2}$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (0, 0)\rightarrow 0$
+    $\qquad\!(0, 0)\rightarrow 0$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (0, 1)\rightarrow 0$
+    $\qquad\!(0, 1)\rightarrow 0$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (1, 0)\rightarrow 0$
+    $\qquad\!(1, 0)\rightarrow 0$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (1, 1)\rightarrow 1$
+    $\qquad\!(1, 1)\rightarrow 1$
   - $+:\mathbb{F}_2\times\mathbb{F}_2\rightarrow\mathbb{F}_2$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (0, 0)\rightarrow 0$
+    $\qquad\!(0, 0)\rightarrow 0$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (0, 1)\rightarrow 1$
+    $\qquad\!(0, 1)\rightarrow 1$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (1, 0)\rightarrow 1$
+    $\qquad\!(1, 0)\rightarrow 1$
 
-    $\ \ \ \ \ \ \ \ \ \ \ (1, 1)\rightarrow 1$
+    $\qquad\!(1, 1)\rightarrow 1$
 ## Algebra lineare
 Wikipedia:
 > Branca della matematica che si occupa dello studio di spazi vettoriali (o anche detti spazi lineari), di trasformazioni lineari e di sistemi di equazioni lineari.
@@ -263,7 +263,7 @@ Quindi abbiamo una biezione:
 
 $\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP}, P\in\Pi\}$
 
-Classi di equipollenza $\uparrow\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \uparrow$ Stesso punto di applicazione
+Classi di equipollenza $\uparrow\qquad\qquad\qquad\qquad\qquad\qquad\uparrow$ Stesso punto di applicazione
 # <mark>09/03/22</mark>
 ## Algebra lineare (continuo)
 ### Nozione base: <u>spazio vettoriale</u> (continuo)
@@ -313,7 +313,7 @@ $\forall\vec{v}\in V,\exist P\in\pi:\vec{v}=\vec{OP}$
 
   Questa è un'operazione binaria <u>esterna</u>:
   
-    $\cdot:\R\times\mathbb{V}\rightarrow \mathbb{V}\\\ \ \ \ \ \ (\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
+    $\cdot:\R\times\mathbb{V}\rightarrow \mathbb{V}\\\qquad\!\!\!(\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
 
 ## Piano Cartesiano
 
@@ -1030,7 +1030,134 @@ Esempi:
 0&2&-3&\vdots&1\\
 0&0&3&\vdots&-3
 \end{bmatrix}$ è una matrice a scalini.
-
 # <mark>INCOMPLETO: SI È SPENTO IL PC</mark>
+# <mark>30/03/22</mark>
+## Sistema lineare $\longrightarrow$ sistema a scalini.
+### Algoritmo (o metodo di eliminazione) di Gauss-Jordan.
+Tale metodo consiste nell'effettuare delle operazioni successive sulle equazioni del sistema (o equivalentemente sulle righe della matrice orlata) che non ne alterino l'insieme delle soluzioni.
+
+<u>Operazioni elementari</u>:
+
+$(*)=\begin{cases}
+  a_1x_1+\cdots+a_nx_n=b\\
+  a_{1'}x_1+\cdots+a_{n'}x_n=b'
+\end{cases}$
+
+1. Il sistema (*) è equivalente a:
+
+   $(**)=\begin{cases}
+      a_{1'}x_1+\cdots+a_{n'}x_n=b'\\
+      a_1x_1+\cdots+a_nx_n=b
+   \end{cases}$
+
+   Scambiare tra loro due equazioni di un sistema non cambia l'insieme delle soluzioni.
+2. Il sistema (*) di partenza è equivalente a:
+
+   $(**)=\begin{cases}
+      \lambda a_1x_1+\cdots+\lambda a_nx_n=\lambda b\\
+      a_{1'}x_1+\cdots+a_{n'}x_n=b'
+   \end{cases},\ \lambda\not=0,\ \lambda\in\mathbb{K}$
+
+   Moltiplicare (primo e secondo membro) per uno scalare non nullo non cambia l'insieme delle soluzioni:
+
+   $(x_1,\cdots,x_n)$ è soluzione di $a_1x_1+\cdots+a_nx_n=b$
+
+   $(x_1,\cdots,x_n)$ è soluzione di $\lambda a_1x_1+\cdots+\lambda a_nx_n=\lambda b$
+3. Il sistema (*) è equivalente al sistema in cui un'equazione è sostituita con quella ottenuta sommando ad essa un multiplo di un'altra equazione:
+
+   $(**)=\begin{cases}
+      a_1x_1+\cdots+a_nx_n+\lambda(a_{1'}x_1+\cdots+a_{n'}x_n)=b+\lambda b'\\
+      a_{1'}x_1+\cdots+a_{n'}x_n=b'
+   \end{cases}$
+
+   <u>Dim</u>:
+
+   $(x_1,\cdots,x_n)$ è soluzione di $(*)\Leftrightarrow(x_1,\cdots,x_n)$ è soluzione di $(**)$
+
+   $\Rightarrow)$ Assumiamo che $(x_1,\cdots,x_n)$ è soluzione di (*)
+
+    $a_1x_1+\cdots+a_nx_n=b\\a_{1'}x_1+\cdots+a_{n'}x_n=b'$
+
+    $b=a_1x_1+\cdots+a_nx_n\\b'=a_{1'}x_1+\cdots+a_{n'}x_n$
+
+    $b+b'=b+\lambda b'$
+
+    Sostituisco $b$ e $b'$
+    
+    $a_1x_1+\cdots+a_nx_n+\lambda(a_{1'}x_1+\cdots+a_{n'}x_n)=b+\lambda b'$
+
+    $\Leftarrow)\ (x_1,\cdots,x_n)$ è soluzione di $(**)\Rightarrow\cdots(x_1,\cdots,x_n)$ è soluzione di (*)
+#### Operazioni elementari sulle equazioni di un <u>sistema</u>
+. Scambiare tra loro due equazioni del sistema
+
+II. Moltiplicare un'equazione per uno scalare <u>non nullo</u>
+
+III. Sostituire un'equazione con quella ottenuta "sommando" ad essa un multiplo di un'altra equazione
+
+#### Operazioni elementari sulle righe di una <u>matrice</u>
+I. Scambiare tra loro due righe di una matrice
+
+$R_i\leftrightarrow R_j: 
+\begin{bmatrix}
+1&2&3&4\\
+5&6&7&8\\
+9&10&11&12
+\end{bmatrix}\xRightarrow{R_1\leftrightarrow R_3}\begin{bmatrix}
+9&10&11&12\\
+5&6&7&8\\
+1&2&3&4
+\end{bmatrix}$
+
+II. Moltiplicare una riga della matrice per uno scalare non nullo:
+
+$R_i\leftarrow\lambda R_i: 
+\begin{bmatrix}
+1&2&3&4\\
+5&6&7&8\\
+9&10&11&12
+\end{bmatrix}\xRightarrow{R_1\leftarrow2R_1}\begin{bmatrix}
+2&4&6&8\\
+5&6&7&8\\
+9&10&11&12
+\end{bmatrix}$
 
 
+III. Sostituire una riga della matrice con quella ottenuta sommando ad essa un multiplo di un'altra riga:
+
+$R_i\leftarrow R_i\lambda R_j: 
+\begin{bmatrix}
+9&10&11&12\\
+5&6&7&8\\
+1&2&3&4
+\end{bmatrix}\xRightarrow{R_1\leftarrow R_1-9R_3}\begin{bmatrix}
+0&-8&-16&-24\\
+5&6&7&8\\
+1&2&3&4
+\end{bmatrix}$
+
+#### Algoritmo di Gauss-Jordan:
+Successione di operazioni elementari che permettono di trasformare il sistema (o la corrispondente matrice orlata) in un sistema a scalini (in una matrice a scalini) equivalente al sistema di partenza.
+
+<u>Esempio</u>:
+
+$\begin{bmatrix}
+  1&2&3&4\\
+  5&6&7&8\\
+  9&10&11&12
+\end{bmatrix}\xRightarrow{R_2\leftarrow R_2-5R_1}
+\begin{bmatrix}
+  1&2&3&4\\
+  0&-4&-8&-12\\
+  9&10&11&12
+\end{bmatrix}\xRightarrow{R_3\leftarrow R_3-9R_1}$
+
+$\begin{bmatrix}
+  1&2&3&4\\
+  0&-4&-8&-12\\
+  0&-8&-16&-24
+\end{bmatrix}\xRightarrow{R_3\leftarrow R_3-2R_2}
+\begin{bmatrix}
+  1&2&3&4\\
+  0&-4&-8&-12\\
+  0&0&0&0
+\end{bmatrix}$
