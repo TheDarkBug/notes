@@ -245,5 +245,105 @@ $\vec{OP}$ è equipollente a tutti i segmenti orientati equipollenti ad $\vec{AB
 Quindi abbiamo una biezione:\\
 $\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP},P\in\Pi\}$\\
 Classi di equipollenza $\uparrow\hspace*{10em}\uparrow$ Stesso punto di applicazione}
+\section{\hl{09/03/22} (data errata)}
+
+
+
+
+
+
+\subsection*{Algebra lineare (continuo)}
+
+\subsubsection*{Nozione base: \underline{spazio vettoriale} (continuo)}
+Correzione della definizione di campo:
+\begin{itemize}
+	\item Esistenza dell'elemento neutro\\$\exists0\in\R:x+0=0+x=x,\forall x\in\R$
+	\item Esistenza dell'opposto:\\$\exists x'\in\R:x+x'=x'+x=0,\forall x\in\R$
+\end{itemize}
+\hrulefill
+
+\vspace*{1em}
+Fissiamo $O\in\pi$ (piano ordinario).\\
+$\mathbb{V}=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
+Con un abuso di notazione, consideriamo:\\
+$\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
+$\forall\vec{v}\in V,\exists P\in\pi:\vec{v}=\vec{OP}$
+\underline{Operazioni su $\mathbb{V}$}
+\begin{itemize}
+	\item Somma di vettori\\
+		  siano $\vec{v},\vec{w}\in \mathbb{V}$ e siano $P,Q\in\pi:$\\
+		  $\vec{v}=\vec{OP}$\\
+		  $\vec{w}=\vec{OQ}$\vspace*{1em}\\
+		  Definiamo:\\
+		  $\vec{v}+\vec{w}=\vec{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)\\
+		  \underline{Nota}: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione), costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza\\
+		  Operazione binaria interna:\\
+		  $+:\mathbb{V}\times\mathbb{V}\rightarrow\mathbb{V}$\\
+		  \hspace*{1.9em}$(\vec{v},\vec{w})\rightarrow\vec{v}+\vec{w}$
+	\item Moltiplicazione per scalari\\
+		  Sia $\vec{v}\in\mathbb{V}$ e sia $P\in\pi:\vec{v}=\vec{OP}$.\vspace*{1em}\\
+		  Definiamo $\lambda\cdot\vec{v}=\vec{OR}$
+		  \begin{itemize}
+			  \item $O,P,R$ sono collineari
+			  \item $\overline{OR}=|\lambda|OP$
+			  \item $\vec{OR}$ è orientato concordemente a $\vec{OP}\\\vec{OR}$ è orientato discordemente a $\vec{OP}$ se\\
+			  		$\lambda<0\vee\lambda=0,R=O$\\
+					Questa è un'operazione binaria \underline{esterna}:\\
+					$\cdot:\R\times\mathbb{V}\rightarrow \mathbb{V}$\\
+					\hspace*{1.5em}$(\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
+		  \end{itemize}
+\end{itemize}
+\subsection*{Piano Cartesiano}
+\par$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$\\
+$\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$\\
+In particolare esiste una biezione:\\
+$\mathbb{V}\leftrightarrow\R^2$\\
+$\forall P\in\pi,\vec{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$\\
+$\vec{OP}\leftarrow(x,y)$ dove $P(x,y)$\\
+Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
+\begin{enumerate}
+	\item $\vec{v}=\vec{OP},P(x_P,y_P)$\\
+		  $\vec{w}=\vec{OQ},Q(x_Q,y_Q)$
+		  $\vec{v}+\vec{w}=\vec{OR}:$ quali sono le coordinate di $R$?\\
+		  $OPQR\Rightarrow A(x_A,y_A)$ parallelogramma con punto medio di $PQ$ e $OR$\\
+		  $A$ punto medio di $PQ\Rightarrow\{x_A=\frac{x_P+x_Q}{2},y_A=\frac{y_P+x_Q}{2}\}$\\
+		  $A$ punto medio di $OR\Rightarrow\{x_A=\frac{x_R}{2},y_A=\frac{y_R}{2}\}$\\
+		  $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$\\
+		  Operazione binaria \underline{interna}:\\
+		  $+:\R^2\times\R^2\rightarrow\R^2$\\
+		  $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
+	\item $\vec{v}\in\mathbb{V},\vec{v}=\vec{OP},P(x_P,y_P),\lambda\in\R$\\
+		  $\lambda\cdot\vec{v}=\vec{OR}:$ quali sono le coordinate di $R$?\\
+		  $\vec{OR}=\lambda\cdot\vec{OP}$\\
+		  $OPH$ e $ORK$ sono simili per costruzione con rapporto di proporzioni $|\lambda|$.\\
+		  \underline{Due casi}:
+		  \begin{enumerate}
+			  \item $\lambda\ge0$ $\vec{OR}$ è concord con $\vec{OP}$ e quindi:\\
+			  		$x_R=|\lambda|x_P=\lambda x_P$\\
+					$y_R=|\lambda|y_P=\lambda y_P$
+			  \item $\lambda<0$ $\vec{OR}$ è discorde con $\vec{OP}$ e quindi:\\
+			  		$x_R=-|\lambda|x_P=\lambda x_P$\\
+					$y_R=-|\lambda|y_P=\lambda y_P$
+		  \end{enumerate}
+		  Operazione binaria \underline{esterna}:\\
+		  $\cdot:\R\times\R^2\rightarrow\R^2$\\
+		  \hspace*{0.1em}$(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
+\end{enumerate}
+In conclusione abbiamo definito due operazioni su $\R^2$ "compatibili" con le operazioni definite su $\mathbb{V}$:
+\begin{itemize}
+	\item $+: \R^2\times\R^2\rightarrow\R^2$\\$((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+y_1,x_2+y_2)$
+	\item $\cdot: \R^2\times\R^2\rightarrow\R^2$\\\hspace*{-0.3em}$(\lambda,(x_2,y_2))\mapsto\lambda\cdot(x_2,y_2):=(\lambda\cdot x,\lambda\cdot y)$
+\end{itemize}
+\underline{Proprietà} di $+$ e $\cdot$ :
+\begin{enumerate}
+	\item Commutatività:\\$\forall(x_1,y_1),(x_2,y_2)\in\R^2, (x_1,y_1)+(x_2,y_2)=(x_2,y_2)+(x_1,y_1)$
+	\item Associatività:\\$\forall(x_1,y_1),(x_2,y_2),(x_3,y_3)\in\R^2,\\((x_1,y_1)+(x_2,y_2))+(x_3,y_3)=(x_1,y_1)+((x_2,y_2)+(x_3,y_3))$
+	\item Elemento neutro $(+)$:\\$(0,0)\in\R^2$ è tale che $(x,y)+(0,0)=(0,0)+(x,y)=(x,y)$
+	\item Elemento opposto:\\$\forall(x,y)\in\R^2,\exists(x',y')\in\R^2:(x,y)+(x',y')=(x',y')+(x,y)=(0,0)$
+	\item Distributività rispetto a vettori:\\$\forall(x_1,y_1),(x_2,y_2)\in\R^2,\forall\lambda\in\R$\\$\lambda\cdot((x_1,y_1)+(x_2,y_2))=\lambda\cdot(x_1,y_1)+\lambda\cdot(x_2,y_2)$
+	\item Distributività rispetto a scalari:\\$\forall(x,y)\in\R^2,\forall\lambda,\mu\in\R$\\$(\lambda+\mu)\cdot(x,y)=\lambda\cdot(x,y)+\mu\cdot(x,y)$
+	\item Senza nome:\\$\lambda\mu\cdot(x,y)=\lambda\cdot(\mu\cdot(x,y))$
+	\item Elemento neutro $(\cdot)$:\\$1\cdot(x,y)=(x,y)\forall(x,y)\in\R^2$
+\end{enumerate}
 
 \end{document}

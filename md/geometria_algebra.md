@@ -271,7 +271,6 @@ Quindi abbiamo una biezione:
 $\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP}, P\in\Pi\}$
 
 Classi di equipollenza $\uparrow\qquad\qquad\qquad\qquad\qquad\qquad\uparrow$ Stesso punto di applicazione
-# Latex rewrite mark
 # <mark>09/03/22</mark>
 ## Algebra lineare (continuo)
 ### Nozione base: <u>spazio vettoriale</u> (continuo)
@@ -422,10 +421,11 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
 
           $1\cdot(x,y)=(x,y)\forall(x,y)\in\R^2$
 
+# Latex rewrite mark
+# <mark>Revisione conclusa qui (29/03/22 19:42:57)</mark>
       $(\R^2,+,\cdot)$ è il primo insieme di <MARK>INCOMPLETO</MARK>
 
     <u>Def</u>: Sia $\mathbb{K}$ (lettera K da "korper" in tedesco) un campo. Uno spazio vettoriale su $\mathbb{K}$ è un insieme $\mathbb{V}$ dotato di due operazioni:
-      # <mark>Revisione conclusa qui (29/03/22 19:42:57)</mark>
     - $+: V\times V\rightarrow V$
     - $\cdot: K\times V\rightarrow V$
 
