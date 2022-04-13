@@ -1,6 +1,7 @@
+% to compile: pdflatex -synctex=1 -interaction=nonstopmode -file-line-error -recorder geometria_algebra.tex
 \documentclass{article}
 \usepackage{hyperref}
-\usepackage{color,soul}
+\usepackage{color}
 \usepackage{amsfonts}
 \usepackage[paperheight=500em,margin=3em]{geometry}
 
@@ -10,18 +11,19 @@
 \date{07/04/22 - oggi}
 
 \begin{document}
+\newcommand{\hl}[1]{\colorbox{yellow}{#1}}
 \newcommand{\Def}[2]{\paragraph{\underline{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
 \newcommand{\Esempio}[1]{\subsubsection*{\underline{Esempio}:}#1}
 \newcommand{\R}{\mathbb{R}}
 \maketitle
 \section*{\hl{Introduzione}}
-Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:License]{licenza}.\\
+Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:Licenza]{licenza}.\\
 Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
 
-\section*{\hl{License}}
-\label{sec:License}
+\section*{\hl{Licenza}}
+\label{sec:Licenza}
 TO BE FILLED
-\section*{\hl{08/03/22}}
+\section{\hl{08/03/22}}
 \subsection*{Richiami di logica}
 Proposizione logica: \textbf{V}/\textbf{F}, \textbf{1}/\textbf{0} valore di verità
 P = "Napoli è in Campania": \textbf{V}
@@ -100,7 +102,7 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 \begin{enumerate}
 	\item Inclusione $\leftrightarrow\subset$:\\
 	      $\mathbb{A}\subseteq\mathbb{B}\quad(\mathbb{A}$ è contenuto in $\mathbb{B})$\\
-	      $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$\\
+	      $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$
 	      \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}\\
 	      \underline{Proprietà}:
 	      \begin{itemize}
@@ -140,14 +142,14 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 	\hspace*{1.6em}$x\rightarrow y:\quad x$ è la controimmagine di $y$}
 \Def{Sia $f:\mathbb{A}\rightarrow\mathbb{B}$ una funzione e sia $\mathbb{X}\subseteq\mathbb{A}$:}
 {$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'insieme di $\mathbb{X}$ tramite $f$2
-	$Im(f):=f(\mathbb{A})$ è l'insieme della funzione\\
+	$Im(f):=f(\mathbb{A})$ è l'insieme della funzione
+
 	$Im(f)$ non è necessariamente $=Dom(f)$
 
 	$Im(f)=Dom(f)\Rightarrow f$ è suriettiva
 
 	$f(1)=f(2)=a\Rightarrow f$ non è iniettiva}
-\section*{\hl{09/03/22}}
-
+\section{\hl{09/03/22}}
 \subsection*{Funzioni (continuo)}
 \Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{iniettiva} se $\forall x\not=y\Rightarrow f(x)\not=f(y)$}{(elementi distinti di $\mathbb{A}$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$}
 \Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{suriettiva} se $Im(f)=B$,}{o equivalentemente se $\forall y\in\mathbb{B},\exists x\in\mathbb{A}:f(x)=y$}
