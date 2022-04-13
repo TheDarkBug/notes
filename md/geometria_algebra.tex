@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{ocgx2}
+\usepackage{color,soul}
+\usepackage{amsfonts}
+\usepackage{parskip}
+
+\begin{document}
+% 
+\newcommand{\Def}[2]{\paragraph{\underline{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
+\newcommand{\R}{\mathbb{R}}
+\pagenumbering{gobble}
+\title{Appunti del corso di algebra e geometria}
+\author{Adriano Oliviero}
+\section*{\hl{Introduzione}}
+Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:License]{licenza}. Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
+
+\section*{\hl{License}}
+\label{sec:License}
+TO BE FILLED
+\section*{\hl{08/03/22}}
+\subsection*{Richiami di logica}
+Proposizione logica: \textbf{V}/\textbf{F}, \textbf{1}/\textbf{0} valore di verità
+P = "Napoli è in Campania": \textbf{V}
+P(n) = "n è pari"
+P(2): \textbf{V}
+P(3): \textbf{F}
+\subsection*{Connettivi logici}
+\begin{itemize}
+	\item Negazione: $\neg$, "non"
+	\item Congiunzione: $\wedge$, "e"
+	\item Disgiunzione: $\vee$, "o"
+	\item Implicazione: $\Rightarrow$, "se $\cdots$ allora $\cdots$"
+	\item Doppia implicazione: $\Leftrightarrow$, "se e solo se"
+\end{itemize}
+\subsection*{Tavole di verità}
+\begin{displaymath}
+\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+P&Q&\neg P&P\wedge Q&P\vee Q&P\Rightarrow Q&P\Leftrightarrow Q\\
+\hline\hline
+1&1&0&1&1&1&1\\
+\hline
+1&0&0&0&1&0&0\\
+\hline
+0&1&1&0&1&1&0\\
+\hline
+0&0&1&0&0&1&1\\
+\hline
+\end{array}
+\end{displaymath}
+\subsection*{Quantificatori}
+\begin{itemize}
+	\item $\forall$: "Per ogni"
+	\item $\exists$: "Esiste almeno uno"
+	\item $\exists!$: "Esiste ed è unico"
+\end{itemize}
+
+\underline{Esempi}:
+\begin{enumerate}
+	\item "$\forall n$ naturale, $n$ è pari": F\\
+		  "$\exists n$ naturale: ($\leftarrow$ tale che) $n$ è pari": V
+	\item $P(x)=\{x$ è uno studente in aula A3-T2$\}$\\
+		  $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$\\
+		  $\forall x, P(x)\Rightarrow Q(x)$
+	\item $P(n)=\{n$ è un numero pari$\}$\\
+		  $Q(n)=\{n$ è divisibile per $4\}$\\
+		  $\forall n$ naturale, $Q(n)\Rightarrow P(n)$
+\end{enumerate}
+
+\subsection*{Teoria degli insiemi}
+Un \textbf{insieme} è una collezione di oggetti detti \textbf{elementi} dell'insieme.\\
+Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi con lettere minuscole.
+\subsubsection*{Descrizione di un insieme}
+\begin{enumerate}
+	\item Per elencazione (se l'insieme ha un numero finito di elementi):\\
+		  $\mathbb{A}=\{0,2,4,6,8,10\}$\\
+		  $4\in\mathbb{A}$\\
+		  $5\notin\mathbb{A}$
+	\item Per proprietà caratteristica:\\
+		  $\mathbb{A}=\{n:n$ è un numero pari: $0\le n\le10\}$
+	\item Diagramma di \textit{Eulero-Venn} (ancora una volta se l'insieme ha un numero finito di elementi):
+\end{enumerate}
+\subsubsection*{Alcune informazioni sugli insiemi}
+\begin{itemize}
+	\item La \textbf{cardinalità} di un insieme è il numero di elementi che un insieme contiene e si denota: $\mathbb{A}$ ha cardinalità $|\mathbb{A}|$
+	\item Insieme vuoto: insieme che non contiene nessun elemento, si denota con $\emptyset$, $\{\}$ e ha cardinalità $|\emptyset|=0$
+	\item I principali insiemi numerici:\\
+		  $\mathbb{N}=\{0,1,2,3,\cdots\}$: numeri naturali\\
+		  $\mathbb{Z}=\{\cdots,-3,-2,-1,0,1,2,3,\cdots\}$: numeri naturali\\
+		  $\mathbb{Q}=\{\frac{a}{b}:a,b$ e $\mathbb{Z},b\not=0\}$\\
+		  $\R$: numeri reali\\
+		  $\mathbb{C}$: numeri complessi
+\end{itemize}
+
+\subsubsection*{Operazioni tra gli insiemi}
+\begin{enumerate}
+	\item Inclusione $\leftrightarrow\subset$:\\
+		  $\mathbb{A}\subseteq\mathbb{B}\quad(\mathbb{A}$ è contenuto in $\mathbb{B})$\\
+		  $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$\\
+		  \underline{Esempio}:\\
+		  $\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$\\
+		  \underline{Proprietà}:
+		  \begin{itemize}
+			  \item $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in\mathbb{A}\Leftrightarrow x\in\mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}\wedge\mathbb{B}\subseteq\mathbb{A})$
+		  \end{itemize}
+	\item Intersezione $\leftrightarrow\wedge$:\\
+		  $\mathbb{A}\cap\mathbb{B}=\{x:x\in\mathbb{A}\wedge x\in\mathbb{B}\}$\\
+		  \underline{Proprietà}:
+		  \begin{itemize}
+			  \item $\mathbb{A}\cap\emptyset=\emptyset$
+			  \item $\mathbb{A}\cap\mathbb{B}=\mathbb{B}\cap\mathbb{A}$
+			  \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cap\mathbb{B}=\mathbb{A}$
+		  \end{itemize}
+	\item Unione $\leftrightarrow\vee$:\\
+		  $\mathbb{A}\cup\mathbb{B}=\{x:x\in\mathbb{A}\vee x\in\mathbb{B}\}$\\
+		  \underline{Proprietà}:
+		  \begin{itemize}
+			  \item $\mathbb{A}\cup\emptyset=\mathbb{A}$
+			  \item $\mathbb{A}\cup\mathbb{B}=\mathbb{B}\cup\mathbb{A}$
+			  \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cup\mathbb{B}=\mathbb{B}$
+			  \item $\mathbb{A}\subseteq\mathbb{A}\cup\mathbb{B},\mathbb{B}\subseteq\mathbb{A}\cup\mathbb{B}$
+		  \end{itemize}
+	\item Differenza $\leftrightarrow\backslash$:\\
+		  $\mathbb{B}\backslash\mathbb{A}=\{x:x\in\mathbb{B}\wedge x\not\in\mathbb{A}\}$
+	\item Prodotto cartesiano $\leftrightarrow\times$:\\
+		  $\mathbb{A}\times\mathbb{B}:=\{(a,b):a\in\mathbb{A},b\in\mathbb{B}\}$ con $(a,b)$ coppie ordinate\\
+		  \underline{Proprietà}:
+		  \begin{itemize}
+			  \item $|\mathbb{A}\times\mathbb{B}|=|\mathbb{A}|\cdot|\mathbb{B}|$
+			  \item $\mathbb{A}\times\emptyset=\emptyset=\emptyset\times\mathbb{A}$
+		  \end{itemize}
+\end{enumerate}
+\subsection*{Funzioni}
+\Def{Siano $\mathbb{A},\mathbb{B}$ due insiemi:}
+{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ è una legge che associa ad ogni elemento di $\mathbb{A}$, uno ed un solo elemento di $\mathbb{B}$.\\
+$f:\mathbb{A}\rightarrow\mathbb{B}$\\
+\hspace*{1.6em}$x\rightarrow y:\quad x$ è la controimmagine di $y$}
+\Def{Sia $f:\mathbb{A}\rightarrow\mathbb{B}$ una funzione e sia $\mathbb{X}\subseteq\mathbb{A}$:}
+	{$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'insieme di $\mathbb{X}$ tramite $f$2
+	$Im(f):=f(\mathbb{A})$ è l'insieme della funzione\\
+	$Im(f)$ non è necessariamente $=Dom(f)$\\
+	$Im(f)=Dom(f)\Rightarrow f$ è suriettiva\\
+	$f(1)=f(2)=a\Rightarrow f$ non è iniettiva}
+\end{document}
+
