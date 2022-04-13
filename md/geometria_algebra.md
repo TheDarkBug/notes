@@ -90,7 +90,7 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
     $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$
 
     <u>Esempio</u>:
-    $\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\mathbb{R}\subseteq\mathbb{C}$
+    $\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$
 
     <u>Proprietà</u>:
     - $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in \mathbb{A}\Leftrightarrow x \in \mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}$ ^ $\mathbb{B}\subseteq\mathbb{A})$
@@ -138,7 +138,6 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
   $Im(f)=Dom(f)\Rightarrow f$ è suriettiva
 
   $f(1)=f(2)=a\Rightarrow f$ non è iniettiva
-# Latex rewrite finisce qui
 # <mark>09/03/22</mark>
 ## Funzioni (continuo)
 <u>Def</u>: Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice <u>iniettiva</u> se $\forall x\not=y\Rightarrow f(x)\not=f(y)$ (elementi distinti di $\mathbb{A}$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$
@@ -149,11 +148,11 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 
 <u>Esempio</u>:
 
-$f:\R\rightarrow\mathbb{R}\\\qquad\!\!x\rightarrow x^2$
+$f:\R\rightarrow\R\\\qquad\!\!x\rightarrow x^2$
 
 È iniettiva? No, perchè $f(-1)=1=f(1)$
 
-È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\mathbb{R}\Rightarrow Im(f)\subseteq\mathbb{R}^+\Rightarrow Im(f)\not=\R$
+È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\R\Rightarrow Im(f)\subseteq\R^+\Rightarrow Im(f)\not=\R$
 
 <br>
 
@@ -167,35 +166,35 @@ $\qquad\!\!\!(x,y)\rightarrow x*y$
 
 $\mathbb{X}=\R$
 
-$+:\R\times\mathbb{R}\rightarrow\mathbb{R}$
+$+:\R\times\R\rightarrow\R$
 
 $\qquad(x,y)\rightarrow x+y$
 
 <u>Proprietà</u> di $(\R,+)$:
 
-1. Commutatività:  $x+y=y+x, \forall x,y\in\mathbb{R}$
+1. Commutatività:  $x+y=y+x, \forall x,y\in\R$
 
-2. Associatività:  $(x+y)+z=x+(y+z),\forall x,y,z\in\mathbb{R}$
+2. Associatività:  $(x+y)+z=x+(y+z),\forall x,y,z\in\R$
 
-3. Esistenza dell'elemento neutro:  $\exist x'\in\mathbb{R}:x+x'=x'+x=x,\forall x\in\mathbb{R}, x'=0$
+3. Esistenza dell'elemento neutro:  $\exist x'\in\R:x+x'=x'+x=x,\forall x\in\R, x'=0$
 
-4. Esistenza dell'opposto:  $\exist x'\in\mathbb{R}:x+x'=x'+x=0,\forall x\in\mathbb{R}, (x'=-x)$
+4. Esistenza dell'opposto:  $\exist x'\in\R:x+x'=x'+x=0,\forall x\in\R, (x'=-x)$
 
-$\R\times\mathbb{R}\rightarrow\mathbb{R}$ operazione binaria interna
+$\R\times\R\rightarrow\R$ operazione binaria interna
 
 $\quad\!\!\!\!(x,y)\rightarrow x\cdot y$
 
 <u>Proprietà</u> di $(\R,\cdot)$:
 
-1. Commutatività: $x\cdot y=y\cdot x, \forall x,y\in\mathbb{R}$
+1. Commutatività: $x\cdot y=y\cdot x, \forall x,y\in\R$
 
-2. Associatività: $(x\cdot y)\cdot z=x\cdot(y\cdot z),\forall x,y,z\in\mathbb{R}$
+2. Associatività: $(x\cdot y)\cdot z=x\cdot(y\cdot z),\forall x,y,z\in\R$
 
-3. Esistenza dell'elemento neutro: $\exist x'\in\mathbb{R}:x\cdot x'=x'\cdot x=x,\forall x\in\mathbb{R}, x'=1$
+3. Esistenza dell'elemento neutro: $\exist x'\in\R:x\cdot x'=x'\cdot x=x,\forall x\in\R, x'=1$
 
-4. Esistenza dell'inverso: $\exist x'\in\mathbb{R}:x\cdot x'=x'\cdot x=0,\forall x\in\mathbb{R}, (x'=\frac{1}{x})$
+4. Esistenza dell'inverso: $\exist x'\in\R:x\cdot x'=x'\cdot x=0,\forall x\in\R, (x'=\frac{1}{x})$
 
-Infine $+$ e $\cdot$ soddisfano la proprietà distributiva: $\forall x,y,z\in\mathbb{R},x\cdot(y+z)=x\cdot y+x\cdot z$
+Infine $+$ e $\cdot$ soddisfano la proprietà distributiva: $\forall x,y,z\in\R,x\cdot(y+z)=x\cdot y+x\cdot z$
 
 Sia $\mathbb{K}\not=\emptyset$ un insieme dotato di due operazioni binarie:
 
@@ -232,7 +231,7 @@ Wikipedia:
 
 Molti problemi di matematica e fisica verificano la seguente proprietà:
 
-Se $v,w\in\mathbb{X}$ sono due soluzioni del problema, allora anche $v+w$ e $\lambda v, \lambda\in\mathbb{R}$  ($+$ e $\cdot$ operazioni su $\mathbb{X}$) sono soluzioni del problema.
+Se $v,w\in\mathbb{X}$ sono due soluzioni del problema, allora anche $v+w$ e $\lambda v, \lambda\in\R$  ($+$ e $\cdot$ operazioni su $\mathbb{X}$) sono soluzioni del problema.
 
 Problemi di questo tipo sono detti *lineari*.
 
@@ -272,16 +271,17 @@ Quindi abbiamo una biezione:
 $\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP}, P\in\Pi\}$
 
 Classi di equipollenza $\uparrow\qquad\qquad\qquad\qquad\qquad\qquad\uparrow$ Stesso punto di applicazione
+# Latex rewrite mark
 # <mark>09/03/22</mark>
 ## Algebra lineare (continuo)
 ### Nozione base: <u>spazio vettoriale</u> (continuo)
 Correzione della definizione di campo:
 - Esistenza dell'elemento neutro
 
-  $\exist 0\in\mathbb{R}:x+0=0+x=x,\forall x\in\mathbb{R}$
+  $\exist 0\in\R:x+0=0+x=x,\forall x\in\R$
 - Esistenza dell'opposto:
 
-  $\exist x'\in\mathbb{R}:x+x'=x'+x=0,\forall x\in\mathbb{R}$
+  $\exist x'\in\R:x+x'=x'+x=0,\forall x\in\R$
 ---
 Fissiamo $O\in\pi$ (piano ordinario).
 
@@ -325,19 +325,19 @@ $\forall\vec{v}\in V,\exist P\in\pi:\vec{v}=\vec{OP}$
 
 ## Piano Cartesiano
 
-$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\mathbb{R}\}=\mathbb{R}^2$
+$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$
 
 $\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$
 
 In particolare esiste una blezione:
 
-$\mathbb{V}\leftrightarrow\mathbb{R}^2$
+$\mathbb{V}\leftrightarrow\R^2$
 
 $\forall P\in\pi,\vec{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$
 
 $\vec{OP}\leftarrow(x,y)$ dove $P(x,y)$
 
-Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\mathbb{R}^2$:
+Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
 
 1. $\vec{v}=\vec{OP},P(x_P,y_P)$
 
@@ -353,10 +353,10 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\mathbb{R}^2$:
 
     $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$
 
-    Operazione binaria <u>interna</u>: $+:\mathbb{R}^2\times\mathbb{R}^2\rightarrow\mathbb{R}^2$
+    Operazione binaria <u>interna</u>: $+:\R^2\times\R^2\rightarrow\R^2$
 
     $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
-2. $\vec{v}\in\mathbb{V},\vec{v}=\vec{OP},P(x_P,y_P), \lambda\in\mathbb{R}$
+2. $\vec{v}\in\mathbb{V},\vec{v}=\vec{OP},P(x_P,y_P), \lambda\in\R$
 
     $\lambda\cdot\vec{v}=\vec{OR}:$ quali sono le coordinate di R?
 
@@ -376,16 +376,16 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\mathbb{R}^2$:
 
         $y_R=-|\lambda|y_P=\lambda y_P$
 
-    Operazione binaria <u>esterna</u>: $\cdot:\R\times\mathbb{R}^2\rightarrow\mathbb{R}^2$
+    Operazione binaria <u>esterna</u>: $\cdot:\R\times\R^2\rightarrow\R^2$
 
     $(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
 
-    In conclusione abbiamo definito due operaizoni su $\mathbb{R}^2$ "compatibili" con le operazioni definite su $\mathbb{V}$:
+    In conclusione abbiamo definito due operaizoni su $\R^2$ "compatibili" con le operazioni definite su $\mathbb{V}$:
 
-      - $+: \mathbb{R}^2\times\mathbb{R}^2\rightarrow\mathbb{R}^2$
+      - $+: \R^2\times\R^2\rightarrow\R^2$
 
           $((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+y_1,x_2+y_2)$
-      - $\cdot: \mathbb{R}^2\times\mathbb{R}^2\rightarrow\mathbb{R}^2$
+      - $\cdot: \R^2\times\R^2\rightarrow\R^2$
 
           $(\lambda,(x_2,y_2))\mapsto\lambda\cdot(x_2,y_2):=(\lambda\cdot x,\lambda\cdot y)$
 
@@ -393,26 +393,26 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\mathbb{R}^2$:
 
       1. commutatività
 
-          $\forall(x_1,y_1),(x_2,y_2)\in\mathbb{R}^2, (x_1,y_1)+(x_2,y_2)=(x_2,y_2)+(x_1,y_1)$
+          $\forall(x_1,y_1),(x_2,y_2)\in\R^2, (x_1,y_1)+(x_2,y_2)=(x_2,y_2)+(x_1,y_1)$
       2. associatività
 
-          $\forall(x_1,y_1),(x_2,y_2),(x_3,y_3)\in\mathbb{R}^2,
+          $\forall(x_1,y_1),(x_2,y_2),(x_3,y_3)\in\R^2,
 
           ((x_1,y_1)+(x_2,y_2))+(x_3,y_3)=(x_1,y_1)+((x_2,y_2)+(x_3,y_3))$
       3. esistenza dell'elemento neutro
 
-          $(0,0)\in\mathbb{R}^2$ è tale che $(x,y)+(0,0)=(0,0)+(x,y)=(x,y)$
+          $(0,0)\in\R^2$ è tale che $(x,y)+(0,0)=(0,0)+(x,y)=(x,y)$
       4. esistenza dell'opposto
 
-          $\forall (x,y)\in\mathbb{R}^2,\exist(x',y')\in\mathbb{R}^2:(x,y)+(x',y')=(x',y')+(x,y)=(0,0)$
+          $\forall (x,y)\in\R^2,\exist(x',y')\in\R^2:(x,y)+(x',y')=(x',y')+(x,y)=(0,0)$
       5. distributività rispetto a vettori
 
-          $\forall(x_1,y_1),(x_2,y_2)\in\mathbb{R}^2,\forall\lambda\in\mathbb{R}$
+          $\forall(x_1,y_1),(x_2,y_2)\in\R^2,\forall\lambda\in\R$
 
           $\lambda\cdot((x_1,y_1)+(x_2,y_2))=\lambda\cdot(x_1,y_1)+\lambda\cdot(x_2,y_2)
       6. distributività rispetto a scalari
 
-          $\forall(x,y)\in\mathbb{R}^2,\forall\lambda,\mu\in\mathbb{R}$
+          $\forall(x,y)\in\R^2,\forall\lambda,\mu\in\R$
 
           $(\lambda+\mu)\cdot(x,y)=\lambda\cdot(x,y)+\mu\cdot(x,y)$
       7. qualcosa, non so cosa
@@ -420,9 +420,9 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\mathbb{R}^2$:
           $\lambda\mu\cdot(x,y)=\lambda\cdot(\mu\cdot(x,y))$
       8. elemento neutro
 
-          $1\cdot(x,y)=(x,y)\forall(x,y)\in\mathbb{R}^2$
+          $1\cdot(x,y)=(x,y)\forall(x,y)\in\R^2$
 
-      $(\mathbb{R}^2,+,\cdot)$ è il primo insieme di <MARK>INCOMPLETO</MARK>
+      $(\R^2,+,\cdot)$ è il primo insieme di <MARK>INCOMPLETO</MARK>
 
     <u>Def</u>: Sia $\mathbb{K}$ (lettera K da "korper" in tedesco) un campo. Uno spazio vettoriale su $\mathbb{K}$ è un insieme $\mathbb{V}$ dotato di due operazioni:
       # <mark>Revisione conclusa qui (29/03/22 19:42:57)</mark>
@@ -461,22 +461,22 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\mathbb{R}^2$:
     - $\forall\lambda\in K$ si ha $\lambda\cdot$ <u>0</u> $=$ <u>0</u>
     - Siano $\lambda\in K,v\in K: \lambda\cdot v=$ <u>0</u> $\Rightarrow$ o $v=$ <u>0</u>
 # <mark>16/03/22</mark>
-$+:\mathbb{R}^2\times\mathbb{R}^2\rightarrow\mathbb{R}^2$
+$+:\R^2\times\R^2\rightarrow\R^2$
 
 $((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+x_2,y_1+y_2)$
 
-$*:\mathbb{R}^2\times\mathbb{R}^2$
+$*:\R^2\times\R^2$
 
 $((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)*(x_2,y_2):=(x_1\cdot x_2,y_1\cdot y_2)$
 
-$(\mathbb{R}^2,+,*)$ è un campo? NO!
+$(\R^2,+,*)$ è un campo? NO!
 
-$\triangle:\mathbb{R}^2\times\mathbb{R}^2$
+$\triangle:\R^2\times\R^2$
 $((a,b),(c,d))\mapsto(a,b)\triangle(c,d)=(ac-bd,ad+bc)$
 
-Mostrare che $(\mathbb{R}^2,+,\triangle)$ è un campo.
+Mostrare che $(\R^2,+,\triangle)$ è un campo.
 
-<u>Indizio</u>: $\mathbb{R}^2\leftrightarrow\mathbb{C}=\{a+ib,b\in\mathbb{R},i^2=-1\}$
+<u>Indizio</u>: $\R^2\leftrightarrow\mathbb{C}=\{a+ib,b\in\R,i^2=-1\}$
 
 $(a,b)leftmapsto a+ib$
 
@@ -485,15 +485,15 @@ $(a,b)\mapsto a+ib$
 Nota che $\mathbb{C}$ è un campo
 
 ### <u>Esempi di spazi vettoriali</u>
-1. $\mathbb{V}=\{$Vettori geometrici nello spazio$\}=\{$segmenti orientati $\vec{OP},\ P$ nello spazio$\}\longleftrightarrow\mathbb{R}^3$
+1. $\mathbb{V}=\{$Vettori geometrici nello spazio$\}=\{$segmenti orientati $\vec{OP},\ P$ nello spazio$\}\longleftrightarrow\R^3$
 
    Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(V,+,\cdot)$ è uno spazio vettoriale reale.
 2. L'$n$-spazio vettoriale su $\R$ (o su $\mathbb{K}$)
 
    $n\in\mathbb{N}, n\ge1$
-   $\R^n=\R\times\cdots\times\mathbb{R}=\{(x_1,\cdots,x_n):x_i\in\mathbb{R}\forall i\}$
+   $\R^n=\R\times\cdots\times\R=\{(x_1,\cdots,x_n):x_i\in\R\forall i\}$
 
-   Definiamo $+:\R^n\times\mathbb{R}^n\to\mathbb{R}^n$ e $\cdot:\R^n\times\mathbb{R}^n\to\mathbb{R}^n$
+   Definiamo $+:\R^n\times\R^n\to\R^n$ e $\cdot:\R^n\times\R^n\to\R^n$
 
    $(x_1,\cdots,x_n)+(y_1,\cdots,y_n):=(x_1+y_1,\cdots,x_n+y_n)$
 
@@ -530,17 +530,17 @@ Nota che $\mathbb{C}$ è un campo
      Sia $x$ un'indeterminata.
      Un <u>polinomio</u> a coefficienti reali nell'indeterminata $x$ è un'espressione formale del tipo:
 
-     $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,a_i\in\mathbb{R}\forall i$
+     $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,a_i\in\R\forall i$
 
      Se $a_n\ne0$ diremo che $n$ è il grado di $P$ e scriviamo $deg(P)=n$.
 
      $\R[x]:=\{$polinomi a coefficienti reali nell'indeterminata $x$ (di grado arbitrario)$\}$
 
-     <u>Esempio</u>: $P(x)=3x^4+2x^3-x+5\in\mathbb{R}[x],\ deg(P)=4$
+     <u>Esempio</u>: $P(x)=3x^4+2x^3-x+5\in\R[x],\ deg(P)=4$
 
-     $+:\R[x]\times\mathbb{R}[x]\to\mathbb{R}[x]\\P(x)=a_nx^n+\cdots+a_1x+a_0\\Q(x)=b_nx^n+\cdots+b_1x+b_0\\(P+Q)(x):=(a_n+b_n)x^n+\cdots+(a_1+b_1)x+a_0+b_0$
+     $+:\R[x]\times\R[x]\to\R[x]\\P(x)=a_nx^n+\cdots+a_1x+a_0\\Q(x)=b_nx^n+\cdots+b_1x+b_0\\(P+Q)(x):=(a_n+b_n)x^n+\cdots+(a_1+b_1)x+a_0+b_0$
 
-     $\cdot:\R\times\mathbb{R}[x]\to\mathbb{R}[x]\\P\in\mathbb{R}[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\mathbb{R}\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$
+     $\cdot:\R\times\R[x]\to\R[x]\\P\in\R[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\R\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$
 
      $(\R[x],+,\cdot)$ è uno spazio vettoriale su $\R$.
 
@@ -554,7 +554,7 @@ Nota che $\mathbb{C}$ è un campo
 
      - $\begin{cases}x+2y+z=0\\y+7z=0\end{cases}$
 
-       $S=\{(x,y,z)\in\mathbb{R}^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\mathbb{R}\}$
+       $S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$
        $S$ ha una struttuta di spazio vettoriale (<mark>cose che vedremo più avanti</mark>)
 
 # <mark>22/03/22</mark>
@@ -562,7 +562,7 @@ Nota che $\mathbb{C}$ è un campo
 
 Equazione lineare in $n$ incognite:
 
-$x_1,\cdots,x_n: a_1x_1+a_2x_2+\cdots+a_nx_n=b\\a_i\in\mathbb{R},\forall i,b\in\mathbb{R}$
+$x_1,\cdots,x_n: a_1x_1+a_2x_2+\cdots+a_nx_n=b\\a_i\in\R,\forall i,b\in\R$
 
 Sistema di $n$ equazioni lineari in $n$ incognite:
 $\begin{cases}a_{11}x_1+a_{12}+\cdots+a_{1n}x_n=b_1\\
@@ -570,13 +570,13 @@ a_{21}x_1+a_{22}+\cdots+a_{2n}x_n=b_2\\
 \cdots\\
 a_{n1}x_1+a_{n2}+\cdots+a_{nn}x_n=b_n\\\end{cases}$
 
-Una soluzione del sistema di sopra è un vettore $(x_1,\cdots,x_n)\in\mathbb{R}^n$ che verifica tutte le equazioni.
+Una soluzione del sistema di sopra è un vettore $(x_1,\cdots,x_n)\in\R^n$ che verifica tutte le equazioni.
 
 <u>Esempi</u>:
 
 $\begin{cases}x+y+z=6\\2x-y=0\end{cases}$
 
-<u>Una</u> soluzione di questo sistema è $(1,2,3)\in\mathbb{R}^3$
+<u>Una</u> soluzione di questo sistema è $(1,2,3)\in\R^3$
 
 <u>Domanda</u>:
 
@@ -774,7 +774,7 @@ $n=p=m:$ otteniamo un'operazione binaria interna su $M_n(K)$
 
     Cioè $I_m$ è l'elemento neutro a sinistra e $I_n$ è l'elemento neutro a destra.
 
-    <u>N.B.</u>: $\forall a,b\in\mathbb{R},\ (a+b)^2=a^2+2ab+b^2$ perchè in $\R$, la moltiplicaizone è commutativa.
+    <u>N.B.</u>: $\forall a,b\in\R,\ (a+b)^2=a^2+2ab+b^2$ perchè in $\R$, la moltiplicaizone è commutativa.
     - $\forall A,B\in M_n(\R)\\(A+B)^2=\\(A+B)(A+B)=\\(A+B)A+(A+B)B=\\A^2+BA+AB+B^2$
 
       non si può semplificare perchè nelle matrici il prodotto <u>non</u> è commutativo
@@ -878,7 +878,7 @@ Quando $i=j,\ a_{ii}=a_{ii}\Rightarrow2a_{ii}=0\Rightarrow a_{ii}=0$
 
 <u>Def</u>: Una matrice quadrata $A\in M_n(K)$ si dice <u>ortogonale</u> se $(A^T)A=I_n=A(A^T)\rightsquigarrow A^{-1}=A^T$
 
-<u>Esempio</u>: $\forall\theta\in\mathbb{R}$ la matrice
+<u>Esempio</u>: $\forall\theta\in\R$ la matrice
 
 $\begin{bmatrix}
 cos(\theta)&-sin(\theta)\\sin(\theta)&cos(\theta)  
@@ -950,16 +950,16 @@ $a_{ij}$ equazione $i$-esima, variabile $x_j$
 
     sostituendo $x_1=\frac{1}{2}$ nella I equazione, trovo $x_2=-\frac{1}{2}$.
 
-    Quindi il sistema possiede l'unica soluzione $(\frac{1}{2},-\frac{1}{2})\in\mathbb{R}^2$
+    Quindi il sistema possiede l'unica soluzione $(\frac{1}{2},-\frac{1}{2})\in\R^2$
 4. $\begin{cases}x_1+x_2=2\\3x_1-3x_2=6\end{cases}$
 
     è compatibile e possiede infinite soluzioni date dalle soluzioni di
 
     $x_1+x_2=2\Rightarrow x_1=2-x_2$
 
-    L'insieme delle soluzioni $S$ è costituito dalle coppie ordinate $(x_1,x_2)\in\mathbb{R}^2$ tali che:
+    L'insieme delle soluzioni $S$ è costituito dalle coppie ordinate $(x_1,x_2)\in\R^2$ tali che:
 
-    $\begin{cases}x_1=2-t\\x_2=t\end{cases},\ t\in\mathbb{R}\\S=\{(2-t,t),\ t\in\mathbb{R}\}\subseteq\mathbb{R}^2$
+    $\begin{cases}x_1=2-t\\x_2=t\end{cases},\ t\in\R\\S=\{(2-t,t),\ t\in\R\}\subseteq\R^2$
 
 <u>Notazione matriciale di un sistema</u>:
 
@@ -1013,7 +1013,7 @@ x_2=0\\
 x_3=-1
 \end{cases}$
 
-Procedendo dal basso verso l'alto trovo che il sistema possiede l'unica soluzione $(4,0,-1)\in\mathbb{R}^3$
+Procedendo dal basso verso l'alto trovo che il sistema possiede l'unica soluzione $(4,0,-1)\in\R^3$
 
 Un sistema di questo tipo è detto "a scalini" o "a gradini".
 
@@ -1234,9 +1234,9 @@ Supponiamo di avere un sistema lineare qualsiasi:
        x_2=s\\
        x_3=3-2t\\
        x_4=t
-      \end{cases}s,t\in\mathbb{R}$
+      \end{cases}s,t\in\R$
 
-      $\mathbb{S}=\{(5-2s-2t,s,3-2t,t),\ s,t\in\mathbb{R}\}:\infty^2$ soluzioni
+      $\mathbb{S}=\{(5-2s-2t,s,3-2t,t),\ s,t\in\R\}:\infty^2$ soluzioni
 2. Con parametro: <mark>INCOMPLETO</mark>
     1. $\Rightarrow\begin{pmatrix}
          a&-a&0&1&1-a\\
@@ -1459,11 +1459,11 @@ Più in generale definiamo:
 
           Quindi $W$ è un sottoinsieme vettoriale di $V$ chiamato <u>retta vettoriale</u>
 
-          $V=\mathbb{R}^2,v=(1,1)$
+          $V=\R^2,v=(1,1)$
 
-          $W=<v>=\{\lambda(1,1):\lambda\in\mathbb{R}\}=\{(\lambda,\lambda):\lambda\in\mathbb{R}\}=\{(x,y)\in\mathbb{R}^2:y=x\}$ (passa per l'origine)
+          $W=<v>=\{\lambda(1,1):\lambda\in\R\}=\{(\lambda,\lambda):\lambda\in\R\}=\{(x,y)\in\R^2:y=x\}$ (passa per l'origine)
 
-          Più in generale, $v=(a,b)\in\mathbb{R}^2$ Allora $<v>=\{(\lambda a,\lambda b\lambda\in\mathbb{R}\}$ è la retta passante per l'origine definita dall'equazione $bx-ay=0$
+          Più in generale, $v=(a,b)\in\R^2$ Allora $<v>=\{(\lambda a,\lambda b\lambda\in\R\}$ è la retta passante per l'origine definita dall'equazione $bx-ay=0$
 # <mark>06/04/22</mark>
 # <mark>Mi sono perso qualcosa, stavo mangiando una pizzetta</mark>
 <u>Def</u>: Sia $V$ uno spazio vettoriale su $K$.
@@ -1476,7 +1476,7 @@ Def (equivalente): $W\subseteq V$ è un sottospazio vettoriale se e solo se:
 
 <u>Esempio</u>:
 
-$V=\mathbb{R}^3$
+$V=\R^3$
 
 $w_1=\{(x,y,x)\in\R^3:x,y\in\R\}$
 

@@ -1,19 +1,22 @@
 \documentclass{article}
 \usepackage{hyperref}
-\usepackage{ocgx2}
 \usepackage{color,soul}
 \usepackage{amsfonts}
-\usepackage{parskip}
+\usepackage[paperheight=500em,margin=3em]{geometry}
 
-\begin{document}
-% 
-\newcommand{\Def}[2]{\paragraph{\underline{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
-\newcommand{\R}{\mathbb{R}}
 \pagenumbering{gobble}
 \title{Appunti del corso di algebra e geometria}
 \author{Adriano Oliviero}
+\date{07/04/22 - oggi}
+
+\begin{document}
+\newcommand{\Def}[2]{\paragraph{\underline{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
+\newcommand{\Esempio}[1]{\subsubsection*{\underline{Esempio}:}#1}
+\newcommand{\R}{\mathbb{R}}
+\maketitle
 \section*{\hl{Introduzione}}
-Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:License]{licenza}. Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
+Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:License]{licenza}.\\
+Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
 
 \section*{\hl{License}}
 \label{sec:License}
@@ -35,19 +38,19 @@ P(3): \textbf{F}
 \end{itemize}
 \subsection*{Tavole di verità}
 \begin{displaymath}
-\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}
-\hline
-P&Q&\neg P&P\wedge Q&P\vee Q&P\Rightarrow Q&P\Leftrightarrow Q\\
-\hline\hline
-1&1&0&1&1&1&1\\
-\hline
-1&0&0&0&1&0&0\\
-\hline
-0&1&1&0&1&1&0\\
-\hline
-0&0&1&0&0&1&1\\
-\hline
-\end{array}
+	\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		P & Q & \neg P & P\wedge Q & P\vee Q & P\Rightarrow Q & P\Leftrightarrow Q \\
+		\hline\hline
+		1 & 1 & 0      & 1         & 1       & 1              & 1                  \\
+		\hline
+		1 & 0 & 0      & 0         & 1       & 0              & 0                  \\
+		\hline
+		0 & 1 & 1      & 0         & 1       & 1              & 0                  \\
+		\hline
+		0 & 0 & 1      & 0         & 0       & 1              & 1                  \\
+		\hline
+	\end{array}
 \end{displaymath}
 \subsection*{Quantificatori}
 \begin{itemize}
@@ -59,13 +62,13 @@ P&Q&\neg P&P\wedge Q&P\vee Q&P\Rightarrow Q&P\Leftrightarrow Q\\
 \underline{Esempi}:
 \begin{enumerate}
 	\item "$\forall n$ naturale, $n$ è pari": F\\
-		  "$\exists n$ naturale: ($\leftarrow$ tale che) $n$ è pari": V
+	      "$\exists n$ naturale: ($\leftarrow$ tale che) $n$ è pari": V
 	\item $P(x)=\{x$ è uno studente in aula A3-T2$\}$\\
-		  $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$\\
-		  $\forall x, P(x)\Rightarrow Q(x)$
+	      $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$\\
+	      $\forall x, P(x)\Rightarrow Q(x)$
 	\item $P(n)=\{n$ è un numero pari$\}$\\
-		  $Q(n)=\{n$ è divisibile per $4\}$\\
-		  $\forall n$ naturale, $Q(n)\Rightarrow P(n)$
+	      $Q(n)=\{n$ è divisibile per $4\}$\\
+	      $\forall n$ naturale, $Q(n)\Rightarrow P(n)$
 \end{enumerate}
 
 \subsection*{Teoria degli insiemi}
@@ -74,11 +77,11 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 \subsubsection*{Descrizione di un insieme}
 \begin{enumerate}
 	\item Per elencazione (se l'insieme ha un numero finito di elementi):\\
-		  $\mathbb{A}=\{0,2,4,6,8,10\}$\\
-		  $4\in\mathbb{A}$\\
-		  $5\notin\mathbb{A}$
+	      $\mathbb{A}=\{0,2,4,6,8,10\}$\\
+	      $4\in\mathbb{A}$\\
+	      $5\notin\mathbb{A}$
 	\item Per proprietà caratteristica:\\
-		  $\mathbb{A}=\{n:n$ è un numero pari: $0\le n\le10\}$
+	      $\mathbb{A}=\{n:n$ è un numero pari: $0\le n\le10\}$
 	\item Diagramma di \textit{Eulero-Venn} (ancora una volta se l'insieme ha un numero finito di elementi):
 \end{enumerate}
 \subsubsection*{Alcune informazioni sugli insiemi}
@@ -86,61 +89,159 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 	\item La \textbf{cardinalità} di un insieme è il numero di elementi che un insieme contiene e si denota: $\mathbb{A}$ ha cardinalità $|\mathbb{A}|$
 	\item Insieme vuoto: insieme che non contiene nessun elemento, si denota con $\emptyset$, $\{\}$ e ha cardinalità $|\emptyset|=0$
 	\item I principali insiemi numerici:\\
-		  $\mathbb{N}=\{0,1,2,3,\cdots\}$: numeri naturali\\
-		  $\mathbb{Z}=\{\cdots,-3,-2,-1,0,1,2,3,\cdots\}$: numeri naturali\\
-		  $\mathbb{Q}=\{\frac{a}{b}:a,b$ e $\mathbb{Z},b\not=0\}$\\
-		  $\R$: numeri reali\\
-		  $\mathbb{C}$: numeri complessi
+	      $\mathbb{N}=\{0,1,2,3,\cdots\}$: numeri naturali\\
+	      $\mathbb{Z}=\{\cdots,-3,-2,-1,0,1,2,3,\cdots\}$: numeri naturali\\
+	      $\mathbb{Q}=\{\frac{a}{b}:a,b$ e $\mathbb{Z},b\not=0\}$\\
+	      $\R$: numeri reali\\
+	      $\mathbb{C}$: numeri complessi
 \end{itemize}
 
 \subsubsection*{Operazioni tra gli insiemi}
 \begin{enumerate}
 	\item Inclusione $\leftrightarrow\subset$:\\
-		  $\mathbb{A}\subseteq\mathbb{B}\quad(\mathbb{A}$ è contenuto in $\mathbb{B})$\\
-		  $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$\\
-		  \underline{Esempio}:\\
-		  $\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$\\
-		  \underline{Proprietà}:
-		  \begin{itemize}
-			  \item $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in\mathbb{A}\Leftrightarrow x\in\mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}\wedge\mathbb{B}\subseteq\mathbb{A})$
-		  \end{itemize}
+	      $\mathbb{A}\subseteq\mathbb{B}\quad(\mathbb{A}$ è contenuto in $\mathbb{B})$\\
+	      $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$\\
+	      \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}\\
+	      \underline{Proprietà}:
+	      \begin{itemize}
+		      \item $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in\mathbb{A}\Leftrightarrow x\in\mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}\wedge\mathbb{B}\subseteq\mathbb{A})$
+	      \end{itemize}
 	\item Intersezione $\leftrightarrow\wedge$:\\
-		  $\mathbb{A}\cap\mathbb{B}=\{x:x\in\mathbb{A}\wedge x\in\mathbb{B}\}$\\
-		  \underline{Proprietà}:
-		  \begin{itemize}
-			  \item $\mathbb{A}\cap\emptyset=\emptyset$
-			  \item $\mathbb{A}\cap\mathbb{B}=\mathbb{B}\cap\mathbb{A}$
-			  \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cap\mathbb{B}=\mathbb{A}$
-		  \end{itemize}
+	      $\mathbb{A}\cap\mathbb{B}=\{x:x\in\mathbb{A}\wedge x\in\mathbb{B}\}$\\
+	      \underline{Proprietà}:
+	      \begin{itemize}
+		      \item $\mathbb{A}\cap\emptyset=\emptyset$
+		      \item $\mathbb{A}\cap\mathbb{B}=\mathbb{B}\cap\mathbb{A}$
+		      \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cap\mathbb{B}=\mathbb{A}$
+	      \end{itemize}
 	\item Unione $\leftrightarrow\vee$:\\
-		  $\mathbb{A}\cup\mathbb{B}=\{x:x\in\mathbb{A}\vee x\in\mathbb{B}\}$\\
-		  \underline{Proprietà}:
-		  \begin{itemize}
-			  \item $\mathbb{A}\cup\emptyset=\mathbb{A}$
-			  \item $\mathbb{A}\cup\mathbb{B}=\mathbb{B}\cup\mathbb{A}$
-			  \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cup\mathbb{B}=\mathbb{B}$
-			  \item $\mathbb{A}\subseteq\mathbb{A}\cup\mathbb{B},\mathbb{B}\subseteq\mathbb{A}\cup\mathbb{B}$
-		  \end{itemize}
+	      $\mathbb{A}\cup\mathbb{B}=\{x:x\in\mathbb{A}\vee x\in\mathbb{B}\}$\\
+	      \underline{Proprietà}:
+	      \begin{itemize}
+		      \item $\mathbb{A}\cup\emptyset=\mathbb{A}$
+		      \item $\mathbb{A}\cup\mathbb{B}=\mathbb{B}\cup\mathbb{A}$
+		      \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cup\mathbb{B}=\mathbb{B}$
+		      \item $\mathbb{A}\subseteq\mathbb{A}\cup\mathbb{B},\mathbb{B}\subseteq\mathbb{A}\cup\mathbb{B}$
+	      \end{itemize}
 	\item Differenza $\leftrightarrow\backslash$:\\
-		  $\mathbb{B}\backslash\mathbb{A}=\{x:x\in\mathbb{B}\wedge x\not\in\mathbb{A}\}$
+	      $\mathbb{B}\backslash\mathbb{A}=\{x:x\in\mathbb{B}\wedge x\not\in\mathbb{A}\}$
 	\item Prodotto cartesiano $\leftrightarrow\times$:\\
-		  $\mathbb{A}\times\mathbb{B}:=\{(a,b):a\in\mathbb{A},b\in\mathbb{B}\}$ con $(a,b)$ coppie ordinate\\
-		  \underline{Proprietà}:
-		  \begin{itemize}
-			  \item $|\mathbb{A}\times\mathbb{B}|=|\mathbb{A}|\cdot|\mathbb{B}|$
-			  \item $\mathbb{A}\times\emptyset=\emptyset=\emptyset\times\mathbb{A}$
-		  \end{itemize}
+	      $\mathbb{A}\times\mathbb{B}:=\{(a,b):a\in\mathbb{A},b\in\mathbb{B}\}$ con $(a,b)$ coppie ordinate\\
+	      \underline{Proprietà}:
+	      \begin{itemize}
+		      \item $|\mathbb{A}\times\mathbb{B}|=|\mathbb{A}|\cdot|\mathbb{B}|$
+		      \item $\mathbb{A}\times\emptyset=\emptyset=\emptyset\times\mathbb{A}$
+	      \end{itemize}
 \end{enumerate}
 \subsection*{Funzioni}
 \Def{Siano $\mathbb{A},\mathbb{B}$ due insiemi:}
 {Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ è una legge che associa ad ogni elemento di $\mathbb{A}$, uno ed un solo elemento di $\mathbb{B}$.\\
-$f:\mathbb{A}\rightarrow\mathbb{B}$\\
-\hspace*{1.6em}$x\rightarrow y:\quad x$ è la controimmagine di $y$}
+	$f:\mathbb{A}\rightarrow\mathbb{B}$\\
+	\hspace*{1.6em}$x\rightarrow y:\quad x$ è la controimmagine di $y$}
 \Def{Sia $f:\mathbb{A}\rightarrow\mathbb{B}$ una funzione e sia $\mathbb{X}\subseteq\mathbb{A}$:}
-	{$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'insieme di $\mathbb{X}$ tramite $f$2
+{$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'insieme di $\mathbb{X}$ tramite $f$2
 	$Im(f):=f(\mathbb{A})$ è l'insieme della funzione\\
-	$Im(f)$ non è necessariamente $=Dom(f)$\\
-	$Im(f)=Dom(f)\Rightarrow f$ è suriettiva\\
-	$f(1)=f(2)=a\Rightarrow f$ non è iniettiva}
-\end{document}
+	$Im(f)$ non è necessariamente $=Dom(f)$
 
+	$Im(f)=Dom(f)\Rightarrow f$ è suriettiva
+
+	$f(1)=f(2)=a\Rightarrow f$ non è iniettiva}
+\section*{\hl{09/03/22}}
+
+\subsection*{Funzioni (continuo)}
+\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{iniettiva} se $\forall x\not=y\Rightarrow f(x)\not=f(y)$}{(elementi distinti di $\mathbb{A}$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$}
+\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{suriettiva} se $Im(f)=B$,}{o equivalentemente se $\forall y\in\mathbb{B},\exists x\in\mathbb{A}:f(x)=y$}
+\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{biettiva} o \underline{biunivoca}}{se è al tempo stesso iniettiva e suriettiva}
+\Esempio{$f:\R\rightarrow\R\\\hspace*{1.6em}x\rightarrow x^2$
+	\begin{itemize}
+		\item È iniettiva? No, perchè $f(-1)=1=f(1)$
+		\item È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\R\Rightarrow Im(f)\subseteq\R^+\Rightarrow Im(f)\not=\R$
+	\end{itemize}}
+\vspace*{1em}
+\par Se un insieme possiede delle operazioni che verificano certe proprietà, è una struttura algebrica.
+\Def{Sia $\mathbb{X}$ un insieme, un'\underline{operazione binaria interna} è una funzione}{dal prodotto cartesiano $x\times x$ in $\mathbb{X}$.\\$*:x\times x \rightarrow x$\\\hspace*{1.4em}$(x,y)\rightarrow x*y$}
+\subsubsection*{$\mathbb{X}=\R$}
+$+:\R\times\R\rightarrow\R$\\
+\hspace*{0em}$\qquad(x,y)\rightarrow x+y$
+
+\underline{Proprietà} di $(\R,+)$:
+\begin{enumerate}
+	\item Commutatività: $x+y=y+x,\forall x,y\in\R$
+	\item Associatività: $(x+y)+z=x+(y+z),\forall x,y,z\in\R$
+	\item Elemento neutro: $\exists x'\in\R:x+x'=x'+x=x,\forall x\in\R,x'=0$
+	\item Opposto: $\exists x'\in\R:x+x'=x'+x=0,\forall x\in\R,(x'=-x)$
+\end{enumerate}
+\par$\cdot:\R\times\R\rightarrow\R$\\
+\hspace*{1.5em}$(x,y)\rightarrow x\cdot y$
+
+\underline{Proprietà} di $(\R,\cdot)$:
+\begin{enumerate}
+	\item Commutatività: $x\cdot y=y\cdot x,\forall x,y\in\R$
+	\item Associatività: $(x\cdot y)\cdot z=x\cdot(y\cdot z),\forall x,y,z\in\R$
+	\item Elemento neutro: $\exists x'\in\R:x\cdot x'=x'\cdot x=x,\forall x\in\R,x'=1$
+	\item Elemento inverso: $\exists x'\in\R:x\cdot x'=x'\cdot x=0,\forall x\in\R,(x'=\frac{1}{x})$
+\end{enumerate}
+Infine $+$ e $\cdot$ soddisfano la proprietà distributiva: $\forall x,y,z\in\R,x\cdot(y+z)=x\cdot y+x\cdot z$
+
+Sia $\mathbb{K}\not=\emptyset$ un insieme dotato di due operazioni binarie:
+\begin{itemize}
+	\item $+:\mathbb{K}\times\mathbb{K}\rightarrow\mathbb{K}$
+	\item $\cdot:\mathbb{K}\times\mathbb{K}\rightarrow\mathbb{K}$
+\end{itemize}
+$(\mathbb{K},+,\cdot)$ è detto un \underline{campo} se verificano le proprietà elencate prima, con $+$ distributiva e $\mathbb{K}$ al posto di $\R$
+
+\Esempio{$\mathbb{F}_2=\{0, 1\}$
+\begin{itemize}
+	\item $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
+		  \hspace*{1.8em}$(0,0)\rightarrow 0$\\
+		  \hspace*{1.8em}$(0,1)\rightarrow 0$\\
+		  \hspace*{1.8em}$(1,0)\rightarrow 0$\\
+		  \hspace*{1.8em}$(1,1)\rightarrow 1$
+	\item $+:\mathbb{F}_2\times\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
+		  \hspace*{1.8em}$(0,0)\rightarrow 0$\\
+		  \hspace*{1.8em}$(0,1)\rightarrow 1$\\
+		  \hspace*{1.8em}$(1,0)\rightarrow 1$\\
+		  \hspace*{1.8em}$(1,1)\rightarrow 1$
+\end{itemize}}
+\subsection*{Algebra lineare}
+Wikipedia:
+\begin{quotation}
+	Branca della matematica che si occupa dello studio di spazi vettoriali (o anche detti spazi lineari), di trasformazioni lineari e di sistemi di equazioni lineari.
+\end{quotation}
+Molti problemi di matematica e fisica verificano la seguente proprietà:\\
+Se $v,w\in\mathbb{X}$ sono due soluzioni del problema, allora anche $v+w$ e $\lambda v,\lambda\in\R$  ($+$ e $\cdot$ operazioni su $\mathbb{X}$) sono soluzioni del problema.\\
+Problemi di questo tipo sono detti \textit{lineari}.
+
+\subsubsection*{Nozione base: \underline{spazio vettoriale}}
+
+I vettori sono usati in fisica per rappresentare, grandezze fisiche caratterizzate da:
+\begin{itemize}
+	\item una direzione
+	\item un verso
+	\item un'intensità
+\end{itemize}
+Tali grandezze sono \textbf{grandezze vettoriali} e si differenziano dalle \textbf{grandezze scalari}, definite unicamente dall'intensità.\\
+Geometricamente, un vettore si rappresenta tramite un \textbf{segmento orientato} nel piano euclideo, denotato $\Pi$.
+\Def{Un segmento orientato è una coppia di punti ordinata $(A,B\in\Pi\times\Pi)$.}{$\vec{AB}:=(A,B)$}
+\Def{Due segmenti orientati $\vec{AB}$ e $\vec{CD}$ si dicono \underline{equipollenti} se il quadrilatero avente vertici, ordinatamente,}{$ABDC$ è un parallelogramma, quindi se hanno:
+\begin{itemize}
+	\item stessa lunghezza
+	\item direzione parallela
+	\item stesso verso
+\end{itemize}}
+
+\vspace*{2em}
+L'equipollenza è una relazione di equivalenza, e verifica 3 proprietà:
+\begin{itemize}
+	\item riflessiva
+	\item simmetrica
+	\item transitiva
+\end{itemize}
+\Def{Un vettore geometrico è una classe di equipollenza}
+{Sia $O$ un punto fissato nel piano $\Pi$, per ogni segmento orientato $\vec{AB}$ esiste un punto $P\in\Pi$ tale che $\vec{OP}$ è equipollente ad $\vec{AB}$.\\
+$\vec{OP}$ è equipollente a tutti i segmenti orientati equipollenti ad $\vec{AB}$ e posso sceglierlo come \underline{rappresentante} della classe di equipollenza di $\vec{AB}$.\\
+Quindi abbiamo una biezione:\\
+$\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP},P\in\Pi\}$\\
+Classi di equipollenza $\uparrow\hspace*{10em}\uparrow$ Stesso punto di applicazione}
+
+\end{document}
