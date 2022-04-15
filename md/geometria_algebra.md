@@ -421,7 +421,6 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
 
           $1\cdot(x,y)=(x,y)\forall(x,y)\in\R^2$
 
-# Latex rewrite mark
 # <mark>Revisione conclusa qui (29/03/22 19:42:57)</mark>
       $(\R^2,+,\cdot)$ è il primo insieme di <MARK>INCOMPLETO</MARK>
 
@@ -557,6 +556,7 @@ Nota che $\mathbb{C}$ è un campo
        $S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$
        $S$ ha una struttuta di spazio vettoriale (<mark>cose che vedremo più avanti</mark>)
 
+# Latex rewrite mark
 # <mark>22/03/22</mark>
 ## <u>Sistemi di equazioni lineari</u> (accenni)
 

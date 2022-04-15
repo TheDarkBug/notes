@@ -3,7 +3,7 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{amsfonts}
-\usepackage[paperheight=500em,margin=3em]{geometry}
+\usepackage[paperheight=1000em,margin=3em]{geometry}
 
 \pagenumbering{gobble}
 \title{Appunti del corso di algebra e geometria}
@@ -12,8 +12,9 @@
 
 \begin{document}
 \newcommand{\hl}[1]{\colorbox{yellow}{#1}}
-\newcommand{\Def}[2]{\paragraph{\underline{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
-\newcommand{\Esempio}[1]{\subsubsection*{\underline{Esempio}:}#1}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\Def}[2]{\paragraph{\ul{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
+\newcommand{\Esempio}[1]{\subsubsection*{\ul{Esempio}:}#1}
 \newcommand{\R}{\mathbb{R}}
 \maketitle
 \section*{\hl{Introduzione}}
@@ -61,7 +62,7 @@ P(3): \textbf{F}
 	\item $\exists!$: "Esiste ed è unico"
 \end{itemize}
 
-\underline{Esempi}:
+\ul{Esempi}:
 \begin{enumerate}
 	\item "$\forall n$ naturale, $n$ è pari": F\\
 	      "$\exists n$ naturale: ($\leftarrow$ tale che) $n$ è pari": V
@@ -104,13 +105,13 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 	      $\mathbb{A}\subseteq\mathbb{B}\quad(\mathbb{A}$ è contenuto in $\mathbb{B})$\\
 	      $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$
 	      \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}\\
-	      \underline{Proprietà}:
+	      \ul{Proprietà}:
 	      \begin{itemize}
 		      \item $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in\mathbb{A}\Leftrightarrow x\in\mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}\wedge\mathbb{B}\subseteq\mathbb{A})$
 	      \end{itemize}
 	\item Intersezione $\leftrightarrow\wedge$:\\
 	      $\mathbb{A}\cap\mathbb{B}=\{x:x\in\mathbb{A}\wedge x\in\mathbb{B}\}$\\
-	      \underline{Proprietà}:
+	      \ul{Proprietà}:
 	      \begin{itemize}
 		      \item $\mathbb{A}\cap\emptyset=\emptyset$
 		      \item $\mathbb{A}\cap\mathbb{B}=\mathbb{B}\cap\mathbb{A}$
@@ -118,7 +119,7 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 	      \end{itemize}
 	\item Unione $\leftrightarrow\vee$:\\
 	      $\mathbb{A}\cup\mathbb{B}=\{x:x\in\mathbb{A}\vee x\in\mathbb{B}\}$\\
-	      \underline{Proprietà}:
+	      \ul{Proprietà}:
 	      \begin{itemize}
 		      \item $\mathbb{A}\cup\emptyset=\mathbb{A}$
 		      \item $\mathbb{A}\cup\mathbb{B}=\mathbb{B}\cup\mathbb{A}$
@@ -129,7 +130,7 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 	      $\mathbb{B}\backslash\mathbb{A}=\{x:x\in\mathbb{B}\wedge x\not\in\mathbb{A}\}$
 	\item Prodotto cartesiano $\leftrightarrow\times$:\\
 	      $\mathbb{A}\times\mathbb{B}:=\{(a,b):a\in\mathbb{A},b\in\mathbb{B}\}$ con $(a,b)$ coppie ordinate\\
-	      \underline{Proprietà}:
+	      \ul{Proprietà}:
 	      \begin{itemize}
 		      \item $|\mathbb{A}\times\mathbb{B}|=|\mathbb{A}|\cdot|\mathbb{B}|$
 		      \item $\mathbb{A}\times\emptyset=\emptyset=\emptyset\times\mathbb{A}$
@@ -151,9 +152,9 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 	$f(1)=f(2)=a\Rightarrow f$ non è iniettiva}
 \section{\hl{09/03/22}}
 \subsection*{Funzioni (continuo)}
-\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{iniettiva} se $\forall x\not=y\Rightarrow f(x)\not=f(y)$}{(elementi distinti di $\mathbb{A}$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$}
-\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{suriettiva} se $Im(f)=B$,}{o equivalentemente se $\forall y\in\mathbb{B},\exists x\in\mathbb{A}:f(x)=y$}
-\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \underline{biettiva} o \underline{biunivoca}}{se è al tempo stesso iniettiva e suriettiva}
+\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \ul{iniettiva} se $\forall x\not=y\Rightarrow f(x)\not=f(y)$}{(elementi distinti di $\mathbb{A}$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$}
+\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \ul{suriettiva} se $Im(f)=B$,}{o equivalentemente se $\forall y\in\mathbb{B},\exists x\in\mathbb{A}:f(x)=y$}
+\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva e suriettiva}
 \Esempio{$f:\R\rightarrow\R\\\hspace*{1.6em}x\rightarrow x^2$
 	\begin{itemize}
 		\item È iniettiva? No, perchè $f(-1)=1=f(1)$
@@ -161,12 +162,12 @@ Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi c
 	\end{itemize}}
 \vspace*{1em}
 \par Se un insieme possiede delle operazioni che verificano certe proprietà, è una struttura algebrica.
-\Def{Sia $\mathbb{X}$ un insieme, un'\underline{operazione binaria interna} è una funzione}{dal prodotto cartesiano $x\times x$ in $\mathbb{X}$.\\$*:x\times x \rightarrow x$\\\hspace*{1.4em}$(x,y)\rightarrow x*y$}
+\Def{Sia $\mathbb{X}$ un insieme, un'\ul{operazione binaria interna} è una funzione}{dal prodotto cartesiano $x\times x$ in $\mathbb{X}$.\\$*:x\times x \rightarrow x$\\\hspace*{1.4em}$(x,y)\rightarrow x*y$}
 \subsubsection*{$\mathbb{X}=\R$}
 $+:\R\times\R\rightarrow\R$\\
 \hspace*{0em}$\qquad(x,y)\rightarrow x+y$
 
-\underline{Proprietà} di $(\R,+)$:
+\ul{Proprietà} di $(\R,+)$:
 \begin{enumerate}
 	\item Commutatività: $x+y=y+x,\forall x,y\in\R$
 	\item Associatività: $(x+y)+z=x+(y+z),\forall x,y,z\in\R$
@@ -176,7 +177,7 @@ $+:\R\times\R\rightarrow\R$\\
 \par$\cdot:\R\times\R\rightarrow\R$\\
 \hspace*{1.5em}$(x,y)\rightarrow x\cdot y$
 
-\underline{Proprietà} di $(\R,\cdot)$:
+\ul{Proprietà} di $(\R,\cdot)$:
 \begin{enumerate}
 	\item Commutatività: $x\cdot y=y\cdot x,\forall x,y\in\R$
 	\item Associatività: $(x\cdot y)\cdot z=x\cdot(y\cdot z),\forall x,y,z\in\R$
@@ -190,21 +191,21 @@ Sia $\mathbb{K}\not=\emptyset$ un insieme dotato di due operazioni binarie:
 	\item $+:\mathbb{K}\times\mathbb{K}\rightarrow\mathbb{K}$
 	\item $\cdot:\mathbb{K}\times\mathbb{K}\rightarrow\mathbb{K}$
 \end{itemize}
-$(\mathbb{K},+,\cdot)$ è detto un \underline{campo} se verificano le proprietà elencate prima, con $+$ distributiva e $\mathbb{K}$ al posto di $\R$
+$(\mathbb{K},+,\cdot)$ è detto un \ul{campo} se verificano le proprietà elencate prima, con $+$ distributiva e $\mathbb{K}$ al posto di $\R$
 
 \Esempio{$\mathbb{F}_2=\{0, 1\}$
-\begin{itemize}
-	\item $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
-		  \hspace*{1.8em}$(0,0)\rightarrow 0$\\
-		  \hspace*{1.8em}$(0,1)\rightarrow 0$\\
-		  \hspace*{1.8em}$(1,0)\rightarrow 0$\\
-		  \hspace*{1.8em}$(1,1)\rightarrow 1$
-	\item $+:\mathbb{F}_2\times\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
-		  \hspace*{1.8em}$(0,0)\rightarrow 0$\\
-		  \hspace*{1.8em}$(0,1)\rightarrow 1$\\
-		  \hspace*{1.8em}$(1,0)\rightarrow 1$\\
-		  \hspace*{1.8em}$(1,1)\rightarrow 1$
-\end{itemize}}
+	\begin{itemize}
+		\item $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
+		      \hspace*{1.8em}$(0,0)\rightarrow 0$\\
+		      \hspace*{1.8em}$(0,1)\rightarrow 0$\\
+		      \hspace*{1.8em}$(1,0)\rightarrow 0$\\
+		      \hspace*{1.8em}$(1,1)\rightarrow 1$
+		\item $+:\mathbb{F}_2\times\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
+		      \hspace*{1.8em}$(0,0)\rightarrow 0$\\
+		      \hspace*{1.8em}$(0,1)\rightarrow 1$\\
+		      \hspace*{1.8em}$(1,0)\rightarrow 1$\\
+		      \hspace*{1.8em}$(1,1)\rightarrow 1$
+	\end{itemize}}
 \subsection*{Algebra lineare}
 Wikipedia:
 \begin{quotation}
@@ -214,7 +215,7 @@ Molti problemi di matematica e fisica verificano la seguente proprietà:\\
 Se $v,w\in\mathbb{X}$ sono due soluzioni del problema, allora anche $v+w$ e $\lambda v,\lambda\in\R$  ($+$ e $\cdot$ operazioni su $\mathbb{X}$) sono soluzioni del problema.\\
 Problemi di questo tipo sono detti \textit{lineari}.
 
-\subsubsection*{Nozione base: \underline{spazio vettoriale}}
+\subsubsection*{Nozione base: \ul{spazio vettoriale}}
 
 I vettori sono usati in fisica per rappresentare, grandezze fisiche caratterizzate da:
 \begin{itemize}
@@ -225,12 +226,12 @@ I vettori sono usati in fisica per rappresentare, grandezze fisiche caratterizza
 Tali grandezze sono \textbf{grandezze vettoriali} e si differenziano dalle \textbf{grandezze scalari}, definite unicamente dall'intensità.\\
 Geometricamente, un vettore si rappresenta tramite un \textbf{segmento orientato} nel piano euclideo, denotato $\Pi$.
 \Def{Un segmento orientato è una coppia di punti ordinata $(A,B\in\Pi\times\Pi)$.}{$\vec{AB}:=(A,B)$}
-\Def{Due segmenti orientati $\vec{AB}$ e $\vec{CD}$ si dicono \underline{equipollenti} se il quadrilatero avente vertici, ordinatamente,}{$ABDC$ è un parallelogramma, quindi se hanno:
-\begin{itemize}
-	\item stessa lunghezza
-	\item direzione parallela
-	\item stesso verso
-\end{itemize}}
+\Def{Due segmenti orientati $\vec{AB}$ e $\vec{CD}$ si dicono \ul{equipollenti} se il quadrilatero avente vertici, ordinatamente,}{$ABDC$ è un parallelogramma, quindi se hanno:
+	\begin{itemize}
+		\item stessa lunghezza
+		\item direzione parallela
+		\item stesso verso
+	\end{itemize}}
 
 \vspace*{2em}
 L'equipollenza è una relazione di equivalenza, e verifica 3 proprietà:
@@ -241,20 +242,13 @@ L'equipollenza è una relazione di equivalenza, e verifica 3 proprietà:
 \end{itemize}
 \Def{Un vettore geometrico è una classe di equipollenza}
 {Sia $O$ un punto fissato nel piano $\Pi$, per ogni segmento orientato $\vec{AB}$ esiste un punto $P\in\Pi$ tale che $\vec{OP}$ è equipollente ad $\vec{AB}$.\\
-$\vec{OP}$ è equipollente a tutti i segmenti orientati equipollenti ad $\vec{AB}$ e posso sceglierlo come \underline{rappresentante} della classe di equipollenza di $\vec{AB}$.\\
-Quindi abbiamo una biezione:\\
-$\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP},P\in\Pi\}$\\
-Classi di equipollenza $\uparrow\hspace*{10em}\uparrow$ Stesso punto di applicazione}
+	$\vec{OP}$ è equipollente a tutti i segmenti orientati equipollenti ad $\vec{AB}$ e posso sceglierlo come \ul{rappresentante} della classe di equipollenza di $\vec{AB}$.\\
+	Quindi abbiamo una biezione:\\
+	$\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP},P\in\Pi\}$\\
+	Classi di equipollenza $\uparrow\hspace*{10em}\uparrow$ Stesso punto di applicazione}
 \section{\hl{09/03/22} (data errata)}
-
-
-
-
-
-
 \subsection*{Algebra lineare (continuo)}
-
-\subsubsection*{Nozione base: \underline{spazio vettoriale} (continuo)}
+\subsubsection*{Nozione base: \ul{spazio vettoriale} (continuo)}
 Correzione della definizione di campo:
 \begin{itemize}
 	\item Esistenza dell'elemento neutro\\$\exists0\in\R:x+0=0+x=x,\forall x\in\R$
@@ -268,30 +262,30 @@ $\mathbb{V}=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orienta
 Con un abuso di notazione, consideriamo:\\
 $\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
 $\forall\vec{v}\in V,\exists P\in\pi:\vec{v}=\vec{OP}$
-\underline{Operazioni su $\mathbb{V}$}
+\ul{Operazioni su $\mathbb{V}$}
 \begin{itemize}
 	\item Somma di vettori\\
-		  siano $\vec{v},\vec{w}\in \mathbb{V}$ e siano $P,Q\in\pi:$\\
-		  $\vec{v}=\vec{OP}$\\
-		  $\vec{w}=\vec{OQ}$\vspace*{1em}\\
-		  Definiamo:\\
-		  $\vec{v}+\vec{w}=\vec{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)\\
-		  \underline{Nota}: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione), costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza\\
-		  Operazione binaria interna:\\
-		  $+:\mathbb{V}\times\mathbb{V}\rightarrow\mathbb{V}$\\
-		  \hspace*{1.9em}$(\vec{v},\vec{w})\rightarrow\vec{v}+\vec{w}$
+	      siano $\vec{v},\vec{w}\in \mathbb{V}$ e siano $P,Q\in\pi:$\\
+	      $\vec{v}=\vec{OP}$\\
+	      $\vec{w}=\vec{OQ}$\vspace*{1em}\\
+	      Definiamo:\\
+	      $\vec{v}+\vec{w}=\vec{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)\\
+	      \ul{Nota}: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione), costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza\\
+	      Operazione binaria interna:\\
+	      $+:\mathbb{V}\times\mathbb{V}\rightarrow\mathbb{V}$\\
+	      \hspace*{1.9em}$(\vec{v},\vec{w})\rightarrow\vec{v}+\vec{w}$
 	\item Moltiplicazione per scalari\\
-		  Sia $\vec{v}\in\mathbb{V}$ e sia $P\in\pi:\vec{v}=\vec{OP}$.\vspace*{1em}\\
-		  Definiamo $\lambda\cdot\vec{v}=\vec{OR}$
-		  \begin{itemize}
-			  \item $O,P,R$ sono collineari
-			  \item $\overline{OR}=|\lambda|OP$
-			  \item $\vec{OR}$ è orientato concordemente a $\vec{OP}\\\vec{OR}$ è orientato discordemente a $\vec{OP}$ se\\
-			  		$\lambda<0\vee\lambda=0,R=O$\\
-					Questa è un'operazione binaria \underline{esterna}:\\
-					$\cdot:\R\times\mathbb{V}\rightarrow \mathbb{V}$\\
-					\hspace*{1.5em}$(\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
-		  \end{itemize}
+	      Sia $\vec{v}\in\mathbb{V}$ e sia $P\in\pi:\vec{v}=\vec{OP}$.\vspace*{1em}\\
+	      Definiamo $\lambda\cdot\vec{v}=\vec{OR}$
+	      \begin{itemize}
+		      \item $O,P,R$ sono collineari
+		      \item $\overline{OR}=|\lambda|OP$
+		      \item $\vec{OR}$ è orientato concordemente a $\vec{OP}\\\vec{OR}$ è orientato discordemente a $\vec{OP}$ se\\
+		            $\lambda<0\vee\lambda=0,R=O$\\
+		            Questa è un'operazione binaria \ul{esterna}:\\
+		            $\cdot:\R\times\mathbb{V}\rightarrow \mathbb{V}$\\
+		            \hspace*{1.5em}$(\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
+	      \end{itemize}
 \end{itemize}
 \subsection*{Piano Cartesiano}
 \par$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$\\
@@ -303,38 +297,38 @@ $\vec{OP}\leftarrow(x,y)$ dove $P(x,y)$\\
 Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
 \begin{enumerate}
 	\item $\vec{v}=\vec{OP},P(x_P,y_P)$\\
-		  $\vec{w}=\vec{OQ},Q(x_Q,y_Q)$
-		  $\vec{v}+\vec{w}=\vec{OR}:$ quali sono le coordinate di $R$?\\
-		  $OPQR\Rightarrow A(x_A,y_A)$ parallelogramma con punto medio di $PQ$ e $OR$\\
-		  $A$ punto medio di $PQ\Rightarrow\{x_A=\frac{x_P+x_Q}{2},y_A=\frac{y_P+x_Q}{2}\}$\\
-		  $A$ punto medio di $OR\Rightarrow\{x_A=\frac{x_R}{2},y_A=\frac{y_R}{2}\}$\\
-		  $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$\\
-		  Operazione binaria \underline{interna}:\\
-		  $+:\R^2\times\R^2\rightarrow\R^2$\\
-		  $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
+	      $\vec{w}=\vec{OQ},Q(x_Q,y_Q)$
+	      $\vec{v}+\vec{w}=\vec{OR}:$ quali sono le coordinate di $R$?\\
+	      $OPQR\Rightarrow A(x_A,y_A)$ parallelogramma con punto medio di $PQ$ e $OR$\\
+	      $A$ punto medio di $PQ\Rightarrow\{x_A=\frac{x_P+x_Q}{2},y_A=\frac{y_P+x_Q}{2}\}$\\
+	      $A$ punto medio di $OR\Rightarrow\{x_A=\frac{x_R}{2},y_A=\frac{y_R}{2}\}$\\
+	      $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$\\
+	      Operazione binaria \ul{interna}:\\
+	      $+:\R^2\times\R^2\rightarrow\R^2$\\
+	      $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
 	\item $\vec{v}\in\mathbb{V},\vec{v}=\vec{OP},P(x_P,y_P),\lambda\in\R$\\
-		  $\lambda\cdot\vec{v}=\vec{OR}:$ quali sono le coordinate di $R$?\\
-		  $\vec{OR}=\lambda\cdot\vec{OP}$\\
-		  $OPH$ e $ORK$ sono simili per costruzione con rapporto di proporzioni $|\lambda|$.\\
-		  \underline{Due casi}:
-		  \begin{enumerate}
-			  \item $\lambda\ge0$ $\vec{OR}$ è concord con $\vec{OP}$ e quindi:\\
-			  		$x_R=|\lambda|x_P=\lambda x_P$\\
-					$y_R=|\lambda|y_P=\lambda y_P$
-			  \item $\lambda<0$ $\vec{OR}$ è discorde con $\vec{OP}$ e quindi:\\
-			  		$x_R=-|\lambda|x_P=\lambda x_P$\\
-					$y_R=-|\lambda|y_P=\lambda y_P$
-		  \end{enumerate}
-		  Operazione binaria \underline{esterna}:\\
-		  $\cdot:\R\times\R^2\rightarrow\R^2$\\
-		  \hspace*{0.1em}$(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
+	      $\lambda\cdot\vec{v}=\vec{OR}:$ quali sono le coordinate di $R$?\\
+	      $\vec{OR}=\lambda\cdot\vec{OP}$\\
+	      $OPH$ e $ORK$ sono simili per costruzione con rapporto di proporzioni $|\lambda|$.\\
+	      \ul{Due casi}:
+	      \begin{enumerate}
+		      \item $\lambda\ge0$ $\vec{OR}$ è concord con $\vec{OP}$ e quindi:\\
+		            $x_R=|\lambda|x_P=\lambda x_P$\\
+		            $y_R=|\lambda|y_P=\lambda y_P$
+		      \item $\lambda<0$ $\vec{OR}$ è discorde con $\vec{OP}$ e quindi:\\
+		            $x_R=-|\lambda|x_P=\lambda x_P$\\
+		            $y_R=-|\lambda|y_P=\lambda y_P$
+	      \end{enumerate}
+	      Operazione binaria \ul{esterna}:\\
+	      $\cdot:\R\times\R^2\rightarrow\R^2$\\
+	      \hspace*{0.1em}$(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
 \end{enumerate}
 In conclusione abbiamo definito due operazioni su $\R^2$ "compatibili" con le operazioni definite su $\mathbb{V}$:
 \begin{itemize}
 	\item $+: \R^2\times\R^2\rightarrow\R^2$\\$((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+y_1,x_2+y_2)$
 	\item $\cdot: \R^2\times\R^2\rightarrow\R^2$\\\hspace*{-0.3em}$(\lambda,(x_2,y_2))\mapsto\lambda\cdot(x_2,y_2):=(\lambda\cdot x,\lambda\cdot y)$
 \end{itemize}
-\underline{Proprietà} di $+$ e $\cdot$ :
+\ul{Proprietà} di $+$ e $\cdot$ :
 \begin{enumerate}
 	\item Commutatività:\\$\forall(x_1,y_1),(x_2,y_2)\in\R^2, (x_1,y_1)+(x_2,y_2)=(x_2,y_2)+(x_1,y_1)$
 	\item Associatività:\\$\forall(x_1,y_1),(x_2,y_2),(x_3,y_3)\in\R^2,\\((x_1,y_1)+(x_2,y_2))+(x_3,y_3)=(x_1,y_1)+((x_2,y_2)+(x_3,y_3))$
@@ -344,6 +338,107 @@ In conclusione abbiamo definito due operazioni su $\R^2$ "compatibili" con le op
 	\item Distributività rispetto a scalari:\\$\forall(x,y)\in\R^2,\forall\lambda,\mu\in\R$\\$(\lambda+\mu)\cdot(x,y)=\lambda\cdot(x,y)+\mu\cdot(x,y)$
 	\item Senza nome:\\$\lambda\mu\cdot(x,y)=\lambda\cdot(\mu\cdot(x,y))$
 	\item Elemento neutro $(\cdot)$:\\$1\cdot(x,y)=(x,y)\forall(x,y)\in\R^2$
+\end{enumerate}
+\subsection*{\hl{Revisione conclusa qui (29/03/22 19:42:57)}}
+$(\R^2,+,\cdot)$ è il primo insieme di \hl{INCOMPLETO}
+\Def{Sia $\mathbb{K}$ (K da \textit{korper} in tedesco) un campo. Uno spazio vettoriale su $\mathbb{K}$ è un insieme $\mathbb{V}$ dotato di due operazioni:}{
+	\begin{itemize}
+		\item $+: V\times V\rightarrow V$
+		\item $\cdot: K\times V\rightarrow V$
+	\end{itemize}
+	Che verificano le seguenti proprietà:
+	\begin{enumerate}
+		\item Commutatività: $\forall v,w\in V, v+w=w+v$
+		\item Associatività: $\forall u,v,w\in V,(u+v)+w=u+(v+w)$
+		\item Elemento neutro:\\$\exists0\in V:0+v=v+0=v,\forall v\in V$
+		\item Elemento opposto:\\$\forall v\in V,\exists v'\in V:v+v'=v'+v=0$
+		\item Distributività rispetto alla somma di vettori:\\$\forall v,w\in V,\forall\lambda\in K,\lambda\cdot(v+w)=\lambda\cdot v+\lambda\cdot w$
+		\item Distributività rispetto alla somma di scalari:\\$\forall v\in V,\forall\lambda,\mu\in K,(\lambda+\mu)\cdot v=\lambda\cdot v+\mu\cdot v$
+		\item $\forall v\in V,\forall\lambda,\mu\in K,\lambda\mu\cdot v=\lambda\cdot(\mu\cdot v)$
+		\item $1\cdot v=v,\forall v\in V$
+	\end{enumerate}
+	Gli elementi di $\mathbb{V}$ sono chiamati vettori e gli elementi di $\mathbb{K}$ sono chiamati scalari.\\
+	$K=\R:$ spazio vettoriale reale\\
+	$K=\mathbb{C}:$ spazio vettoriale complesso
+
+	\ul{Osservazioni}: Sia $\mathbb{V}$ un K-spazio vettoriale:
+	\begin{itemize}
+		\item in $\mathbb{V}$ esiste un unico vettore nullo che denotiamo $\ul{0}$
+		\item $\forall v\in V$ esiste un unico opposto che denotiamo $-v$
+		\item $\forall v\in V$ si ha $0\cdot v=\ul{0}$
+		\item $\forall\lambda\in K$ si ha $\lambda\cdot$ $\ul{0}=\ul{0}$
+		\item Siano $\lambda\in K,v\in K:\lambda\cdot v=\ul{0}\Rightarrow$ o $v=\ul{0}$
+	\end{itemize}
+}
+
+\section{\hl{16/03/22}}
+\subsection*{Continuo di ieri (Def)}
+\hspace*{1.3em}$+:\R^2\times\R^2\rightarrow\R^2\\
+((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+x_2,y_1+y_2)$
+
+$*:\R^2\times\R^2\\
+((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)*(x_2,y_2):=(x_1\cdot x_2,y_1\cdot y_2)$
+
+$(\R^2,+,*)$ è un campo? NO!
+
+$\triangle:\R^2\times\R^2\\
+((a,b),(c,d))\mapsto(a,b)\triangle(c,d)=(ac-bd,ad+bc)$
+
+Mostrare che $(\R^2,+,\triangle)$ è un campo.
+
+\ul{Indizio}: $\R^2\leftrightarrow\mathbb{C}=\{a+ib,b\in\R,i^2=-1\}$
+
+$(a,b)leftmapsto a+ib$
+
+$(a,b)\mapsto a+ib$
+
+Nota che $\mathbb{C}$ è un campo
+
+\subsubsection*{Esempi di spazi vettoriali}
+\begin{enumerate}
+	\item $\mathbb{V}=\{$Vettori geometrici nello spazio$\}=\{$segmenti orientati $\vec{OP},\ P$ nello spazio$\}\longleftrightarrow\R^3$\\
+		  Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(V,+,\cdot)$ è uno spazio vettoriale reale.
+	\item L'$n$-spazio vettoriale su $\R$ (o su $\mathbb{K}$)\\
+		  $n\in\mathbb{N},n\ge1$\\
+		  $\R^n=\R\times\cdots\times\R=\{(x_1,\cdots,x_n):x_i\in\R\forall i\}$\\
+		  Definiamo $+:\R^n\times\R^n\to\R^n$ e $\cdot:\R^n\times\R^n\to\R^n$\\
+		  $(x_1,\cdots,x_n)+(y_1,\cdots,y_n):=(x_1+y_1,\cdots,x_n+y_n)$\\
+		  $\lambda\in K$ \hl{incompleto}\\
+		  $\forall n\ge1,(\R^n,+,\cdot)$ è uno spazio vettoriale reale chiamato $n$-spazio vettoriale \ul{numerico} su $\R$.\\
+		  Elemento \ul{neutro}: $\ul{0}=(0,\cdots,0)$\\
+		  Elemento \ul{opposto} di $x=(x_1,\cdots,x_n)$ è $-x=(-x_1,\cdots,-x_n)$\\
+		  \ul{Osservazione}: $n=1:\R$ è uno spazio vettoriale su $\R$ (ogni campo $\mathbb{K}$ è uno spazio vettoriale su se stesso)\\
+		  In maniera analoga definiamo $+$ e $\cdot$ su\\
+		  $k^n=\{(x_1,\cdots,x_n):x_i\in K\forall i\}$\\
+		  $(k^n,+,\cdot)$ è uno spazio vettoriale su $\mathbb{K}$ chiamato $n$-spazio vettoriale numerico su $\mathbb{K}$.\\
+		  \ul{Esempio}: $k=\mathbb{C},\mathbb{C}^n\\k=\mathbb{F}_2,\mathbb{F}^n_2$
+	\item Funzioni da un insieme a un campo\\
+		  Sia $\mathbb{X}$ un insieme <u>qualunque</u> e $\mathbb{K}$ un campo\\
+		  $\mathbb{V}=\{$funzioni $f:\mathbb{X}\to\mathbb{K}\}$
+		  \begin{itemize}
+			  \item Binaria interna: $+:V\times V\to V\\(f,g)\to f+g$\\
+			  		dove $f+g: X\to K\\x\mapsto(f+g)(x):=f(x)+g(x)$
+			  \item Binaria esterna: $\cdot:K\times V\to V\\(\lambda\cdot)$ \hl{incompleto}
+		  \end{itemize}
+	\item Polinomi a coefficisnti reali in una indeterminata\\
+		  Sia $x$ un'indeterminata.\\
+		  Un \ul{polinomio} a coefficienti reali nell'indeterminata $x$ è un'espressione formale del tipo:\\
+		  $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,a_i\in\R\forall i$\\
+		  Se $a_n\ne0$ diremo che $n$ è il grado di $P$ e scriviamo $deg(P)=n$.\\
+		  $\R[x]:=\{$polinomi a coefficienti reali nell'indeterminata $x$ (di grado arbitrario)$\}$\\
+		  <u>Esempio</u>: $P(x)=3x^4+2x^3-x+5\in\R[x],\ deg(P)=4$\\
+		  $+:\R[x]\times\R[x]\to\R[x]\\P(x)=a_nx^n+\cdots+a_1x+a_0\\Q(x)=b_nx^n+\cdots+b_1x+b_0\\(P+Q)(x):=(a_n+b_n)x^n+\cdots+(a_1+b_1)x+a_0+b_0$\\
+		  $\cdot:\R\times\R[x]\to\R[x]\\P\in\R[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\R\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$\\
+		  $(\R[x],+,\cdot)$ è uno spazio vettoriale su $\R$.\\
+		  In modo analogo si definisce $(K[x],+,\cdot)$ dove\\
+		  $K[x]=\{$polinomi a coefficienti in $\mathbb{K}$ in un'indetermiinata$\}$\\
+		  Molti problemi di matemadica/fisica hanno la proprietà che l'insieme delle soluzioni ha una struttura di spazio vettoriale.\\
+		  \ul{Esempi}:
+		  \begin{itemize}
+			  \item $\begin{cases}x+2y+z=0\\y+7z=0\end{cases}$\\
+					$S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$\\
+					$S$ ha una struttuta di spazio vettoriale (\hl{cose che vedremo più avanti})
+		  \end{itemize}
 \end{enumerate}
 
 \end{document}
