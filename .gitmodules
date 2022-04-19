@@ -1,0 +1,3 @@
+[submodule "esercizi"]
+	path = hw/esercizi
+	url = git@github.com:TheDarkBug/esercizi.git
