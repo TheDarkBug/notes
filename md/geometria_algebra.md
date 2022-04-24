@@ -1,10 +1,3 @@
----
-title-meta: "Appunti del corso di algebra e geometria"
-author-meta: "Adriano Oliviero"
-date-meta: "08/03/22"
-keywords: "Geometria;Algebra"
----
-
 # <mark>Appunti del corso di algebra e geometria</mark>
 Questi appunti sono scritti da Adriano Oliviero durante le lezioni della prof.ssa [Anna Iezzi](https://aiezzi.it/) e sono distribuiti sotto la [licenza GPL-v3](../LICENSE). Il repository originario per questi (ed altri appunti) è su [github](https://github.com/TheDarkBug/notes).
 # <mark>08/03/22</mark>
@@ -556,7 +549,6 @@ Nota che $\mathbb{C}$ è un campo
        $S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$
        $S$ ha una struttuta di spazio vettoriale (<mark>cose che vedremo più avanti</mark>)
 
-# Latex rewrite mark
 # <mark>22/03/22</mark>
 ## <u>Sistemi di equazioni lineari</u> (accenni)
 
@@ -719,6 +711,7 @@ $C=AB=(c_{ij}): 1\le i\le m,\ 1\le j\le p$
 
 $n=p=m:$ otteniamo un'operazione binaria interna su $M_n(K)$
 
+# Latex rewrite mark
 # <mark>23/03/22</mark>
 
 ## Operazioni tra matrici

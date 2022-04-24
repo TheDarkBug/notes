@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{amsfonts}
+\usepackage{amsmath}
 \usepackage[paperheight=1000em,margin=3em]{geometry}
 
 \pagenumbering{gobble}
@@ -374,15 +375,15 @@ $(\R^2,+,\cdot)$ è il primo insieme di \hl{INCOMPLETO}
 \section{\hl{16/03/22}}
 \subsection*{Continuo di ieri (Def)}
 \hspace*{1.3em}$+:\R^2\times\R^2\rightarrow\R^2\\
-((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+x_2,y_1+y_2)$
+	((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+x_2,y_1+y_2)$
 
 $*:\R^2\times\R^2\\
-((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)*(x_2,y_2):=(x_1\cdot x_2,y_1\cdot y_2)$
+	((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)*(x_2,y_2):=(x_1\cdot x_2,y_1\cdot y_2)$
 
 $(\R^2,+,*)$ è un campo? NO!
 
 $\triangle:\R^2\times\R^2\\
-((a,b),(c,d))\mapsto(a,b)\triangle(c,d)=(ac-bd,ad+bc)$
+	((a,b),(c,d))\mapsto(a,b)\triangle(c,d)=(ac-bd,ad+bc)$
 
 Mostrare che $(\R^2,+,\triangle)$ è un campo.
 
@@ -397,48 +398,208 @@ Nota che $\mathbb{C}$ è un campo
 \subsubsection*{Esempi di spazi vettoriali}
 \begin{enumerate}
 	\item $\mathbb{V}=\{$Vettori geometrici nello spazio$\}=\{$segmenti orientati $\vec{OP},\ P$ nello spazio$\}\longleftrightarrow\R^3$\\
-		  Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(V,+,\cdot)$ è uno spazio vettoriale reale.
+	      Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(V,+,\cdot)$ è uno spazio vettoriale reale.
 	\item L'$n$-spazio vettoriale su $\R$ (o su $\mathbb{K}$)\\
-		  $n\in\mathbb{N},n\ge1$\\
-		  $\R^n=\R\times\cdots\times\R=\{(x_1,\cdots,x_n):x_i\in\R\forall i\}$\\
-		  Definiamo $+:\R^n\times\R^n\to\R^n$ e $\cdot:\R^n\times\R^n\to\R^n$\\
-		  $(x_1,\cdots,x_n)+(y_1,\cdots,y_n):=(x_1+y_1,\cdots,x_n+y_n)$\\
-		  $\lambda\in K$ \hl{incompleto}\\
-		  $\forall n\ge1,(\R^n,+,\cdot)$ è uno spazio vettoriale reale chiamato $n$-spazio vettoriale \ul{numerico} su $\R$.\\
-		  Elemento \ul{neutro}: $\ul{0}=(0,\cdots,0)$\\
-		  Elemento \ul{opposto} di $x=(x_1,\cdots,x_n)$ è $-x=(-x_1,\cdots,-x_n)$\\
-		  \ul{Osservazione}: $n=1:\R$ è uno spazio vettoriale su $\R$ (ogni campo $\mathbb{K}$ è uno spazio vettoriale su se stesso)\\
-		  In maniera analoga definiamo $+$ e $\cdot$ su\\
-		  $k^n=\{(x_1,\cdots,x_n):x_i\in K\forall i\}$\\
-		  $(k^n,+,\cdot)$ è uno spazio vettoriale su $\mathbb{K}$ chiamato $n$-spazio vettoriale numerico su $\mathbb{K}$.\\
-		  \ul{Esempio}: $k=\mathbb{C},\mathbb{C}^n\\k=\mathbb{F}_2,\mathbb{F}^n_2$
+	      $n\in\mathbb{N},n\ge1$\\
+	      $\R^n=\R\times\cdots\times\R=\{(x_1,\cdots,x_n):x_i\in\R\forall i\}$\\
+	      Definiamo $+:\R^n\times\R^n\to\R^n$ e $\cdot:\R^n\times\R^n\to\R^n$\\
+	      $(x_1,\cdots,x_n)+(y_1,\cdots,y_n):=(x_1+y_1,\cdots,x_n+y_n)$\\
+	      $\lambda\in K$ \hl{incompleto}\\
+	      $\forall n\ge1,(\R^n,+,\cdot)$ è uno spazio vettoriale reale chiamato $n$-spazio vettoriale \ul{numerico} su $\R$.\\
+	      Elemento \ul{neutro}: $\ul{0}=(0,\cdots,0)$\\
+	      Elemento \ul{opposto} di $x=(x_1,\cdots,x_n)$ è $-x=(-x_1,\cdots,-x_n)$\\
+	      \ul{Osservazione}: $n=1:\R$ è uno spazio vettoriale su $\R$ (ogni campo $\mathbb{K}$ è uno spazio vettoriale su se stesso)\\
+	      In maniera analoga definiamo $+$ e $\cdot$ su\\
+	      $k^n=\{(x_1,\cdots,x_n):x_i\in K\forall i\}$\\
+	      $(k^n,+,\cdot)$ è uno spazio vettoriale su $\mathbb{K}$ chiamato $n$-spazio vettoriale numerico su $\mathbb{K}$.\\
+	      \ul{Esempio}: $k=\mathbb{C},\mathbb{C}^n\\k=\mathbb{F}_2,\mathbb{F}^n_2$
 	\item Funzioni da un insieme a un campo\\
-		  Sia $\mathbb{X}$ un insieme <u>qualunque</u> e $\mathbb{K}$ un campo\\
-		  $\mathbb{V}=\{$funzioni $f:\mathbb{X}\to\mathbb{K}\}$
-		  \begin{itemize}
-			  \item Binaria interna: $+:V\times V\to V\\(f,g)\to f+g$\\
-			  		dove $f+g: X\to K\\x\mapsto(f+g)(x):=f(x)+g(x)$
-			  \item Binaria esterna: $\cdot:K\times V\to V\\(\lambda\cdot)$ \hl{incompleto}
-		  \end{itemize}
+	      Sia $\mathbb{X}$ un insieme <u>qualunque</u> e $\mathbb{K}$ un campo\\
+	      $\mathbb{V}=\{$funzioni $f:\mathbb{X}\to\mathbb{K}\}$
+	      \begin{itemize}
+		      \item Binaria interna: $+:V\times V\to V\\(f,g)\to f+g$\\
+		            dove $f+g: X\to K\\x\mapsto(f+g)(x):=f(x)+g(x)$
+		      \item Binaria esterna: $\cdot:K\times V\to V\\(\lambda\cdot)$ \hl{incompleto}
+	      \end{itemize}
 	\item Polinomi a coefficisnti reali in una indeterminata\\
-		  Sia $x$ un'indeterminata.\\
-		  Un \ul{polinomio} a coefficienti reali nell'indeterminata $x$ è un'espressione formale del tipo:\\
-		  $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,a_i\in\R\forall i$\\
-		  Se $a_n\ne0$ diremo che $n$ è il grado di $P$ e scriviamo $deg(P)=n$.\\
-		  $\R[x]:=\{$polinomi a coefficienti reali nell'indeterminata $x$ (di grado arbitrario)$\}$\\
-		  <u>Esempio</u>: $P(x)=3x^4+2x^3-x+5\in\R[x],\ deg(P)=4$\\
-		  $+:\R[x]\times\R[x]\to\R[x]\\P(x)=a_nx^n+\cdots+a_1x+a_0\\Q(x)=b_nx^n+\cdots+b_1x+b_0\\(P+Q)(x):=(a_n+b_n)x^n+\cdots+(a_1+b_1)x+a_0+b_0$\\
-		  $\cdot:\R\times\R[x]\to\R[x]\\P\in\R[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\R\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$\\
-		  $(\R[x],+,\cdot)$ è uno spazio vettoriale su $\R$.\\
-		  In modo analogo si definisce $(K[x],+,\cdot)$ dove\\
-		  $K[x]=\{$polinomi a coefficienti in $\mathbb{K}$ in un'indetermiinata$\}$\\
-		  Molti problemi di matemadica/fisica hanno la proprietà che l'insieme delle soluzioni ha una struttura di spazio vettoriale.\\
-		  \ul{Esempi}:
-		  \begin{itemize}
-			  \item $\begin{cases}x+2y+z=0\\y+7z=0\end{cases}$\\
-					$S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$\\
-					$S$ ha una struttuta di spazio vettoriale (\hl{cose che vedremo più avanti})
-		  \end{itemize}
+	      Sia $x$ un'indeterminata.\\
+	      Un \ul{polinomio} a coefficienti reali nell'indeterminata $x$ è un'espressione formale del tipo:\\
+	      $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,a_i\in\R\forall i$\\
+	      Se $a_n\ne0$ diremo che $n$ è il grado di $P$ e scriviamo $deg(P)=n$.\\
+	      $\R[x]:=\{$polinomi a coefficienti reali nell'indeterminata $x$ (di grado arbitrario)$\}$\\
+	      <u>Esempio</u>: $P(x)=3x^4+2x^3-x+5\in\R[x],\ deg(P)=4$\\
+	      $+:\R[x]\times\R[x]\to\R[x]\\P(x)=a_nx^n+\cdots+a_1x+a_0\\Q(x)=b_nx^n+\cdots+b_1x+b_0\\(P+Q)(x):=(a_n+b_n)x^n+\cdots+(a_1+b_1)x+a_0+b_0$\\
+	      $\cdot:\R\times\R[x]\to\R[x]\\P\in\R[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\R\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$\\
+	      $(\R[x],+,\cdot)$ è uno spazio vettoriale su $\R$.\\
+	      In modo analogo si definisce $(K[x],+,\cdot)$ dove\\
+	      $K[x]=\{$polinomi a coefficienti in $\mathbb{K}$ in un'indetermiinata$\}$\\
+	      Molti problemi di matemadica/fisica hanno la proprietà che l'insieme delle soluzioni ha una struttura di spazio vettoriale.\\
+	      \ul{Esempi}:
+	      \begin{itemize}
+		      \item $\begin{cases}x+2y+z=0\\y+7z=0\end{cases}$\\
+		            $S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$\\
+		            $S$ ha una struttuta di spazio vettoriale (\hl{cose che vedremo più avanti})
+	      \end{itemize}
 \end{enumerate}
 
+\section{\hl{22/03/22}}
+\subsection*{Sistemi di equazioni lineari (accenni)}
+Equazione lineare in $n$ incognite:
+
+$x_1,\cdots,x_n: a_1x_1+a_2x_2+\cdots+a_nx_n=b$
+
+$a_i\in\R,\forall i,b\in\R$\\
+Sistema di $n$ equazioni lineari in $n$ incognite:
+
+$\begin{cases}
+		a_{11}x_1+a_{12}+\cdots+a_{1n}x_n=b_1 \\
+		a_{21}x_1+a_{22}+\cdots+a_{2n}x_n=b_2 \\
+		\cdots                                \\
+		a_{n1}x_1+a_{n2}+\cdots+a_{nn}x_n=b_n
+	\end{cases}$\\
+
+Una soluzione del sistema di sopra è un vettore $(x_1,\cdots,x_n)\in\R^n$ che verifica tutte le equazioni.
+
+\ul{Esempi}:\vspace*{1em}
+
+$\begin{cases}x+y+z=6\\2x-y=0\end{cases}$\vspace*{1em}
+
+\ul{Una} soluzione di questo sistema è $(1,2,3)\in\R^3$.\vspace*{1em}
+
+\ul{Domande}: Supponiamo di avere un sistema lineare:
+\begin{enumerate}
+	\item Esiste almeno una soluzione?
+	\item "Quante" sono?
+	\item Come si interpreta geometricamente il corrispondente insieme di soluzioni?
+\end{enumerate}
+\subsection*{\ul{Matrici}}
+\begin{itemize}
+	\item Un esempio di spazio vettoriale
+	\item Uno strumento conciso per rappresentare oggetti *parola incomprensibile*, tra cui molti dell'algebra lineare
+\end{itemize}
+Sia $\mathbb{K}$ un campo.
+Siano $m,n\ge1$ due numeri
+
+\Def{Una matrice $m\times n$ a elementi in $\mathbb{K}$ è una tabella rettangolare di $m\cdot n$ elementi di $\mathbb{K}$, disposti su $m$ righe e $n$ colonne}{}
+
+\ul{Notazione}:
+
+$A=\begin{bmatrix}
+		a_{11} & a_{12} & \cdots & a_{ij} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{ij} & \cdots & a_{2n} \\
+		\vdots                                              \\
+		a_{i1} & a_{i2} & \cdots & a_{ij} & \cdots & a_{in} \\
+		\vdots                                              \\
+		a_{n1} & a_{n2} & \cdots & a_{nj} & \cdots & a_{nn} \\
+	\end{bmatrix}$
+
+$(a_{ij})_{1\le i\le n\ \wedge\ 1\le j\le n}:i$ è la riga e $j$ è la colonna, come in c++ (o qualunque linguaggio "normale")
+
+Ciascuno degli elementi $a_{ij}$ è detto entrata (o coefficiente) delle matrici
+
+\subsubsection*{\ul{Un po' di terminologia}}
+\begin{itemize}
+	\item Se $n=m$, una matrice $n\times n$ si dice matrice \ul{quadrata} di ordine $n$,\\
+	      ha due diagonali (solo se è quadrata eh)
+	\item Una matrice $1\times n$ è chiamata vettore riga.\\
+	      Una matrice $n\times1$ è chiamata vettore colonna.
+\end{itemize}
+\ul{Notazione}:
+
+$M_{m,n}(K)=\{$matrici $n\times m$ a coefficienti in $K\}$
+
+M$_{n}(K):=\{$matrici quadrete di ordine $n\}$
+
+\Def{Siano $A=(a_{ij}),\ B=(b_{ij})\in M_{m,n}(K)$.}{
+Diciamo che $A=B$ se $a_{ij}=b_{ij}\forall 1\le i \le n,\ 1\le j \le n$\\
+Definiamo due operazioni su $M_{m,n}$:
+\begin{itemize}
+	\item \ul{Somma di matrici}\\
+	      $+: M_{m,n}\times M_{m,n}\rightarrow M_{m,n}(K)\\\hspace*{4.7em}(A,B)\longmapsto A+B$\\
+
+	      $A=\begin{bmatrix}\\
+			      a_{11} & \cdots & a_{1n} \\
+			      \vdots                   \\
+			      a_{m1} & \cdots & a_{mn} \\
+		      \end{bmatrix}=(a_{ij})\in M_{m,n}(K)$\\
+
+	      $B=\begin{bmatrix}\\
+			      b_{11} & \cdots & b_{1n} \\
+			      \vdots                   \\
+			      b_{m1} & \cdots & b_{mn} \\
+		      \end{bmatrix}=(b_{ij})\in M_{m,n}(K)$\\
+
+	      $A+B:=\begin{bmatrix}\\
+			      a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\
+			      \vdots                                 \\
+			      a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn} \\
+		      \end{bmatrix}=(a_{ij}+b_{ij})$ \hl{incompleto}, probabilmente $\in M_{m,n}(K)$
+	\item \ul{Moltiplicazione per scalari}
+
+	      $\cdot:K\times M_{m,n}(K)\rightarrow M_{m,n}(K)\\\hspace*{4.6em}(\lambda,A)\longmapsto\lambda\cdot A$
+
+	      $A=(a_{ij})\in M_{m,n}(K)\\\lambda\in K$\\
+	      $\lambda\cdot A=(\lambda a_{ij})\in M_{m,n}(K)$\\
+
+	      \ul{Proprietà}:
+	      \begin{enumerate}
+		      \item $+$ è commutativa: $A+B=B+A$
+		      \item $+$ è associativa: $(A+B)+C=A+(B+C)$
+		      \item Elemento neutro rispetto a $+$:\\
+		            $0_{m,n}=\begin{bmatrix}0&\cdots&0\quad\vdots\quad0&\cdots&0\end{bmatrix}$
+		      \item Elemento opposto rispetto a $+$:\\
+		            $A=(a_{ij})\Rightarrow-A=(-a_{ij})$
+		      \item $\lambda\cdot(A+B)=\lambda\cdot A + \lambda\cdot B$
+		      \item $(\lambda+\mu)\cdot A=\lambda\cdot A+\mu\cdot A$
+		      \item $(\lambda\mu)\cdot A=\lambda\cdot(\mu\cdot A)$
+		      \item $1\cdot A = A\forall m,n\ge1\text{ interi, }(M_{m,n}(K),+,\cdot)\text{ è uno spazio vettoriale su }\mathbb{K}$
+	      \end{enumerate}
+	\item \ul{Prodotto di matrici} (prodotto riga per colonna):
+
+	      $(a_1\cdots\ a_n)\in M_{1,n}(K):$ vettore riga
+
+	      $(b_1\cdots\ b_n)\in M_{n,1}(K):$ vettore colonna
+
+	      $(a_1\cdots\ a_n)\cdot(b_1\cdots\ b_n):=a_1b_1+\cdots+a_nb_n=\sum^n_{k=1}{a_kb_k}$\\
+
+	      Generalizziamo al prodotto di due matrici:\\
+
+	      $\begin{bmatrix}
+			      a_{11} & \cdots & a_{1n} \\
+			      a_{m1} & \cdots & a_{mn}
+		      \end{bmatrix}
+		      \cdot
+		      \begin{bmatrix}
+			      b_{11} & \cdots & b_{1p} \\
+			      b_{q1} & \cdots & b_{qp}
+		      \end{bmatrix}=
+		      \begin{bmatrix}
+			      c_{ij}
+		      \end{bmatrix}$
+
+	      $c_{ij}=$prodotto della $i$-esima riga di $A$ e della $j$-esima colonna di $B$
+
+	      Per definire il prodotto abbiamo bisogno che $n=q$
+
+	      $\forall\ 1\ge i\ge n,\ \forall\ 1\ge j\ge p$ definiamo
+
+	      $c_{ij}=(a_{i1}\cdots a_{in})\cdot(b_{1j}\cdots b_{nj})=a_{i1}b_{1j}+\cdots+a_{in}b_{nj}=\sum^n_{n=1}{a_{ik}b_{kj}}$
+
+	      Più formalmente, il prodotto di due matrici è una funzione:
+
+	      $M_{m,n}(K)\times M_{n,p}(K)\rightarrow M_{m,p}(K)\\\hspace*{6.5em}(A,B)\mapsto C=AB$
+
+	      $A=(a_{ij}): 1\le i\le m,\ 1\le j\le n$
+
+	      $B=(b_{ij}): 1\le i\le n,\ 1\le j\le p$
+
+	      $C=AB=(c_{ij}): 1\le i\le m,\ 1\le j\le p$
+
+	      \ul{NOTA BENE}: il prodotto è definito se e solo se il numero di colonne di $A$ è uguale al numero di righe di $B$.
+
+	      \ul{Caso particolare}
+
+	      $n=p=m:$ otteniamo un'operazione binaria interna su $M_n(K)$
+\end{itemize}
+}
 \end{document}
