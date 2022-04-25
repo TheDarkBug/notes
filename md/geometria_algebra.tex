@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{enumitem}
+\usepackage{MnSymbol}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mathtools}
@@ -17,6 +18,7 @@
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\K}{\mathbb{K}}
+\newcommand{\V}{\mathbb{V}}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\Def}[2]{\paragraph{\ul{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
 \newcommand{\Esempio}[1]{\subsubsection*{\ul{Esempio}:}#1}
@@ -31,7 +33,6 @@
 \section*{\hl{Introduzione}}
 Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:Licenza]{licenza}.\\
 Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
-
 \section*{\hl{Licenza}}
 \label{sec:Licenza}
 \begin{verbatim}
@@ -53,7 +54,6 @@ Il repository originario per questi (ed altri appunti) è su \href{https://githu
 	This work consists of the file geometria_algebra.tex
 	and the derived files geometria_algebra.pdf and other output.
 \end{verbatim}
-
 \section{08/03/22}
 \index{Prima lezione}
 \subsection{Richiami di logica}
@@ -217,12 +217,12 @@ $+:\R\times\R\rightarrow\R$\\
 \end{enumerate}
 Infine $+$ e $\cdot$ soddisfano la proprietà distributiva: $\forall x,y,z\in\R,x\cdot(y+z)=x\cdot y+x\cdot z$
 
-Sia $\mathbb{K}\not=\emptyset$ un insieme dotato di due operazioni binarie:
+Sia $\K\not=\emptyset$ un insieme dotato di due operazioni binarie:
 \begin{itemize}
-	\item $+:\mathbb{K}\times\mathbb{K}\rightarrow\mathbb{K}$
-	\item $\cdot:\mathbb{K}\times\mathbb{K}\rightarrow\mathbb{K}$
+	\item $+:\K\times\K\rightarrow\K$
+	\item $\cdot:\K\times\K\rightarrow\K$
 \end{itemize}
-$(\mathbb{K},+,\cdot)$ è detto un \ul{campo} se verificano le proprietà elencate prima, con $+$ distributiva e $\mathbb{K}$ al posto di $\R$
+$(\K,+,\cdot)$ è detto un \ul{campo} se verificano le proprietà elencate prima, con $+$ distributiva e $\K$ al posto di $\R$
 
 \Esempio{$\mathbb{F}_2=\{0, 1\}$
 	\begin{itemize}
@@ -275,7 +275,7 @@ L'equipollenza è una relazione di equivalenza, e verifica 3 proprietà:
 {Sia $O$ un punto fissato nel piano $\Pi$, per ogni segmento orientato $\vec{AB}$ esiste un punto $P\in\Pi$ tale che $\vec{OP}$ è equipollente ad $\vec{AB}$.\\
 	$\vec{OP}$ è equipollente a tutti i segmenti orientati equipollenti ad $\vec{AB}$ e posso sceglierlo come \ul{rappresentante} della classe di equipollenza di $\vec{AB}$.\\
 	Quindi abbiamo una biezione:\\
-	$\mathbb{V}=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP},P\in\Pi\}$\\
+	$\V=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP},P\in\Pi\}$\\
 	Classi di equipollenza $\uparrow\hspace*{10em}\uparrow$ Stesso punto di applicazione}
 \section{15/03/22}
 \subsection{Algebra lineare (continuo)}
@@ -289,24 +289,24 @@ Correzione della definizione di campo:
 
 \vspace*{1em}
 Fissiamo $O\in\pi$ (piano ordinario).\\
-$\mathbb{V}=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
+$\V=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
 Con un abuso di notazione, consideriamo:\\
-$\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
+$\V=\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
 $\forall\vec{v}\in V,\exists P\in\pi:\vec{v}=\vec{OP}$
-\ul{Operazioni su $\mathbb{V}$}
+\ul{Operazioni su $\V$}
 \begin{itemize}
 	\item Somma di vettori\\
-	      siano $\vec{v},\vec{w}\in \mathbb{V}$ e siano $P,Q\in\pi:$\\
+	      siano $\vec{v},\vec{w}\in \V$ e siano $P,Q\in\pi:$\\
 	      $\vec{v}=\vec{OP}$\\
 	      $\vec{w}=\vec{OQ}$\vspace*{1em}\\
 	      Definiamo:\\
 	      $\vec{v}+\vec{w}=\vec{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)\\
 	      \ul{Nota}: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione), costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza\\
 	      Operazione binaria interna:\\
-	      $+:\mathbb{V}\times\mathbb{V}\rightarrow\mathbb{V}$\\
+	      $+:\V\times\V\rightarrow\V$\\
 	      \hspace*{1.9em}$(\vec{v},\vec{w})\rightarrow\vec{v}+\vec{w}$
 	\item Moltiplicazione per scalari\\
-	      Sia $\vec{v}\in\mathbb{V}$ e sia $P\in\pi:\vec{v}=\vec{OP}$.\vspace*{1em}\\
+	      Sia $\vec{v}\in\V$ e sia $P\in\pi:\vec{v}=\vec{OP}$.\vspace*{1em}\\
 	      Definiamo $\lambda\cdot\vec{v}=\vec{OR}$
 	      \begin{itemize}
 		      \item $O,P,R$ sono collineari
@@ -314,18 +314,18 @@ $\forall\vec{v}\in V,\exists P\in\pi:\vec{v}=\vec{OP}$
 		      \item $\vec{OR}$ è orientato concordemente a $\vec{OP}\\\vec{OR}$ è orientato discordemente a $\vec{OP}$ se\\
 		            $\lambda<0\vee\lambda=0,R=O$\\
 		            Questa è un'operazione binaria \ul{esterna}:\\
-		            $\cdot:\R\times\mathbb{V}\rightarrow \mathbb{V}$\\
+		            $\cdot:\R\times\V\rightarrow \V$\\
 		            \hspace*{1.5em}$(\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
 	      \end{itemize}
 \end{itemize}
 \subsection{Piano Cartesiano}
 \par$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$\\
-$\mathbb{V}=\{$segmenti orientati $\vec{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$\\
+$\V=\{$segmenti orientati $\vec{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$\\
 In particolare esiste una biezione:\\
-$\mathbb{V}\leftrightarrow\R^2$\\
+$\V\leftrightarrow\R^2$\\
 $\forall P\in\pi,\vec{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$\\
 $\vec{OP}\leftarrow(x,y)$ dove $P(x,y)$\\
-Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
+Vogliamo tradurre le operazioni su $\V$ in operazioni su $\R^2$:
 \begin{enumerate}
 	\item $\vec{v}=\vec{OP},P(x_P,y_P)$\\
 	      $\vec{w}=\vec{OQ},Q(x_Q,y_Q)$
@@ -337,7 +337,7 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
 	      Operazione binaria \ul{interna}:\\
 	      $+:\R^2\times\R^2\rightarrow\R^2$\\
 	      $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
-	\item $\vec{v}\in\mathbb{V},\vec{v}=\vec{OP},P(x_P,y_P),\lambda\in\R$\\
+	\item $\vec{v}\in\V,\vec{v}=\vec{OP},P(x_P,y_P),\lambda\in\R$\\
 	      $\lambda\cdot\vec{v}=\vec{OR}:$ quali sono le coordinate di $R$?\\
 	      $\vec{OR}=\lambda\cdot\vec{OP}$\\
 	      $OPH$ e $ORK$ sono simili per costruzione con rapporto di proporzioni $|\lambda|$.\\
@@ -354,7 +354,7 @@ Vogliamo tradurre le operazioni su $\mathbb{V}$ in operazioni su $\R^2$:
 	      $\cdot:\R\times\R^2\rightarrow\R^2$\\
 	      \hspace*{0.1em}$(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
 \end{enumerate}
-In conclusione abbiamo definito due operazioni su $\R^2$ "compatibili" con le operazioni definite su $\mathbb{V}$:
+In conclusione abbiamo definito due operazioni su $\R^2$ "compatibili" con le operazioni definite su $\V$:
 \begin{itemize}
 	\item $+: \R^2\times\R^2\rightarrow\R^2$\\$((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+y_1,x_2+y_2)$
 	\item $\cdot: \R^2\times\R^2\rightarrow\R^2$\\\hspace*{-0.3em}$(\lambda,(x_2,y_2))\mapsto\lambda\cdot(x_2,y_2):=(\lambda\cdot x,\lambda\cdot y)$
@@ -370,31 +370,36 @@ In conclusione abbiamo definito due operazioni su $\R^2$ "compatibili" con le op
 	\item Senza nome:\\$\lambda\mu\cdot(x,y)=\lambda\cdot(\mu\cdot(x,y))$
 	\item Elemento neutro $(\cdot)$:\\$1\cdot(x,y)=(x,y)\forall(x,y)\in\R^2$
 \end{enumerate}
-\subsection{\hl{Revisione conclusa qui (29/03/22 19:42:57)}}
-$(\R^2,+,\cdot)$ è il primo insieme di \hl{INCOMPLETO}
-\Def{Sia $\mathbb{K}$ (K da \textit{korper} in tedesco) un campo. Uno spazio vettoriale su $\mathbb{K}$ è un insieme $\mathbb{V}$ dotato di due operazioni:}{
+$(\R^2,+,\cdot)$ è il primo esempio di "spazio vettoriale" su $\R$.\vspace*{1em}\\
+Più in generale uno spazio vettoriale (o spazio lineare) è una struttura algebrica composta da:
+\begin{itemize}
+	\item un \ul{campo} $\K$, i cui elementi sono detti \ul{scalari}
+	\item un \ul{insieme} $\V$, i cui elementi sono detti \ul{vettori}
+	\item \ul{due operazioni binarie} caratterizzate da determinate proprietà
+\end{itemize}
+\Def{Sia $\K$ (K da \textit{korper} in tedesco) un campo. Uno spazio vettoriale su $\K$ è un insieme $\V$ dotato di due operazioni:}{
 	\begin{itemize}
-		\item $+: V\times V\rightarrow V$
-		\item $\cdot: K\times V\rightarrow V$
+		\item $+:\V\times\V\rightarrow\V$
+		\item $\cdot:\K\times\V\rightarrow\V$
 	\end{itemize}
 	Che verificano le seguenti proprietà:
 	\begin{enumerate}
-		\item Commutatività: $\forall v,w\in V, v+w=w+v$
-		\item Associatività: $\forall u,v,w\in V,(u+v)+w=u+(v+w)$
-		\item Elemento neutro:\\$\exists0\in V:0+v=v+0=v,\forall v\in V$
-		\item Elemento opposto:\\$\forall v\in V,\exists v'\in V:v+v'=v'+v=0$
-		\item Distributività rispetto alla somma di vettori:\\$\forall v,w\in V,\forall\lambda\in K,\lambda\cdot(v+w)=\lambda\cdot v+\lambda\cdot w$
-		\item Distributività rispetto alla somma di scalari:\\$\forall v\in V,\forall\lambda,\mu\in K,(\lambda+\mu)\cdot v=\lambda\cdot v+\mu\cdot v$
-		\item $\forall v\in V,\forall\lambda,\mu\in K,\lambda\mu\cdot v=\lambda\cdot(\mu\cdot v)$
-		\item $1\cdot v=v,\forall v\in V$
+		\item Commutatività: $\forall v,w\in\V, v+w=w+v$
+		\item Associatività: $\forall u,v,w\in\V,(u+v)+w=u+(v+w)$
+		\item Elemento neutro:\\$\exists0\in\V:0+v=v+0=v,\forall v\in\V$
+		\item Elemento opposto:\\$\forall v\in\V,\exists v'\in\V:v+v'=v'+v=0$
+		\item Distributività rispetto alla somma di vettori:\\$\forall v,w\in\V,\forall\lambda\in\K,\lambda\cdot(v+w)=\lambda\cdot v+\lambda\cdot w$
+		\item Distributività rispetto alla somma di scalari:\\$\forall v\in\V,\forall\lambda,\mu\in\K,(\lambda+\mu)\cdot v=\lambda\cdot v+\mu\cdot v$
+		\item $\forall v\in\V,\forall\lambda,\mu\in\K,\lambda\mu\cdot v=\lambda\cdot(\mu\cdot v)$
+		\item $1\cdot v=v,\forall v\in\V$
 	\end{enumerate}
-	Gli elementi di $\mathbb{V}$ sono chiamati vettori e gli elementi di $\mathbb{K}$ sono chiamati scalari.\\
+	Gli elementi di $\V$ sono chiamati vettori e gli elementi di $\K$ sono chiamati scalari.\\
 	$K=\R:$ spazio vettoriale reale\\
 	$K=\mathbb{C}:$ spazio vettoriale complesso
 
-	\ul{Osservazioni}: Sia $\mathbb{V}$ un K-spazio vettoriale:
+	\ul{Osservazioni}: Sia $\V$ un K-spazio vettoriale:
 	\begin{itemize}
-		\item in $\mathbb{V}$ esiste un unico vettore nullo che denotiamo $\ul{0}$
+		\item in $\V$ esiste un unico vettore nullo che denotiamo $\ul{0}$
 		\item $\forall v\in V$ esiste un unico opposto che denotiamo $-v$
 		\item $\forall v\in V$ si ha $0\cdot v=\ul{0}$
 		\item $\forall\lambda\in K$ si ha $\lambda\cdot$ $\ul{0}=\ul{0}$
@@ -418,33 +423,34 @@ Mostrare che $(\R^2,+,\triangle)$ è un campo.
 
 \ul{Indizio}: $\R^2\leftrightarrow\mathbb{C}=\{a+ib,b\in\R,i^2=-1\}$
 
-$(a,b)leftmapsto a+ib$
+$(a,b)\leftmapsto a+ib$
 
 $(a,b)\mapsto a+ib$
 
 Nota che $\mathbb{C}$ è un campo
 
+\section*{REVISIONE FINITA QUI}
 \subsubsection*{Esempi di spazi vettoriali}
 \begin{enumerate}
-	\item $\mathbb{V}=\{$Vettori geometrici nello spazio$\}=\{$segmenti orientati $\vec{OP},\ P$ nello spazio$\}\longleftrightarrow\R^3$\\
-	      Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(V,+,\cdot)$ è uno spazio vettoriale reale.
-	\item L'$n$-spazio vettoriale su $\R$ (o su $\mathbb{K}$)\\
+	\item $\V=\{\text{Vettori geometrici nello spazio}\}=\{\text{segmenti orientati }\vec{OP},\text{ P nello spazio}\}\longleftrightarrow\R^3$\\
+	      Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(\V,+,\cdot)$ è uno spazio vettoriale reale.
+	\item L'$n$-spazio vettoriale su $\R$ (o su $\K$)\\
 	      $n\in\mathbb{N},n\ge1$\\
 	      $\R^n=\R\times\cdots\times\R=\{(x_1,\cdots,x_n):x_i\in\R\forall i\}$\\
 	      Definiamo $+:\R^n\times\R^n\to\R^n$ e $\cdot:\R^n\times\R^n\to\R^n$\\
 	      $(x_1,\cdots,x_n)+(y_1,\cdots,y_n):=(x_1+y_1,\cdots,x_n+y_n)$\\
-	      $\lambda\in K$ \hl{incompleto}\\
+	      $\lambda\in\K$ \hl{incompleto}\\
 	      $\forall n\ge1,(\R^n,+,\cdot)$ è uno spazio vettoriale reale chiamato $n$-spazio vettoriale \ul{numerico} su $\R$.\\
 	      Elemento \ul{neutro}: $\ul{0}=(0,\cdots,0)$\\
 	      Elemento \ul{opposto} di $x=(x_1,\cdots,x_n)$ è $-x=(-x_1,\cdots,-x_n)$\\
-	      \ul{Osservazione}: $n=1:\R$ è uno spazio vettoriale su $\R$ (ogni campo $\mathbb{K}$ è uno spazio vettoriale su se stesso)\\
+	      \ul{Osservazione}: $n=1:\R$ è uno spazio vettoriale su $\R$ (ogni campo $\K$ è uno spazio vettoriale su se stesso)\\
 	      In maniera analoga definiamo $+$ e $\cdot$ su\\
 	      $k^n=\{(x_1,\cdots,x_n):x_i\in K\forall i\}$\\
-	      $(k^n,+,\cdot)$ è uno spazio vettoriale su $\mathbb{K}$ chiamato $n$-spazio vettoriale numerico su $\mathbb{K}$.\\
+	      $(k^n,+,\cdot)$ è uno spazio vettoriale su $\K$ chiamato $n$-spazio vettoriale numerico su $\K$.\\
 	      \ul{Esempio}: $k=\mathbb{C},\mathbb{C}^n\\k=\mathbb{F}_2,\mathbb{F}^n_2$
 	\item Funzioni da un insieme a un campo\\
-	      Sia $\mathbb{X}$ un insieme \ul{qualunque} e $\mathbb{K}$ un campo\\
-	      $\mathbb{V}=\{$funzioni $f:\mathbb{X}\to\mathbb{K}\}$
+	      Sia $\mathbb{X}$ un insieme \ul{qualunque} e $\K$ un campo\\
+	      $\V=\{$funzioni $f:\mathbb{X}\to\K\}$
 	      \begin{itemize}
 		      \item Binaria interna: $+:V\times V\to V\\(f,g)\to f+g$\\
 		            dove $f+g: X\to K\\x\mapsto(f+g)(x):=f(x)+g(x)$
@@ -461,7 +467,7 @@ Nota che $\mathbb{C}$ è un campo
 	      $\cdot:\R\times\R[x]\to\R[x]\\P\in\R[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\R\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$\\
 	      $(\R[x],+,\cdot)$ è uno spazio vettoriale su $\R$.\\
 	      In modo analogo si definisce $(K[x],+,\cdot)$ dove\\
-	      $K[x]=\{$polinomi a coefficienti in $\mathbb{K}$ in un'indetermiinata$\}$\\
+	      $K[x]=\{$polinomi a coefficienti in $\K$ in un'indetermiinata$\}$\\
 	      Molti problemi di matemadica/fisica hanno la proprietà che l'insieme delle soluzioni ha una struttura di spazio vettoriale.\\
 	      \ul{Esempi}:
 	      \begin{itemize}
@@ -505,10 +511,10 @@ $\begin{cases}x+y+z=6\\2x-y=0\end{cases}$\vspace*{1em}
 	\item Un esempio di spazio vettoriale
 	\item Uno strumento conciso per rappresentare oggetti *parola incomprensibile*, tra cui molti dell'algebra lineare
 \end{itemize}
-Sia $\mathbb{K}$ un campo.
+Sia $\K$ un campo.
 Siano $m,n\ge1$ due numeri
 
-\Def{Una matrice $m\times n$ a elementi in $\mathbb{K}$ è una tabella rettangolare di $m\cdot n$ elementi di $\mathbb{K}$, disposti su $m$ righe e $n$ colonne}{}
+\Def{Una matrice $m\times n$ a elementi in $\K$ è una tabella rettangolare di $m\cdot n$ elementi di $\K$, disposti su $m$ righe e $n$ colonne}{}
 
 \ul{Notazione}:
 
@@ -580,7 +586,7 @@ Definiamo due operazioni su $M_{m,n}$:
 		      \item $\lambda\cdot(A+B)=\lambda\cdot A + \lambda\cdot B$
 		      \item $(\lambda+\mu)\cdot A=\lambda\cdot A+\mu\cdot A$
 		      \item $(\lambda\mu)\cdot A=\lambda\cdot(\mu\cdot A)$
-		      \item $1\cdot A = A\forall m,n\ge1\text{ interi, }(M_{m,n}(K),+,\cdot)\text{ è uno spazio vettoriale su }\mathbb{K}$
+		      \item $1\cdot A = A\forall m,n\ge1\text{ interi, }(M_{m,n}(K),+,\cdot)\text{ è uno spazio vettoriale su }\K$
 	      \end{enumerate}
 	\item \ul{Prodotto di matrici} (prodotto riga per colonna):
 
@@ -824,7 +830,7 @@ $\begin{bmatrix}
 \section{29/03/22}
 \subsection{Sistemi di equazioni lineari}
 \Def{Siano $x_1,\cdots,x_n$ n indeterminante.}{
-	Un'\ul{equazione lineare} nelle indeterminate $x_1,\cdots,x_n$ a coefficienti in $\mathbb{K}$ è un'equazione della forma:
+	Un'\ul{equazione lineare} nelle indeterminate $x_1,\cdots,x_n$ a coefficienti in $\K$ è un'equazione della forma:
 
 	(*) $a_1x_1+a_2x_2+\cdots+a_nx_n=b, a_i\in K\forall i,\ b\in K$
 
@@ -988,7 +994,7 @@ $(*)=\begin{cases}
 	      $(**)=\begin{cases}
 			      \lambda a_1x_1+\cdots+\lambda a_nx_n=\lambda b \\
 			      a_{1'}x_1+\cdots+a_{n'}x_n=b'
-		      \end{cases},\ \lambda\not=0,\ \lambda\in\mathbb{K}$
+		      \end{cases},\ \lambda\not=0,\ \lambda\in\K$
 
 	      Moltiplicare (primo e secondo membro) per uno scalare non nullo non cambia l'insieme delle soluzioni:
 
@@ -1303,7 +1309,7 @@ $P_r\cdots P_2P_1A=In$
 
 $(A\quad\vdots\quad In)\rightarrow(In\quad\vdots\quad A^{-1})$
 
-Sistema lineare omogeneo a coefficienti in $\mathbb{K}$
+Sistema lineare omogeneo a coefficienti in $\K$
 
 $(*)\begin{cases}
 		a_{11}x_1+\cdots+a_{1n}x_n=0 \\
@@ -1330,7 +1336,7 @@ $S_0$ è un sottoinsieme di $K^n$ con qualche interessante proprietà.
 	      Abbiamo:
 
 	      $\forall i\quad a_{i1}(x_1+y_1)+\cdots+a_{in}(x_n+y_n)=\\=a_{i1}x_1+a_{i1}+\cdots+a_{in}x_n+a_{in}y_n=\\=a_{i1}x_1+\cdots+a_{i1}x_n+a_{in}y_1+\cdots+a_{in}y_n$
-	\item Se $(x_1,\cdots,x_n)\in S_0\Rightarrow\lambda(x_1,\cdots,x_n)\in S_0,\forall\lambda\in\mathbb{K}$
+	\item Se $(x_1,\cdots,x_n)\in S_0\Rightarrow\lambda(x_1,\cdots,x_n)\in S_0,\forall\lambda\in\K$
 
 	      \ul{Dim}:
 
