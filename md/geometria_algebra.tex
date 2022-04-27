@@ -8,7 +8,7 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mathtools}
-\usepackage[margin=3em]{geometry}
+\usepackage[margin=1em]{geometry}
 
 \pagenumbering{gobble}
 \title{Appunti del corso di algebra e geometria}
@@ -23,7 +23,6 @@
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\Def}[2]{\paragraph{\ul{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
 \newcommand{\Esempio}[1]{\subsubsection*{\ul{Esempio}:}#1}
-
 
 \begin{document}
 \maketitle
@@ -429,7 +428,6 @@ $(a,b)\leftmapsto a+ib$
 $(a,b)\mapsto a+ib$
 
 Nota che $\mathbb{C}$ è un campo
-
 \section*{REVISIONE FINITA QUI}
 \subsubsection*{Esempi di spazi vettoriali}
 \begin{enumerate}
@@ -2137,4 +2135,290 @@ $v_1,v_2$ linearmente indipendenti.
 	      \end{itemize}
 	\item Se $dim(V)=n$ e $v_1,\cdots,v_p\in V$ allora $rg(\{v_1,\cdots,v_p\})\leq min\{p,n\}$
 \end{enumerate}
+\section{27/04/22}
+% DA QUI IN POI SCRIVO DIRETTAMENTE IN LATEX, SENZA PASSARE PER MARKDOWN
+\Def{Sia $V$ uno spazio vettoriale su $\K$ e sia}{$\{v_1,\cdots,v_p\}$ un sottoinsieme finito di $V$. Il RANGO di $\{v_1,\cdots,v_p\}$ è la dimensione del sottospazio vettoriale generato da $\{v_1,\cdots,v_p\}$:
+
+	$rg(\{v_1,\cdots,v_p\})=dim(<v_1,\cdots,v_p>)$
+
+	Equivalentemente è il numero massimo di vettori linearmente indipendenti in $\{v_1,\cdots,v_p\}$.}
+\Def{Sia $A\in\M_{m,n}(\K)$.}{Il \ul{rango per righe} di $A$ è il rango dell'insieme delle sue righe (vettori in $\K^n$).
+
+	Il \ul{rango per colonne} di $A$ è il rango dell'insieme delle sue colonne (vettori $n\ \K^m$)}
+\Esempio{
+	$A=\begin{pmatrix}
+			1 & 0  & 0 & 1 \\
+			0 & 1  & 0 & 0 \\
+			1 & -1 & 0 & 1
+		\end{pmatrix}\in\M_(3,4)(\R).$\\
+
+	Rango per righe di $A=rg(\{(1,0,0,1),(0,1,0,0),(1,-1,0,1)\})=dim(<(1,0,0,1),(0,1,0,0),(1,-1,0,1)>)=2$\\
+
+	Rango per colonne di $A=rg(\{(1,0,1),(0,1,-1),(0,0,0),(1,0,1)\})=dim(<(1,0,1),(0,1,-1),(0,0,0),(1,0,1)>)=2$
+}
+
+\paragraph*{\ul{Teorema}:}
+Il rango per righe e il rango per colonne di una matrice coincidono.
+
+Possiamo dunque chiamare semplicemente RANGO di $A\in\M_{m,n}(\K)$ il rango per righe (o per colonne) di $A$. Lo denotiamo $rg(A)$.
+
+\paragraph*{\ul{Osservazione}:} Se $A\in\M_{m,n}(\K)\Rightarrow rg(A)\le min\{m,n\}$
+\Esempio{
+	$M=\begin{pmatrix}
+			\boxed{1} & 2         & 3 & 4          & 5          \\
+			0         & \boxed{6} & 7 & 8          & 9          \\
+			0         & 0         & 0 & \boxed{10} & 11         \\
+			0         & 0         & 0 & 0          & \boxed{12} \\
+			0         & 0         & 0 & 0          & 0
+		\end{pmatrix}$\\
+
+	$rg(M)=4$
+	\hl{Incompleto}
+}
+
+\paragraph*{\ul{Proposizione}:} Il rango di una matrice a scalini è uguale al numero di righe non nulle.\\
+
+\ul{Dim}\\
+
+È facile mostrare che le righe non nulle di una matrice a scalini sono linearmente indipendenti.
+\paragraph*{\ul{Proposizione}:} Sia $A\in\M_{m,n}(\K)$\\
+
+Siano $B\in\M_m(\K),C\in\M_n(\K)$ due matrici invertibili.
+
+Allora $rg=(A)=rg(BA)=rg(AC)$, cioè moltiplicare a destra o a sinistra per una matrice invertibile non modifica il rango di $A$
+\paragraph*{\ul{Corollario}:} Il rango di una matrice $A$ è uguale al rango di una matrice a scalini $B$ ottenuta da $A$ attraverso delle operazioni elementari.
+
+Inoltre il sottospazio generato dalle righe di $A$ è lo stesso del sottospazio generato dalle righe di $B$\\
+
+\ul{Idea della dim}: ogni operazione elementare corrisponde alla moltiplicazione a sinistra per una matrice elementare e le matrici elementari sono invertibili.\\
+
+\ul{Applicazioni}
+
+\begin{enumerate}
+	\item Calcolare una base e la dimensione di\\
+	      $\hspace*{5em}v_1\hspace*{4.8em}v_2\hspace*{5em}v_3\hspace*{5.6em}v_4\hspace*{4.8em}v_5$\\
+	      $U=<(1,-3,2,0,1),(1,1,3,1,3),(3,-5,2,1,7),(-1,7,-1,0,1),(0,4,1,1,2)>$\\
+	      $dim(U)=rg(\{v_1,v_2,v_3,v_4,v_5\})=rg\begin{pmatrix}v_1\\v_2\\v_3\\v_4\\v_5\end{pmatrix}$\\
+	      $A=\begin{pmatrix}
+			      1  & -3 & 2  & 0 & 1 \\
+			      1  & 1  & 3  & 1 & 3 \\
+			      3  & -5 & 2  & 1 & 7 \\
+			      -1 & 7  & -1 & 0 & 1 \\
+			      0  & 4  & 1  & 1 & 2
+		      \end{pmatrix}\xRightarrow{\hl{incompleto}}\begin{pmatrix}
+			      1 & -3 & 2  & 0 & 1 \\
+			      0 & 4  & 1  & 1 & 2 \\
+			      0 & 4  & -4 & 1 & 4 \\
+			      0 & 4  & 1  & 0 & 2 \\
+			      0 & 4  & 1  & 1 & 2
+		      \end{pmatrix}\xRightarrow{\hl{incompleto}}\begin{pmatrix}
+			      1 & -3 & 2  & 0  & 1 \\
+			      0 & 4  & 1  & 1  & 2 \\
+			      0 & 0  & -5 & 0  & 2 \\
+			      0 & 0  & 0  & -1 & 0 \\
+			      0 & 0  & 0  & 0  & 0
+		      \end{pmatrix}\leftarrow$ ha 4 righe non nulle\\
+	      $\Rightarrow rg(A)=dim(U)=4$\\
+	      e una base di $U$ è $\{(1,-3,2,0,1),(0,4,1,1,2),(0,0,-5,0,2),(0,0,0,-1,0)\}$
+	\item $\{(1,1,1),(1,2,2),(1,2,3)\}$ è una base di $\R^3$?\\
+	      $\{(1,1,1),(1,2,2),(1,2,3)\}$ è una base di $\R^3\Leftrightarrow(1,1,1),(1,2,2),(1,2,3)$ sono linearmente indipendenti?\\
+	      $\Leftrightarrow rg\begin{pmatrix}
+			      1 & 1 & 1 \\
+			      1 & 2 & 2 \\
+			      1 & 2 & 3
+		      \end{pmatrix}=3$
+	      \hl{Incompleto}
+\end{enumerate}
+\paragraph*{\ul{Proposizione}:} Una matrice quadrata $A\in\M_n(\K)$ è invertibile $\Leftrightarrow\ rg(A)=n$.
+
+\hspace*{6em}(Una matrice quadrata è invertibili se e solo se ha rango massimo).
+
+\Esempio{
+	$A=\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9
+	\end{pmatrix}$ Per quali valori di $\K$ è invertibile?\\
+
+	\hspace*{2.4em}$\downarrow$ Riduzione a scalini\\
+
+	$\begin{pmatrix}
+		1&2&3\\
+		0&-3&-6\\
+		0&0&k-9
+	\end{pmatrix}$\\
+
+	$rg(A)=3\Leftrightarrow k-9\not=0\Leftrightarrow k\not=9$
+
+	\hspace*{3em}$\Updownarrow$
+	
+	$A$ è invertibile.\\
+
+	\ul{Dim}: $(A\in\M_n(\K)\text{ è invertibile}\Leftrightarrow rg(A)=n)$
+
+	$\Rightarrow)$ Sia $A\in\M_n(\K)$ invertibile $\Leftarrow\exists A^{-1}\in\M_n(\K)$
+
+	tale che $A\cdot A^{-1}=In$ \hl{creare nuova "rightdim" macro con minipage}
+
+	Allora abbiamo $rg(A)=rg(AA^{-1})=rg(In)=n$ (il rango non cambia se moltiplicato per una matrice invertibile) (In è una matrice a scalini senza righe nulle).\\
+
+	$\Leftarrow)$ Sia $A\in\M_n(\K)$ di rango n e siano $R_1,\cdots,R_n$ le righe di $A$.
+
+	$\Rightarrow\{R_1,\cdots,R_n\}$ è una base di $\K$\\
+
+	Siano:\\
+
+	$E_1=(1,0,\cdots,0)$
+	
+	$E_2=(0,1,\cdots,0)$
+	
+	$\vdots$
+
+	$E_n=(0,0,\cdots,1)$\\
+
+	Quindi $\exists\ b_{ij}\in\K$ tali che:
+
+	$E_1=b_{11}R_1+b_{12}R_2+\cdots+b_{1n}R_n$
+	
+	$E_2=b_{21}R_1+b_{22}R_2+\cdots+b_{2n}R_n$
+	
+	$\vdots$
+
+	$E_n=b_{n1}R_1+b_{n2}R_2+\cdots+b_{nn}R_n$\\
+
+	Sia $B=(b_{ij})_{1\le i\le n;\ 1\le j\le n}\in\M_n(\K)$\\
+
+	È facile mostrare $BA=In\Rightarrow A$ è invertibile\\
+
+	$A=\begin{pmatrix}1&0\\1&1\end{pmatrix}\qquad rg(A)=2$\\
+
+	$(1,0)=1(1,0)+0(1,1)$
+
+	$(0,1)=-1(1,0)+1(1,1)$\\
+
+	$\boxed{\begin{pmatrix}1&0\\-1&1\end{pmatrix}}\begin{pmatrix}1&0\\1&1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$
+
+}
+
+\subsection{Torniamo ai sistemi lineari}
+
+\paragraph*{\ul{Teorema di Rouchè-Capelli} (mannaggia ai francesi, 2006):} (Criterio di compatibilità di un sistema)\\
+
+Un sistema lineare di $m$ equazioni in $n$ incognite
+
+$AX=b$
+
+dove $A\in\M_{m,n}(\K),\quad b\in\M_{m,n}(\K),X=\begin{pmatrix}x1\\\vdots\\x_n\end{pmatrix}$
+
+è compatibile se e solo se
+
+$rg(A)rg(A|b)$.
+
+In tal caso il sistema possiede $\infty^{r-r}$ soluzioni, dove $r=rg(A)$.
+
+\Esempio{
+	$\begin{cases}
+		x_1+x_2+x_3+x_4=1\\
+		x_1+x_4=3\\
+		-x_2-x_3+7x_4=6\\
+		-x_1-2x_2-2x_3+3x_4=k
+	\end{cases}$
+
+	Per quali valori di $k\in\R$ il sistema è compatibile?\\
+
+	$\begin{pmatrix}
+		1&1&1&1&\vdots&1\\
+		1&0&0&1&\vdots&3\\
+		0&-1&-1&7&\vdots&6\\
+		-1&-2&-2&3&\vdots&k
+	\end{pmatrix}$
+
+	\hspace*{5em}$\downarrow$ Riduzione a scalini
+
+	$\boxed{\begin{pmatrix}
+		1&1&1&1&\vdots&1\\
+		0&-1&-1&0&\vdots&2\\
+		0&0&0&7&\vdots&4\\
+		0&0&0&0&\vdots&\frac{7k-23}{7}
+	\end{pmatrix}}$
+
+	$rg(A)=3$
+
+	$rg(A|b)=\begin{cases}
+		3&\text{se}
+	\end{cases}$\hl{incompleto}
+}
+\paragraph*{\ul{Dim} (Rouchè-Capelli):}
+
+Il sistema $AX=b$ è compatibile
+
+\hspace*{3em}$\Updownarrow$
+
+$\exists(x_1,\cdots,x_n)\in\K^n$ tale che
+
+$\begin{pmatrix}
+	
+\end{pmatrix}$\hl{incompleto}
+
+$\begin{pmatrix}
+a_{11}x_1+\cdots+a_{1n}x_n\\
+\vdots\\
+a_{m1}x_1+\cdots+a_{mn}x_n
+\end{pmatrix}=\begin{pmatrix}
+	b_1\\\vdots\\b_n
+\end{pmatrix}\Rightarrow1\begin{pmatrix}
+	a_{11}\\\vdots\\a_{m_1}
+\end{pmatrix}+\cdots+\begin{pmatrix}
+	a_{12}\\\vdots\\a_{m2}
+\end{pmatrix}$\hl{incompleto}\\
+
+Supponiamo ora che $AX=b$ sia un sistema compatibile.
+
+Sia $r=rg(A)=rg(A|b)$.
+
+Applicando il procedimento di Gauss-Jordan alla matrice orlata ($A|b$) associata al sistema,
+
+otteniamo una matrice a scalini con $r$ righe non nulle e quindi con $r$ pivot.
+
+(ovviamente, poichè il sistema è compatibile, l'ultimo pivot non appartiene all'ultima colonna)
+
+Quindi il sistema possiede $n-r$ variabili libere, cioè $\infty^{n-r}$ soluzioni. \boxed{}
+
+\paragraph*{\ul{Osservazione}:} Se $b=\begin{pmatrix}0\\\vdots\\0\end{pmatrix}$, cioè se $AX=b$ è un sistema omogeneo, allora $rg(A)=rg(A|b)\xRightarrow{\text{Rouchè-Capelli}}$ è sempre compatibile.
+
+L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $n-r$, dove $r=rg(A)$
+
+\Esempio{
+	$S=\{(x,y,z,t)\in\R^4:
+	\begin{cases}
+		x-2y+3t=0\\
+		y-z+t=0\\
+		2x-y-3z+9t=0
+	\end{cases}\}$
+
+	$dim(S)$ base di $S$
+
+	$\begin{pmatrix}
+		1&-2&0&3&\vdots&0\\
+		0&1&-1&1&\vdots&0\\
+		2&-1&-3&9&\vdots&0
+	\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-2R_1}
+	\begin{pmatrix}
+		1&-2&0&3&\vdots&0\\
+		0&1&-1&1&\vdots&0\\
+		0&3&-3&3&\vdots&0
+	\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-3R_2}
+	\begin{pmatrix}
+		1&-2&0&3&\vdots&0\\
+		0&1&-1&1&\vdots&0\\
+		0&0&0&0&\vdots&0
+	\end{pmatrix}\rightarrow\begin{cases}
+		x=2y-3t=2z\\
+		y=z-t
+	\end{cases}$
+
+	$dim(S)=4-2=2$
+
+	$S=\{(2-\lambda5\mu,\lambda-\mu,\lambda,\mu):\lambda,\mu\in\R\}=\{\lambda(2,1,1,0)+\mu(-5,-1,0,1):\lambda,\mu\in\R\}, \lambda=1, \mu=0\Rightarrow$ una base di $S$ è $\{(2,1,1,0),(-5,-1,0,1)\}$
+}
 \end{document}
