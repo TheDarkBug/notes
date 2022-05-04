@@ -8,6 +8,7 @@
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{tikz}
 \usepackage[margin=1em]{geometry}
 
 \pagenumbering{gobble}
@@ -2234,69 +2235,69 @@ Inoltre il sottospazio generato dalle righe di $A$ è lo stesso del sottospazio 
 \hspace*{6em}(Una matrice quadrata è invertibili se e solo se ha rango massimo).
 
 \Esempio{
-	$A=\begin{pmatrix}
-		1&2&3\\
-		4&5&6\\
-		7&8&9
+$A=\begin{pmatrix}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9
 	\end{pmatrix}$ Per quali valori di $\K$ è invertibile?\\
 
-	\hspace*{2.4em}$\downarrow$ Riduzione a scalini\\
+\hspace*{2.4em}$\downarrow$ Riduzione a scalini\\
 
-	$\begin{pmatrix}
-		1&2&3\\
-		0&-3&-6\\
-		0&0&k-9
+$\begin{pmatrix}
+		1 & 2  & 3   \\
+		0 & -3 & -6  \\
+		0 & 0  & k-9
 	\end{pmatrix}$\\
 
-	$rg(A)=3\Leftrightarrow k-9\not=0\Leftrightarrow k\not=9$
+$rg(A)=3\Leftrightarrow k-9\not=0\Leftrightarrow k\not=9$
 
-	\hspace*{3em}$\Updownarrow$
-	
-	$A$ è invertibile.\\
+\hspace*{3em}$\Updownarrow$
 
-	\ul{Dim}: $(A\in\M_n(\K)\text{ è invertibile}\Leftrightarrow rg(A)=n)$
+$A$ è invertibile.\\
 
-	$\Rightarrow)$ Sia $A\in\M_n(\K)$ invertibile $\Leftarrow\exists A^{-1}\in\M_n(\K)$
+\ul{Dim}: $(A\in\M_n(\K)\text{ è invertibile}\Leftrightarrow rg(A)=n)$
 
-	tale che $A\cdot A^{-1}=In$ \hl{creare nuova "rightdim" macro con minipage}
+$\Rightarrow)$ Sia $A\in\M_n(\K)$ invertibile $\Leftarrow\exists A^{-1}\in\M_n(\K)$
 
-	Allora abbiamo $rg(A)=rg(AA^{-1})=rg(In)=n$ (il rango non cambia se moltiplicato per una matrice invertibile) (In è una matrice a scalini senza righe nulle).\\
+tale che $A\cdot A^{-1}=In$ \hl{creare nuova "rightdim" macro con minipage}
 
-	$\Leftarrow)$ Sia $A\in\M_n(\K)$ di rango n e siano $R_1,\cdots,R_n$ le righe di $A$.
+Allora abbiamo $rg(A)=rg(AA^{-1})=rg(In)=n$ (il rango non cambia se moltiplicato per una matrice invertibile) (In è una matrice a scalini senza righe nulle).\\
 
-	$\Rightarrow\{R_1,\cdots,R_n\}$ è una base di $\K$\\
+$\Leftarrow)$ Sia $A\in\M_n(\K)$ di rango n e siano $R_1,\cdots,R_n$ le righe di $A$.
 
-	Siano:\\
+$\Rightarrow\{R_1,\cdots,R_n\}$ è una base di $\K$\\
 
-	$E_1=(1,0,\cdots,0)$
-	
-	$E_2=(0,1,\cdots,0)$
-	
-	$\vdots$
+Siano:\\
 
-	$E_n=(0,0,\cdots,1)$\\
+$E_1=(1,0,\cdots,0)$
 
-	Quindi $\exists\ b_{ij}\in\K$ tali che:
+$E_2=(0,1,\cdots,0)$
 
-	$E_1=b_{11}R_1+b_{12}R_2+\cdots+b_{1n}R_n$
-	
-	$E_2=b_{21}R_1+b_{22}R_2+\cdots+b_{2n}R_n$
-	
-	$\vdots$
+$\vdots$
 
-	$E_n=b_{n1}R_1+b_{n2}R_2+\cdots+b_{nn}R_n$\\
+$E_n=(0,0,\cdots,1)$\\
 
-	Sia $B=(b_{ij})_{1\le i\le n;\ 1\le j\le n}\in\M_n(\K)$\\
+Quindi $\exists\ b_{ij}\in\K$ tali che:
 
-	È facile mostrare $BA=In\Rightarrow A$ è invertibile\\
+$E_1=b_{11}R_1+b_{12}R_2+\cdots+b_{1n}R_n$
 
-	$A=\begin{pmatrix}1&0\\1&1\end{pmatrix}\qquad rg(A)=2$\\
+$E_2=b_{21}R_1+b_{22}R_2+\cdots+b_{2n}R_n$
 
-	$(1,0)=1(1,0)+0(1,1)$
+$\vdots$
 
-	$(0,1)=-1(1,0)+1(1,1)$\\
+$E_n=b_{n1}R_1+b_{n2}R_2+\cdots+b_{nn}R_n$\\
 
-	$\boxed{\begin{pmatrix}1&0\\-1&1\end{pmatrix}}\begin{pmatrix}1&0\\1&1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$
+Sia $B=(b_{ij})_{1\le i\le n;\ 1\le j\le n}\in\M_n(\K)$\\
+
+È facile mostrare $BA=In\Rightarrow A$ è invertibile\\
+
+$A=\begin{pmatrix}1&0\\1&1\end{pmatrix}\qquad rg(A)=2$\\
+
+$(1,0)=1(1,0)+0(1,1)$
+
+$(0,1)=-1(1,0)+1(1,1)$\\
+
+$\boxed{\begin{pmatrix}1&0\\-1&1\end{pmatrix}}\begin{pmatrix}1&0\\1&1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$
 
 }
 
@@ -2318,35 +2319,35 @@ In tal caso il sistema possiede $\infty^{r-r}$ soluzioni, dove $r=rg(A)$.
 
 \Esempio{
 	$\begin{cases}
-		x_1+x_2+x_3+x_4=1\\
-		x_1+x_4=3\\
-		-x_2-x_3+7x_4=6\\
-		-x_1-2x_2-2x_3+3x_4=k
-	\end{cases}$
+			x_1+x_2+x_3+x_4=1 \\
+			x_1+x_4=3         \\
+			-x_2-x_3+7x_4=6   \\
+			-x_1-2x_2-2x_3+3x_4=k
+		\end{cases}$
 
 	Per quali valori di $k\in\R$ il sistema è compatibile?\\
 
 	$\begin{pmatrix}
-		1&1&1&1&\vdots&1\\
-		1&0&0&1&\vdots&3\\
-		0&-1&-1&7&\vdots&6\\
-		-1&-2&-2&3&\vdots&k
-	\end{pmatrix}$
+			1  & 1  & 1  & 1 & \vdots & 1 \\
+			1  & 0  & 0  & 1 & \vdots & 3 \\
+			0  & -1 & -1 & 7 & \vdots & 6 \\
+			-1 & -2 & -2 & 3 & \vdots & k
+		\end{pmatrix}$
 
 	\hspace*{5em}$\downarrow$ Riduzione a scalini
 
 	$\boxed{\begin{pmatrix}
-		1&1&1&1&\vdots&1\\
-		0&-1&-1&0&\vdots&2\\
-		0&0&0&7&\vdots&4\\
-		0&0&0&0&\vdots&\frac{7k-23}{7}
-	\end{pmatrix}}$
+				1 & 1  & 1  & 1 & \vdots & 1               \\
+				0 & -1 & -1 & 0 & \vdots & 2               \\
+				0 & 0  & 0  & 7 & \vdots & 4               \\
+				0 & 0  & 0  & 0 & \vdots & \frac{7k-23}{7}
+			\end{pmatrix}}$
 
 	$rg(A)=3$
 
 	$rg(A|b)=\begin{cases}
-		3&\text{se}
-	\end{cases}$\hl{incompleto}
+			3 & \text{se}
+		\end{cases}$\hl{incompleto}
 }
 \paragraph*{\ul{Dim} (Rouchè-Capelli):}
 
@@ -2357,20 +2358,20 @@ Il sistema $AX=b$ è compatibile
 $\exists(x_1,\cdots,x_n)\in\K^n$ tale che
 
 $\begin{pmatrix}
-	
-\end{pmatrix}$\hl{incompleto}
+
+	\end{pmatrix}$\hl{incompleto}
 
 $\begin{pmatrix}
-a_{11}x_1+\cdots+a_{1n}x_n\\
-\vdots\\
-a_{m1}x_1+\cdots+a_{mn}x_n
-\end{pmatrix}=\begin{pmatrix}
-	b_1\\\vdots\\b_n
-\end{pmatrix}\Rightarrow1\begin{pmatrix}
-	a_{11}\\\vdots\\a_{m_1}
-\end{pmatrix}+\cdots+\begin{pmatrix}
-	a_{12}\\\vdots\\a_{m2}
-\end{pmatrix}$\hl{incompleto}\\
+		a_{11}x_1+\cdots+a_{1n}x_n \\
+		\vdots                     \\
+		a_{m1}x_1+\cdots+a_{mn}x_n
+	\end{pmatrix}=\begin{pmatrix}
+		b_1 \\\vdots\\b_n
+	\end{pmatrix}\Rightarrow1\begin{pmatrix}
+		a_{11} \\\vdots\\a_{m_1}
+	\end{pmatrix}+\cdots+\begin{pmatrix}
+		a_{12} \\\vdots\\a_{m2}
+	\end{pmatrix}$\hl{incompleto}\\
 
 Supponiamo ora che $AX=b$ sia un sistema compatibile.
 
@@ -2390,35 +2391,225 @@ L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $
 
 \Esempio{
 	$S=\{(x,y,z,t)\in\R^4:
-	\begin{cases}
-		x-2y+3t=0\\
-		y-z+t=0\\
-		2x-y-3z+9t=0
-	\end{cases}\}$
+		\begin{cases}
+			x-2y+3t=0 \\
+			y-z+t=0   \\
+			2x-y-3z+9t=0
+		\end{cases}\}$
 
 	$dim(S)$ base di $S$
 
 	$\begin{pmatrix}
-		1&-2&0&3&\vdots&0\\
-		0&1&-1&1&\vdots&0\\
-		2&-1&-3&9&\vdots&0
-	\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-2R_1}
-	\begin{pmatrix}
-		1&-2&0&3&\vdots&0\\
-		0&1&-1&1&\vdots&0\\
-		0&3&-3&3&\vdots&0
-	\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-3R_2}
-	\begin{pmatrix}
-		1&-2&0&3&\vdots&0\\
-		0&1&-1&1&\vdots&0\\
-		0&0&0&0&\vdots&0
-	\end{pmatrix}\rightarrow\begin{cases}
-		x=2y-3t=2z\\
-		y=z-t
-	\end{cases}$
+			1 & -2 & 0  & 3 & \vdots & 0 \\
+			0 & 1  & -1 & 1 & \vdots & 0 \\
+			2 & -1 & -3 & 9 & \vdots & 0
+		\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-2R_1}
+		\begin{pmatrix}
+			1 & -2 & 0  & 3 & \vdots & 0 \\
+			0 & 1  & -1 & 1 & \vdots & 0 \\
+			0 & 3  & -3 & 3 & \vdots & 0
+		\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-3R_2}
+		\begin{pmatrix}
+			1 & -2 & 0  & 3 & \vdots & 0 \\
+			0 & 1  & -1 & 1 & \vdots & 0 \\
+			0 & 0  & 0  & 0 & \vdots & 0
+		\end{pmatrix}\rightarrow\begin{cases}
+			x=2y-3t=2z \\
+			y=z-t
+		\end{cases}$
 
 	$dim(S)=4-2=2$
 
 	$S=\{(2-\lambda5\mu,\lambda-\mu,\lambda,\mu):\lambda,\mu\in\R\}=\{\lambda(2,1,1,0)+\mu(-5,-1,0,1):\lambda,\mu\in\R\}, \lambda=1, \mu=0\Rightarrow$ una base di $S$ è $\{(2,1,1,0),(-5,-1,0,1)\}$
 }
+\section{29/04/22}
+\hl{INCOMPLETO}
+\section{04/05/22}
+\begin{itemize}
+	\item Come calcolare il determinate di una matrice $A$?
+	\begin{enumerate}
+		\item Se $A=(a)\in\M_1(\K)\Rightarrow det(A)=a$
+		\item Se $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\M_2(\K)\Rightarrow det(A)=ad-bc$
+		\item Se $A\in\M_n(\K)$ (in particolare $n\le3$)
+			\begin{itemize}
+				\item Teorema di Laplace (è pratico quando esiste una riga o colonna con "tanti" zeri)
+				\item Algoritmo di Gauss-Jordan
+				\item Regola di Sarrus $(n=3)$
+			\end{itemize}
+	\end{enumerate}
+
+	\item Come calcolare il rango di una matrice $A$?
+	\begin{enumerate}
+		\item Se $A\in\M_{m,n}(\K)$
+			\begin{itemize}
+				\item Algoritmo di Gauss-Jordan (riduco a scalini e conto il numero di righe non nulle).
+				\item Principio dei minori orlati.
+			\end{itemize}
+		\item Se $A\in\M_n(\K)$ e $det(A)\not=0\Rightarrow rg(A)=n$.
+	\end{enumerate}
+	\item Come risolvere un sistema lineare $AX=b$?\\
+		  \ul{Compatibilità}:
+		  \begin{itemize}
+			  \item Algoritmo di Gauss-Jordan (guarda l'ultimo pivot)
+			  \item Teorema di Rouchè-Capelli $(rg(A)=rg(A|b))$
+		  \end{itemize}
+		  \ul{Risoluzione}
+		  \begin{itemize}
+			  \item Dopo Gauss-Jordan individuo le variabili libere e "risolvo" il sistema a scalini per determinare le soluzioni.
+			  \item Se $A\in\M(\K)$ e $det(A)\not=0\Rightarrow$ metodo di Cramer.
+		  \end{itemize}
+\end{itemize}
+\ul{Applicazioni lineari}
+\Def{Siano $V$ e $W$ due spazi vettoriali su $\K$.}{
+	Una funzione\\
+	$f:V\longrightarrow W$
+	si dice un'\ul{applicazione lineare} se soddisfa le seguenti proprietà:
+	\begin{enumerate}
+		\item $f(v_1+v_2)=f(v_1)+f(v_2),\forall v_1,v_2\in V$
+		\item $f(\lambda v)=\lambda f(v),\forall\lambda\in\K,\forall v\in V$
+	\end{enumerate}
+}
+
+\Esempio{
+	\begin{enumerate}
+		\item $V=W=\R^2$\\
+			  $f:\R^2\rightarrow\R^2\\(x,y)\mapsto(x+y,x)$
+
+			  $f((1,0))=(1+0,1)=(1,1)\\f((0,1))=(0+1,0)=(1,0)$
+			  \begin{enumerate}
+				  \item Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$. Allora:
+				  
+				  $f(v_1+v_2)=f((x_1+x_2,y_1+y_2))=(x_1+x_2+y_1+y_2,x_1+x_2)=(x_1+y_1,x_1)+(x_2+y_2,x_2)$
+				  \item Sia $v=(x,y)\in\R^2,\lambda\in\R$. Allora:
+				  
+				  $f(\lambda v)=f((\lambda x,\lambda y))=(\lambda x+\lambda y,\lambda x)=\lambda(x+y,x)=\lambda f(v)$
+			  \end{enumerate}
+			  Quindi $f$ è un'applicazione lineare.
+
+			  \ul{Geometricamente}
+
+			  $v_1=(1,1)\rightarrow f(v_1)=(2,1)\qquad\qquad v_1+v_2=(0,3)\rightarrow f(v_1+v_2)=(3,0)$
+
+			  $v_2=(-1,2)\rightarrow f(v2)=(1,-1)$
+
+			  \begin{tikzpicture}
+				\draw[->] (0, 0) -- (1, 1) node[right] {$v_1$};
+				\draw[->] (0, 0) -- (-1, 2) node[right] {$v_2$};
+				\draw[->] (0, 0) -- (0, 2.6) node[right] {$v_1+v_2$};
+				\draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
+				\draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
+			  \end{tikzpicture}
+			  \begin{tikzpicture}
+				\draw[->] (0, 0) -- (2, 1) node[right] {$f(v_1)$};
+				\draw[->] (0, 0) -- (1, -1) node[right] {$f(v_2)$};
+				\draw[->] (0, 0) -- (2.6, 0) node[below] {$f(v_1)+f(v_2)$};
+				\draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
+				\draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
+			  \end{tikzpicture}\hl{incompleto}
+	\end{enumerate}
+}
+
+\paragraph*{\ul{Osservazioni}}
+\begin{enumerate}
+	\item \boxed{1} e \boxed{2} sono equivalenti alla condizione seguente:\\
+	$f(\lambda v_1+\mu v_2)=f(\lambda v_1)+f(\mu v_2)=\lambda f(v_1)+\mu f(v_2)$
+	\item Dalla prima osservazione si ottiene che se $f$ è un'applicazione lineare\\
+		  $f(\lambda_1v_1+\cdots+\lambda_nv_n)=\lambda_1f(v_1)+\cdots+\lambda_nf(v_n),\forall\lambda_1,\cdots,\lambda_n\in\K;\forall v_1,\cdots,v_n\in\V$
+	\item Se $f:V\rightarrow W$ è un'applicazione lineare allora se $0_V$ è il vettore nullo di $V$ e $0_W$ è il vettore nullo di W, allora:
+		\hl{incompleto}
+\end{enumerate}
+
+\subsection*{Un po' di \ul{terminologia}}
+\Def{\text{}}{\begin{itemize}
+	\item Un'applicazione lineare $f:V\rightarrow V$ è detta endomorfismo
+	\item Un'applicazione lineare $f:V\rightarrow K$ è detta una funzione lineare
+	\item Un'applicazione lineare $f:V\rightarrow W$ è detta un isomorfismo se $f$ è biunivoca ($\Leftrightarrow f$ iniettiva e suriettiva)
+	\item Un isoformismo $f:V\rightarrow V$ è detto un \ul{automorfismo}\\
+		  Un automorfismo è un endomorfismo biunivoco.
+\end{itemize}}
+
+\hl{Esempi mancanti}
+
+\paragraph*{Proposizione} Sia $f:V\rightarrow W$ un'applicazione lineare.
+
+Siano $v_1,\cdots,v_n\in\V$ e siano $w_i=f(v_i)\quad\forall i=1,\cdots,n$. Allora
+
+$v_1,\cdots,v_n$ sono linearmente dipendenti $\Leftrightarrow$ $w_1,\cdots,w_n$ sono linearmente dipendenti
+
+\ul{dim}: per esercizio
+
+\paragraph*{Proposizione}: Siano $V$ e $W$ due spazi vettoriali su $\K$.
+
+Sia $\{v_1,\cdots,v_n\}$ una base di $V$ e siano $w_1,\cdots,w_n$ vettori arbitrari di $W$.
+
+Allora esiste un'unica applicazione lineare
+
+$f:V\rightarrow W$
+
+tale che
+
+$f(v_i)=w_i,\forall i=1,\cdots,n.$
+
+\ul{dim}
+
+Sia $v\in\V$ e siano $\lambda_1,\cdots,\lambda_n\in\K$ tali che $v=\lambda_1v_1+\cdots+\lambda_nv_n$. Allora
+
+$f(v)=f(\lambda_1v_1+\cdots+\lambda_nv_n)=\lambda_1f(v_1)+\cdots+\lambda_nf(v_n)$
+Quindi $f$ è unica.
+
+\hl{Esempio mancante}
+
+\paragraph*{Proposizione}: Sia $f:V\rightarrow W$ un'applicazione lineare. Allora:
+\begin{enumerate}
+	\item Se $S_V$ è un sottospazio vettoriale di $V\Rightarrow f(S_V)=\{f(v):v\in S_V\}\subseteq W$ è un sottospazio di $W$.
+	\item Se $S_W$ è un sottospazio di $W\Rightarrow f^{-1}(S_W)\{v\in V:f(v)\in S_W\}\subseteq V$ è un sottospazio di $V$.
+\end{enumerate}
+
+\ul{Dim}
+\begin{enumerate}
+	\item Mostriamo che $f(S_V)$ è un sottospazio di $W$:
+	\begin{itemize}
+		\item $f(S_V)\not=\emptyset:0_W\in f(S_V)$ poichè $0_W=f(0_V)\in S_V$ perchè $S_V$ è un sottospazio
+		\item Siano $w_1,w_2\in f(S_V),\lambda,\mu\in\K$.
+		
+		Allora, per definizione, $\exists v_1\in S_V$ tale che $w_1=f(v_1)$ e $\exists v_2\in S_V$ tale che $w_2=f(v_2)$ \hl{Disegno figo con tikz}
+
+		Allora abbiamo
+
+		$\lambda w_1+\mu w_2=\lambda f(v_1)+\mu f(v_2)=(\leftarrow\text{linearità})f((\lambda v_1+\mu v_2)\in S_V)$ perchè $S_V$ è un sottospazio
+
+		$\Rightarrow\lambda w_1+\mu w_2\in f(S_V)$
+
+		Quindi $f(S_V)$ è un sottospazio di $W$
+		2) sulle note \hl{incompleto}
+	\end{itemize}
+\end{enumerate}
+
+\ul{Due casi particolari}
+
+$S_V=V\leadsto f(V):$ immagine di $f$
+
+$S_W=\{0_W\}\leadsto f^{-1}(\{0_W\}):$ nucleo di $f$
+
+\Def{Sia $f:V\rightarrow W$ un'applicazione lineare.}{
+	Il sottospazio di $V$
+
+	ker (da kernel, nucleo), $ker(f):=f^{-1}(\{0_W\})=\{v\in V:f(V)=0_W\}$
+
+	è detto \ul{nucleo} di $f$
+
+	Il sottospazio di $W$
+
+	$Im(f):=f(V)=\{f(v):v\in V\}$
+
+	è detto \ul{immagine} di $f$
+
+	Se $ker(f)$ è $Im(f)$ hanno dimensione finita allora chiamiamo \ul{nullità} la dimensione di $ker(f)$ e rango la dimensione di $Im(f)$.
+
+	$dim(ker(f))\\rg(f):=dim(Im(f))$
+
+	\hl{Esempio mancante}
+}
+
+
 \end{document}
