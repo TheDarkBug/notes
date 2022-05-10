@@ -2427,37 +2427,37 @@ L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $
 \section{04/05/22}
 \begin{itemize}
 	\item Come calcolare il determinate di una matrice $A$?
-	\begin{enumerate}
-		\item Se $A=(a)\in\M_1(\K)\Rightarrow det(A)=a$
-		\item Se $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\M_2(\K)\Rightarrow det(A)=ad-bc$
-		\item Se $A\in\M_n(\K)$ (in particolare $n\le3$)
-			\begin{itemize}
-				\item Teorema di Laplace (è pratico quando esiste una riga o colonna con "tanti" zeri)
-				\item Algoritmo di Gauss-Jordan
-				\item Regola di Sarrus $(n=3)$
-			\end{itemize}
-	\end{enumerate}
+	      \begin{enumerate}
+		      \item Se $A=(a)\in\M_1(\K)\Rightarrow det(A)=a$
+		      \item Se $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\M_2(\K)\Rightarrow det(A)=ad-bc$
+		      \item Se $A\in\M_n(\K)$ (in particolare $n\le3$)
+		            \begin{itemize}
+			            \item Teorema di Laplace (è pratico quando esiste una riga o colonna con "tanti" zeri)
+			            \item Algoritmo di Gauss-Jordan
+			            \item Regola di Sarrus $(n=3)$
+		            \end{itemize}
+	      \end{enumerate}
 
 	\item Come calcolare il rango di una matrice $A$?
-	\begin{enumerate}
-		\item Se $A\in\M_{m,n}(\K)$
-			\begin{itemize}
-				\item Algoritmo di Gauss-Jordan (riduco a scalini e conto il numero di righe non nulle).
-				\item Principio dei minori orlati.
-			\end{itemize}
-		\item Se $A\in\M_n(\K)$ e $det(A)\not=0\Rightarrow rg(A)=n$.
-	\end{enumerate}
+	      \begin{enumerate}
+		      \item Se $A\in\M_{m,n}(\K)$
+		            \begin{itemize}
+			            \item Algoritmo di Gauss-Jordan (riduco a scalini e conto il numero di righe non nulle).
+			            \item Principio dei minori orlati.
+		            \end{itemize}
+		      \item Se $A\in\M_n(\K)$ e $det(A)\not=0\Rightarrow rg(A)=n$.
+	      \end{enumerate}
 	\item Come risolvere un sistema lineare $AX=b$?\\
-		  \ul{Compatibilità}:
-		  \begin{itemize}
-			  \item Algoritmo di Gauss-Jordan (guarda l'ultimo pivot)
-			  \item Teorema di Rouchè-Capelli $(rg(A)=rg(A|b))$
-		  \end{itemize}
-		  \ul{Risoluzione}
-		  \begin{itemize}
-			  \item Dopo Gauss-Jordan individuo le variabili libere e "risolvo" il sistema a scalini per determinare le soluzioni.
-			  \item Se $A\in\M(\K)$ e $det(A)\not=0\Rightarrow$ metodo di Cramer.
-		  \end{itemize}
+	      \ul{Compatibilità}:
+	      \begin{itemize}
+		      \item Algoritmo di Gauss-Jordan (guarda l'ultimo pivot)
+		      \item Teorema di Rouchè-Capelli $(rg(A)=rg(A|b))$
+	      \end{itemize}
+	      \ul{Risoluzione}
+	      \begin{itemize}
+		      \item Dopo Gauss-Jordan individuo le variabili libere e "risolvo" il sistema a scalini per determinare le soluzioni.
+		      \item Se $A\in\M(\K)$ e $det(A)\not=0\Rightarrow$ metodo di Cramer.
+	      \end{itemize}
 \end{itemize}
 \ul{Applicazioni lineari}
 \Def{Siano $V$ e $W$ due spazi vettoriali su $\K$.}{
@@ -2473,60 +2473,60 @@ L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $
 \Esempio{
 	\begin{enumerate}
 		\item $V=W=\R^2$\\
-			  $f:\R^2\rightarrow\R^2\\(x,y)\mapsto(x+y,x)$
+		      $f:\R^2\rightarrow\R^2\\(x,y)\mapsto(x+y,x)$
 
-			  $f((1,0))=(1+0,1)=(1,1)\\f((0,1))=(0+1,0)=(1,0)$
-			  \begin{enumerate}
-				  \item Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$. Allora:
-				  
-				  $f(v_1+v_2)=f((x_1+x_2,y_1+y_2))=(x_1+x_2+y_1+y_2,x_1+x_2)=(x_1+y_1,x_1)+(x_2+y_2,x_2)$
-				  \item Sia $v=(x,y)\in\R^2,\lambda\in\R$. Allora:
-				  
-				  $f(\lambda v)=f((\lambda x,\lambda y))=(\lambda x+\lambda y,\lambda x)=\lambda(x+y,x)=\lambda f(v)$
-			  \end{enumerate}
-			  Quindi $f$ è un'applicazione lineare.
+		      $f((1,0))=(1+0,1)=(1,1)\\f((0,1))=(0+1,0)=(1,0)$
+		      \begin{enumerate}
+			      \item Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$. Allora:
 
-			  \ul{Geometricamente}
+			            $f(v_1+v_2)=f((x_1+x_2,y_1+y_2))=(x_1+x_2+y_1+y_2,x_1+x_2)=(x_1+y_1,x_1)+(x_2+y_2,x_2)$
+			      \item Sia $v=(x,y)\in\R^2,\lambda\in\R$. Allora:
 
-			  $v_1=(1,1)\rightarrow f(v_1)=(2,1)\qquad\qquad v_1+v_2=(0,3)\rightarrow f(v_1+v_2)=(3,0)$
+			            $f(\lambda v)=f((\lambda x,\lambda y))=(\lambda x+\lambda y,\lambda x)=\lambda(x+y,x)=\lambda f(v)$
+		      \end{enumerate}
+		      Quindi $f$ è un'applicazione lineare.
 
-			  $v_2=(-1,2)\rightarrow f(v2)=(1,-1)$
+		      \ul{Geometricamente}
 
-			  \begin{tikzpicture}
-				\draw[->] (0, 0) -- (1, 1) node[right] {$v_1$};
-				\draw[->] (0, 0) -- (-1, 2) node[right] {$v_2$};
-				\draw[->] (0, 0) -- (0, 2.6) node[right] {$v_1+v_2$};
-				\draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
-				\draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
-			  \end{tikzpicture}
-			  \begin{tikzpicture}
-				\draw[->] (0, 0) -- (2, 1) node[right] {$f(v_1)$};
-				\draw[->] (0, 0) -- (1, -1) node[right] {$f(v_2)$};
-				\draw[->] (0, 0) -- (2.6, 0) node[below] {$f(v_1)+f(v_2)$};
-				\draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
-				\draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
-			  \end{tikzpicture}\hl{incompleto}
+		      $v_1=(1,1)\rightarrow f(v_1)=(2,1)\qquad\qquad v_1+v_2=(0,3)\rightarrow f(v_1+v_2)=(3,0)$
+
+		      $v_2=(-1,2)\rightarrow f(v2)=(1,-1)$
+
+		      \begin{tikzpicture}
+			      \draw[->] (0, 0) -- (1, 1) node[right] {$v_1$};
+			      \draw[->] (0, 0) -- (-1, 2) node[right] {$v_2$};
+			      \draw[->] (0, 0) -- (0, 2.6) node[right] {$v_1+v_2$};
+			      \draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
+			      \draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
+		      \end{tikzpicture}
+		      \begin{tikzpicture}
+			      \draw[->] (0, 0) -- (2, 1) node[right] {$f(v_1)$};
+			      \draw[->] (0, 0) -- (1, -1) node[right] {$f(v_2)$};
+			      \draw[->] (0, 0) -- (2.6, 0) node[below] {$f(v_1)+f(v_2)$};
+			      \draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
+			      \draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
+		      \end{tikzpicture}\hl{incompleto}
 	\end{enumerate}
 }
 
 \paragraph*{\ul{Osservazioni}}
 \begin{enumerate}
 	\item \boxed{1} e \boxed{2} sono equivalenti alla condizione seguente:\\
-	$f(\lambda v_1+\mu v_2)=f(\lambda v_1)+f(\mu v_2)=\lambda f(v_1)+\mu f(v_2)$
+	      $f(\lambda v_1+\mu v_2)=f(\lambda v_1)+f(\mu v_2)=\lambda f(v_1)+\mu f(v_2)$
 	\item Dalla prima osservazione si ottiene che se $f$ è un'applicazione lineare\\
-		  $f(\lambda_1v_1+\cdots+\lambda_nv_n)=\lambda_1f(v_1)+\cdots+\lambda_nf(v_n),\forall\lambda_1,\cdots,\lambda_n\in\K;\forall v_1,\cdots,v_n\in\V$
+	      $f(\lambda_1v_1+\cdots+\lambda_nv_n)=\lambda_1f(v_1)+\cdots+\lambda_nf(v_n),\forall\lambda_1,\cdots,\lambda_n\in\K;\forall v_1,\cdots,v_n\in\V$
 	\item Se $f:V\rightarrow W$ è un'applicazione lineare allora se $0_V$ è il vettore nullo di $V$ e $0_W$ è il vettore nullo di W, allora:
-		\hl{incompleto}
+	      \hl{incompleto}
 \end{enumerate}
 
 \subsection*{Un po' di \ul{terminologia}}
 \Def{\text{}}{\begin{itemize}
-	\item Un'applicazione lineare $f:V\rightarrow V$ è detta endomorfismo
-	\item Un'applicazione lineare $f:V\rightarrow K$ è detta una funzione lineare
-	\item Un'applicazione lineare $f:V\rightarrow W$ è detta un isomorfismo se $f$ è biunivoca ($\Leftrightarrow f$ iniettiva e suriettiva)
-	\item Un isoformismo $f:V\rightarrow V$ è detto un \ul{automorfismo}\\
-		  Un automorfismo è un endomorfismo biunivoco.
-\end{itemize}}
+		\item Un'applicazione lineare $f:V\rightarrow V$ è detta endomorfismo
+		\item Un'applicazione lineare $f:V\rightarrow K$ è detta una funzione lineare
+		\item Un'applicazione lineare $f:V\rightarrow W$ è detta un isomorfismo se $f$ è biunivoca ($\Leftrightarrow f$ iniettiva e suriettiva)
+		\item Un isoformismo $f:V\rightarrow V$ è detto un \ul{automorfismo}\\
+		      Un automorfismo è un endomorfismo biunivoco.
+	\end{itemize}}
 
 \hl{Esempi mancanti}
 
@@ -2568,21 +2568,21 @@ Quindi $f$ è unica.
 \ul{Dim}
 \begin{enumerate}
 	\item Mostriamo che $f(S_V)$ è un sottospazio di $W$:
-	\begin{itemize}
-		\item $f(S_V)\not=\emptyset:0_W\in f(S_V)$ poichè $0_W=f(0_V)\in S_V$ perchè $S_V$ è un sottospazio
-		\item Siano $w_1,w_2\in f(S_V),\lambda,\mu\in\K$.
-		
-		Allora, per definizione, $\exists v_1\in S_V$ tale che $w_1=f(v_1)$ e $\exists v_2\in S_V$ tale che $w_2=f(v_2)$ \hl{Disegno figo con tikz}
+	      \begin{itemize}
+		      \item $f(S_V)\not=\emptyset:0_W\in f(S_V)$ poichè $0_W=f(0_V)\in S_V$ perchè $S_V$ è un sottospazio
+		      \item Siano $w_1,w_2\in f(S_V),\lambda,\mu\in\K$.
 
-		Allora abbiamo
+		            Allora, per definizione, $\exists v_1\in S_V$ tale che $w_1=f(v_1)$ e $\exists v_2\in S_V$ tale che $w_2=f(v_2)$ \hl{Disegno figo con tikz}
 
-		$\lambda w_1+\mu w_2=\lambda f(v_1)+\mu f(v_2)=(\leftarrow\text{linearità})f((\lambda v_1+\mu v_2)\in S_V)$ perchè $S_V$ è un sottospazio
+		            Allora abbiamo
 
-		$\Rightarrow\lambda w_1+\mu w_2\in f(S_V)$
+		            $\lambda w_1+\mu w_2=\lambda f(v_1)+\mu f(v_2)=(\leftarrow\text{linearità})f((\lambda v_1+\mu v_2)\in S_V)$ perchè $S_V$ è un sottospazio
 
-		Quindi $f(S_V)$ è un sottospazio di $W$
-		2) sulle note \hl{incompleto}
-	\end{itemize}
+		            $\Rightarrow\lambda w_1+\mu w_2\in f(S_V)$
+
+		            Quindi $f(S_V)$ è un sottospazio di $W$
+		            2) sulle note \hl{incompleto}
+	      \end{itemize}
 \end{enumerate}
 
 \ul{Due casi particolari}
@@ -2592,24 +2592,209 @@ $S_V=V\leadsto f(V):$ immagine di $f$
 $S_W=\{0_W\}\leadsto f^{-1}(\{0_W\}):$ nucleo di $f$
 
 \Def{Sia $f:V\rightarrow W$ un'applicazione lineare.}{
-	Il sottospazio di $V$
+Il sottospazio di $V$
 
-	ker (da kernel, nucleo), $ker(f):=f^{-1}(\{0_W\})=\{v\in V:f(V)=0_W\}$
+ker (da kernel, nucleo), $ker(f):=f^{-1}(\{0_W\})=\{v\in V:f(V)=0_W\}$
 
-	è detto \ul{nucleo} di $f$
+è detto \ul{nucleo} di $f$
 
-	Il sottospazio di $W$
+Il sottospazio di $W$
 
-	$Im(f):=f(V)=\{f(v):v\in V\}$
+$Im(f):=f(V)=\{f(v):v\in V\}$
 
-	è detto \ul{immagine} di $f$
+è detto \ul{immagine} di $f$
 
-	Se $ker(f)$ è $Im(f)$ hanno dimensione finita allora chiamiamo \ul{nullità} la dimensione di $ker(f)$ e rango la dimensione di $Im(f)$.
+Se $ker(f)$ è $Im(f)$ hanno dimensione finita allora chiamiamo \ul{nullità} la dimensione di $ker(f)$ e rango la dimensione di $Im(f)$.
 
-	$dim(ker(f))\\rg(f):=dim(Im(f))$
+$dim(ker(f))\\rg(f):=dim(Im(f))$
 
-	\hl{Esempio mancante}
+\hl{Esempio mancante}
 }
+
+\section{10/05/22}
+\subsection*{Applicazioni lineari (continuo)}
+\ul{Richiamiamo}
+
+$f:V\rightarrow W$
+
+$f$ è un'applicazione lineare se $\forall v_1,v_2\in\V,\forall\lambda_1\lambda_2\in\K$
+
+$f(\lambda_1v_1+\lambda_2v_2)=\lambda_1f(v_1)+\lambda_2f(v_2)$
+
+\ul{NUCLEO}: $Ker(f):=f^{-1}(0_w)=\{v\in\V:f(v)=0_w\}\subseteq\V$ sottospazio di $\V$
+
+\ul{IMMAGINE}: $Im(f):=f(v)=\{f(v):v\in\V\}\subseteq W$ sottospazio vettoriale di $W$\\$rg(f):=dim(Im(f))$
+
+	\paragraph{Osservazione}: Sia $f:\V\rightarrow W$ un'applicazione lineare e siano $v_1,\cdots,v_n\in\V$. Allora
+
+$f(<v_1,\cdots,v_n>)=<f(v_1),\cdots,f(v_n)>$
+
+	\ul{dim}
+
+$f(<v_1,\cdots,v_n>)=f(\{\lambda_1v_1,\cdots,\lambda_nv_n:\lambda_1,\cdots,\lambda_n\in\K\})=\{f(\lambda_1v_1,\cdots,\lambda_nv_n):\lambda_1,\cdots,\lambda_n\in\K\}=<f(v_1),\cdots,f(v_n)>$.
+
+	Se $\{v_1,\cdots,v_n\}$ è una base di $\V$:
+
+$Im(f)=f(v)=f(<v_1,\cdots,v_n>)=\text{($v_1,\cdots,v_n$ generano $V$)}<f(v_1,\cdots,v_n)>$
+
+	Quindi l'immagine di $f:\V\rightarrow W$ è il sottospazio vettoriale generato dalle immagini degli elementi di una base di $\V$.
+
+$rg(f)=dim(Im(f))\le dim(\V)\leadsto dim(\V)-rg(f)=dim(Ker(f))$
+
+
+	\paragraph{Teorema del rango} (nullità + rango)
+
+	Sia $\V$ uno spazio vettoriale \ul{dimensione finito} e sia $f:\V\rightarrow W$ un'applicazione lineare. Allora $dim(Ker(f))\text{(nullità)}+rg(f)=dim(\V)$
+
+	\ul{Idea della dim}
+
+$\V,dim(\V)=n$, e $Ker(f)\le\V\Rightarrow dim(Ker(f)=p)\le dim(\V)$
+
+	Sia $\{v_1,\cdots,v_p\}$ base di $Ker(f)$
+
+	Posso completare $\{v_1,\cdots,v_p\}$ a una base di $\V$.
+	Quindi siano $v_{p+1},\cdots,v_n$ tali che $\{v_1,\cdots,v_p,v_{p+1},\cdots,v_n\}$ è una base di $\V$.
+	Si mostra che $\{f(v_{p+1}),\cdots,f(v_n)\}$ è una bse di $Im(f)$.
+	\paragraph{Osservazione}: Si noti che nell'enunciato del teorema non si è supposto che $W$ è di dimensione finita.
+
+	\paragraph{Proposizione}: Siano $f:\V\rightarrow W$ e $g:W\rightarrow U$ due applicazioni lineari. Allora la composizione
+
+$g\circ f:V\longrightarrow U\\\hspace*{4.6em}v\longmapsto g\circ f(v):=g(f(v))$
+
+	\ul{dim: per esercizio}
+
+$\forall v_1,v_2\in\V,\forall\lambda_1\lambda_2\in\K$
+
+$g\circ f(\lambda_1v_1+\lambda_2v_2)=\text{(da mostrare)}\lambda g\circ f(v_1)+\lambda_2 g\circ f(v_2)$
+
+	\paragraph{Esempio}:
+
+$f:\R^3\rightarrow\R^2\hspace{8em} g:R^2\rightarrow\\\hspace*{0.7em}(x,y,z)\mapsto(x+z,2x+y)\hspace*{3.2em}(x,y)\mapsto$ \hl{incompleto}
+
+	\paragraph{Richiami}:
+
+	Sia $f:\V\rightarrow W$ un'applicazione lineare.+
+	\begin{itemize}
+		\item $f$ è suriettiva se $Im(f)=W\Leftrightarrow rg(f)=dim(W)$
+		\item $f$ è iniettiva se $\forall v_1,v_2\in\V$ tali che\\
+		      $f(v_1)=f(v_2)\Rightarrow v_1=v_2$.
+		\item $f$ è un isomorfismo se $f$ è biettiva, cioè se $f$ è iniettiva e suriettiva.\\
+		      Se $f$ è un isomorfismo allora esiste $f^{-1}:W\rightarrow\V$ tale che\\
+		      $f\circ f^{-1}=1_W\qquad e\qquad f^{-1}\circ f=1_\V$\\
+		      È possibile mostrare che $f^{-1}$ è anch'essa un'applicazione lineare biettiva, quindi un isomorfismo.
+	\end{itemize}
+
+	\paragraph*{Esempio}
+
+$f:\R^2\rightarrow\R^2\\\hspace*{3em}(x,y)\mapsto(x+y,x-y)$
+
+	\begin{itemize}
+		\item $f$ è suriettiva?\\
+		      Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$ tali che\\
+		      $f(v_1)=f(v_2)\Rightarrow(x_1+y_1,x_1-y_1)=(x_2+y_2,x_2-y_2)\Rightarrow\begin{cases}
+				      x_1+y_1=x_2+y_2 \\
+				      x_1-y_1=x_2-y_2
+			      \end{cases}\Rightarrow\begin{cases}
+				      2x_1=2x_2 \\
+				      x_1-y_1=x_2-y_2
+			      \end{cases}\Rightarrow\begin{cases}
+				      x_1=x_2 \\
+				      y_1=y_2
+			      \end{cases}\Rightarrow(x_1,y_1)=(x_2,y_2)\Rightarrow v_1,v_2$
+		\item $f$ è suriettiva?\\
+		      $Im(f)=f(R^2)=<f(1,0),f(0,1)>=<(1,1),(1,-1)>=\R^2$\\
+		      $rg(f)=dim(Im(f))=2$\\
+		      Quindi $f$ è suriettiva
+	\end{itemize}
+	Quindi $f$ è un isomorfismo e quindi esiste l'applicazione lineare inversa
+
+$f^{-1}:\R^2\rightarrow\R^2:$
+	(disegno con gli insiemi (tikz))
+
+	Sia $(x',y')\in\R^2$ e sia $(x,y)\in\R^2$ tale che
+
+$f(x,y)=(x',y')\Rightarrow(x+y,x-y)=(x',y')\Rightarrow\begin{cases}
+	x'=x+y \\
+	y'=x-y
+\end{cases}\Rightarrow\begin{cases}
+	x'+y'=2x \\
+	y'=x-y
+\end{cases}\Rightarrow\begin{cases}
+	x'+y'=2x \\
+	y'=x-y'=\frac{x'+y'}{2}-y'=\frac{x'-y'}{2}
+\end{cases}$
+
+$f^{-1}:\R^2\rightarrow\R^2\\(x',y')\mapsto(\frac{x'+y'}{2},\frac{x'-y'}{2})$
+
+	Sia $(x,y)\in\R^2:$
+
+$f^{-1}(f(x,y))=f^{-1}(x+y,x-y)=(\frac{x+y+x-y}{2},\frac{x+y(x-y)}{2})=(x,y)\Rightarrow f^{-1}\circ f=f_{\R^2}$.
+
+	\paragraph{Proposizione}: Un'applicazione lineare $f:\V\rightarrow W$ è iniettiva se e solo se $Ker(f)=(0_\V)$.
+
+	Nell'esempio $f:\R^2\rightarrow\R^2\\\hspace*{7.5em}(x,y)\mapsto(x+y,x-y)\\Ker(f)=\{(x,y):f(x,y)=(0,0)\}=\{(x,y):(x+y,x-y)=(0,0)\}=\{(x,y):\begin{cases}x+y=0\\x-y=0\end{cases}\}=\{(0,0)\}\Rightarrow f$ è iniettiva
+
+	\ul{dim}\\
+
+$\Rightarrow)$ Sia $f:\V\rightarrow W$ è iniettiva.
+
+$0_\V\in Ker(f)$ poichè $f(0_\V)=0_W$.
+
+	Sia $v\in Ker(f)\Rightarrow f(\ul{v})=0_W=f(0_\V)\Rightarrow v=0_\V$.
+
+	Quindi $Ker(f)=\{0_\V\}$\\
+
+$\Leftarrow)$ Supponiamo $Ker(f)=\{0_\V\}$.
+
+	Siano $v_1,v_2\in\V$ tali che $f(v_1)=f(v_2)\Rightarrow f(v_1)-f(v_2)=0_W\Rightarrow v_1-v_2\in Ker(f)=\{0_\V\}\Rightarrow v_1-v_2=0_\V\Rightarrow v_1=v_2$
+
+	Quindi $f$ è iniettiva.
+
+	\paragraph{Corollario} (del teorema del rango)
+
+	Siano $\V$ e $W$ due spazi vettoriali tali che $dim(\V)=dim(W)$.
+
+	Sia $f:\V\rightarrow W$ un'applicazione lineare. Allora le seguenti affermazioni sono equivalenti:
+\begin{itemize}
+	\item $f$ è iniettiva
+	\item $f$ è suriettiva
+	\item $f$ è un isomorfismo
+\end{itemize}
+
+\ul{dim}
+
+$f$ è iniettiva $\Leftrightarrow Ker(f)=\{0_\V\}\Leftrightarrow dim(Ker(f))=0\xLeftrightarrow{\text{Teorema del rango}}rg(f)=dim(W)\Leftrightarrow f$ è suriettiva.
+
+\paragraph{Osservazione}
+
+$f:\V\rightarrow W$
+\begin{itemize}
+	\item se $dim(\V)>dim(W)\Rightarrow f$ non è iniettiva\\
+		  $dim(Ker(f))=dim(\V)-rg(f)>dim(W)-rg(f)\ge0\Rightarrow dim(Ker(f))\ge1$
+	\item se $dim(\V)<dim(W)\Rightarrow f$ non è suriettiva
+\end{itemize}
+
+\paragraph{Matrici associate alle applicazioni lineari}
+
+$\V,dim(V)=n,B=\{v_1,\cdots,v_n\}$base di $\V$\\$W,dim(W)=m,B'\{w_1,\cdots,w_m\}$ base di $W$
+
+$f:\V\rightarrow W$ un'applicazione lineare.
+
+$f(v_1)=a_{11}w_1+a_{21}w_2+\cdots+a_{m1}w_m\\
+\vdots\\
+f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
+
+$a_{ij}\in\K$
+
+\Def{Chiamiamo la matrice di $f:\V\rightarrow W$ nelle basi $B=\{v_1,\cdots,v_n\},B'{w_1,\cdots,w_m}$ una matrice \hl{incompleto}}{
+	$f(v_1),\cdots,f(v_n)$ nella base di \hl{incompleto}
+}
+
+\hl{esempio mancante}
+\hl{INCOMPLETISSIMO}
+
+
+
 
 
 \end{document}
