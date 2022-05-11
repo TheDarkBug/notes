@@ -1,6 +1,8 @@
 % packages to install (arch linux): texlive-bibtexextra texlive-bin texlive-core texlive-fontsextra texlive-formatsextra texlive-games texlive-humanities texlive-latexextra texlive-latexindent-meta texlive-music texlive-pictures texlive-pstricks texlive-publishers texlive-science
 % pdflatex -synctex=1 -interaction=nonstopmode -file-line-error -recorder geometria_algebra.tex
 \documentclass{article}
+
+% packages
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{enumitem}
@@ -9,13 +11,23 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{tikz}
-\usepackage[margin=1em]{geometry}
+\usepackage{fancyhdr}
+\usepackage[margin={1em, 2em}]{geometry}
 
-\pagenumbering{gobble}
+% metadata
 \title{Appunti del corso di algebra e geometria}
 \author{Adriano Oliviero}
 \date{07/04/22 - oggi}
 
+% page style (mainly page number)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[R]{\footnotesize\thepage}
+  \setlength\footskip{10.25pt}
+}
+\pagestyle{plain}
+
+% custom commands
 \newcommand{\hl}[1]{\colorbox{yellow}{#1}}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\R}{\mathbb{R}}
@@ -25,6 +37,7 @@
 \newcommand{\Def}[2]{\paragraph{\ul{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
 \newcommand{\Esempio}[1]{\subsubsection*{\ul{Esempio}:}#1}
 
+% document
 \begin{document}
 \maketitle
 \setcounter{tocdepth}{2}
@@ -2610,7 +2623,6 @@ $dim(ker(f))\\rg(f):=dim(Im(f))$
 
 \hl{Esempio mancante}
 }
-
 \section{10/05/22}
 \subsection*{Applicazioni lineari (continuo)}
 \ul{Richiamiamo}
@@ -2755,43 +2767,44 @@ $\Leftarrow)$ Supponiamo $Ker(f)=\{0_\V\}$.
 	Siano $\V$ e $W$ due spazi vettoriali tali che $dim(\V)=dim(W)$.
 
 	Sia $f:\V\rightarrow W$ un'applicazione lineare. Allora le seguenti affermazioni sono equivalenti:
-\begin{itemize}
-	\item $f$ è iniettiva
-	\item $f$ è suriettiva
-	\item $f$ è un isomorfismo
-\end{itemize}
+	\begin{itemize}
+		\item $f$ è iniettiva
+		\item $f$ è suriettiva
+		\item $f$ è un isomorfismo
+	\end{itemize}
 
-\ul{dim}
+	\ul{dim}
 
 $f$ è iniettiva $\Leftrightarrow Ker(f)=\{0_\V\}\Leftrightarrow dim(Ker(f))=0\xLeftrightarrow{\text{Teorema del rango}}rg(f)=dim(W)\Leftrightarrow f$ è suriettiva.
 
-\paragraph{Osservazione}
+	\paragraph{Osservazione}
 
 $f:\V\rightarrow W$
-\begin{itemize}
-	\item se $dim(\V)>dim(W)\Rightarrow f$ non è iniettiva\\
-		  $dim(Ker(f))=dim(\V)-rg(f)>dim(W)-rg(f)\ge0\Rightarrow dim(Ker(f))\ge1$
-	\item se $dim(\V)<dim(W)\Rightarrow f$ non è suriettiva
-\end{itemize}
+	\begin{itemize}
+		\item se $dim(\V)>dim(W)\Rightarrow f$ non è iniettiva\\
+		      $dim(Ker(f))=dim(\V)-rg(f)>dim(W)-rg(f)\ge0\Rightarrow dim(Ker(f))\ge1$
+		\item se $dim(\V)<dim(W)\Rightarrow f$ non è suriettiva
+	\end{itemize}
 
-\paragraph{Matrici associate alle applicazioni lineari}
+	\paragraph{Matrici associate alle applicazioni lineari}
 
 $\V,dim(V)=n,B=\{v_1,\cdots,v_n\}$base di $\V$\\$W,dim(W)=m,B'\{w_1,\cdots,w_m\}$ base di $W$
 
 $f:\V\rightarrow W$ un'applicazione lineare.
 
 $f(v_1)=a_{11}w_1+a_{21}w_2+\cdots+a_{m1}w_m\\
-\vdots\\
-f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
+	\vdots\\
+	f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
 
 $a_{ij}\in\K$
 
 \Def{Chiamiamo la matrice di $f:\V\rightarrow W$ nelle basi $B=\{v_1,\cdots,v_n\},B'{w_1,\cdots,w_m}$ una matrice \hl{incompleto}}{
-	$f(v_1),\cdots,f(v_n)$ nella base di \hl{incompleto}
+$f(v_1),\cdots,f(v_n)$ nella base di \hl{incompleto}
 }
 
 \hl{esempio mancante}
 \hl{INCOMPLETISSIMO}
+\section{11/05/22}
 
 
 
