@@ -2806,6 +2806,407 @@ $f(v_1),\cdots,f(v_n)$ nella base di \hl{incompleto}
 \hl{INCOMPLETISSIMO}
 \section{11/05/22}
 
+$\V,\ B=\{v_1,\cdots,v_n\}$
+
+$W,\ B'=\{w_1,\cdots,w_m\}$
+
+$f:\V\rightarrow W$ applicazione lineare
+
+$f(v_1)=a_{11}w_1+a_{12}w_2+\cdots+a_{1m}w_m
+	\\\vdots\\
+	f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
+
+$M_{B'B}(f)=(a_{ij})_{1\le i\le m\\1\le j\le n}=\begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1m} \\
+		a_{21} & a_{22} & \cdots & a_{2m} \\
+		\vdots                            \\
+		a_{m1} & a_{m2} & \cdots & a_{mm}
+	\end{pmatrix}$
+
+\Esempio{
+	$f:\R^2\rightarrow\R^2\\
+		(x,y,z)\mapsto(x+2y+3z,-x+5y-7z)\\
+		B=\{(1,0,0),(0,1,0),(0,0,1)\}$ base di $\R^3$
+
+	$B'=\{(1,1),(1,-1)\}$ base di $\R^2$
+
+	$\M_{B'B}(f)$
+
+	$f(1,0,0)=(1,-1)=0\cdot(1,1)+1\cdot(1,-1)$
+
+	$f(0,1,0)=(2,5)=\frac{7}{2}(1,1)-\frac{3}{2}(1,-1)$
+
+	$f(0,0,1)=(3,-7)=-2(1,1)+5(1,-1)$
+
+	$a(1,1)+b(1,-1)=(2,5)\Rightarrow\begin{cases}
+			a+b=2 \\
+			a-b=5
+		\end{cases}\Rightarrow\begin{cases}
+			a=\frac{7}{2} \\
+			b=-\frac{3}{2}
+		\end{cases}$
+
+	$a(1,1)+b(1,-1)=(3,-7)\Rightarrow\begin{cases}
+			a+b=3 \\
+			a-b=-7
+		\end{cases}\Rightarrow\begin{cases}
+			a=-2 \\
+			b=5
+		\end{cases}$
+
+	$\M_{B'B}=\begin{pmatrix}
+			0 & \frac{7}{2}  & -2 \\
+			1 & -\frac{3}{2} & 5
+		\end{pmatrix}$
+
+	$v=(1,-2,-1)\in\R^3$
+
+	$\M_{B'B}(f)\cdot v=\begin{pmatrix}
+			0 & \frac{7}{2}  & -2 \\
+			1 & -\frac{3}{2} & 5
+		\end{pmatrix}\begin{pmatrix}1\\-2\\-1\end{pmatrix}=\begin{pmatrix}
+			\hl{incompleto}
+		\end{pmatrix}$
+
+}
+
+\ul{Calcolo dell'immagine di un vettore}
+
+\paragraph{Proposizione}: $\V$ con base $B=\{v_1,\cdots,v_n\}$
+
+$W$ con base $B'=\{w_1,\cdots,w_m\}$
+
+$f:\V\rightarrow W$ applicazione lineare
+
+Allora per ogni $v=x_1v_1+\cdots+x_nv_n$ si ha $f(v)=y_1w_1+\cdots+y_mw_m$ dove $\begin{pmatrix}y_1\\\vdots\\y_m\end{pmatrix}=\M_{B'B}(f)\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}$
+
+
+
+$\V$ con base $B=\{v_1,\cdots,v_n\}$
+
+$W$ con base $B'=\{w_1,\cdots,w_m\}$
+
+$U$ con base $B''=\{u_1,\cdots,u_p\}$
+
+$f:\V\rightarrow W, g:W\rightarrow U$ applicazione lineare
+
+$\M_{B'B}(f),\qquad M_{B''B'}(g)$
+
+$v\in\V,v=x_1v_1+\cdots+x_nv_n$
+
+$f(v)\in W, f(v)=y_1w_1+\cdots+g_mw_m$ dove
+
+$\begin{pmatrix}y_1\\\vdots\\y_m\end{pmatrix}=\M_{B'B}(f)\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}$
+
+$g(f(v)\in W)\in U, g(f(v))=z_1u_1+\cdots+z_pu_p$ dove
+
+$\begin{pmatrix}z_1\\\vdots\\z_p\end{pmatrix}=\M_{B''B'}(g)\begin{pmatrix}y_1\\\vdots\\y_m\end{pmatrix}=\M_{B''B'}(g)\M_{B'B}(f)\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}$
+
+Ma quindi
+
+$\M_{B''B}(g\circ f)=\M_{B''B'}(g)\M_{B'B}(f)$
+
+\ul{La matrice del cambiamento di coordinate}
+
+$\V, B=\{v_1,\cdots,v_n\}, B'=\{v'_1,\cdots,v'_n\}$ due basi
+
+$idv:\V^B\rightarrow V^{B'}\\v\mapsto v'$
+
+$\M_{B'B}(idv)$ è detta matrice del cambiamento di coordinate dalla base $B$ alla base $B'$
+
+$v=x_1v_1+\cdots+x_nv_n=y_1v'_1+\cdots+y_nv'_n$
+
+$\begin{pmatrix}y_1\\\vdots\\y_n\end{pmatrix}=\M_{B'B}(idv)\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}$
+
+Inoltre abbiamo:
+
+$\M_{BB'}(idv)\M_{B'B}(idv)=\M_{BB}(idv)=I_n\Leftarrow idv(v_1)=1v_1+0v_2+\cdots+0v_n;idv(v_2)=0v_1+1v_2+\cdots+0v_n$
+
+$\Rightarrow\M_{BB'}(idv)=(\M_{B'B}(idv))^{-1}$
+
+\Esempio{
+	$V=\R^3$
+
+	$B=\{(1,0,0),(0,1,0),(0,0,1)\}$
+
+	$B'=\{(1,-1,0),(0,-2,-1),(1,1,2)\}$
+
+	$\begin{bmatrix}
+			1 & -1 & 0  \\
+			0 & -2 & -1 \\
+			1 & 1  & 2
+		\end{bmatrix}=-4+1+1=-2$
+
+	$\M_{BB'}(idv)=\begin{pmatrix}
+			1  & 0  & 1 \\
+			-1 & -2 & 1 \\
+			0  & -1 & 2
+		\end{pmatrix}$
+
+	$idv(1,-1,0)=(1,-1,0)=1(1,0,0)+(-1)(0,1,0)+0(0,0,1)$
+
+	$\M_{B'B}(idv)=\begin{pmatrix}
+			\frac{3}{2}  & \frac{1}{2}  & -1 \\
+			-1           & -1           & 1  \\
+			-\frac{1}{2} & -\frac{1}{2} & 1
+		\end{pmatrix}\begin{pmatrix}
+			1  & 0  & 1 \\
+			-1 & -2 & 1 \\
+			0  & -1 & 2
+		\end{pmatrix}=\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}$
+
+	$(1,0,0)=a_1(1,-1,0)+b_1(0,-2,-1)+c_1(1,1,2)$
+
+	$(0,1,0)=a_2(1,-1,0)+b_2(0,-2,-1)+c_2(1,1,2)$
+
+	$(0,0,1)=a_3(1,-1,0)+b_3(0,-2,-1)+c_3(1,1,2)$
+}
+
+Ci concentriamo ora al caso degli endomorfismi:
+\Def{Sia $\V$ uno spazio vettoriale.}{
+	Un endomorfismo o un operatore lineare di $\V$ è un'applicazione lineare
+
+	$f:\V\rightarrow\V$
+
+	L'insieme degli endomorfismi di $\V$ si denota $End(\V)$.
+}
+
+Sia $f\in End(\V)$ e sia $B=\{v_1,\cdots,v_n\}$ una base di $\V$. Allora
+
+$\M_B(f):=M_{BB}(f)\in\M_n(\K)$
+
+Sia $B'$ un'altra base di $\V$ allora
+
+$\M_{B'}(f)$
+
+\begin{tikzpicture}
+	\node[anchor=north west] at (0,0) {V};
+	\node at (0,0) {B};
+	\draw[->] (0.4,-0.3) -- (2,-0.3); % f sull linea
+	\node[anchor=north east] at (2.4,0) {V};
+	\node at (2.4,0) {B};
+	\draw[->] (2.15,-0.5) -- (2.15,-2); % idv a destra della linea
+	\node[anchor=north west] at (2.2,-2.3) {B'};
+	\node at (2.15,-2.3) {V};
+	\draw[->] (2.15,-2.5) -- (2.15,-4); % f sotto la linea
+	\node at (2.15,-2.3) {\hl{incompleto}};
+
+\end{tikzpicture}
+
+$det(\M_{B'}(f))=det(\M_{B'B}(idv)M_B(f)\M_{BB'}(idv))=det(\M_{B'B}(idv))det(\M_B(f))det(\M_{BB'}(f))=\frac{1}{\bar{det(\M_{BB'}(idv))}}\cdot det(\M_B(f))\cdot\bar{det(\M_{BB'}(idv))}$
+
+\ul{Partiamo da un esempio}
+
+Sia $f:\R^2\rightarrow\R^2$
+
+$B=\{v_1=(1,1),v_2=(1,-1)\}$
+
+$\M_B(f)=\begin{pmatrix}2&0\\0&-1\end{pmatrix}$, matrice diagonale
+
+$f(v_1)=\begin{pmatrix}2&0\\0&-1\end{pmatrix}\begin{pmatrix}1\\0\end{pmatrix}=\begin{pmatrix}2\\0\end{pmatrix}=2v_1$
+
+$f(v_1)=\begin{pmatrix}2&0\\0&-1\end{pmatrix}\begin{pmatrix}0\\1\end{pmatrix}=\begin{pmatrix}0\\-1\end{pmatrix}=-v_2$
+
+$f(v_1+v_2)=\begin{pmatrix}2&0\\0&-1\end{pmatrix}\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}2\\-1\end{pmatrix}=2v_1-v_2$
+
+\hl{disegno geometrico con vettori}
+
+Autovalore
+
+Autovettori
+
+Autospazio
+
+Operatore diagonale
+
+
+
+\Def{Sia $\V$ uno spazio vettoriale su $\K$}{
+	Un endomorfismo $f\in End(\V)$ si dice \ul{diagonalizzabile} se esiste una base $B=\{v_1,\cdots,v_n\}$ di $\V$ tale che $\M_B(f)$ sia una matrice diagonale, cioè della forma
+
+	$\begin{pmatrix}
+			\lambda_1 & 0         & 0         \\
+			0         & \lambda_2 & 0         \\
+			0         & 0         & \lambda_n
+		\end{pmatrix},\lambda_i\in\K$
+
+	Se ciò avviene $B$ è detta una base diagonalizzante di $f$ e $\forall v_i\in B$ si ha
+
+	$f(v_i)=\lambda_iv_i$
+
+	$\lambda_i$ autovalore, $v_i$ autovettore
+}
+
+\Def{Sia $\V$ uno spazio vettoriale e sia $f\in End(\V)$.}{
+	Un vettore $v\in\V$ si dice un \ul{autovettore} di $f$ se $v\not=0_\V$ e se $\exists\lambda\in\K$ tale che $f(v)=\lambda v$
+
+	$\lambda$ è detto \ul{autovalore} di $f$ relativo all'autovettore $v$
+
+	Il sottoinsieme di $\K$ costituito dagli autovalori di $f$ è detto \ul{spettro} di $f$.
+}
+
+\Esempio{
+	\begin{itemize}
+		\item $f=idv\in End(\V),dim(\V)=n$.\\
+		      Per ogni base $B$ di $\V$\\
+		      $\M_B=I_n\Rightarrow idv$ è diagonalizzabile.\\
+		      $\forall v\in\V, id(v)=v=1\cdot v$\\
+		      Quindi ogni $v\in\V\backslash\{0_\V\}$ è un autovettore di $idv$ di autovalore 1.
+		\item \hl{incompleto}
+	\end{itemize}
+}
+\section{13/05/22}
+\Def{Sia $\V$ uno spazio vettoriale su $\K$.}{
+	Sia $f\in End(\V)$ un endomorfismo. Un vettore $v\in\V$ si dice autovettore se $v\not=0_\V$ e se $\exists\lambda\in\K$ tale che $f(v)=\lambda v$.
+
+	Lo scalare $\lambda$ si dice autovalore di $f$ relativo all'autovettore $v$.
+
+	Il sottoinsieme di $\K$ costituito dagli autovalori di $f$ è detto \ul{spettro} di $f$.
+
+	L'endomorfismo $f$ si dice \ul{diagonalizzabile} se possiede una base $B=\{v_1,\cdots,v_n\}$ di autovettori, cioè se $\M_B(f)=\begin{pmatrix}
+			\lambda_1 & 0         \\
+			\hspace*{2em}\ddots   \\
+			0         & \lambda_n
+		\end{pmatrix}$
+
+	Una tale base si dice base diagonale.
+}
+
+\paragraph*{Proposizione}: Siano $v_1,v_2\in\V$ due autovettori relativi allo stesso autovalore $\lambda$ per endomorfismo $f:\V\rightarrow\V$.
+
+Siano $\mu_1,\mu_2\in\K$ tali che $\mu_1v_1+\mu_2v_2\not=0_\V$.
+
+Allora $\mu_1v_1+\mu_2v_2$ è un autovettore di autovalore $\lambda$.
+
+\ul{dim}
+
+Mostriamo che $f(\mu_1v_1+\mu_2v_2)=\lambda(\mu_1v_1+\mu_2v_2)$.
+
+$f(\mu_1v_1+\mu_2v_2)=\mu_1f(v_1)+\mu_2f(v_2)=\mu_1\lambda v_1+\mu_2\lambda v_2=\lambda(\mu_1v_1+\mu_2v_2)$ \boxed{}
+
+\Def{L'insieme}{
+	$\V_\lambda:=\{v\in\V:v\text{ è un autovettore di }f\text{con autovalore}\lambda\}\cup\{0_\V\}$
+
+	è un sottospazio vettoriale di $\V$ detto \ul{autospazio} relativo all'autovalore $\lambda$.
+}
+
+\paragraph*{Proposizione}: Se $v_1,\cdots,v_p\in\V$ sono autovettori relativi agli autovalori $\lambda_1,\cdots,\lambda_p\in\K$ e se questi $\lambda_i$ sono a due a due distinti, allora $v_1,\cdots,v_p$ sono linearmente indipendenti
+
+\ul{Dim}: sulle note della prof (per induzione)
+
+\ul{Obiettivo}: Dato $f\in End(\V)$, determinare se $f$ è diagonalizzabile e, in tal caso, determinare una base diagonalizzante, ossia una base di autovettori.
+
+\ul{Problema}: Come determiniamo lo spettro di $f$?
+
+Sia $f\in End(\V)$. Sia $\lambda$ un autovalore di $f$.
+
+Allora $\exists v\not=0_\V$ tale che
+
+$f(v)=\lambda v\Leftrightarrow f(v)-\lambda v=0_\V\Leftrightarrow(f-\lambda idv)\rightarrow f-\lambda idv:\V\rightarrow\V\\\hspace*{25.4em}v\mapsto(f-\lambda idv)(v):=f(v)-\lambda v$ è un'applicazione lineare.
+
+$\Leftrightarrow\text{teorema del rango}rg(f-\lambda idv)<n\\\Leftrightarrow det(f-\lambda idv)=0$7
+
+Sia $B$ una base di $\V$. Allora:
+
+$det(f-\lambda idv)=0\Leftrightarrow det(\M_B(f-\lambda idv))=0\Leftrightarrow def(\M_B(d)-\lambda I_n)=0$
+
+\Def{Sia $A=(a_ij)\in\M_n(K)$ e sia $T$ un'indeterminata.}{
+	Il determinante $P_A(T):=det(A-TI_n)=\begin{pmatrix}
+			a_11   & a_12   & \cdots & a_1n   \\
+			a_21   & a_22   & \cdots & a_2n   \\
+			\vdots & \vdots & \ddots & \vdots \\
+			a_n1   & a_n2   & \cdots & a_nn
+		\end{pmatrix}$
+	è un polinomio di grado $n$ in $T$ detto \ul{polinomio caratteristico} di $A$.
+
+	Siano $f\in End(\V)$, $B$ una base di $\V$ e $A=M_B(f)$, allora $P_A(T)$ è il polinomio caratteristico di $f$ e si denota $P_f(T)$
+}
+
+\paragraph*{Osservazione}: Il polinomio caratteristico di un endomorfismo è indipendente dalla base scelta
+
+\paragraph*{Proposizione}: Sia $\V$ uno spazio vettoriale di dim $n$ e sia $f\in End(\V)$.
+
+Allora $\lambda$ è un autovalore di $f\Leftrightarrow\lambda$ è una radice di $P_f(T), (P_f(\lambda)=0)$.
+
+\paragraph*{Osservazione}: $P_f(T)\in\K[T]$ di grado $n$.
+
+Quindi $P_f(T)$ ha al più $n$ radici in $\K$.
+
+Ne segue che $f$ ha al più $n$ autovalori distinti.
+
+\paragraph*{Ricorda}:
+\begin{itemize}
+	\item $\lambda$ è un autovalore di $f\in End(\V)\Leftrightarrow P_f(T)=0$.
+	\item $\V_\lambda(f)=Ker(f-\lambda idv)$\begin{itemize}
+		      \item $v=0_\V$
+		      \item $v:f(v)=\lambda v\Leftrightarrow(f-\lambda idv)(v)=0_\V$
+	      \end{itemize}
+\end{itemize}
+
+\Esempio{
+	$f:\R^3\rightarrow\R^3$
+
+	\hspace*{-2.3em}$(x,y,z)\mapsto(y-z,-x+2y,x-y+2z)$
+
+	$B$: base canonica di $\R^3$:
+	\begin{itemize}
+		\item scrivere $M_B(f)$
+		\item calcolare il polinomio caratteristico $P_f(T)$
+		\item trovare le radici di $P_f(T)$ in $\R^3$
+	\end{itemize}
+
+	$M_B(f)=\begin{pmatrix}
+			0  & 1  & -1 \\
+			-1 & 2  & -1 \\
+			1  & -1 & 2
+		\end{pmatrix}$
+
+	$P_f(T)=\begin{pmatrix}
+			-T & 1   & -1  \\
+			-1 & 2-T & -1  \\
+			1  & -1  & 2-T
+		\end{pmatrix}$\hl{incompleto}
+}
+\Def{Sia $\V$ uno spazio vettoriale su $\K,dim(\V)=n$}{
+	Sia $f\in End(\V)$ e sia $\lambda\in\K$ un autovalore di $f$.
+
+	Allora $dim(\V_\lambda(f))$ è detta \ul{molteplicità geometrica} di $\lambda$ per $f$.
+
+	La \ul{molteplicità algebrica} di $\lambda$ per $f$ è la molteplicità di $\lambda$ come radice di $P_f(T)$.
+
+	(molteplicità geometria $\le$ molteplicità algebrica)
+}
+\paragraph*{Teorema} $\V, dim(\V)=n,f\in End(\V),Spec(f)=\{\lambda_1,\cdots,\lambda_k\}$ (insieme degli autovalori)
+
+Allora:
+
+$dim(V_{\lambda_1}(f))+\cdots+dim(V_{\lambda_k}(f))\le n$
+
+e l'uguagliansa sussiste se e solo se $f$ è diagonalizzabile.
+
+In tal caso:
+
+$V=V_{\lambda_1}(f\oplus\cdots\oplus V_{\lambda_k}(f))$.
+
+Ne segue che una base diagonalizzante per $f$ è data dall'unione delle basi di ciascun autospazio.
+
+\paragraph*{Corollario}: Se $dim(V)=n$ e $f\in End(V)$ possiede $n$ autovalori, allora $f$ è diagonalizzabile.
+
+\hl{esempio mancante}
+\section{18/05/22}
+\hl{incompleto}
+\section*{Fine}
+Ultimamente gli appunti sono pieni di grafici, mi è difficile prendere appunti, quindi lascio la scrittura di questo file al me del futuro che scriverà direttamente ricopiando gli appunti della professoressa.
+Inoltre sarebbe necessaria una revisione approfondita di tutto il file
+
+
+
+
+
 
 
 
