@@ -8,5 +8,4 @@
 *.out
 *.ilg
 *.toc
-*.synctex
-
+*.synctex*
