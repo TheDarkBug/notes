@@ -11,6 +11,8 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{tikz}
+\usetikzlibrary{shapes,backgrounds}
+\usepackage[linguistics]{forest}
 \usepackage{fancyhdr}
 \usepackage[margin={1em, 2em}]{geometry}
 
@@ -21,21 +23,26 @@
 
 % page style (mainly page number)
 \fancypagestyle{plain}{
-  \fancyhf{}
-  \fancyfoot[R]{\footnotesize\thepage}
-  \setlength\footskip{10.25pt}
+	\fancyhf{}
+	\fancyfoot[R]{\footnotesize\thepage}
+	\setlength\footskip{10.25pt}
 }
 \pagestyle{plain}
 
 % custom commands
 \newcommand{\hl}[1]{\colorbox{yellow}{#1}}
 \newcommand{\ul}[1]{\underline{#1}}
-\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\B}{\mathbb{B}}
 \newcommand{\K}{\mathbb{K}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\V}{\mathbb{V}}
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\Def}[2]{\paragraph{\ul{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
 \newcommand{\Esempio}[1]{\subsubsection*{\ul{Esempio}:}#1}
+
+% set default color
+\AtBeginDocument{\colorlet{default}{.}}
 
 % document
 \begin{document}
@@ -45,38 +52,45 @@
 \tableofcontents
 \newpage
 \section*{\hl{Introduzione}}
-Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:Licenza]{licenza}.\\
+Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:Licenza]{licenza \LaTeX}.\\
 Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
 \section*{\hl{Licenza}}
 \label{sec:Licenza}
 \begin{verbatim}
-	% geometria_algebra.tex
-	% Copyright 2022 M. Y. Adriano Oliviero
-	
+% geometria_algebra.tex
+% Copyright 2022 M. Y. Adriano Oliviero
+
 	This work may be distributed and/or modified under the
 	conditions of the LaTeX Project Public License, either version 1.3
 	of this license or (at your option) any later version.
 	The latest version of this license is in
-	  http://www.latex-project.org/lppl.txt
+		http://www.latex-project.org/lppl.txt
 	and version 1.3 or later is part of all distributions of LaTeX
 	version 2005/12/01 or later.
-	
+
 	This work has the LPPL maintenance status `maintained'.
-	
+
 	The Current Maintainer of this work is M. Y. Adriano Oliviero.
-	
+
 	This work consists of the file geometria_algebra.tex
 	and the derived files geometria_algebra.pdf and other output.
 \end{verbatim}
+\newpage
 \section{08/03/22}
-\index{Prima lezione}
-\subsection{Richiami di logica}
-Proposizione logica: \textbf{V}/\textbf{F}, \textbf{1}/\textbf{0} valore di verità
-P = "Napoli è in Campania": \textbf{V}
-P(n) = "n è pari"
-P(2): \textbf{V}
-P(3): \textbf{F}
-\subsection{Connettivi logici}
+\subsection{\color{blue}\ul{Richiami di logica}}
+\begin{forest}
+	for tree={grow'=0}
+	[ P: proposizione logica
+		[\color{green}\textbf{V} Vero]
+		[\color{red}\textbf{F} Falso]
+	]
+\end{forest} (valori di verità)\\
+P = "Napoli è in Campania": \textbf{\color{green}V}\\
+P(n) = "n è pari"\\
+$\downarrow$\\
+P(2): \textbf{\color{green}V}\\
+P(3): \textbf{\color{red}F}
+\subsubsection*{\color{blue}\ul{Connettivi logici}}
 \begin{itemize}
 	\item Negazione: $\neg$, "non"
 	\item Congiunzione: $\wedge$, "e"
@@ -84,122 +98,144 @@ P(3): \textbf{F}
 	\item Implicazione: $\Rightarrow$, "se $\cdots$ allora $\cdots$"
 	\item Doppia implicazione: $\Leftrightarrow$, "se e solo se"
 \end{itemize}
-\subsection{Tavole di verità}
+\subsubsection*{\color{blue}\ul{Tavole di verità}}
 \begin{displaymath}
 	\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}
 		\hline
-		P & Q & \neg P & P\wedge Q & P\vee Q & P\Rightarrow Q & P\Leftrightarrow Q \\
+		P              & Q              & \neg P         & P\wedge Q      & P\vee Q        & P\Rightarrow Q & P\Leftrightarrow Q \\
 		\hline\hline
-		1 & 1 & 0      & 1         & 1       & 1              & 1                  \\
+		\color{green}1 & \color{green}1 & \color{red}0   & \color{green}1 & \color{green}1 & \color{green}1 & \color{green}1     \\
 		\hline
-		1 & 0 & 0      & 0         & 1       & 0              & 0                  \\
+		\color{green}1 & \color{red}0   & \color{red}0   & \color{red}0   & \color{green}1 & \color{red}0   & \color{red}0       \\
 		\hline
-		0 & 1 & 1      & 0         & 1       & 1              & 0                  \\
+		\color{red}0   & \color{green}1 & \color{green}1 & \color{red}0   & \color{green}1 & \color{green}1 & \color{red}0       \\
 		\hline
-		0 & 0 & 1      & 0         & 0       & 1              & 1                  \\
+		\color{red}0   & \color{red}0   & \color{green}1 & \color{red}0   & \color{red}0   & \color{green}1 & \color{green}1     \\
 		\hline
 	\end{array}
 \end{displaymath}
-\subsection{Quantificatori}
+\subsubsection*{\color{blue}\ul{Quantificatori}}
 \begin{itemize}
-	\item $\forall$: "Per ogni"
-	\item $\exists$: "Esiste almeno uno"
-	\item $\exists!$: "Esiste ed è unico"
+	\item $\forall:$ "Per ogni"
+	\item $\exists:$ "Esiste almeno uno"
+	\item $\exists!:$ "Esiste ed è unico"
 \end{itemize}
 
-\ul{Esempi}:
-\begin{enumerate}
-	\item "$\forall n$ naturale, $n$ è pari": F\\
-	      "$\exists n$ naturale: ($\leftarrow$ tale che) $n$ è pari": V
-	\item $P(x)=\{x$ è uno studente in aula A3-T2$\}$\\
-	      $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$\\
-	      $\forall x, P(x)\Rightarrow Q(x)$
-	\item $P(n)=\{n$ è un numero pari$\}$\\
-	      $Q(n)=\{n$ è divisibile per $4\}$\\
-	      $\forall n$ naturale, $Q(n)\Rightarrow P(n)$
-\end{enumerate}
+\Esempio{
+	\begin{enumerate}
+		\item "$\forall n$ naturale, $n$ è pari": \textbf{\color{red}F}\\
+		      "$\exists n$ naturale: ($\leftarrow$ tale che) $n$ è pari": \textbf{\color{green}V}
+		\item $P(x)=\{x$ è uno studente in aula A3-T2$\}$\\
+		      $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$\\
+		      $\forall x, P(x)\Rightarrow Q(x)$
+		\item $P(n)="n$ è un numero pari"\\
+		      $Q(n)="n$ è divisibile per $4$"\\
+		      $\forall n$ naturale, $Q(n)\Rightarrow P(n)$\textbf{\color{green}V}\\
+		      $\forall n$ naturale, $P(n)\Rightarrow Q(n)$\textbf{\color{red}F}\\
+	\end{enumerate}
+	\ul{Importante}: $Q(n)\Rightarrow P(n)$ \ul{è equivalente} a $\neg Q(n)\Rightarrow\ \neg P(n)$
+}
 
-\subsection{Teoria degli insiemi}
+\subsection{\color{blue}\ul{Teoria degli insiemi}}
+\ul{INSIEME}: collezione di oggetti, detti \ul{elementi} dell'insieme.
 Un \textbf{insieme} è una collezione di oggetti detti \textbf{elementi} dell'insieme.\\
 Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi con lettere minuscole.
-\subsubsection*{Descrizione di un insieme}
+\subsubsection*{\color{green}\ul{Descrizione di un insieme}}
 \begin{enumerate}
-	\item Per elencazione (se l'insieme ha un numero finito di elementi):\\
-	      $\mathbb{A}=\{0,2,4,6,8,10\}$\\
-	      $4\in\mathbb{A}$\\
-	      $5\notin\mathbb{A}$
-	\item Per proprietà caratteristica:\\
-	      $\mathbb{A}=\{n:n$ è un numero pari: $0\le n\le10\}$
-	\item Diagramma di \textit{Eulero-Venn} (ancora una volta se l'insieme ha un numero finito di elementi):
+	\item \ul{Per elencazione} (se l'insieme ha un numero finito di elementi):\\
+	      $\A=\{\underbrace{0,2,4,6,8,10}_{elementi}\}$\\
+	      $4\in\A$ (4 appartiene ad $\A$)\\
+	      $5\notin\A$ (5 non appartiene ad $\A$)
+	\item \ul{Per proprietà caratteristica}:\\
+	      $\A=\{n\underset{\text{tale che}}{:}n$ è un numero pari: $0\le n\le 10\}$
+	\item Diagramma di \textit{Eulero-Venn} (ancora una volta se l'insieme ha un numero finito di elementi):\\
+	      \begin{displaymath}
+		      \begin{tikzpicture}
+			      \begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.5]
+				      \draw[blue] (0,0) circle (1.5cm);
+				      \draw[blue] (1.5,1.5) node {$A$};
+				      \draw[blue] (-0.3,0.7) node {$\circ\ 0$};
+				      \draw[blue] (-0.7,0.2) node {$\circ\ 2$};
+				      \draw[blue] (-0.5,-0.7) node {$\circ\ 4$};
+				      \draw[blue] (0.4,-0.75) node {$\circ\ 10$};
+				      \draw[blue] (0.9,-0.2) node {$\circ\ 8$};
+				      \draw[blue] (0.2,0.2) node {$\circ\ 6$};
+			      \end{scope}
+		      \end{tikzpicture}
+	      \end{displaymath}
 \end{enumerate}
-\subsubsection*{Alcune informazioni sugli insiemi}
+\Def{La \textbf{cardinalità} di un insieme è il numero di elementi che un insieme contiene e si denota: $\A$ ha cardinalità $|\A|$}{}
+\Def{Insieme vuoto: insieme che non contiene nessun elemento, si denota con $\emptyset$, $\{\}$ e ha cardinalità $|\emptyset|=0$}{}
+\subsubsection*{\color{blue}\ul{I principali insiemi numerici}}
+$\mathbb{N}=\{0,1,2,3,\cdots\}$: numeri naturali\\
+$\mathbb{Z}=\{\cdots,-3,-2,-1,0,1,2,3,\cdots\}$: numeri naturali\\
+$\mathbb{Q}=\{\frac{a}{b}:a,b$ e $\mathbb{Z},b\not=0\}$\\
+$\R$: numeri reali\\
+$\mathbb{C}$: numeri complessi
+\subsubsection*{\color{blue}\ul{Inclusione di insiemi}}
 \begin{itemize}
-	\item La \textbf{cardinalità} di un insieme è il numero di elementi che un insieme contiene e si denota: $\mathbb{A}$ ha cardinalità $|\mathbb{A}|$
-	\item Insieme vuoto: insieme che non contiene nessun elemento, si denota con $\emptyset$, $\{\}$ e ha cardinalità $|\emptyset|=0$
-	\item I principali insiemi numerici:\\
-	      $\mathbb{N}=\{0,1,2,3,\cdots\}$: numeri naturali\\
-	      $\mathbb{Z}=\{\cdots,-3,-2,-1,0,1,2,3,\cdots\}$: numeri naturali\\
-	      $\mathbb{Q}=\{\frac{a}{b}:a,b$ e $\mathbb{Z},b\not=0\}$\\
-	      $\R$: numeri reali\\
-	      $\mathbb{C}$: numeri complessi
+	\item $\A\subseteq\B\quad(\A$ è contenuto in $\B)\Leftrightarrow(\forall x,x\in\A\Rightarrow x\in\B)$\\
+	      {\color{violet}$\B\supseteq\A("\B$ contiene $\A")$}\\
+	      Se $\A\subseteq\B$, diciamo che $\A$ è un \ul{sottoinsieme} di $\B$
+	      \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}
+	\item $\A=\B\Leftrightarrow(x\in\A\Leftrightarrow x\in\B)\Leftrightarrow(\underbrace{\A\subseteq\B\wedge\B\subseteq\A}_{\text{doppia inclusione}})$
 \end{itemize}
-
-\subsubsection*{Operazioni tra gli insiemi}
+\subsubsection*{\color{blue}\ul{Operazioni tra gli insiemi}}
+Siano $\A$ e $\B$ due insiemi
 \begin{enumerate}
-	\item Inclusione $\leftrightarrow\subset$:\\
-	      $\mathbb{A}\subseteq\mathbb{B}\quad(\mathbb{A}$ è contenuto in $\mathbb{B})$\\
-	      $\mathbb{B}\supseteq\mathbb{A}$ $(\mathbb{B}$ contiene $\mathbb{A})$
-	      \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}\\
+	\item \ul{Intersezione} \color{violet}$\leftrightarrow\wedge$\color{default}:\\
+	      $\A\cap\B:=\{x:x\in\A\underset{\text{"e"}}{\wedge} x\in\B\}$\\
+	      Se $\A\cap\B=\emptyset$ allora $\A$ e $\B$ sono detti \ul{disgiunti}\\
 	      \ul{Proprietà}:
 	      \begin{itemize}
-		      \item $\mathbb{A}=\mathbb{B}\Leftrightarrow(x\in\mathbb{A}\Leftrightarrow x\in\mathbb{B})\Leftrightarrow(\mathbb{A}\subseteq\mathbb{B}\wedge\mathbb{B}\subseteq\mathbb{A})$
+		      \item $\A\cap\emptyset=\emptyset$
+		      \item $\A\cap\B=\B\cap\A$
+		      \item $\A\subseteq\B\Rightarrow\A\cap\B=\A$
 	      \end{itemize}
-	\item Intersezione $\leftrightarrow\wedge$:\\
-	      $\mathbb{A}\cap\mathbb{B}=\{x:x\in\mathbb{A}\wedge x\in\mathbb{B}\}$\\
+	\item \ul{Unione} \color{violet}$\leftrightarrow\vee$\color{default}:\\
+	      $\A\cup\B:=\{x:x\in\A\vee x\in\B\}$\\
 	      \ul{Proprietà}:
 	      \begin{itemize}
-		      \item $\mathbb{A}\cap\emptyset=\emptyset$
-		      \item $\mathbb{A}\cap\mathbb{B}=\mathbb{B}\cap\mathbb{A}$
-		      \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cap\mathbb{B}=\mathbb{A}$
+		      \item $\A\cup\emptyset=\A$
+		      \item $\A\cup\B=\B\cup\A$
+		      \item $\A\subseteq\B\Rightarrow\A\cup\B=\B$
+		      \item $\A\subseteq\A\cup\B,\B\subseteq\A\cup\B$
 	      \end{itemize}
-	\item Unione $\leftrightarrow\vee$:\\
-	      $\mathbb{A}\cup\mathbb{B}=\{x:x\in\mathbb{A}\vee x\in\mathbb{B}\}$\\
+	\item \ul{Differenza} \color{violet}$\leftrightarrow\backslash$\color{default}:\\
+	      $\B\backslash\A:=\{x:x\in\B\wedge x\not\in\A\}$\\
 	      \ul{Proprietà}:
 	      \begin{itemize}
-		      \item $\mathbb{A}\cup\emptyset=\mathbb{A}$
-		      \item $\mathbb{A}\cup\mathbb{B}=\mathbb{B}\cup\mathbb{A}$
-		      \item $\mathbb{A}\subseteq\mathbb{B}\Rightarrow\mathbb{A}\cup\mathbb{B}=\mathbb{B}$
-		      \item $\mathbb{A}\subseteq\mathbb{A}\cup\mathbb{B},\mathbb{B}\subseteq\mathbb{A}\cup\mathbb{B}$
+		      \item $\A\backslash\emptyset=\A$
+		      \item $\emptyset\backslash\A=\A$
 	      \end{itemize}
-	\item Differenza $\leftrightarrow\backslash$:\\
-	      $\mathbb{B}\backslash\mathbb{A}=\{x:x\in\mathbb{B}\wedge x\not\in\mathbb{A}\}$
-	\item Prodotto cartesiano $\leftrightarrow\times$:\\
-	      $\mathbb{A}\times\mathbb{B}:=\{(a,b):a\in\mathbb{A},b\in\mathbb{B}\}$ con $(a,b)$ coppie ordinate\\
+	\item \ul{Prodotto cartesiano} \color{violet}$\leftrightarrow\times$\color{default}:\\
+	      $\A\times\B:=\{\underbrace{(a,b)}_{\text{coppie ordinate}}:a\in\A,b\in\B\}$\\
 	      \ul{Proprietà}:
 	      \begin{itemize}
-		      \item $|\mathbb{A}\times\mathbb{B}|=|\mathbb{A}|\cdot|\mathbb{B}|$
-		      \item $\mathbb{A}\times\emptyset=\emptyset=\emptyset\times\mathbb{A}$
+		      \item $|\A\times\B|=|\A|\cdot|\B|$
+		      \item $\A\times\emptyset=\emptyset=\emptyset\times\A$
 	      \end{itemize}
+				$\A_1,\cdots,\A_n$ insiemi\\
+				$\A_1\times\cdots\times\A_n=\{(a_1,\cdots,a_n):a_i\in\A_i,\forall i\}$
 \end{enumerate}
 \subsection{Funzioni}
-\Def{Siano $\mathbb{A},\mathbb{B}$ due insiemi:}
-{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ è una legge che associa ad ogni elemento di $\mathbb{A}$, uno ed un solo elemento di $\mathbb{B}$.\\
-	$f:\mathbb{A}\rightarrow\mathbb{B}$\\
-	\hspace*{1.6em}$x\rightarrow y:\quad x$ è la controimmagine di $y$}
-\Def{Sia $f:\mathbb{A}\rightarrow\mathbb{B}$ una funzione e sia $\mathbb{X}\subseteq\mathbb{A}$:}
-{$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'insieme di $\mathbb{X}$ tramite $f$2
-	$Im(f):=f(\mathbb{A})$ è l'insieme della funzione
-
-	$Im(f)$ non è necessariamente $=Dom(f)$
-
-	$Im(f)=Dom(f)\Rightarrow f$ è suriettiva
-
-	$f(1)=f(2)=a\Rightarrow f$ non è iniettiva}
+\Def{Siano $\A,\B$ due insiemi:}
+{Una funzione $f:\A\rightarrow\B$ è una legge che associa \ul{ad ogni} elemento di $\A$, \ul{uno ed un solo} elemento di $\B$.\\
+	$f:\underset{x\mapsto y}{\A\rightarrow\B}$\\
+	Se $y=f(x),x\in\A$, allora $y$ è \ul{l'immagine} di $x$ e $x$ è la \ul{controimmagine} di $y$
+	\Esempio{
+		$\A=\{1,2,3\}\\\B=\{a,b,c,d\}$\\
+		$f:\A\longrightarrow\B$\\
+		\hspace*{1.5em}\begin{minipage}{.8\textwidth}$1\longmapsto a\\2\longmapsto a\\3\longmapsto c$\end{minipage}
+	}}
+\Def{Sia $f:\A\rightarrow\B$ una funzione e sia $\mathbb{X}\subseteq\A$:}
+{$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'immagine di $\mathbb{X}$ tramite $f$\\
+	$Im(f):=f(\A)$ è l'immagine della funzione}
 \section{09/03/22}
 \subsection{Funzioni (continuo)}
-\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \ul{iniettiva} se $\forall x\not=y\Rightarrow f(x)\not=f(y)$}{(elementi distinti di $\mathbb{A}$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$}
-\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \ul{suriettiva} se $Im(f)=B$,}{o equivalentemente se $\forall y\in\mathbb{B},\exists x\in\mathbb{A}:f(x)=y$}
-\Def{Una funzione $f:\mathbb{A}\rightarrow\mathbb{B}$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva e suriettiva}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{iniettiva} se $\forall x\not=y\Rightarrow f(x)\not=f(y)$}{(elementi distinti di $\A$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{suriettiva} se $Im(f)=B$,}{o equivalentemente se $\forall y\in\B,\exists x\in\A:f(x)=y$}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva e suriettiva}
 \Esempio{$f:\R\rightarrow\R\\\hspace*{1.6em}x\rightarrow x^2$
 	\begin{itemize}
 		\item È iniettiva? No, perchè $f(-1)=1=f(1)$
@@ -1126,10 +1162,10 @@ $\begin{bmatrix}
 Supponiamo di avere un sistema lineare qualsiasi:
 
 \begin{enumerate}
-	\item Scriviamo la corrispondente matrice orlata $\mathbb{A}$
-	\item Utilizziamo l'algoritmo di Gauss-Jordan per ottenere da $\mathbb{A}$ una matrice $\mathbb{B}$ a scalini equivalente per righe
-	\item Se l'ultimo pivot di $\mathbb{B}$ appartiene all'ultima colonna, il sistema non è compatibile.
-	\item Scriviamo il sistema a scalini corrispondente a $\mathbb{B}$ e lo risolviamo introducendo delle eventuali variabili libere
+	\item Scriviamo la corrispondente matrice orlata $\A$
+	\item Utilizziamo l'algoritmo di Gauss-Jordan per ottenere da $\A$ una matrice $\B$ a scalini equivalente per righe
+	\item Se l'ultimo pivot di $\B$ appartiene all'ultima colonna, il sistema non è compatibile.
+	\item Scriviamo il sistema a scalini corrispondente a $\B$ e lo risolviamo introducendo delle eventuali variabili libere
 \end{enumerate}
 
 \ul{Esempio}:
@@ -1862,13 +1898,13 @@ $v_1=(1,0),\quad v_1=(0,1)\in\R^2$
 	\item $v_1,v_2$ sono linearmente indipendenti. Infatti se $\lambda_1,\lambda_2\in\R$ sono tali che:
 	      $$\lambda_1(1,0)+\lambda(0,1)=(0,0)\Rightarrow(\lambda_1,\lambda_2)=(0,0)$$
 
-	      Quindi $\mathbb{B}=\{(1,0),(0,1)\}$ è **una** base di $\R^2$
+	      Quindi $\B=\{(1,0),(0,1)\}$ è **una** base di $\R^2$
 
 	      Si noti che parliamo di **una** base di $\R^2$, in quanto essa non è unica.
 
 	      $w_1=(1,2),w_2=(3,4)$ generano $\R^2$ e sono linearmente indipendenti
 
-	      $\Rightarrow\mathbb{B}'={w_1,w_2}$ è un'altra base di $\R^2$
+	      $\Rightarrow\B'={w_1,w_2}$ è un'altra base di $\R^2$
 \end{itemize}
 
 \Def{Due vettori $v_1,v_2\in\R^2$ si dicono collineari se $v_1,v_2$ sono linearmente dipendenti, cioè se $\exists\lambda\in K$ tale che:}{
@@ -1884,7 +1920,7 @@ $v_1=(1,0),\quad v_1=(0,1)\in\R^2$
 
 \ul{Lemma} (di Steinitz)
 
-Sia $V$ uno spazio vettoriale con base $\mathbb{B}=\{v_1,\cdots,v_n\}$ e siano $w_1,\cdots,w_m\in V$
+Sia $V$ uno spazio vettoriale con base $\B=\{v_1,\cdots,v_n\}$ e siano $w_1,\cdots,w_m\in V$
 
 $w_1,\cdots,w_m$ sono linearmente indipendenti $\Rightarrow m\le n$
 
@@ -1955,35 +1991,35 @@ Se $V=\{$\ul{0}$\}$ oppure se $V$ ha una base finita diciamo che $V$ ha \ul{dime
 \end{enumerate}
 
 
-$V,\mathbb{B}=\{v_1,\cdots,v_n\}$ una base di $V$.
+$V,\B=\{v_1,\cdots,v_n\}$ una base di $V$.
 
 Consideriamo la funzione
 
-$$\varphi_\mathbb{B}:V\rightarrow K^n$$
+$$\varphi_\B:V\rightarrow K^n$$
 $$v=\lambda_1v_1+\cdots+\lambda_nv_n\mapsto(\lambda_1,\cdots,\lambda_n)$$
 \begin{itemize}
-	\item \ul{iniettiva}: se $v,w$ sono tali che $\varphi_\mathbb{B}(v)=\varphi_\mathbb{B}(w)\Rightarrow v=w$.
+	\item \ul{iniettiva}: se $v,w$ sono tali che $\varphi_\B(v)=\varphi_\B(w)\Rightarrow v=w$.
 
 	      $v,w\in V\Rightarrow v=\lambda_1v_1+\cdots+\lambda_nv_n\\\qquad\qquad\quad\ w=\mu_1v_1+\cdots+\mu_nv_n$
 	\item \ul{suriettiva}? $\forall(\lambda_1,\lambda_n)\in K^n,\exists v\in V$ tale che
-	      $$\varphi_\mathbb{B}=(\lambda_1,\cdots,\lambda_n)$$
+	      $$\varphi_\B=(\lambda_1,\cdots,\lambda_n)$$
 \end{itemize}
 Basta prendere $v=\lambda_1v_1+\cdots+\lambda_nv_n$ (\boxed)
 
-Quindi $\varphi_\mathbb{B}$ è biettiva.
+Quindi $\varphi_\B$ è biettiva.
 
-Inoltre $\varphi_\mathbb{B}$ soddisfa le seguenti proprietà:
+Inoltre $\varphi_\B$ soddisfa le seguenti proprietà:
 \begin{enumerate}
-	\item $\forall w_1,w_2\in V,\varphi_\mathbb{B}(w_1+w_2)=\varphi_\mathbb{B}(w_1)+\varphi_\mathbb{B}(w_2)$.
+	\item $\forall w_1,w_2\in V,\varphi_\B(w_1+w_2)=\varphi_\B(w_1)+\varphi_\B(w_2)$.
 	      \ul{Dim}
 
 	      Siano $w_1w_2\in V$. Quindi $\exists\lambda_1,\cdots,\lambda_n,\mu_1,\cdots,\mu_n\in K$ tali che
 	      $$w_1=\lambda_1v_1+\cdots+\lambda_nv_n,\quad w_2=\mu_1v_1+\cdots+\mu_nv_n$$
-	      Quindi $\varphi_\mathbb{B}(w_1)=(\lambda_1,\cdots,\lambda_n),\varphi_\mathbb{B}(\mu_1,\cdots,\mu_n)$
+	      Quindi $\varphi_\B(w_1)=(\lambda_1,\cdots,\lambda_n),\varphi_\B(\mu_1,\cdots,\mu_n)$
 
 	      Ora $w_1+w_2=\lambda_1v_1+\cdots+\lambda_nv_n+\mu_1v_1+\cdots+\mu_nv_n=(\lambda_1\mu_1)v_1+\cdots+(\lambda_n\mu_n)v_n$
 
-	      $\varphi_\mathbb{B}(w_1+w_2)=(\lambda_1+\mu_1,\cdots,\lambda_n+\mu_n)=(\lambda_1,\cdots,\lambda_n)+(\mu_1,\cdots,\mu_n)=\varphi_B(w_1)+\varphi_B(w_2)$
+	      $\varphi_\B(w_1+w_2)=(\lambda_1+\mu_1,\cdots,\lambda_n+\mu_n)=(\lambda_1,\cdots,\lambda_n)+(\mu_1,\cdots,\mu_n)=\varphi_B(w_1)+\varphi_B(w_2)$
 	\item $\forall\lambda\in K$ \hl{Incompleto}
 \end{enumerate}
 
