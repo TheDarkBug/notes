@@ -215,19 +215,37 @@ Siano $\A$ e $\B$ due insiemi
 		      \item $|\A\times\B|=|\A|\cdot|\B|$
 		      \item $\A\times\emptyset=\emptyset=\emptyset\times\A$
 	      \end{itemize}
-				$\A_1,\cdots,\A_n$ insiemi\\
-				$\A_1\times\cdots\times\A_n=\{(a_1,\cdots,a_n):a_i\in\A_i,\forall i\}$
+	      $\A_1,\cdots,\A_n$ insiemi\\
+	      $\A_1\times\cdots\times\A_n=\{(a_1,\cdots,a_n):a_i\in\A_i,\forall i\}$
 \end{enumerate}
 \subsection{Funzioni}
 \Def{Siano $\A,\B$ due insiemi:}
 {Una funzione $f:\A\rightarrow\B$ è una legge che associa \ul{ad ogni} elemento di $\A$, \ul{uno ed un solo} elemento di $\B$.\\
-	$f:\underset{x\mapsto y}{\A\rightarrow\B}$\\
+	$f:\overset{\text{dominio}}{\A}\underset{x\mapsto y}{\rightarrow}\overset{\text{codominio}}{\B}$\\
 	Se $y=f(x),x\in\A$, allora $y$ è \ul{l'immagine} di $x$ e $x$ è la \ul{controimmagine} di $y$
 	\Esempio{
 		$\A=\{1,2,3\}\\\B=\{a,b,c,d\}$\\
+		\begin{tikzpicture}
+			\draw (0,0) circle (2);
+			\draw (0,1) node {$1\ \circ$};
+			\draw (0,0) node {$2\ \circ$};
+			\draw (0,-1) node {$3\ \circ$};
+			\draw (5,0) circle (2);
+			\draw (5,1) node   {$\circ\ a$};
+			\draw (5,0.4) node {$\circ\ b$};
+			\draw (5,-0.4) node{$\circ\ c$};
+			\draw (5,-1) node  {$\circ\ d$};
+
+			\draw[violet,thick,->] (0.15,1) to[out=30,in=150] (4.80,1);
+			\draw[violet,thick,->] (0.15,0) to[out=-5,in=200] (4.80,1);
+			\draw[violet,thick,->] (0.15,-1) to[out=-5,in=190] (4.80,-0.4);
+		\end{tikzpicture}\\
 		$f:\A\longrightarrow\B$\\
 		\hspace*{1.5em}\begin{minipage}{.8\textwidth}$1\longmapsto a\\2\longmapsto a\\3\longmapsto c$\end{minipage}
-	}}
+	}\\\\
+	$a$ è \ul{l}'immagine di $1$ e $2\qquad(f(1)=a=f(2))$\\
+	$1$ è \ul{una} controimmagine di $a$
+}
 \Def{Sia $f:\A\rightarrow\B$ una funzione e sia $\mathbb{X}\subseteq\A$:}
 {$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'immagine di $\mathbb{X}$ tramite $f$\\
 	$Im(f):=f(\A)$ è l'immagine della funzione}
