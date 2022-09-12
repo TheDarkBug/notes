@@ -251,9 +251,10 @@ Siano $\A$ e $\B$ due insiemi
 	$Im(f):=f(\A)$ è l'immagine della funzione}
 \section{09/03/22}
 \subsection{Funzioni (continuo)}
-\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{iniettiva} se $\forall x\not=y\Rightarrow f(x)\not=f(y)$}{(elementi distinti di $\A$ hanno immagini distinte) $\Leftrightarrow f(x)=f(y)\Rightarrow x=y$}
-\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{suriettiva} se $Im(f)=B$,}{o equivalentemente se $\forall y\in\B,\exists x\in\A:f(x)=y$}
-\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva e suriettiva}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{iniettiva} se $\forall x,y\in\A$}{$$\underset{\text{(elementi distinti di $\A$ hanno immagini distinte)}}{f(x)\not=f(y)}$$$$\Updownarrow$$$$\hspace*{8em}f(x)=f(y)\Rightarrow x=y:\begin{cases}\text{usiamo questa}\\\text{implicazione}\\\text{per dimostrare}\\\text{che una funzione}\\\text{è iniettiva}
+\end{cases}$$(ogni elemento di $\B$ ha \ul{al più} una controimmagine)}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{suriettiva} se $Im(f)=\B$,}{o equivalentemente se $\forall y\in\B,\exists x\in\A:f(x)=y$\\(ogni elemento di $\B$ ha \ul{almeno} una controimmagine)}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva \ul{e} suriettiva\\(ogni elemento di $\B$ ha \ul{esattamente} una controimmagine)}
 \Esempio{$f:\R\rightarrow\R\\\hspace*{1.6em}x\rightarrow x^2$
 	\begin{itemize}
 		\item È iniettiva? No, perchè $f(-1)=1=f(1)$
