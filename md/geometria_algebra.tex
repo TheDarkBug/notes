@@ -14,7 +14,7 @@
 \usetikzlibrary{shapes,backgrounds}
 \usepackage[linguistics]{forest}
 \usepackage{fancyhdr}
-\usepackage[margin={1em, 2em}]{geometry}
+\usepackage{geometry}
 
 % metadata
 \title{Appunti del corso di algebra e geometria}
@@ -41,6 +41,7 @@
 \newcommand{\M}{\mathcal{M}}
 \newcommand{\Def}[2]{\paragraph{\ul{Def}:}#1\\\hspace*{3em}\begin{minipage}{.8\textwidth}#2\end{minipage}}
 \newcommand{\Esempio}[1]{\subsubsection*{\ul{Esempio}:}#1}
+\newcommand{\colort}[2]{\text{\color{#1}#2}}
 
 % set default color
 \AtBeginDocument{\colorlet{default}{.}}
@@ -145,7 +146,7 @@ P(3): \textbf{\color{red}F}
 \subsubsection*{\color{green}\ul{Descrizione di un insieme}}
 \begin{enumerate}
 	\item \ul{Per elencazione} (se l'insieme ha un numero finito di elementi):\\
-	  $\A=\{\color{violet}\underbrace{\color{none}0,2,4,6,8,10}_{elementi}\}$\\
+	  $\A=\{\underbrace{0,2,4,6,8,10}_{\colort{violet}{elementi}}\}$\\
 	  $4\in\A$ (4 appartiene ad $\A$)\\
 	  $5\notin\A$ (5 non appartiene ad $\A$)
 	\item \ul{Per proprietà caratteristica}:\\
@@ -182,7 +183,7 @@ $\mathbb{C}$: numeri complessi
 	  {\color{violet}$\B\supseteq\A("\B$ contiene $\A")$}\\
 	  Se $\A\subseteq\B$, diciamo che $\A$ è un \ul{sottoinsieme} di $\B$
 	  \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}
-	\item $\A=\B\Leftrightarrow(x\in\A\Leftrightarrow x\in\B)\Leftrightarrow(\color{violet}\underbrace{\color{none}\A\subseteq\B\wedge\B\subseteq\A}_{\text{doppia inclusione}})$
+	\item $\A=\B\Leftrightarrow(x\in\A\Leftrightarrow x\in\B)\Leftrightarrow(\underbrace{\A\subseteq\B\wedge\B\subseteq\A}_{\colort{violet}{doppia inclusione}})$
 \end{itemize}
 \subsubsection*{\color{blue}\ul{Operazioni tra insiemi}}
 Siano $\A$ e $\B$ due insiemi
@@ -258,13 +259,13 @@ $Im(f):=f(\A)$ è l'immagine della funzione}
 \section{09/03/22}
 \subsection{\color{blue}\ul{Funzioni (continuo)}}
 \Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{iniettiva} se $\forall x,y\in\A$}{$$\underset{\text{\color{cyan}(elementi distinti di $\A$ hanno immagini distinte)}}{f(x)\not=f(y)}$$$$\Updownarrow$$$$\hspace*{8em}f(x)=f(y)\Rightarrow x=y:\color{pink}\begin{cases}\text{usiamo questa}\\\text{implicazione}\\\text{per dimostrare}\\\text{che una funzione}\\\text{è iniettiva}
-\end{cases}$$\color{orange}(ogni elemento di $\B$ ha \ul{al più} una controimmagine)\color{none}}
-\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{suriettiva} se $Im(f)=\B$,}{o equivalentemente se $\forall y\in\B,\exists x\in\A:f(x)=y$\\\color{orange}(ogni elemento di $\B$ ha \ul{almeno} una controimmagine)\color{none}}
-\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva \ul{e} suriettiva\\\color{orange}(ogni elemento di $\B$ ha \ul{esattamente} una controimmagine)\color{none}}
+\end{cases}$$\colort{orange}{(ogni elemento di $\B$ ha \ul{al più} una controimmagine)}}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{suriettiva} se $Im(f)=\B$,}{o equivalentemente se $\forall y\in\B,\exists x\in\A:f(x)=y$\\\colort{orange}{(ogni elemento di $\B$ ha \ul{almeno} una controimmagine)}}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva \ul{e} suriettiva\\\colort{orange}{(ogni elemento di $\B$ ha \ul{esattamente} una controimmagine)}}
 \Esempio{$f:\R\rightarrow\R\\\hspace*{1.6em}x\rightarrow x^2$
 	\begin{itemize}
-		\item \color{cyan}È iniettiva? No, perchè $f(-1)=1=f(1)$\color{none}
-		\item \color{violet}È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\R\Rightarrow Im(f)\subseteq\R^+\Rightarrow Im(f)\not=\R$
+		\item \colort{cyan}{È iniettiva? No, perchè $f(-1)=1=f(1)$}
+	\item \colort{violet}{È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\R\Rightarrow Im(f)\subseteq\R^+\Rightarrow Im(f)\not=\R$}
 \end{itemize}}
 \vspace*{1em}
 \subsubsection{\color{blue}\ul{Nozione di campo}}
@@ -277,7 +278,7 @@ L'addizione su $\R$ è un'operazione binaria interna\\$+:\R\times\R\rightarrow\R
 	\item Associatività: $(x+y)+z=x+(y+z),\forall x,y,z\in\R$
 	\item Elemento neutro: $\exists0\in\R:\ x+0=0+x=x,\ \forall x\in\R$
 	\item Opposto: $\forall x\in\R,\ \exists x'\in\R:\ x+x'=x'+x=0\ \color{violet}(x'=-x)$
-\end{enumerate}\\
+\end{enumerate}
 $\cdot:\R\times\R\rightarrow\R$\\
 \hspace*{1.5em}$(x,y)\rightarrow x\cdot y$\\\\
 \ul{Proprietà} di $(\R,\cdot)$:
