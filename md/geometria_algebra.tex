@@ -1,5 +1,5 @@
 % packages to install (arch linux): texlive-bibtexextra texlive-bin texlive-core texlive-fontsextra texlive-formatsextra texlive-games texlive-humanities texlive-latexextra texlive-latexindent-meta texlive-music texlive-pictures texlive-pstricks texlive-publishers texlive-science
-% pdflatex -synctex=1 -interaction=nonstopmode -file-line-error -recorder geometria_algebra.tex
+% perl packages to install (cpan): File::HomeDir YAML::Tiny
 \documentclass{article}
 
 % packages
@@ -53,9 +53,6 @@
 \renewcommand*\contentsname{Indice}
 \tableofcontents
 \newpage
-\section*{\hl{Introduzione}}
-Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:Licenza]{licenza \LaTeX}.\\
-Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
 \section*{\hl{Licenza}}
 \label{sec:Licenza}
 \begin{verbatim}
@@ -77,14 +74,17 @@ Il repository originario per questi (ed altri appunti) è su \href{https://githu
 	This work consists of the file geometria_algebra.tex
 	and the derived files geometria_algebra.pdf and other output.
 \end{verbatim}
+\section*{\hl{Introduzione}}
+Questi appunti sono scritti seguendo le lezioni della prof.ssa \href{https://aiezzi.it/}{Anna Iezzi} e sono distribuiti sotto la \hyperref[sec:Licenza]{licenza \LaTeX}.\\
+Il repository originario per questi (ed altri appunti) è su \href{https://github.com/TheDarkBug/notes}{github}.
 \newpage
 \section{08/03/22}
-\subsection{\color{blue}\ul{Richiami di logica}}
+\subsection{\texorpdfstring{\color{blue}\ul{Richiami di logica}}{Richiami di logica}}
 \begin{forest}
 	for tree={grow'=0}
 	[ P: proposizione logica
-	[\color{green}\textbf{V} Vero]
-	[\color{red}\textbf{F} Falso]
+		[\color{green}\textbf{V} Vero]
+		[\color{red}\textbf{F} Falso]
 	]
 \end{forest} (valori di verità)\\
 P = "Napoli è in Campania": \textbf{\color{green}V}\\
@@ -126,51 +126,51 @@ P(3): \textbf{\color{red}F}
 \Esempio{
 	\begin{enumerate}
 		\item "$\forall n$ naturale, $n$ è pari": \textbf{\color{red}F}\\
-		  "$\exists n$ naturale$\underset{\underset{\text{\color{violet}tale che}}{\uparrow}}{:}\ n$ è pari": \textbf{\color{green}V}
+		      "$\exists n$ naturale$\underset{\underset{\text{\color{violet}tale che}}{\uparrow}}{:}\ n$ è pari": \textbf{\color{green}V}
 		\item $P(x)=\{x$ è uno studente in aula A3-T2$\}$\\
-		  $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$\\
-		  $\forall x, P(x)\Rightarrow Q(x)$
+		      $Q(x)=\{x$ è iscritto ad un corso di ingegneria$\}$\\
+		      $\forall x, P(x)\Rightarrow Q(x)$
 		\item $P(n)="n$ è un numero pari"\\
-		  $Q(n)="n$ è divisibile per $4$"\\
-		  $\forall n$ naturale, $Q(n)\Rightarrow P(n)$\textbf{\color{green}V}\\
-		  $\forall n$ naturale, $P(n)\Rightarrow Q(n)$\textbf{\color{red}F}\\\\
-		  $R(n)="n$ è divisibile per $2$"\\
-		  $\forall n, P(n)\Leftrightarrow R(n):$\textbf{\color{green}V}
+		      $Q(n)="n$ è divisibile per $4$"\\
+		      $\forall n$ naturale, $Q(n)\Rightarrow P(n)$\textbf{\color{green}V}\\
+		      $\forall n$ naturale, $P(n)\Rightarrow Q(n)$\textbf{\color{red}F}\\\\
+		      $R(n)="n$ è divisibile per $2$"\\
+		      $\forall n, P(n)\Leftrightarrow R(n):$\textbf{\color{green}V}
 	\end{enumerate}
 	\ul{Importante}: $Q(n)\Rightarrow P(n)$ \ul{è equivalente} a $\neg Q(n)\Rightarrow\ \neg P(n)$
 }
 
-\subsection{\color{blue}\ul{Teoria degli insiemi}}
+\subsection{\texorpdfstring{\color{blue}\ul{Teoria degli insiemi}}{Teoria degli insiemi}}
 \Def{\ul{INSIEME}: collezione di oggetti, detti \ul{elementi} dell'insieme.}
 {Convenzionalmente gli insiemi si denotano con lettere maiuscole e gli elementi con lettere minuscole.}
 \subsubsection*{\color{green}\ul{Descrizione di un insieme}}
 \begin{enumerate}
 	\item \ul{Per elencazione} (se l'insieme ha un numero finito di elementi):\\
-	  $\A=\{\underbrace{0,2,4,6,8,10}_{\colort{violet}{elementi}}\}$\\
-	  $4\in\A$ (4 appartiene ad $\A$)\\
-	  $5\notin\A$ (5 non appartiene ad $\A$)
+	      $\A=\{\underbrace{0,2,4,6,8,10}_{\colort{violet}{elementi}}\}$\\
+	      $4\in\A$ (4 appartiene ad $\A$)\\
+	      $5\notin\A$ (5 non appartiene ad $\A$)
 	\item \ul{Per proprietà caratteristica}:\\
-	  $\A=\{n:\ n$ è un numero pari: $0\le n\le 10\}$
+	      $\A=\{n:\ n$ è un numero pari: $0\le n\le 10\}$
 	\item Diagramma di \textit{Eulero-Venn} (ancora una volta se l'insieme ha un numero finito di elementi):\\
-	  \begin{displaymath}
-		  \begin{tikzpicture}
-			  \begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.5]
-				  \draw[blue] (0,0) circle (1.5cm);
-				  \draw[blue] (1.5,1.5) node {$A$};
-				  \draw[blue] (-0.3,0.7) node {$\circ\ 0$};
-				  \draw[blue] (-0.7,0.2) node {$\circ\ 2$};
-				  \draw[blue] (-0.5,-0.7) node {$\circ\ 4$};
-				  \draw[blue] (0.4,-0.75) node {$\circ\ 10$};
-				  \draw[blue] (0.9,-0.2) node {$\circ\ 8$};
-				  \draw[blue] (0.2,0.2) node {$\circ\ 6$};
-			  \end{scope}
-		  \end{tikzpicture}
-	  \end{displaymath}
+	      \begin{displaymath}
+		      \begin{tikzpicture}
+			      \begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.5]
+				      \draw[blue] (0,0) circle (1.5cm);
+				      \draw[blue] (1.5,1.5) node {$A$};
+				      \draw[blue] (-0.3,0.7) node {$\circ\ 0$};
+				      \draw[blue] (-0.7,0.2) node {$\circ\ 2$};
+				      \draw[blue] (-0.5,-0.7) node {$\circ\ 4$};
+				      \draw[blue] (0.4,-0.75) node {$\circ\ 10$};
+				      \draw[blue] (0.9,-0.2) node {$\circ\ 8$};
+				      \draw[blue] (0.2,0.2) node {$\circ\ 6$};
+			      \end{scope}
+		      \end{tikzpicture}
+	      \end{displaymath}
 \end{enumerate}
 \Def{Sia $\A$ un insieme finito.}{La \ul{\textbf{cardinalità}} di $\A$ è i numero di elementi di $\A$ e si denota $|\A|$\\
 	\begin{itemize}
 		\item Insieme vuoto: insieme che non contiene nessun elemento, si denota con $\emptyset$, $\{\}$ e ha cardinalità $|\emptyset|=0$
-\end{itemize}}
+	\end{itemize}}
 \subsubsection*{\color{blue}\ul{I principali insiemi numerici}}
 $\mathbb{N}=\{0,1,2,3,\cdots\}$: numeri naturali\\
 $\mathbb{Z}=\{\cdots,-3,-2,-1,0,1,2,3,\cdots\}$: numeri naturali\\
@@ -180,50 +180,50 @@ $\mathbb{C}$: numeri complessi
 \subsubsection*{\color{blue}\ul{Inclusione di insiemi}}
 \begin{itemize}
 	\item $\A\subseteq\B\quad(\A$ è contenuto in $\B)\Leftrightarrow(\forall x,x\in\A\Rightarrow x\in\B)$\\
-	  {\color{violet}$\B\supseteq\A("\B$ contiene $\A")$}\\
-	  Se $\A\subseteq\B$, diciamo che $\A$ è un \ul{sottoinsieme} di $\B$
-	  \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}
+	      {\color{violet}$\B\supseteq\A("\B$ contiene $\A")$}\\
+	      Se $\A\subseteq\B$, diciamo che $\A$ è un \ul{sottoinsieme} di $\B$
+	      \Esempio{$\mathbb{N}\subseteq\mathbb{Z}\subseteq\mathbb{Q}\subseteq\R\subseteq\mathbb{C}$}
 	\item $\A=\B\Leftrightarrow(x\in\A\Leftrightarrow x\in\B)\Leftrightarrow(\underbrace{\A\subseteq\B\wedge\B\subseteq\A}_{\colort{violet}{doppia inclusione}})$
 \end{itemize}
 \subsubsection*{\color{blue}\ul{Operazioni tra insiemi}}
 Siano $\A$ e $\B$ due insiemi
 \begin{enumerate}
 	\item \ul{Intersezione} \color{violet}$\leftrightarrow\wedge$\color{default}:\\
-	  $\A\cap\B:=\{x:x\in\A\underset{\text{"e"}}{\wedge} x\in\B\}$\\
-	  Se $\A\cap\B=\emptyset$ allora $\A$ e $\B$ sono detti \ul{disgiunti}\\
-	  \ul{Proprietà}:
-	  \begin{itemize}
-		  \item $\A\cap\emptyset=\emptyset$
-		  \item $\A\cap\B=\B\cap\A$
-		  \item $\A\subseteq\B\Rightarrow\A\cap\B=\A$
-	  \end{itemize}
+	      $\A\cap\B:=\{x:x\in\A\underset{\text{"e"}}{\wedge} x\in\B\}$\\
+	      Se $\A\cap\B=\emptyset$ allora $\A$ e $\B$ sono detti \ul{disgiunti}\\
+	      \ul{Proprietà}:
+	      \begin{itemize}
+		      \item $\A\cap\emptyset=\emptyset$
+		      \item $\A\cap\B=\B\cap\A$
+		      \item $\A\subseteq\B\Rightarrow\A\cap\B=\A$
+	      \end{itemize}
 	\item \ul{Unione} \color{violet}$\leftrightarrow\vee$\color{default}:\\
-	  $\A\cup\B:=\{x:x\in\A\vee x\in\B\}$\\
-	  \ul{Proprietà}:
-	  \begin{itemize}
-		  \item $\A\cup\emptyset=\A$
-		  \item $\A\cup\B=\B\cup\A$
-		  \item $\A\subseteq\B\Rightarrow\A\cup\B=\B$
-		  \item $\A\subseteq\A\cup\B,\B\subseteq\A\cup\B$
-	  \end{itemize}
+	      $\A\cup\B:=\{x:x\in\A\vee x\in\B\}$\\
+	      \ul{Proprietà}:
+	      \begin{itemize}
+		      \item $\A\cup\emptyset=\A$
+		      \item $\A\cup\B=\B\cup\A$
+		      \item $\A\subseteq\B\Rightarrow\A\cup\B=\B$
+		      \item $\A\subseteq\A\cup\B,\B\subseteq\A\cup\B$
+	      \end{itemize}
 	\item \ul{Differenza} \color{violet}$\leftrightarrow\backslash$\color{default}:\\
-	  $\B\backslash\A:=\{x:x\in\B\wedge x\not\in\A\}$\\
-	  \ul{Proprietà}:
-	  \begin{itemize}
-		  \item $\A\backslash\emptyset=\A$
-		  \item $\emptyset\backslash\A=\A$
-	  \end{itemize}
+	      $\B\backslash\A:=\{x:x\in\B\wedge x\not\in\A\}$\\
+	      \ul{Proprietà}:
+	      \begin{itemize}
+		      \item $\A\backslash\emptyset=\A$
+		      \item $\emptyset\backslash\A=\A$
+	      \end{itemize}
 	\item \ul{Prodotto cartesiano} \color{violet}$\leftrightarrow\times$\color{default}:\\
-	  $\A\times\B:=\{\underbrace{(a,b)}_{\text{coppie ordinate}}:a\in\A,b\in\B\}$\\
-	  \ul{Proprietà}:
-	  \begin{itemize}
-		  \item $|\A\times\B|=|\A|\cdot|\B|$
-		  \item $\A\times\emptyset=\emptyset=\emptyset\times\A$
-	  \end{itemize}
-	  $\A_1,\cdots,\A_n$ insiemi\\
-	  $\A_1\times\cdots\times\A_n=\{(a_1,\cdots,a_n):a_i\in\A_i,\forall i\}$
+	      $\A\times\B:=\{\underbrace{(a,b)}_{\text{coppie ordinate}}:a\in\A,b\in\B\}$\\
+	      \ul{Proprietà}:
+	      \begin{itemize}
+		      \item $|\A\times\B|=|\A|\cdot|\B|$
+		      \item $\A\times\emptyset=\emptyset=\emptyset\times\A$
+	      \end{itemize}
+	      $\A_1,\cdots,\A_n$ insiemi\\
+	      $\A_1\times\cdots\times\A_n=\{(a_1,\cdots,a_n):a_i\in\A_i,\forall i\}$
 \end{enumerate}
-\subsection{\color{blue}\ul{Funzioni}}
+\subsection{\texorpdfstring{\color{blue}\ul{Funzioni}}{Funzioni}}
 \Def{Siano $\A,\B$ due insiemi:}
 {Una funzione $f:\A\rightarrow\B$ è una legge che associa \ul{ad ogni} elemento di $\A$, \ul{uno ed un solo} elemento di $\B$.\\
 	$f:\overset{\text{dominio}}{\A}\underset{x\mapsto y}{\rightarrow}\overset{\text{codominio}}{\B}$\\
@@ -255,101 +255,186 @@ Siano $\A$ e $\B$ due insiemi
 }
 \Def{Sia $f:\A\rightarrow\B$ una funzione e sia $\mathbb{X}\subseteq\A$:}
 {$f(x):=\{f(x):x\in\mathbb{X}\}$ è l'immagine di $\mathbb{X}$ tramite $f$\\
-$Im(f):=f(\A)$ è l'immagine della funzione}
+	$Im(f):=f(\A)$ è l'immagine della funzione}
 \section{09/03/22}
-\subsection{\color{blue}\ul{Funzioni (continuo)}}
-\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{iniettiva} se $\forall x,y\in\A$}{$$\underset{\text{\color{cyan}(elementi distinti di $\A$ hanno immagini distinte)}}{f(x)\not=f(y)}$$$$\Updownarrow$$$$\hspace*{8em}f(x)=f(y)\Rightarrow x=y:\color{pink}\begin{cases}\text{usiamo questa}\\\text{implicazione}\\\text{per dimostrare}\\\text{che una funzione}\\\text{è iniettiva}
-\end{cases}$$\colort{orange}{(ogni elemento di $\B$ ha \ul{al più} una controimmagine)}}
+\subsection{\texorpdfstring{\color{blue}\ul{Funzioni (continuo)}}{Funzioni (continuo)}}
+\Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{iniettiva} se $\forall x,y\in\A$}{$$\underset{\text{\color{cyan}(elementi distinti di $\A$ hanno immagini distinte)}}{x\ne y\Rightarrow f(x)\ne f(y)}$$$$\Updownarrow$$$$\hspace*{8em}f(x)=f(y)\Rightarrow x=y:\color{pink}\begin{cases}\text{usiamo questa} \\\text{implicazione}\\\text{per dimostrare}\\\text{che una funzione}\\\text{è iniettiva}
+		\end{cases}$$\colort{orange}{(ogni elemento di $\B$ ha \ul{al più} una controimmagine)}}
 \Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{suriettiva} se $Im(f)=\B$,}{o equivalentemente se $\forall y\in\B,\exists x\in\A:f(x)=y$\\\colort{orange}{(ogni elemento di $\B$ ha \ul{almeno} una controimmagine)}}
 \Def{Una funzione $f:\A\rightarrow\B$ si dice \ul{biettiva} o \ul{biunivoca}}{se è al tempo stesso iniettiva \ul{e} suriettiva\\\colort{orange}{(ogni elemento di $\B$ ha \ul{esattamente} una controimmagine)}}
-\Esempio{$f:\R\rightarrow\R\\\hspace*{1.6em}x\rightarrow x^2$
+\Esempio{$f:\R\rightarrow\R\\\hspace*{1.5em}x\rightarrow x^2$
 	\begin{itemize}
 		\item \colort{cyan}{È iniettiva? No, perchè $f(-1)=1=f(1)$}
-	\item \colort{violet}{È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\R\Rightarrow Im(f)\subseteq\R^+\Rightarrow Im(f)\not=\R$}
-\end{itemize}}
+		\item \colort{violet}{È suriettiva? No, perchè $f(x)=x^2\geq0\forall x\in\R\Rightarrow Im(f)\subseteq\R^+\Rightarrow Im(f)\not=\R$}
+	\end{itemize}}
 \vspace*{1em}
-\subsubsection{\color{blue}\ul{Nozione di campo}}
+\subsubsection{\texorpdfstring{\color{blue}\ul{Nozione di campo}}{\ul{Nozione di campo}}}
 \Def{Se un insieme possiede delle operazioni che verificano certe proprietà, è una struttura algebrica.}{}
-\Def{Sia $\X$ un insieme}{un'\ul{operazione binaria interna} è una funzione dal prodotto cartesiano $\X\times \X$ in $\X$.\\\\$*:\X\times\X\rightarrow\X$\\\hspace*{1.4em}$(x,y)\rightarrow x*y$}\\\vspace{1em}\\
+\Def{Sia $\X$ un insieme.}{Un'\ul{operazione binaria interna} è una funzione dal prodotto cartesiano $\X\times \X$ in $\X$.\\\\$*:\X\times\X\rightarrow\X$\\\hspace*{1.4em}$(x,y)\rightarrow x*y$}\\\vspace{1em}\\
 L'addizione su $\R$ è un'operazione binaria interna\\$+:\R\times\R\rightarrow\R$\\\hspace*{-0.7em}$\qquad(x,y)\rightarrow x+y$\\\\
-\ul{Proprietà} di $(\R,+)$:
-\begin{enumerate}
-	\item Commutatività: $x+y=y+x,\forall x,y\in\R$
-	\item Associatività: $(x+y)+z=x+(y+z),\forall x,y,z\in\R$
-	\item Elemento neutro: $\exists0\in\R:\ x+0=0+x=x,\ \forall x\in\R$
-	\item Opposto: $\forall x\in\R,\ \exists x'\in\R:\ x+x'=x'+x=0\ \color{violet}(x'=-x)$
-\end{enumerate}
+	\colort{pink}{\ul{Proprietà di $(\R,+)$}}
+	\begin{enumerate}
+		\item Commutatività: $x+y=y+x,\forall x,y\in\R$
+		\item Associatività: $(x+y)+z=x+(y+z),\forall x,y,z\in\R$
+		\item Elemento neutro: $\exists0\in\R:\ x+0=0+x=x,\ \forall x\in\R$
+		\item Opposto: $\forall x\in\R,\ \exists x'\in\R:\ x+x'=x'+x=0\ \color{violet}(x'=-x)$
+	\end{enumerate}
+	Anche la moltiplicazione su $\R$ è un'operazione binaria interna\\
 $\cdot:\R\times\R\rightarrow\R$\\
-\hspace*{1.5em}$(x,y)\rightarrow x\cdot y$\\\\
-\ul{Proprietà} di $(\R,\cdot)$:
-\begin{enumerate}
-	\item Commutatività: $x\cdot y=y\cdot x,\forall x,y\in\R$
-	\item Associatività: $(x\cdot y)\cdot z=x\cdot(y\cdot z),\forall x,y,z\in\R$
-	\item Elemento neutro: $\exists x'\in\R:x\cdot x'=x'\cdot x=x,\forall x\in\R,x'=1$
-	\item Elemento inverso: $\exists x'\in\R:x\cdot x'=x'\cdot x=0,\forall x\in\R,(x'=\frac{1}{x})$
-\end{enumerate}
-Infine $+$ e $\cdot$ soddisfano la proprietà distributiva: $\forall x,y,z\in\R,x\cdot(y+z)=x\cdot y+x\cdot z$
+	\hspace*{1.5em}$(x,y)\rightarrow x\cdot y$\\\\
+	\colort{pink}{\ul{Proprietà di $(\R,\cdot)$}}
+	\begin{enumerate}
+		\item Commutatività: $x\cdot y=y\cdot x,\forall x,y\in\R$
+		\item Associatività: $(x\cdot y)\cdot z=x\cdot(y\cdot z),\forall x,y,z\in\R$
+		\item Elemento neutro: $\exists1\in\R:\ x\cdot1=1\cdot x,\ \forall x\in\R$
+		\item Elemento inverso: $\forall x\in\R\backslash\{0\},\ \exists x'\in\R:\ x\cdot x'=x'\cdot x=1$ \colort{violet}{$(x'=x^{-1}=\frac{1}{x})$}
+	\end{enumerate}
+	Infine $+$ e $\cdot$ soddisfano la proprietà distributiva:\\
+$\forall x,y,z\in\R,x\cdot(y+z)=x\cdot y+x\cdot z$\\\\
+	\colort{green}{$\R$ dotato delle operazioni di addizione e moltiplicazione è chiamato \ul{campo} dei numeri reali.}\\
+	\colort{pink}{Più in generale abbiamo (definizione di campo)}
+	\Def{Sia $\K\ne\emptyset$ un insieme dotato di due operazioni binarie:}{
+		\begin{itemize}
+			\item $+:\K\times\K\rightarrow\K$
+			\item $\cdot:\K\times\K\rightarrow\K$
+		\end{itemize}}\\\\
+$(\K,+,\cdot)$ è detto un \ul{campo} se\\
+	\begin{enumerate}
+		\item $+$ è commutativa \qquad\colort{violet}{$(\forall x,y\in\K,\ x+y=y+x)$}
+		\item $+$ è associativa \qquad\colort{violet}{$(\forall x,y,z\in\K,\ (x+y)+z=x+(y+z))$}
+		\item esiste elemento neutro $0$ rispetto a $+$ \qquad\colort{violet}{$(0+x=x+0=x,\forall x\in\K)$}
+		\item $\forall x\in\K$ esiste un opposto \qquad\colort{violet}{$(x':\ x+x'=x'+x=0)$}
+		\item $\cdot$ è commutativa \qquad\colort{violet}{$(\forall x,y\in\K,\ x\cdot y=y\cdot x)$}
+		\item $\cdot$ è associativa \qquad\colort{violet}{$(\forall x,y,z\in\K,\ (x\cdot y)\cdot z=x\cdot (y\cdot z))$}
+		\item esiste elemento neutro $1$ rispetto a $\cdot$ \qquad\colort{violet}{$(x\cdot1=1\cdot x=x,\ \forall x\in\K)$}
+		\item $\forall x\in\K\backslash\{0\}$ esiste un inverso \qquad\colort{violet}{$(x':\ x\cdot x'=x'\cdot x=1)$}
+		\item $\cdot$ è distributiva rispetto a $+$ \qquad\colort{violet}{$(\forall x,y,z\in\K,\ x\cdot(y+z)=x\cdot y+x\cdot z)$}
+	\end{enumerate}
 
-Sia $\K\not=\emptyset$ un insieme dotato di due operazioni binarie:
-\begin{itemize}
-	\item $+:\K\times\K\rightarrow\K$
-	\item $\cdot:\K\times\K\rightarrow\K$
-\end{itemize}
-$(\K,+,\cdot)$ è detto un \ul{campo} se verificano le proprietà elencate prima, con $+$ distributiva e $\K$ al posto di $\R$
+	\Esempio{$\mathbb{F}_2=\{0, 1\}$\colort{pink}{: campo finito a due elementi}
+		\begin{itemize}
+			\item $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
+			      \hspace*{1.8em}$(0,0)\rightarrow 0$\\
+			      \hspace*{1.8em}$(0,1)\rightarrow 0$\\
+			      \hspace*{1.8em}$(1,0)\rightarrow 0$\\
+			      \hspace*{1.8em}$(1,1)\rightarrow 1$
+			\item $+:\mathbb{F}_2\times\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
+			      \hspace*{1.8em}$(0,0)\rightarrow 0$\\
+			      \hspace*{1.8em}$(0,1)\rightarrow 1$\\
+			      \hspace*{1.8em}$(1,0)\rightarrow 1$\\
+			      \hspace*{1.8em}$(1,1)\rightarrow 1$
+		\end{itemize}
+		$0$ è l'elemento neutro di $+$\\
+		$1$ è l'elemento neutro di $\cdot$\\
+		$1$ è l'opposto e l'inverso di se stesso.\\
+		È possibile verificare che $+$ e $\cdot$ verificano $1,2,\cdots,9$.
+	}
+	\subsection{Algebra lineare}
+	Wikipedia:
+	\begin{quotation}
+		Branca della matematica che si occupa dello studio di spazi vettoriali (o anche detti spazi lineari), di trasformazioni lineari e di sistemi di equazioni lineari.
+	\end{quotation}
+	Molti problemi di matematica e fisica verificano la seguente proprietà:\\
+	Se $v,w\in\mathbb{X}$ sono due soluzioni del problema, allora anche $v+w$ e $\lambda v,\lambda\in\R$  ($+$ e $\cdot$ operazioni su $\mathbb{X}$) sono soluzioni del problema.\\
+	Problemi di questo tipo sono detti \textit{lineari}.
 
-\Esempio{$\mathbb{F}_2=\{0, 1\}$
+	\subsubsection*{\colort{blue}{Nozione base dell'algebra lineare: \ul{spazio vettoriale}}}
+
+	I \colort{violet}{vettori} sono usati in fisica per rappresentare grandezze fisiche caratterizzate da:
 	\begin{itemize}
-		\item $\cdot:\mathbb{F}_2\cdot\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
-		  \hspace*{1.8em}$(0,0)\rightarrow 0$\\
-		  \hspace*{1.8em}$(0,1)\rightarrow 0$\\
-		  \hspace*{1.8em}$(1,0)\rightarrow 0$\\
-		  \hspace*{1.8em}$(1,1)\rightarrow 1$
-		\item $+:\mathbb{F}_2\times\mathbb{F}_2\rightarrow\mathbb{F}_2$\\
-		  \hspace*{1.8em}$(0,0)\rightarrow 0$\\
-		  \hspace*{1.8em}$(0,1)\rightarrow 1$\\
-		  \hspace*{1.8em}$(1,0)\rightarrow 1$\\
-		  \hspace*{1.8em}$(1,1)\rightarrow 1$
-\end{itemize}}
-\subsection{Algebra lineare}
-Wikipedia:
-\begin{quotation}
-	Branca della matematica che si occupa dello studio di spazi vettoriali (o anche detti spazi lineari), di trasformazioni lineari e di sistemi di equazioni lineari.
-\end{quotation}
-Molti problemi di matematica e fisica verificano la seguente proprietà:\\
-Se $v,w\in\mathbb{X}$ sono due soluzioni del problema, allora anche $v+w$ e $\lambda v,\lambda\in\R$  ($+$ e $\cdot$ operazioni su $\mathbb{X}$) sono soluzioni del problema.\\
-Problemi di questo tipo sono detti \textit{lineari}.
+		\item una direzione
+		\item un verso
+		\item un'intensità
+	\end{itemize}
+	Tali grandezze sono dette \ul{vettoriali}:
+	\ul{esempi}: velocità, forza, accelerazione, campo elettrico, momento angolare.
 
-\subsubsection*{Nozione base: \ul{spazio vettoriale}}
+$\begin{bmatrix}
+	\text{si differenziano dalle \textbf{grandezze scalari} che sono definite unicamente dall'intensità} \\
+	\text{\ul{esempi}: massa, temperatura, volume, lavoro, pressione, etc...}                            \\
+\end{bmatrix}$\vspace{1em}\\
+	GEOMETRICAMENTE rappresentiamo un vettore con un \textbf{segmento orientato}\\
+	\colort{green}{Nel piano euclideo $\Pi$:}\\
 
-I vettori sono usati in fisica per rappresentare, grandezze fisiche caratterizzate da:
-\begin{itemize}
-	\item una direzione
-	\item un verso
-	\item un'intensità
-\end{itemize}
-Tali grandezze sono \textbf{grandezze vettoriali} e si differenziano dalle \textbf{grandezze scalari}, definite unicamente dall'intensità.\\
-Geometricamente, un vettore si rappresenta tramite un \textbf{segmento orientato} nel piano euclideo, denotato $\Pi$.
-\Def{Un segmento orientato è una coppia di punti ordinata $(A,B\in\Pi\times\Pi)$.}{$\vec{AB}:=(A,B)$}
-\Def{Due segmenti orientati $\vec{AB}$ e $\vec{CD}$ si dicono \ul{equipollenti} se il quadrilatero avente vertici, ordinatamente,}{$ABDC$ è un parallelogramma, quindi se hanno:
+	\begin{tikzpicture}
+		\begin{scope}
+			\draw[->] (-1,0) -- (2,1.5);
+			\draw (-1.2,0.025) node {$A$};
+			\draw (2.2,1.55) node {$B$};
+			\draw[pink] (-4, 1) node {punto di};
+			\draw[pink] (-4, 0.5) node {applicazione o};
+			\draw[pink] (-4, 0) node {iniziale};
+			\path[pink,->] (-2.8,0.6) edge[bend left] node [right] {} (-1.4,0.2);
+			\draw[pink] (4.5, 1.7) node {punto finale};
+			\path[pink,->] (3.5,1.7) edge[bend right] node [left] {} (2.5,1.65);
+		\end{scope}
+	\end{tikzpicture}
+	\Def{Un \ul{segmento orientato} è una coppia ordinata di punti $(A,B)\in\Pi\times\Pi$.}{Notazione: $\overrightarrow{AB}:=(A,B)$}\vspace{1em}\\
+$\begin{array}{ccc}
+	\colort{cyan}{\ul{FISICA}} &                 & \colort{violet}{\ul{GEOMETRIA}}                                        \\
+	\colort{cyan}{direzione}   & \leftrightarrow & \colort{violet}{qualsiasi retta parallela al segmento $\overline{AB}$} \\
+	\colort{cyan}{verso}       & \leftrightarrow & \colort{violet}{punto iniziale $\rightarrow$ finale}                   \\
+	\colort{cyan}{intensità}   & \leftrightarrow & \colort{violet}{lunghezza di $\overline{AB}$}                          \\
+\end{array}$\vspace{1em}\\
+	\ul{Nota}: $\forall P\in\pi,\ \overrightarrow{PP}$ corrisponde al vettore nullo (per cui non è possibile definire né una direzione né un verso)\\
+	Nel piano esistono infiniti segmenti orientati che hanno \textit{stessa direzione, stesso verso, stessa intensità}.\\
+	Diciamo che questi segmenti orientati sono \textit{equipollenti} due a due.\vspace{1em}\\
+	Più formalmente:\Def{Due segmenti orientati $\overrightarrow{AB}$ e $\overrightarrow{CD}$ si dicono \ul{equipollenti}}{e scriviamo $\overrightarrow{AB}\thicksim\overrightarrow{CD}$ se il quadrilatero avente vertici, ordinatamente $ABCD$ è un parallelogramma.}
+
+	L'equipollenza è una \ul{relazione di equivalenza}:
 	\begin{itemize}
-		\item stessa lunghezza
-		\item direzione parallela
-		\item stesso verso
-\end{itemize}}
+		\item riflessiva \colort{violet}{(ogni segmento orientato è equipollente a se stesso: $\overrightarrow{AB}\thicksim\overrightarrow{AB}$)}
+		\item simmetrica \colort{violet}{(se $\overrightarrow{AB}\thicksim\overrightarrow{CD}$ allora $\overrightarrow{CD}\thicksim\overrightarrow{AB}$)}
+		\item transitiva \colort{violet}{(se $\overrightarrow{AB}\thicksim\overrightarrow{CD}$ allora $\overrightarrow{CD}\thicksim\overrightarrow{EF}$ allora $\overrightarrow{AB}\thicksim\overrightarrow{EF}$)}
+	\end{itemize}
 
-\vspace*{2em}
-L'equipollenza è una relazione di equivalenza, e verifica 3 proprietà:
-\begin{itemize}
-	\item riflessiva
-	\item simmetrica
-	\item transitiva
-\end{itemize}
-\Def{Un vettore geometrico è una classe di equipollenza}
-{Sia $O$ un punto fissato nel piano $\Pi$, per ogni segmento orientato $\vec{AB}$ esiste un punto $P\in\Pi$ tale che $\vec{OP}$ è equipollente ad $\vec{AB}$.\\
-	$\vec{OP}$ è equipollente a tutti i segmenti orientati equipollenti ad $\vec{AB}$ e posso sceglierlo come \ul{rappresentante} della classe di equipollenza di $\vec{AB}$.\\
-	Quindi abbiamo una biezione:\\
-	$\V=\{$Vettori geometrici nel piano$\}\{$segmento orientato $\vec{OP},P\in\Pi\}$\\
-Classi di equipollenza $\uparrow\hspace*{10em}\uparrow$ Stesso punto di applicazione}
+	Per ogni segmento orientato $\overrightarrow{AB}$ posso considerare la corrispondente classe di equipollenza: $$\text{Classe }\overrightarrow{AB}=\underset{\underset{\underset{\colort{violet}{equivalenti ad $\overrightarrow{AB}$.}}{\colort{violet}{insieme dei segmenti orientati}}}{\uparrow}}{\{\overrightarrow{CD}:\ \overrightarrow{AB}\thicksim\overrightarrow{CD}\}}$$
+
+\begin{displaymath}
+	\begin{tikzpicture}
+		\begin{scope}[cyan] % barriers
+			\path (-2,-1.73) edge[bend right] node [left] {} (-2,1.73);
+			\path (-1.5,0) edge[bend right] node [left] {} (1,1.94);
+			\path (0,0.58) edge[bend left] node [right] {} (2,-1.73);
+			\path (1.4,-0.35) edge[bend left] node [right] {} (3.75,0.7);
+		\end{scope}
+		% vectors
+		\begin{scope}[shift={(-3.3,-0.5)}, violet]
+			\draw (0,0) node {\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {$v_1$};}};
+			\draw[->] (0.5,-0.5) -- (1.5,0);
+			\draw[->] (0.5,0.5) -- (1.5,1);
+			\draw[->] (0,1) -- (1,1.5);
+		\end{scope}
+		\begin{scope}[shift={(-0.7,0.6)}, green]
+			\draw (0,0) node {\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {$v_2$};}};
+			\draw[->] (-0.4,0) -- (-0.7,0.5);
+			\draw[->] (0,0.5) -- (-0.3,1);
+			\draw[->] (0.8,0.5) -- (0.5,1);
+		\end{scope}
+		\begin{scope}[shift={(-1.2,-1.4)}, orange]
+			\draw (0,0) node {\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {$v_3$};}};
+			\draw[->] (0.8,0) -- (2.3,0);
+			\draw[->] (0.2,0.5) -- (1.7,0.5);
+			\draw[->] (0.7,1) -- (2.2,1);
+		\end{scope}
+		\begin{scope}[shift={(0.7,0.7)}, yellow]
+			\draw (0,0) node {\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {$v_4$};}};
+			\draw[->] (1.9,0.2) -- (1.4,-0.1);
+			\draw[->] (1,0) -- (0.5,-0.3);
+			\draw[->] (1.1,0.6) -- (0.6,0.3);
+		\end{scope}
+		\begin{scope}[shift={(2,-0.2)}, blue]
+			\draw (0,0) node {\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {$v_5$};}};
+			\draw[->] (1,0.5) -- (1.5,-0.3);
+			\draw[->] (0.6,0) -- (1.1,-0.8);
+			\draw[->] (0.15,-0.4) -- (0.65,-1.2);
+		\end{scope}
+		\draw[pink] (0,0) ellipse (4 and 2);
+	\end{tikzpicture}
+\end{displaymath}
+
+\Def{Un \ul{vettore geometrico} del piano $\Pi$ è una classe di equipollenza}
+{Sia $O\in\Pi$ un punto fissato.Mostriamo che per ogni \hl{INCOMPLEto}}
 \section{15/03/22}
 \subsection{Algebra lineare (continuo)}
 \subsubsection*{Nozione base: \ul{spazio vettoriale} (continuo)}
@@ -362,70 +447,70 @@ Correzione della definizione di campo:
 
 \vspace*{1em}
 Fissiamo $O\in\pi$ (piano ordinario).\\
-$\V=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
+$\V=\{$vettori geometrici del piano$\}\Leftrightarrow\{$segmenti orientati $\overrightarrow{OP},P\in\pi\}$\\
 Con un abuso di notazione, consideriamo:\\
-$\V=\{$segmenti orientati $\vec{OP},P\in\pi\}$\\
-$\forall\vec{v}\in V,\exists P\in\pi:\vec{v}=\vec{OP}$
+$\V=\{$segmenti orientati $\overrightarrow{OP},P\in\pi\}$\\
+$\forall\overrightarrow{v}\in V,\exists P\in\pi:\overrightarrow{v}=\overrightarrow{OP}$
 \ul{Operazioni su $\V$}
 \begin{itemize}
 	\item Somma di vettori\\
-	  siano $\vec{v},\vec{w}\in \V$ e siano $P,Q\in\pi:$\\
-	  $\vec{v}=\vec{OP}$\\
-	  $\vec{w}=\vec{OQ}$\vspace*{1em}\\
-	  Definiamo:\\
-	  $\vec{v}+\vec{w}=\vec{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)\\
-	  \ul{Nota}: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione), costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza\\
-	  Operazione binaria interna:\\
-	  $+:\V\times\V\rightarrow\V$\\
-	  \hspace*{1.9em}$(\vec{v},\vec{w})\rightarrow\vec{v}+\vec{w}$
+	      siano $\overrightarrow{v},\overrightarrow{w}\in \V$ e siano $P,Q\in\pi:$\\
+	      $\overrightarrow{v}=\overrightarrow{OP}$\\
+	      $\overrightarrow{w}=\overrightarrow{OQ}$\vspace*{1em}\\
+	      Definiamo:\\
+	      $\overrightarrow{v}+\overrightarrow{w}=\overrightarrow{OR}$, tale che il quadrilatero $OPRQ$ è un parallelogramma. (regola del parallelogramma)\\
+	      \ul{Nota}: Se $O,P$ e $Q$ sono collineari (hanno la stessa direzione), costruisco $R$ tale che $OQ$ e $RP$ hanno la stessa lunghezza\\
+	      Operazione binaria interna:\\
+	      $+:\V\times\V\rightarrow\V$\\
+	      \hspace*{1.9em}$(\overrightarrow{v},\overrightarrow{w})\rightarrow\overrightarrow{v}+\overrightarrow{w}$
 	\item Moltiplicazione per scalari\\
-	  Sia $\vec{v}\in\V$ e sia $P\in\pi:\vec{v}=\vec{OP}$.\vspace*{1em}\\
-	  Definiamo $\lambda\cdot\vec{v}=\vec{OR}$
-	  \begin{itemize}
-		  \item $O,P,R$ sono collineari
-		  \item $\overline{OR}=|\lambda|OP$
-		  \item $\vec{OR}$ è orientato concordemente a $\vec{OP}\\\vec{OR}$ è orientato discordemente a $\vec{OP}$ se\\
-		    $\lambda<0\vee\lambda=0,R=O$\\
-		    Questa è un'operazione binaria \ul{esterna}:\\
-		    $\cdot:\R\times\V\rightarrow \V$\\
-		    \hspace*{1.5em}$(\lambda,\vec{v})\rightarrow\lambda\cdot\vec{v}$
-	  \end{itemize}
+	      Sia $\overrightarrow{v}\in\V$ e sia $P\in\pi:\overrightarrow{v}=\overrightarrow{OP}$.\vspace*{1em}\\
+	      Definiamo $\lambda\cdot\overrightarrow{v}=\overrightarrow{OR}$
+	      \begin{itemize}
+		      \item $O,P,R$ sono collineari
+		      \item $\overline{OR}=|\lambda|OP$
+		      \item $\overrightarrow{OR}$ è orientato concordemente a $\overrightarrow{OP}\\\overrightarrow{OR}$ è orientato discordemente a $\overrightarrow{OP}$ se\\
+		            $\lambda<0\vee\lambda=0,R=O$\\
+		            Questa è un'operazione binaria \ul{esterna}:\\
+		            $\cdot:\R\times\V\rightarrow \V$\\
+		            \hspace*{1.5em}$(\lambda,\overrightarrow{v})\rightarrow\lambda\cdot\overrightarrow{v}$
+	      \end{itemize}
 \end{itemize}
 \subsection{Piano Cartesiano}
 \par$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$\\
-$\V=\{$segmenti orientati $\vec{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$\\
+$\V=\{$segmenti orientati $\overrightarrow{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$\\
 In particolare esiste una biezione:\\
 $\V\leftrightarrow\R^2$\\
-$\forall P\in\pi,\vec{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$\\
-$\vec{OP}\leftarrow(x,y)$ dove $P(x,y)$\\
+$\forall P\in\pi,\overrightarrow{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$\\
+$\overrightarrow{OP}\leftarrow(x,y)$ dove $P(x,y)$\\
 Vogliamo tradurre le operazioni su $\V$ in operazioni su $\R^2$:
 \begin{enumerate}
-	\item $\vec{v}=\vec{OP},P(x_P,y_P)$\\
-	  $\vec{w}=\vec{OQ},Q(x_Q,y_Q)$
-	  $\vec{v}+\vec{w}=\vec{OR}:$ quali sono le coordinate di $R$?\\
-	  $OPQR\Rightarrow A(x_A,y_A)$ parallelogramma con punto medio di $PQ$ e $OR$\\
-	  $A$ punto medio di $PQ\Rightarrow\{x_A=\frac{x_P+x_Q}{2},y_A=\frac{y_P+x_Q}{2}\}$\\
-	  $A$ punto medio di $OR\Rightarrow\{x_A=\frac{x_R}{2},y_A=\frac{y_R}{2}\}$\\
-	  $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$\\
-	  Operazione binaria \ul{interna}:\\
-	  $+:\R^2\times\R^2\rightarrow\R^2$\\
-	  $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
-	\item $\vec{v}\in\V,\vec{v}=\vec{OP},P(x_P,y_P),\lambda\in\R$\\
-	  $\lambda\cdot\vec{v}=\vec{OR}:$ quali sono le coordinate di $R$?\\
-	  $\vec{OR}=\lambda\cdot\vec{OP}$\\
-	  $OPH$ e $ORK$ sono simili per costruzione con rapporto di proporzioni $|\lambda|$.\\
-	  \ul{Due casi}:
-	  \begin{enumerate}
-		  \item $\lambda\ge0$ $\vec{OR}$ è concord con $\vec{OP}$ e quindi:\\
-		    $x_R=|\lambda|x_P=\lambda x_P$\\
-		    $y_R=|\lambda|y_P=\lambda y_P$
-		  \item $\lambda<0$ $\vec{OR}$ è discorde con $\vec{OP}$ e quindi:\\
-		    $x_R=-|\lambda|x_P=\lambda x_P$\\
-		    $y_R=-|\lambda|y_P=\lambda y_P$
-	  \end{enumerate}
-	  Operazione binaria \ul{esterna}:\\
-	  $\cdot:\R\times\R^2\rightarrow\R^2$\\
-	  \hspace*{0.1em}$(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
+	\item $\overrightarrow{v}=\overrightarrow{OP},P(x_P,y_P)$\\
+	      $\overrightarrow{w}=\overrightarrow{OQ},Q(x_Q,y_Q)$
+	      $\overrightarrow{v}+\overrightarrow{w}=\overrightarrow{OR}:$ quali sono le coordinate di $R$?\\
+	      $OPQR\Rightarrow A(x_A,y_A)$ parallelogramma con punto medio di $PQ$ e $OR$\\
+	      $A$ punto medio di $PQ\Rightarrow\{x_A=\frac{x_P+x_Q}{2},y_A=\frac{y_P+x_Q}{2}\}$\\
+	      $A$ punto medio di $OR\Rightarrow\{x_A=\frac{x_R}{2},y_A=\frac{y_R}{2}\}$\\
+	      $\Rightarrow\{x_R=x_P+x_Q,y_R=y_P+y_Q\}$\\
+	      Operazione binaria \ul{interna}:\\
+	      $+:\R^2\times\R^2\rightarrow\R^2$\\
+	      $((x_1,y_1),(x_2,y_2))\mapsto(x_1+x_2,y_1+y_2)$
+	\item $\overrightarrow{v}\in\V,\overrightarrow{v}=\overrightarrow{OP},P(x_P,y_P),\lambda\in\R$\\
+	      $\lambda\cdot\overrightarrow{v}=\overrightarrow{OR}:$ quali sono le coordinate di $R$?\\
+	      $\overrightarrow{OR}=\lambda\cdot\overrightarrow{OP}$\\
+	      $OPH$ e $ORK$ sono simili per costruzione con rapporto di proporzioni $|\lambda|$.\\
+	      \ul{Due casi}:
+	      \begin{enumerate}
+		      \item $\lambda\ge0$ $\overrightarrow{OR}$ è concord con $\overrightarrow{OP}$ e quindi:\\
+		            $x_R=|\lambda|x_P=\lambda x_P$\\
+		            $y_R=|\lambda|y_P=\lambda y_P$
+		      \item $\lambda<0$ $\overrightarrow{OR}$ è discorde con $\overrightarrow{OP}$ e quindi:\\
+		            $x_R=-|\lambda|x_P=\lambda x_P$\\
+		            $y_R=-|\lambda|y_P=\lambda y_P$
+	      \end{enumerate}
+	      Operazione binaria \ul{esterna}:\\
+	      $\cdot:\R\times\R^2\rightarrow\R^2$\\
+	      \hspace*{0.1em}$(y,(x,y))\mapsto\lambda\cdot(x,y):=(\lambda x,\lambda y)$
 \end{enumerate}
 In conclusione abbiamo definito due operazioni su $\R^2$ "compatibili" con le operazioni definite su $\V$:
 \begin{itemize}
@@ -482,15 +567,15 @@ Più in generale uno spazio vettoriale (o spazio lineare) è una struttura algeb
 \section{16/03/22}
 \subsection{Continuo di ieri (Def)}
 \hspace*{1.3em}$+:\R^2\times\R^2\rightarrow\R^2\\
-((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+x_2,y_1+y_2)$
+	((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)+(x_2,y_2):=(x_1+x_2,y_1+y_2)$
 
 $*:\R^2\times\R^2\\
-((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)*(x_2,y_2):=(x_1\cdot x_2,y_1\cdot y_2)$
+	((x_1,y_1),(x_2,y_2))\mapsto(x_1,y_1)*(x_2,y_2):=(x_1\cdot x_2,y_1\cdot y_2)$
 
 $(\R^2,+,*)$ è un campo? NO!
 
 $\triangle:\R^2\times\R^2\\
-((a,b),(c,d))\mapsto(a,b)\triangle(c,d)=(ac-bd,ad+bc)$
+	((a,b),(c,d))\mapsto(a,b)\triangle(c,d)=(ac-bd,ad+bc)$
 
 Mostrare che $(\R^2,+,\triangle)$ è un campo.
 
@@ -504,49 +589,49 @@ Nota che $\mathbb{C}$ è un campo
 \section*{REVISIONE FINITA QUI}
 \subsubsection*{Esempi di spazi vettoriali}
 \begin{enumerate}
-	\item $\V=\{\text{Vettori geometrici nello spazio}\}=\{\text{segmenti orientati }\vec{OP},\text{ P nello spazio}\}\longleftrightarrow\R^3$\\
-	  Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(\V,+,\cdot)$ è uno spazio vettoriale reale.
+	\item $\V=\{\text{Vettori geometrici nello spazio}\}=\{\text{segmenti orientati }\overrightarrow{OP},\text{ P nello spazio}\}\longleftrightarrow\R^3$\\
+	      Definiamo $+$ e $\cdot$ in modo analogo al caso dei vettori nel piano e $(\V,+,\cdot)$ è uno spazio vettoriale reale.
 	\item L'$n$-spazio vettoriale su $\R$ (o su $\K$)\\
-	  $n\in\mathbb{N},n\ge1$\\
-	  $\R^n=\R\times\cdots\times\R=\{(x_1,\cdots,x_n):x_i\in\R\forall i\}$\\
-	  Definiamo $+:\R^n\times\R^n\to\R^n$ e $\cdot:\R^n\times\R^n\to\R^n$\\
-	  $(x_1,\cdots,x_n)+(y_1,\cdots,y_n):=(x_1+y_1,\cdots,x_n+y_n)$\\
-	  $\lambda\in\K$ \hl{incompleto}\\
-	  $\forall n\ge1,(\R^n,+,\cdot)$ è uno spazio vettoriale reale chiamato $n$-spazio vettoriale \ul{numerico} su $\R$.\\
-	  Elemento \ul{neutro}: $\ul{0}=(0,\cdots,0)$\\
-	  Elemento \ul{opposto} di $x=(x_1,\cdots,x_n)$ è $-x=(-x_1,\cdots,-x_n)$\\
-	  \ul{Osservazione}: $n=1:\R$ è uno spazio vettoriale su $\R$ (ogni campo $\K$ è uno spazio vettoriale su se stesso)\\
-	  In maniera analoga definiamo $+$ e $\cdot$ su\\
-	  $k^n=\{(x_1,\cdots,x_n):x_i\in K\forall i\}$\\
-	  $(k^n,+,\cdot)$ è uno spazio vettoriale su $\K$ chiamato $n$-spazio vettoriale numerico su $\K$.\\
-	  \ul{Esempio}: $k=\mathbb{C},\mathbb{C}^n\\k=\mathbb{F}_2,\mathbb{F}^n_2$
+	      $n\in\mathbb{N},n\ge1$\\
+	      $\R^n=\R\times\cdots\times\R=\{(x_1,\cdots,x_n):x_i\in\R\forall i\}$\\
+	      Definiamo $+:\R^n\times\R^n\to\R^n$ e $\cdot:\R^n\times\R^n\to\R^n$\\
+	      $(x_1,\cdots,x_n)+(y_1,\cdots,y_n):=(x_1+y_1,\cdots,x_n+y_n)$\\
+	      $\lambda\in\K$ \hl{incompleto}\\
+	      $\forall n\ge1,(\R^n,+,\cdot)$ è uno spazio vettoriale reale chiamato $n$-spazio vettoriale \ul{numerico} su $\R$.\\
+	      Elemento \ul{neutro}: $\ul{0}=(0,\cdots,0)$\\
+	      Elemento \ul{opposto} di $x=(x_1,\cdots,x_n)$ è $-x=(-x_1,\cdots,-x_n)$\\
+	      \ul{Osservazione}: $n=1:\R$ è uno spazio vettoriale su $\R$ (ogni campo $\K$ è uno spazio vettoriale su se stesso)\\
+	      In maniera analoga definiamo $+$ e $\cdot$ su\\
+	      $k^n=\{(x_1,\cdots,x_n):x_i\in K\forall i\}$\\
+	      $(k^n,+,\cdot)$ è uno spazio vettoriale su $\K$ chiamato $n$-spazio vettoriale numerico su $\K$.\\
+	      \ul{Esempio}: $k=\mathbb{C},\mathbb{C}^n\\k=\mathbb{F}_2,\mathbb{F}^n_2$
 	\item Funzioni da un insieme a un campo\\
-	  Sia $\mathbb{X}$ un insieme \ul{qualunque} e $\K$ un campo\\
-	  $\V=\{$funzioni $f:\mathbb{X}\to\K\}$
-	  \begin{itemize}
-		  \item Binaria interna: $+:V\times V\to V\\(f,g)\to f+g$\\
-		    dove $f+g: X\to K\\x\mapsto(f+g)(x):=f(x)+g(x)$
-		  \item Binaria esterna: $\cdot:K\times V\to V\\(\lambda\cdot)$ \hl{incompleto}
-	  \end{itemize}
+	      Sia $\mathbb{X}$ un insieme \ul{qualunque} e $\K$ un campo\\
+	      $\V=\{$funzioni $f:\mathbb{X}\to\K\}$
+	      \begin{itemize}
+		      \item Binaria interna: $+:V\times V\to V\\(f,g)\to f+g$\\
+		            dove $f+g: X\to K\\x\mapsto(f+g)(x):=f(x)+g(x)$
+		      \item Binaria esterna: $\cdot:K\times V\to V\\(\lambda\cdot)$ \hl{incompleto}
+	      \end{itemize}
 	\item Polinomi a coefficisnti reali in una indeterminata\\
-	  Sia $x$ un'indeterminata.\\
-	  Un \ul{polinomio} a coefficienti reali nell'indeterminata $x$ è un'espressione formale del tipo:\\
-	  $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,a_i\in\R\forall i$\\
-	  Se $a_n\ne0$ diremo che $n$ è il grado di $P$ e scriviamo $deg(P)=n$.\\
-	  $\R[x]:=\{$polinomi a coefficienti reali nell'indeterminata $x$ (di grado arbitrario)$\}$\\
-	  \ul{Esempio}: $P(x)=3x^4+2x^3-x+5\in\R[x],\ deg(P)=4$\\
-	  $+:\R[x]\times\R[x]\to\R[x]\\P(x)=a_nx^n+\cdots+a_1x+a_0\\Q(x)=b_nx^n+\cdots+b_1x+b_0\\(P+Q)(x):=(a_n+b_n)x^n+\cdots+(a_1+b_1)x+a_0+b_0$\\
-	  $\cdot:\R\times\R[x]\to\R[x]\\P\in\R[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\R\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$\\
-	  $(\R[x],+,\cdot)$ è uno spazio vettoriale su $\R$.\\
-	  In modo analogo si definisce $(K[x],+,\cdot)$ dove\\
-	  $K[x]=\{$polinomi a coefficienti in $\K$ in un'indetermiinata$\}$\\
-	  Molti problemi di matemadica/fisica hanno la proprietà che l'insieme delle soluzioni ha una struttura di spazio vettoriale.\\
-	  \ul{Esempi}:
-	  \begin{itemize}
-		  \item $\begin{cases}x+2y+z=0\\y+7z=0\end{cases}$\\
-		    $S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$\\
-		    $S$ ha una struttuta di spazio vettoriale (\hl{cose che vedremo più avanti})
-	  \end{itemize}
+	      Sia $x$ un'indeterminata.\\
+	      Un \ul{polinomio} a coefficienti reali nell'indeterminata $x$ è un'espressione formale del tipo:\\
+	      $P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0,a_i\in\R\forall i$\\
+	      Se $a_n\ne0$ diremo che $n$ è il grado di $P$ e scriviamo $deg(P)=n$.\\
+	      $\R[x]:=\{$polinomi a coefficienti reali nell'indeterminata $x$ (di grado arbitrario)$\}$\\
+	      \ul{Esempio}: $P(x)=3x^4+2x^3-x+5\in\R[x],\ deg(P)=4$\\
+	      $+:\R[x]\times\R[x]\to\R[x]\\P(x)=a_nx^n+\cdots+a_1x+a_0\\Q(x)=b_nx^n+\cdots+b_1x+b_0\\(P+Q)(x):=(a_n+b_n)x^n+\cdots+(a_1+b_1)x+a_0+b_0$\\
+	      $\cdot:\R\times\R[x]\to\R[x]\\P\in\R[x],\ P=a_nx^n+\cdots+a_1wx+a_0\\\lambda\in\R\\(\lambda\cdot P)(x):=\lambda a_nx^n+\cdots+\lambda a_1x+\lambda a_0$\\
+	      $(\R[x],+,\cdot)$ è uno spazio vettoriale su $\R$.\\
+	      In modo analogo si definisce $(K[x],+,\cdot)$ dove\\
+	      $K[x]=\{$polinomi a coefficienti in $\K$ in un'indetermiinata$\}$\\
+	      Molti problemi di matemadica/fisica hanno la proprietà che l'insieme delle soluzioni ha una struttura di spazio vettoriale.\\
+	      \ul{Esempi}:
+	      \begin{itemize}
+		      \item $\begin{cases}x+2y+z=0\\y+7z=0\end{cases}$\\
+		            $S=\{(x,y,z)\in\R^3:x+2y+z=0$ e $y+7z=0\}=\{(13t,-7t,t),t\in\R\}$\\
+		            $S$ ha una struttuta di spazio vettoriale (\hl{cose che vedremo più avanti})
+	      \end{itemize}
 \end{enumerate}
 \section{22/03/22}
 \subsection{Sistemi di equazioni lineari (accenni)}
@@ -558,11 +643,11 @@ $a_i\in\R,\forall i,b\in\R$\\
 Sistema di $n$ equazioni lineari in $n$ incognite:
 
 $\begin{cases}
-	a_{11}x_1+a_{12}+\cdots+a_{1n}x_n=b_1 \\
-	a_{21}x_1+a_{22}+\cdots+a_{2n}x_n=b_2 \\
-	\cdots                                \\
-	a_{n1}x_1+a_{n2}+\cdots+a_{nn}x_n=b_n
-\end{cases}$
+		a_{11}x_1+a_{12}+\cdots+a_{1n}x_n=b_1 \\
+		a_{21}x_1+a_{22}+\cdots+a_{2n}x_n=b_2 \\
+		\cdots                                \\
+		a_{n1}x_1+a_{n2}+\cdots+a_{nn}x_n=b_n
+	\end{cases}$
 
 Una soluzione del sistema di sopra è un vettore $(x_1,\cdots,x_n)\in\R^n$ che verifica tutte le equazioni.
 
@@ -578,7 +663,7 @@ $\begin{cases}x+y+z=6\\2x-y=0\end{cases}$\vspace*{1em}
 	\item "Quante" sono?
 	\item Come si interpreta geometricamente il corrispondente insieme di soluzioni?
 \end{enumerate}
-\subsection{\ul{Matrici}}
+\subsection{\texorpdfstring{\ul{Matrici}}{Matrici}}
 \begin{itemize}
 	\item Un esempio di spazio vettoriale
 	\item Uno strumento conciso per rappresentare oggetti *parola incomprensibile*, tra cui molti dell'algebra lineare
@@ -591,13 +676,13 @@ Siano $m,n\ge1$ due numeri
 \ul{Notazione}:
 
 $A=\begin{bmatrix}
-	a_{11} & a_{12} & \cdots & a_{ij} & \cdots & a_{1n} \\
-	a_{21} & a_{22} & \cdots & a_{ij} & \cdots & a_{2n} \\
-	\vdots                                              \\
-	a_{i1} & a_{i2} & \cdots & a_{ij} & \cdots & a_{in} \\
-	\vdots                                              \\
-	a_{n1} & a_{n2} & \cdots & a_{nj} & \cdots & a_{nn} \\
-\end{bmatrix}$
+		a_{11} & a_{12} & \cdots & a_{ij} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{ij} & \cdots & a_{2n} \\
+		\vdots                                              \\
+		a_{i1} & a_{i2} & \cdots & a_{ij} & \cdots & a_{in} \\
+		\vdots                                              \\
+		a_{n1} & a_{n2} & \cdots & a_{nj} & \cdots & a_{nn} \\
+	\end{bmatrix}$
 
 $(a_{ij})_{1\le i\le n\ \wedge\ 1\le j\le n}:i$ è la riga e $j$ è la colonna, come in c++ (o qualunque linguaggio "normale")
 
@@ -606,9 +691,9 @@ Ciascuno degli elementi $a_{ij}$ è detto entrata (o coefficiente) delle matrici
 \subsubsection*{\ul{Un po' di terminologia}}
 \begin{itemize}
 	\item Se $n=m$, una matrice $n\times n$ si dice matrice \ul{quadrata} di ordine $n$,\\
-	  ha due diagonali (solo se è quadrata eh)
+	      ha due diagonali (solo se è quadrata eh)
 	\item Una matrice $1\times n$ è chiamata vettore riga.\\
-	  Una matrice $n\times1$ è chiamata vettore colonna.
+	      Una matrice $n\times1$ è chiamata vettore colonna.
 \end{itemize}
 \ul{Notazione}:
 
@@ -617,135 +702,135 @@ $M_{m,n}(K)=\{$matrici $n\times m$ a coefficienti in $K\}$
 M$_{n}(K):=\{$matrici quadrete di ordine $n\}$
 
 \Def{Siano $A=(a_{ij}),\ B=(b_{ij})\in M_{m,n}(K)$.}{
-	Diciamo che $A=B$ se $a_{ij}=b_{ij}\forall 1\le i \le n,\ 1\le j \le n$\\
-	Definiamo due operazioni su $M_{m,n}$:
-	\begin{itemize}
-		\item \ul{Somma di matrici}\\
-	    $+: M_{m,n}\times M_{m,n}\rightarrow M_{m,n}(K)\\\hspace*{4.7em}(A,B)\longmapsto A+B$\\
+Diciamo che $A=B$ se $a_{ij}=b_{ij}\forall 1\le i \le n,\ 1\le j \le n$\\
+Definiamo due operazioni su $M_{m,n}$:
+\begin{itemize}
+	\item \ul{Somma di matrici}\\
+	      $+: M_{m,n}\times M_{m,n}\rightarrow M_{m,n}(K)\\\hspace*{4.7em}(A,B)\longmapsto A+B$\\
 
-	    $A=\begin{bmatrix}\\
-			  a_{11} & \cdots & a_{1n} \\
-			  \vdots                   \\
-			  a_{m1} & \cdots & a_{mn} \\
-		  \end{bmatrix}=(a_{ij})\in M_{m,n}(K)$\\
+	      $A=\begin{bmatrix}\\
+			      a_{11} & \cdots & a_{1n} \\
+			      \vdots                   \\
+			      a_{m1} & \cdots & a_{mn} \\
+		      \end{bmatrix}=(a_{ij})\in M_{m,n}(K)$\\
 
-	    $B=\begin{bmatrix}\\
-			  b_{11} & \cdots & b_{1n} \\
-			  \vdots                   \\
-			  b_{m1} & \cdots & b_{mn} \\
-		  \end{bmatrix}=(b_{ij})\in M_{m,n}(K)$\\
+	      $B=\begin{bmatrix}\\
+			      b_{11} & \cdots & b_{1n} \\
+			      \vdots                   \\
+			      b_{m1} & \cdots & b_{mn} \\
+		      \end{bmatrix}=(b_{ij})\in M_{m,n}(K)$\\
 
-	    $A+B:=\begin{bmatrix}\\
-			  a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\
-			  \vdots                                 \\
-			  a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn} \\
-		  \end{bmatrix}=(a_{ij}+b_{ij})$ \hl{incompleto}, probabilmente $\in M_{m,n}(K)$
-		\item \ul{Moltiplicazione per scalari}
+	      $A+B:=\begin{bmatrix}\\
+			      a_{11}+b_{11} & \cdots & a_{1n}+b_{1n} \\
+			      \vdots                                 \\
+			      a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn} \\
+		      \end{bmatrix}=(a_{ij}+b_{ij})$ \hl{incompleto}, probabilmente $\in M_{m,n}(K)$
+	\item \ul{Moltiplicazione per scalari}
 
-	    $\cdot:K\times M_{m,n}(K)\rightarrow M_{m,n}(K)\\\hspace*{4.6em}(\lambda,A)\longmapsto\lambda\cdot A$
+	      $\cdot:K\times M_{m,n}(K)\rightarrow M_{m,n}(K)\\\hspace*{4.6em}(\lambda,A)\longmapsto\lambda\cdot A$
 
-	    $A=(a_{ij})\in M_{m,n}(K)\\\lambda\in K$\\
-	    $\lambda\cdot A=(\lambda a_{ij})\in M_{m,n}(K)$\\
+	      $A=(a_{ij})\in M_{m,n}(K)\\\lambda\in K$\\
+	      $\lambda\cdot A=(\lambda a_{ij})\in M_{m,n}(K)$\\
 
-	    \ul{Proprietà}:
-	    \begin{enumerate}
-		    \item $+$ è commutativa: $A+B=B+A$
-		    \item $+$ è associativa: $(A+B)+C=A+(B+C)$
-		    \item Elemento neutro rispetto a $+$:\\
-		      $0_{m,n}=\begin{bmatrix}0&\cdots&0\quad\vdots\quad0&\cdots&0\end{bmatrix}$
-		    \item Elemento opposto rispetto a $+$:\\
-		      $A=(a_{ij})\Rightarrow-A=(-a_{ij})$
-		    \item $\lambda\cdot(A+B)=\lambda\cdot A + \lambda\cdot B$
-		    \item $(\lambda+\mu)\cdot A=\lambda\cdot A+\mu\cdot A$
-		    \item $(\lambda\mu)\cdot A=\lambda\cdot(\mu\cdot A)$
-		    \item $1\cdot A = A\forall m,n\ge1\text{ interi, }(M_{m,n}(K),+,\cdot)\text{ è uno spazio vettoriale su }\K$
-	    \end{enumerate}
-		\item \ul{Prodotto di matrici} (prodotto riga per colonna):
+	      \ul{Proprietà}:
+	      \begin{enumerate}
+		      \item $+$ è commutativa: $A+B=B+A$
+		      \item $+$ è associativa: $(A+B)+C=A+(B+C)$
+		      \item Elemento neutro rispetto a $+$:\\
+		            $0_{m,n}=\begin{bmatrix}0&\cdots&0\quad\vdots\quad0&\cdots&0\end{bmatrix}$
+		      \item Elemento opposto rispetto a $+$:\\
+		            $A=(a_{ij})\Rightarrow-A=(-a_{ij})$
+		      \item $\lambda\cdot(A+B)=\lambda\cdot A + \lambda\cdot B$
+		      \item $(\lambda+\mu)\cdot A=\lambda\cdot A+\mu\cdot A$
+		      \item $(\lambda\mu)\cdot A=\lambda\cdot(\mu\cdot A)$
+		      \item $1\cdot A = A\forall m,n\ge1\text{ interi, }(M_{m,n}(K),+,\cdot)\text{ è uno spazio vettoriale su }\K$
+	      \end{enumerate}
+	\item \ul{Prodotto di matrici} (prodotto riga per colonna):
 
-	    $(a_1\cdots\ a_n)\in M_{1,n}(K):$ vettore riga
+	      $(a_1\cdots\ a_n)\in M_{1,n}(K):$ vettore riga
 
-	    $(b_1\cdots\ b_n)\in M_{n,1}(K):$ vettore colonna
+	      $(b_1\cdots\ b_n)\in M_{n,1}(K):$ vettore colonna
 
-	    $(a_1\cdots\ a_n)\cdot(b_1\cdots\ b_n):=a_1b_1+\cdots+a_nb_n=\sum^n_{k=1}{a_kb_k}$\\
+	      $(a_1\cdots\ a_n)\cdot(b_1\cdots\ b_n):=a_1b_1+\cdots+a_nb_n=\sum^n_{k=1}{a_kb_k}$\\
 
-	    Generalizziamo al prodotto di due matrici:\\
+	      Generalizziamo al prodotto di due matrici:\\
 
-	    $\begin{bmatrix}
-			  a_{11} & \cdots & a_{1n} \\
-			  a_{m1} & \cdots & a_{mn}
-		  \end{bmatrix}
-		  \cdot
-		  \begin{bmatrix}
-			  b_{11} & \cdots & b_{1p} \\
-			  b_{q1} & \cdots & b_{qp}
-		  \end{bmatrix}=
-		  \begin{bmatrix}
-			  c_{ij}
-		  \end{bmatrix}$
+	      $\begin{bmatrix}
+			      a_{11} & \cdots & a_{1n} \\
+			      a_{m1} & \cdots & a_{mn}
+		      \end{bmatrix}
+		      \cdot
+		      \begin{bmatrix}
+			      b_{11} & \cdots & b_{1p} \\
+			      b_{q1} & \cdots & b_{qp}
+		      \end{bmatrix}=
+		      \begin{bmatrix}
+			      c_{ij}
+		      \end{bmatrix}$
 
-	    $c_{ij}=$prodotto della $i$-esima riga di $A$ e della $j$-esima colonna di $B$
+	      $c_{ij}=$prodotto della $i$-esima riga di $A$ e della $j$-esima colonna di $B$
 
-	    Per definire il prodotto abbiamo bisogno che $n=q$
+	      Per definire il prodotto abbiamo bisogno che $n=q$
 
-	    $\forall\ 1\ge i\ge n,\ \forall\ 1\ge j\ge p$ definiamo
+	      $\forall\ 1\ge i\ge n,\ \forall\ 1\ge j\ge p$ definiamo
 
-	    $c_{ij}=(a_{i1}\cdots a_{in})\cdot(b_{1j}\cdots b_{nj})=a_{i1}b_{1j}+\cdots+a_{in}b_{nj}=\sum^n_{n=1}{a_{ik}b_{kj}}$
+	      $c_{ij}=(a_{i1}\cdots a_{in})\cdot(b_{1j}\cdots b_{nj})=a_{i1}b_{1j}+\cdots+a_{in}b_{nj}=\sum^n_{n=1}{a_{ik}b_{kj}}$
 
-	    Più formalmente, il prodotto di due matrici è una funzione:
+	      Più formalmente, il prodotto di due matrici è una funzione:
 
-	    $M_{m,n}(K)\times M_{n,p}(K)\rightarrow M_{m,p}(K)\\\hspace*{6.5em}(A,B)\mapsto C=AB$
+	      $M_{m,n}(K)\times M_{n,p}(K)\rightarrow M_{m,p}(K)\\\hspace*{6.5em}(A,B)\mapsto C=AB$
 
-	    $A=(a_{ij}): 1\le i\le m,\ 1\le j\le n$
+	      $A=(a_{ij}): 1\le i\le m,\ 1\le j\le n$
 
-	    $B=(b_{ij}): 1\le i\le n,\ 1\le j\le p$
+	      $B=(b_{ij}): 1\le i\le n,\ 1\le j\le p$
 
-	    $C=AB=(c_{ij}): 1\le i\le m,\ 1\le j\le p$
+	      $C=AB=(c_{ij}): 1\le i\le m,\ 1\le j\le p$
 
-	    \ul{NOTA BENE}: il prodotto è definito se e solo se il numero di colonne di $A$ è uguale al numero di righe di $B$.
+	      \ul{NOTA BENE}: il prodotto è definito se e solo se il numero di colonne di $A$ è uguale al numero di righe di $B$.
 
-	    \ul{Caso particolare}
+	      \ul{Caso particolare}
 
-	    $n=p=m:$ otteniamo un'operazione binaria interna su $\M_n(K)$
-	\end{itemize}
+	      $n=p=m:$ otteniamo un'operazione binaria interna su $\M_n(K)$
+\end{itemize}
 }
 \section{23/03/22}
 \subsection{Operazioni tra matrici}
 \ul{Proprietà}
 \begin{enumerate}
 	\item Non è commutativa\\
-	  Due matrici quadrate $A,B\in \M_n(K)$ \ul{commutano} se $AB=BA$.
+	      Due matrici quadrate $A,B\in \M_n(K)$ \ul{commutano} se $AB=BA$.
 	\item È \ul{associativa}\\
-	  $\forall A\in M_{m,n}(K),\forall B\in M_{n,P}(K),\forall C\in M_{P,q}(K)\\(AB)C=A(BC)$
+	      $\forall A\in M_{m,n}(K),\forall B\in M_{n,P}(K),\forall C\in M_{P,q}(K)\\(AB)C=A(BC)$
 	\item È distributiva rispetto a $+$\\
-	  $\forall A,B\in M_{m,n}(K), \forall C\in M_{n,P}(K),\forall D\in M_{n,P}(K)\\(A+B)C=AC+BC\\A(C+D)=AC+AD$
+	      $\forall A,B\in M_{m,n}(K), \forall C\in M_{n,P}(K),\forall D\in M_{n,P}(K)\\(A+B)C=AC+BC\\A(C+D)=AC+AD$
 	\item Due elementi neutri, uno a destra e uno a sinistra (perchè $\cdot$ non è commutativa).
-	  \begin{itemize}
-		  \item a destra: $I$ tale che $AI=A, \forall A\in M_{m,n}(K)$
-		  \item a sinistra: $I$ tale che $IA=A, \forall A\in M_{m,n}(K)$
-	  \end{itemize}
-	  $\begin{bmatrix}
-			a & b & c \\
-			d & e & f \\
-		\end{bmatrix}\cdot
-		\begin{bmatrix}
-			a' & b' & c' \\
-			d' & e' & f' \\
-			g' & h' & i' \\
-		\end{bmatrix}=
-		\begin{bmatrix}
-			a & b & c \\
-			d & e & f \\
-		\end{bmatrix}\Rightarrow
-		\begin{cases}
-			aa'+bd'+cd'=a\rightsquigarrow a'=1,\ d'=0,\ g'=0 \\
-			ab'+be'+ch'=b\rightsquigarrow b'=0,\ d'=0,\ g'=0 \text{\hl{incompleto}}\
-		\end{cases}\\\vdots\\\\
-		\begin{bmatrix}
-			a' & b' & c' \\
-			d' & e' & f' \\
-			g' & h' & i' \\
-		\end{bmatrix}=
-		\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}$
+	      \begin{itemize}
+		      \item a destra: $I$ tale che $AI=A, \forall A\in M_{m,n}(K)$
+		      \item a sinistra: $I$ tale che $IA=A, \forall A\in M_{m,n}(K)$
+	      \end{itemize}
+	      $\begin{bmatrix}
+			      a & b & c \\
+			      d & e & f \\
+		      \end{bmatrix}\cdot
+		      \begin{bmatrix}
+			      a' & b' & c' \\
+			      d' & e' & f' \\
+			      g' & h' & i' \\
+		      \end{bmatrix}=
+		      \begin{bmatrix}
+			      a & b & c \\
+			      d & e & f \\
+		      \end{bmatrix}\Rightarrow
+		      \begin{cases}
+			      aa'+bd'+cd'=a\rightsquigarrow a'=1,\ d'=0,\ g'=0 \\
+			      ab'+be'+ch'=b\rightsquigarrow b'=0,\ d'=0,\ g'=0 \text{\hl{incompleto}}\
+		      \end{cases}\\\vdots\\\\
+		      \begin{bmatrix}
+			      a' & b' & c' \\
+			      d' & e' & f' \\
+			      g' & h' & i' \\
+		      \end{bmatrix}=
+		      \begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}$
 \end{enumerate}
 
 \Def{$\forall n\ge1$, la matrice \ul{unità} o \ul{identità} di ordine $n$ è}{
@@ -779,34 +864,34 @@ In questo caso $I_n$ è l'elemento neutro (a destra e a sinistra) rispetto al pr
 \ul{Osservazioni}
 \begin{enumerate}
 	\item Se B esiste allora è unica.\\
-	  \ul{Dim}:\\
-	  Se $C$ è tale che $AC=I_n=CA$, allora:\\
-	  $B=BI_n=B(AC)=(BA)C=I_nC=C\Rightarrow B=C$\\
-	  Chiamiamo $B$ l'\ul{inversa} di $A$ e la denotiamo $A^{-1}$.
+	      \ul{Dim}:\\
+	      Se $C$ è tale che $AC=I_n=CA$, allora:\\
+	      $B=BI_n=B(AC)=(BA)C=I_nC=C\Rightarrow B=C$\\
+	      Chiamiamo $B$ l'\ul{inversa} di $A$ e la denotiamo $A^{-1}$.
 	\item Se $B$ soddisfa $AB=I_n$ o $BA=I_n$ allora $B=A^{-1}$\\
-	  \ul{Esempi}
-	  \begin{itemize}
-		  \item $I_n$ e invertibile e $I_n^{-1}=I_n$
-		  \item $O_n=\begin{bmatrix}0&\cdots&0\\\vdots&&\vdots\\0&\cdots&0\end{bmatrix}$
-		  \item $A=\begin{bmatrix}1&1\\1&1\end{bmatrix}\in\M_2(\R)\\\exists B=\begin{bmatrix}a&b\\c&d\end{bmatrix}\in\M_2(\R)$ \hl{Incompleto}
-		  \item $A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$
-	  \end{itemize}
+	      \ul{Esempi}
+	      \begin{itemize}
+		      \item $I_n$ e invertibile e $I_n^{-1}=I_n$
+		      \item $O_n=\begin{bmatrix}0&\cdots&0\\\vdots&&\vdots\\0&\cdots&0\end{bmatrix}$
+		      \item $A=\begin{bmatrix}1&1\\1&1\end{bmatrix}\in\M_2(\R)\\\exists B=\begin{bmatrix}a&b\\c&d\end{bmatrix}\in\M_2(\R)$ \hl{Incompleto}
+		      \item $A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$
+	      \end{itemize}
 
-	  $\begin{bmatrix}a&b\\c&d\end{bmatrix}\cdot\begin{bmatrix}1&2\\3&4\end{bmatrix}=\begin{bmatrix}1&0\\0&1\end{bmatrix}\Rightarrow\begin{cases}a+3b=1\\2a+4b=0\\c+3d=0\\2c+4d=1\end{cases}\Rightarrow\begin{cases}-2b+3b=1\\a=-2b\\c=-3d\\-6d+4d=1\end{cases}\Rightarrow\begin{cases}b=1\\a=-2\\c=\frac{3}{2}\\d=-\frac{1}{2}\end{cases}$
+	      $\begin{bmatrix}a&b\\c&d\end{bmatrix}\cdot\begin{bmatrix}1&2\\3&4\end{bmatrix}=\begin{bmatrix}1&0\\0&1\end{bmatrix}\Rightarrow\begin{cases}a+3b=1\\2a+4b=0\\c+3d=0\\2c+4d=1\end{cases}\Rightarrow\begin{cases}-2b+3b=1\\a=-2b\\c=-3d\\-6d+4d=1\end{cases}\Rightarrow\begin{cases}b=1\\a=-2\\c=\frac{3}{2}\\d=-\frac{1}{2}\end{cases}$
 
-	  Quindi $A^{-1}=\begin{bmatrix}-2&1\\\frac{3}{2}&-\frac{1}{2}\end{bmatrix}$
+	      Quindi $A^{-1}=\begin{bmatrix}-2&1\\\frac{3}{2}&-\frac{1}{2}\end{bmatrix}$
 
-	  \ul{Osservazione}: Supponiamo che $A$ sia invertibile.
+	      \ul{Osservazione}: Supponiamo che $A$ sia invertibile.
 
-	  $\exists A^{-1}$
+	      $\exists A^{-1}$
 
-	  Sia $B$ una matrice tale che
+	      Sia $B$ una matrice tale che
 
-	  $AB=I_n$
+	      $AB=I_n$
 
-	  Voglio dimostrare che $BA=I_n$
+	      Voglio dimostrare che $BA=I_n$
 
-	  $BA=I_nBA=A^{-1}ABA=A^{-1}I_nA=A^{-1}A=I_n$
+	      $BA=I_nBA=A^{-1}ABA=A^{-1}I_nA=A^{-1}A=I_n$
 \end{enumerate}
 
 \ul{Proposizione}
@@ -824,19 +909,19 @@ Infatti: $(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AI_nA^{-1}=AA^{-1}=I_n$
 	La \ul{trasposta} di $A$ è la matrice $n\times m$:
 
 	$A^T=(a_{ji})=\begin{bmatrix}
-		a_{11} & a_{21} & \cdots & a_{m1} \\
-		a_{12} & a_{22} & \cdots & a_{m2} \\
-		\vdots                            \\
-		a_{1n} & a_{2n} & \cdots & a_{mn}
-	\end{bmatrix}\in\M_{n,m}(K)$
+			a_{11} & a_{21} & \cdots & a_{m1} \\
+			a_{12} & a_{22} & \cdots & a_{m2} \\
+			\vdots                            \\
+			a_{1n} & a_{2n} & \cdots & a_{mn}
+		\end{bmatrix}\in\M_{n,m}(K)$
 
 	\ul{Esempio}:
 
 	$A=\begin{bmatrix}
-		1 & 2 & 3 \\4&5&6
+			1 & 2 & 3 \\4&5&6
 		\end{bmatrix}\ A^T=\begin{bmatrix}
-		1 & 4 \\2&5\\3&6
-	\end{bmatrix}$
+			1 & 4 \\2&5\\3&6
+		\end{bmatrix}$
 }
 
 \Def{Una matrice quadrata $A\in \M_n(K)$ si dice simmetrica se $A^T=A$.}{
@@ -847,16 +932,16 @@ Infatti: $(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AI_nA^{-1}=AA^{-1}=I_n$
 	\ul{Esempio}:
 
 	$A=\begin{bmatrix}
-		1 & 2 & 3 & 4  \\
-		2 & 5 & 6 & 7  \\
-		3 & 6 & 8 & 9  \\
-		4 & 7 & 9 & 10
+			1 & 2 & 3 & 4  \\
+			2 & 5 & 6 & 7  \\
+			3 & 6 & 8 & 9  \\
+			4 & 7 & 9 & 10
 		\end{bmatrix}\ A^T=\begin{bmatrix}
-		1 & 2 & 3 & 4  \\
-		2 & 5 & 6 & 7  \\
-		3 & 6 & 8 & 9  \\
-		4 & 7 & 9 & 10
-	\end{bmatrix}$
+			1 & 2 & 3 & 4  \\
+			2 & 5 & 6 & 7  \\
+			3 & 6 & 8 & 9  \\
+			4 & 7 & 9 & 10
+		\end{bmatrix}$
 }
 
 
@@ -870,27 +955,27 @@ Quando $i=j,\ a_{ii}=a_{ii}\Rightarrow2a_{ii}=0\Rightarrow a_{ii}=0$
 \ul{Esempio}: $\forall\theta\in\R$ la matrice
 
 $\begin{bmatrix}
-	cos(\theta) & -sin(\theta) \\sin(\theta)&cos(\theta)
-\end{bmatrix}$ è ortogonale.
+		cos(\theta) & -sin(\theta) \\sin(\theta)&cos(\theta)
+	\end{bmatrix}$ è ortogonale.
 
 \hl{incompleto (?)}
 
 $\begin{bmatrix}
-	1 & 0 & 0 \\3&2&0\\4&5&6
-\end{bmatrix}$ triangolare inferiore\vspace*{1em}
+		1 & 0 & 0 \\3&2&0\\4&5&6
+	\end{bmatrix}$ triangolare inferiore\vspace*{1em}
 
 $\begin{bmatrix}
-	-2 & 0 & 7 & 0 \\0&1&-8&0\\
-	0  & 0 & 0 & 5 \\0&0&0&\pi
-\end{bmatrix}$ triangolare superiore\vspace*{1em}
+		-2 & 0 & 7 & 0 \\0&1&-8&0\\
+		0  & 0 & 0 & 5 \\0&0&0&\pi
+	\end{bmatrix}$ triangolare superiore\vspace*{1em}
 
 $\begin{bmatrix}
-	1 & 0 \\0&-3
-\end{bmatrix}$ diagonale\vspace*{1em}
+		1 & 0 \\0&-3
+	\end{bmatrix}$ diagonale\vspace*{1em}
 
 $\begin{bmatrix}
-	3 & 0 & 0 \\0&3&0\\0&0&3
-\end{bmatrix}$ scalare\vspace*{1em}
+		3 & 0 & 0 \\0&3&0\\0&0&3
+	\end{bmatrix}$ scalare\vspace*{1em}
 
 \Def{Una matrice quadrata $A\in \M_n(K)$ si dice:}{
 	\begin{itemize}
@@ -915,11 +1000,11 @@ $\begin{bmatrix}
 \ul{Sistema di eq lineari}: consideriamo simmetricamente un eq. lineari in $x_1,\cdots,x_n$.
 
 $\begin{cases}
-	a_{11}x_1+a_{12}x_2+\cdots+a_{1n}=b_1 \\
-	a_{21}x_1+a_{22}x_2+\cdots+a_{2n}=b_2 \\
-	\vdots                                \\
-	a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}=b_m \\
-\end{cases}$
+		a_{11}x_1+a_{12}x_2+\cdots+a_{1n}=b_1 \\
+		a_{21}x_1+a_{22}x_2+\cdots+a_{2n}=b_2 \\
+		\vdots                                \\
+		a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}=b_m \\
+	\end{cases}$
 
 $a_{ij}$ equazione $i$-esima, variabile $x_j$
 
@@ -940,37 +1025,37 @@ $a_{ij}$ equazione $i$-esima, variabile $x_j$
 	\item non lo segno
 	\item $\begin{cases}x_1+x_2=0\\x_1-x_2=1\end{cases}$
 
-	  "addizionando le due equazioni" otteniamo:
+	      "addizionando le due equazioni" otteniamo:
 
-	  $x_1+x_2+(x_1-x_2)=0+(1)\Rightarrow2x_1=1\Rightarrow x_1=\frac{1}{2}$
+	      $x_1+x_2+(x_1-x_2)=0+(1)\Rightarrow2x_1=1\Rightarrow x_1=\frac{1}{2}$
 
-	  sostituendo $x_1=\frac{1}{2}$ nella I equazione, trovo $x_2=-\frac{1}{2}$.
+	      sostituendo $x_1=\frac{1}{2}$ nella I equazione, trovo $x_2=-\frac{1}{2}$.
 
-	  Quindi il sistema possiede l'unica soluzione $(\frac{1}{2},-\frac{1}{2})\in\R^2$
+	      Quindi il sistema possiede l'unica soluzione $(\frac{1}{2},-\frac{1}{2})\in\R^2$
 	\item $\begin{cases}x_1+x_2=2\\3x_1-3x_2=6\end{cases}$
 
-	  è compatibile e possiede infinite soluzioni date dalle soluzioni di
+	      è compatibile e possiede infinite soluzioni date dalle soluzioni di
 
-	  $x_1+x_2=2\Rightarrow x_1=2-x_2$
+	      $x_1+x_2=2\Rightarrow x_1=2-x_2$
 
-	  L'insieme delle soluzioni $S$ è costituito dalle coppie ordinate $(x_1,x_2)\in\R^2$ tali che:
+	      L'insieme delle soluzioni $S$ è costituito dalle coppie ordinate $(x_1,x_2)\in\R^2$ tali che:
 
-	  $\begin{cases}x_1=2-t\\x_2=t\end{cases},\ t\in\R\\S=\{(2-t,t),\ t\in\R\}\subseteq\R^2$
+	      $\begin{cases}x_1=2-t\\x_2=t\end{cases},\ t\in\R\\S=\{(2-t,t),\ t\in\R\}\subseteq\R^2$
 \end{enumerate}
 
 
 \ul{Notazione matriciale di un sistema}:
 $\begin{cases}
-	a_{11}x_1+\cdots+a_{1n}x_n=b_1 \\
-	\vdots                         \\
-	a_{m1}x_1+\cdots+a_{mn}x_n=b_m
-\end{cases}$
+		a_{11}x_1+\cdots+a_{1n}x_n=b_1 \\
+		\vdots                         \\
+		a_{m1}x_1+\cdots+a_{mn}x_n=b_m
+	\end{cases}$
 
 $A=(a_{ij})=\begin{bmatrix}
-	a_{11} & \cdots & a_{1n} \\
-	\vdots                   \\
-	a_{m1} & \cdots & a_{mn}
-\end{bmatrix}\in M_{m,n}(K)$
+		a_{11} & \cdots & a_{1n} \\
+		\vdots                   \\
+		a_{m1} & \cdots & a_{mn}
+	\end{bmatrix}\in M_{m,n}(K)$
 
 Vettore (colonnna) della indeterminante:
 $x=\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}$
@@ -981,34 +1066,34 @@ Riscriviamo (**) come:
 $AX=b$
 
 La matrice: $(A\ \vdots\ b)=\begin{bmatrix}
-	a_{11} & a_{1n} & \vdots & b_1    \\
-	\vdots &        & \vdots & \vdots \\
-	a_{m1} & a_{mn} & \vdots & b_m    \\
-\end{bmatrix}$
+		a_{11} & a_{1n} & \vdots & b_1    \\
+		\vdots &        & \vdots & \vdots \\
+		a_{m1} & a_{mn} & \vdots & b_m    \\
+	\end{bmatrix}$
 
 Consideriamo il sistema seguente:
 
 $\begin{cases}
-	x_1+x_2+x_3=3 \\
-	2x_2-x_3=1    \\
-	3x_3=-3
-\end{cases}$
+		x_1+x_2+x_3=3 \\
+		2x_2-x_3=1    \\
+		3x_3=-3
+	\end{cases}$
 
 La sua matrice orlata:
 
 $\begin{bmatrix}
-	1 & 1 & 1  & \vdots & 3  \\
-	0 & 2 & -1 & \vdots & 1  \\
-	0 & 0 & 3  & \vdots & -3 \\
-\end{bmatrix}$
+		1 & 1 & 1  & \vdots & 3  \\
+		0 & 2 & -1 & \vdots & 1  \\
+		0 & 0 & 3  & \vdots & -3 \\
+	\end{bmatrix}$
 
 Risolvo per sostituzione:
 
 $\begin{cases}
-	x_1=4 \\
-	x_2=0 \\
-	x_3=-1
-\end{cases}$
+		x_1=4 \\
+		x_2=0 \\
+		x_3=-1
+	\end{cases}$
 
 Procedendo dal basso verso l'alto trovo che il sistema possiede l'unica soluzione $(4,0,-1)\in\R^3$
 
@@ -1027,76 +1112,76 @@ Il primo elemento \ul{diverso da zero} su ogni riga (se presente) è detto \ul{p
 Esempi:
 \begin{enumerate}
 	\item $\begin{bmatrix}
-			1 & 1 & 1  & \vdots & 3  \\
-			0 & 2 & -3 & \vdots & 1  \\
-			0 & 0 & 3  & \vdots & -3
-		\end{bmatrix}$ è una matrice a scalini.
+			      1 & 1 & 1  & \vdots & 3  \\
+			      0 & 2 & -3 & \vdots & 1  \\
+			      0 & 0 & 3  & \vdots & -3
+		      \end{bmatrix}$ è una matrice a scalini.
 
-	  pivot: $1,2,3$
+	      pivot: $1,2,3$
 	\item $\begin{bmatrix}
-			1 & -1 & 2  & 4      & 5  &  & \vdots & 3 \\
-			0 & 2  & -3 & \vdots & 1                  \\
-			0 & 0  & 3  & \vdots & -3
-		\end{bmatrix}$ è una matrice a scalini.
+			      1 & -1 & 2  & 4      & 5  &  & \vdots & 3 \\
+			      0 & 2  & -3 & \vdots & 1                  \\
+			      0 & 0  & 3  & \vdots & -3
+		      \end{bmatrix}$ è una matrice a scalini.
 \end{enumerate}
 \section*{\hl{INCOMPLETO: SI È SPENTO IL PC}}
 \section{30/03/22}
-\subsection{Sistema lineare $\longrightarrow$ sistema a scalini.}
+\subsection{\texorpdfstring{Sistema lineare $\longrightarrow$ sistema a scalini.}{Sistema lineare $\longrightarrow$ sistema a scalini.}}
 \subsubsection*{Algoritmo (o metodo di eliminazione) di Gauss-Jordan.}
 Tale metodo consiste nell'effettuare delle operazioni successive sulle equazioni del sistema (o equivalentemente sulle righe della matrice orlata) che non ne alterino l'insieme delle soluzioni.
 
 \ul{Operazioni elementari}:
 
 $(*)=\begin{cases}
-	a_1x_1+\cdots+a_nx_n=b \\
-	a_{1'}x_1+\cdots+a_{n'}x_n=b'
-\end{cases}$
+		a_1x_1+\cdots+a_nx_n=b \\
+		a_{1'}x_1+\cdots+a_{n'}x_n=b'
+	\end{cases}$
 
 \begin{enumerate}
 	\item Il sistema (*) è equivalente a:
 
-	  $(**)=\begin{cases}
-			a_{1'}x_1+\cdots+a_{n'}x_n=b' \\
-			a_1x_1+\cdots+a_nx_n=b
-		\end{cases}$
+	      $(**)=\begin{cases}
+			      a_{1'}x_1+\cdots+a_{n'}x_n=b' \\
+			      a_1x_1+\cdots+a_nx_n=b
+		      \end{cases}$
 
-	  Scambiare tra loro due equazioni di un sistema non cambia l'insieme delle soluzioni.
+	      Scambiare tra loro due equazioni di un sistema non cambia l'insieme delle soluzioni.
 	\item Il sistema (*) di partenza è equivalente a:
 
-	  $(**)=\begin{cases}
-			\lambda a_1x_1+\cdots+\lambda a_nx_n=\lambda b \\
-			a_{1'}x_1+\cdots+a_{n'}x_n=b'
-		\end{cases},\ \lambda\not=0,\ \lambda\in\K$
+	      $(**)=\begin{cases}
+			      \lambda a_1x_1+\cdots+\lambda a_nx_n=\lambda b \\
+			      a_{1'}x_1+\cdots+a_{n'}x_n=b'
+		      \end{cases},\ \lambda\not=0,\ \lambda\in\K$
 
-	  Moltiplicare (primo e secondo membro) per uno scalare non nullo non cambia l'insieme delle soluzioni:
+	      Moltiplicare (primo e secondo membro) per uno scalare non nullo non cambia l'insieme delle soluzioni:
 
-	  $(x_1,\cdots,x_n)$ è soluzione di $a_1x_1+\cdots+a_nx_n=b$
+	      $(x_1,\cdots,x_n)$ è soluzione di $a_1x_1+\cdots+a_nx_n=b$
 
-	  $(x_1,\cdots,x_n)$ è soluzione di $\lambda a_1x_1+\cdots+\lambda a_nx_n=\lambda b$
+	      $(x_1,\cdots,x_n)$ è soluzione di $\lambda a_1x_1+\cdots+\lambda a_nx_n=\lambda b$
 	\item Il sistema (*) è equivalente al sistema in cui un'equazione è sostituita con quella ottenuta sommando ad essa un multiplo di un'altra equazione:
 
-	  $(**)=\begin{cases}
-			a_1x_1+\cdots+a_nx_n+\lambda(a_{1'}x_1+\cdots+a_{n'}x_n)=b+\lambda b' \\
-			a_{1'}x_1+\cdots+a_{n'}x_n=b'
-		\end{cases}$
+	      $(**)=\begin{cases}
+			      a_1x_1+\cdots+a_nx_n+\lambda(a_{1'}x_1+\cdots+a_{n'}x_n)=b+\lambda b' \\
+			      a_{1'}x_1+\cdots+a_{n'}x_n=b'
+		      \end{cases}$
 
-	  \ul{Dim}:
+	      \ul{Dim}:
 
-	  $(x_1,\cdots,x_n)$ è soluzione di $(*)\Leftrightarrow(x_1,\cdots,x_n)$ è soluzione di $(**)$
+	      $(x_1,\cdots,x_n)$ è soluzione di $(*)\Leftrightarrow(x_1,\cdots,x_n)$ è soluzione di $(**)$
 
-	  $\Rightarrow)$ Assumiamo che $(x_1,\cdots,x_n)$ è soluzione di (*)
+	      $\Rightarrow)$ Assumiamo che $(x_1,\cdots,x_n)$ è soluzione di (*)
 
-	  $a_1x_1+\cdots+a_nx_n=b\\a_{1'}x_1+\cdots+a_{n'}x_n=b'$
+	      $a_1x_1+\cdots+a_nx_n=b\\a_{1'}x_1+\cdots+a_{n'}x_n=b'$
 
-	  $b=a_1x_1+\cdots+a_nx_n\\b'=a_{1'}x_1+\cdots+a_{n'}x_n$
+	      $b=a_1x_1+\cdots+a_nx_n\\b'=a_{1'}x_1+\cdots+a_{n'}x_n$
 
-	  $b+b'=b+\lambda b'$
+	      $b+b'=b+\lambda b'$
 
-	  Sostituisco $b$ e $b'$
+	      Sostituisco $b$ e $b'$
 
-	  $a_1x_1+\cdots+a_nx_n+\lambda(a_{1'}x_1+\cdots+a_{n'}x_n)=b+\lambda b'$
+	      $a_1x_1+\cdots+a_nx_n+\lambda(a_{1'}x_1+\cdots+a_{n'}x_n)=b+\lambda b'$
 
-	  $\Leftarrow)\ (x_1,\cdots,x_n)$ è soluzione di $(**)\Rightarrow\cdots(x_1,\cdots,x_n)$ è soluzione di (*)
+	      $\Leftarrow)\ (x_1,\cdots,x_n)$ è soluzione di $(**)\Rightarrow\cdots(x_1,\cdots,x_n)$ è soluzione di (*)
 \end{enumerate}
 \paragraph*{Operazioni elementari sulle equazioni di un \ul{sistema}}
 \begin{enumerate}[label=\Roman*.]
@@ -1112,43 +1197,43 @@ $(*)=\begin{cases}
 \begin{enumerate}[label=\Roman*.]
 	\item Scambiare tra loro due righe di una matrice
 
-	  $R_i\leftrightarrow R_j:
-		\begin{bmatrix}
-			1 & 2  & 3  & 4  \\
-			5 & 6  & 7  & 8  \\
-			9 & 10 & 11 & 12
-		  \end{bmatrix}\xRightarrow{R_1\leftrightarrow R_3}\begin{bmatrix}
-			9 & 10 & 11 & 12 \\
-			5 & 6  & 7  & 8  \\
-			1 & 2  & 3  & 4
-		\end{bmatrix}$
+	      $R_i\leftrightarrow R_j:
+		      \begin{bmatrix}
+			      1 & 2  & 3  & 4  \\
+			      5 & 6  & 7  & 8  \\
+			      9 & 10 & 11 & 12
+		      \end{bmatrix}\xRightarrow{R_1\leftrightarrow R_3}\begin{bmatrix}
+			      9 & 10 & 11 & 12 \\
+			      5 & 6  & 7  & 8  \\
+			      1 & 2  & 3  & 4
+		      \end{bmatrix}$
 
 	\item Moltiplicare una riga della matrice per uno scalare non nullo:
 
-	  $R_i\leftarrow\lambda R_i:
-		\begin{bmatrix}
-			1 & 2  & 3  & 4  \\
-			5 & 6  & 7  & 8  \\
-			9 & 10 & 11 & 12
-		  \end{bmatrix}\xRightarrow{R_1\leftarrow2R_1}\begin{bmatrix}
-			2 & 4  & 6  & 8  \\
-			5 & 6  & 7  & 8  \\
-			9 & 10 & 11 & 12
-		\end{bmatrix}$
+	      $R_i\leftarrow\lambda R_i:
+		      \begin{bmatrix}
+			      1 & 2  & 3  & 4  \\
+			      5 & 6  & 7  & 8  \\
+			      9 & 10 & 11 & 12
+		      \end{bmatrix}\xRightarrow{R_1\leftarrow2R_1}\begin{bmatrix}
+			      2 & 4  & 6  & 8  \\
+			      5 & 6  & 7  & 8  \\
+			      9 & 10 & 11 & 12
+		      \end{bmatrix}$
 
 
 	\item Sostituire una riga della matrice con quella ottenuta sommando ad essa un multiplo di un'altra riga:
 
-	  $R_i\leftarrow R_i\lambda R_j:
-		\begin{bmatrix}
-			9 & 10 & 11 & 12 \\
-			5 & 6  & 7  & 8  \\
-			1 & 2  & 3  & 4
-		  \end{bmatrix}\xRightarrow{R_1\leftarrow R_1-9R_3}\begin{bmatrix}
-			0 & -8 & -16 & -24 \\
-			5 & 6  & 7   & 8   \\
-			1 & 2  & 3   & 4
-		\end{bmatrix}$
+	      $R_i\leftarrow R_i\lambda R_j:
+		      \begin{bmatrix}
+			      9 & 10 & 11 & 12 \\
+			      5 & 6  & 7  & 8  \\
+			      1 & 2  & 3  & 4
+		      \end{bmatrix}\xRightarrow{R_1\leftarrow R_1-9R_3}\begin{bmatrix}
+			      0 & -8 & -16 & -24 \\
+			      5 & 6  & 7   & 8   \\
+			      1 & 2  & 3   & 4
+		      \end{bmatrix}$
 \end{enumerate}
 
 \paragraph*{Algoritmo di Gauss-Jordan:}
@@ -1157,26 +1242,26 @@ Successione di operazioni elementari che permettono di trasformare il sistema (o
 \ul{Esempio}:
 
 $\begin{bmatrix}
-	1 & 2  & 3  & 4  \\
-	5 & 6  & 7  & 8  \\
-	9 & 10 & 11 & 12
-\end{bmatrix}\xRightarrow{R_2\leftarrow R_2-5R_1}
-\begin{bmatrix}
-	1 & 2  & 3  & 4   \\
-	0 & -4 & -8 & -12 \\
-	9 & 10 & 11 & 12
-\end{bmatrix}\xRightarrow{R_3\leftarrow R_3-9R_1}$
+		1 & 2  & 3  & 4  \\
+		5 & 6  & 7  & 8  \\
+		9 & 10 & 11 & 12
+	\end{bmatrix}\xRightarrow{R_2\leftarrow R_2-5R_1}
+	\begin{bmatrix}
+		1 & 2  & 3  & 4   \\
+		0 & -4 & -8 & -12 \\
+		9 & 10 & 11 & 12
+	\end{bmatrix}\xRightarrow{R_3\leftarrow R_3-9R_1}$
 
 $\begin{bmatrix}
-	1 & 2  & 3   & 4   \\
-	0 & -4 & -8  & -12 \\
-	0 & -8 & -16 & -24
-\end{bmatrix}\xRightarrow{R_3\leftarrow R_3-2R_2}
-\begin{bmatrix}
-	1 & 2  & 3  & 4   \\
-	0 & -4 & -8 & -12 \\
-	0 & 0  & 0  & 0
-\end{bmatrix}$
+		1 & 2  & 3   & 4   \\
+		0 & -4 & -8  & -12 \\
+		0 & -8 & -16 & -24
+	\end{bmatrix}\xRightarrow{R_3\leftarrow R_3-2R_2}
+	\begin{bmatrix}
+		1 & 2  & 3  & 4   \\
+		0 & -4 & -8 & -12 \\
+		0 & 0  & 0  & 0
+	\end{bmatrix}$
 
 \ul{NB}: L'output dell'algoritmo non è unico perchè dipende dalle scelte effettuate
 
@@ -1194,120 +1279,120 @@ Supponiamo di avere un sistema lineare qualsiasi:
 \ul{Esempio}:
 \begin{enumerate}
 	\item Con numeri:
-	  \begin{enumerate}
-		  \item $\begin{cases}
-				  x_3+2x_4=3       \\
-				  2x_1+4x_2-2x_3=4 \\
-				  2x_1+4x_2-x_3+2x_4=7
-			  \end{cases}\Rightarrow
-			  \begin{bmatrix}
-				  0 & 0 & 1  & 2 & 3 \\
-				  2 & 4 & -2 & 0 & 4 \\
-				  2 & 4 & -1 & 2 & 7
-			  \end{bmatrix}\xRightarrow{R_1\leftrightarrow R_2}$
+	      \begin{enumerate}
+		      \item $\begin{cases}
+				            x_3+2x_4=3       \\
+				            2x_1+4x_2-2x_3=4 \\
+				            2x_1+4x_2-x_3+2x_4=7
+			            \end{cases}\Rightarrow
+			            \begin{bmatrix}
+				            0 & 0 & 1  & 2 & 3 \\
+				            2 & 4 & -2 & 0 & 4 \\
+				            2 & 4 & -1 & 2 & 7
+			            \end{bmatrix}\xRightarrow{R_1\leftrightarrow R_2}$
 
-		  \item $\begin{bmatrix}
-				  2 & 4 & -2 & 0 & 4 \\
-				  0 & 0 & 1  & 2 & 3 \\
-				  2 & 4 & -1 & 2 & 7
-			  \end{bmatrix}\xRightarrow{R_3\leftarrow R_3-R_1}
-			  \begin{bmatrix}
-				  2 & 4 & -2 & 0 & 4 \\
-				  0 & 0 & 1  & 2 & 3 \\
-				  0 & 0 & 1  & 2 & 3
-			  \end{bmatrix}\xRightarrow{R_3\leftarrow R_3-R_2}$
+		      \item $\begin{bmatrix}
+				            2 & 4 & -2 & 0 & 4 \\
+				            0 & 0 & 1  & 2 & 3 \\
+				            2 & 4 & -1 & 2 & 7
+			            \end{bmatrix}\xRightarrow{R_3\leftarrow R_3-R_1}
+			            \begin{bmatrix}
+				            2 & 4 & -2 & 0 & 4 \\
+				            0 & 0 & 1  & 2 & 3 \\
+				            0 & 0 & 1  & 2 & 3
+			            \end{bmatrix}\xRightarrow{R_3\leftarrow R_3-R_2}$
 
-		    $\begin{bmatrix}
-				  2 & 4 & -2 & 0 & 4 \\
-				  0 & 0 & 1  & 2 & 3 \\
-				  0 & 0 & 0  & 0 & 0
-			  \end{bmatrix}$
-		  \item È compatibile (l'ultimo pivot (1) non appartiene all'ultima colonna).
+		            $\begin{bmatrix}
+				            2 & 4 & -2 & 0 & 4 \\
+				            0 & 0 & 1  & 2 & 3 \\
+				            0 & 0 & 0  & 0 & 0
+			            \end{bmatrix}$
+		      \item È compatibile (l'ultimo pivot (1) non appartiene all'ultima colonna).
 
-		    Variabili libere: $x_2,\ x_4$
+		            Variabili libere: $x_2,\ x_4$
 
-		    Risolvo:
+		            Risolvo:
 
-		    $\begin{cases}
-				  2x_1+4x_2-2x_3=4 \\
-				  x_3+2x_4=3       \\
-				  0=0
-			  \end{cases}\Rightarrow
-			  \begin{cases}
-				  2x_1+4x_2-2x_3=4 \\
-				  x_3=3-2x_4
-			  \end{cases}\Rightarrow
-			  \begin{cases}
-				  2x_1+4x_2-6-4x_4=4 \\
-				  x_3=3-2x_4
-			  \end{cases}\Rightarrow
-			  \begin{cases}
-				  x_1=5-2s-2t \\
-				  x_2=s       \\
-				  x_3=3-2t    \\
-				  x_4=t
-			  \end{cases}s,t\in\R$
+		            $\begin{cases}
+				            2x_1+4x_2-2x_3=4 \\
+				            x_3+2x_4=3       \\
+				            0=0
+			            \end{cases}\Rightarrow
+			            \begin{cases}
+				            2x_1+4x_2-2x_3=4 \\
+				            x_3=3-2x_4
+			            \end{cases}\Rightarrow
+			            \begin{cases}
+				            2x_1+4x_2-6-4x_4=4 \\
+				            x_3=3-2x_4
+			            \end{cases}\Rightarrow
+			            \begin{cases}
+				            x_1=5-2s-2t \\
+				            x_2=s       \\
+				            x_3=3-2t    \\
+				            x_4=t
+			            \end{cases}s,t\in\R$
 
-		    $\mathbb{S}=\{(5-2s-2t,s,3-2t,t),\ s,t\in\R\}:\infty^2$ soluzioni
-	  \end{enumerate}
+		            $\mathbb{S}=\{(5-2s-2t,s,3-2t,t),\ s,t\in\R\}:\infty^2$ soluzioni
+	      \end{enumerate}
 	\item Con parametro: \hl{INCOMPLETO}
 	\item \begin{enumerate}
-		\item $\Rightarrow\begin{pmatrix}
-				a & -a & 0  & 1 & 1-a \\
-				1 & -2 & -1 & 0 & 0   \\
-				0 & 1  & a  & 1 & a-1
-			\end{pmatrix}$
-		\item $\xRightarrow{R_1\leftrightarrow R_2}
-			\begin{pmatrix}
-				1 & -2 & -1 & 0 & 0   \\
-				a & -a & 0  & 1 & 1-a \\
-				0 & 1  & a  & 1 & a-1
-			\end{pmatrix}\xRightarrow{R_2\leftrightarrow R_2-aR_1}
-			\begin{pmatrix}
-				1 & -2 & -1 & 0 & 0   \\
-				0 & a  & a  & 1 & 1-a \\
-				0 & 1  & a  & 1 & a-1
-			\end{pmatrix}\xRightarrow{R_2\leftrightarrow R_3}$
+		      \item $\Rightarrow\begin{pmatrix}
+				            a & -a & 0  & 1 & 1-a \\
+				            1 & -2 & -1 & 0 & 0   \\
+				            0 & 1  & a  & 1 & a-1
+			            \end{pmatrix}$
+		      \item $\xRightarrow{R_1\leftrightarrow R_2}
+			            \begin{pmatrix}
+				            1 & -2 & -1 & 0 & 0   \\
+				            a & -a & 0  & 1 & 1-a \\
+				            0 & 1  & a  & 1 & a-1
+			            \end{pmatrix}\xRightarrow{R_2\leftrightarrow R_2-aR_1}
+			            \begin{pmatrix}
+				            1 & -2 & -1 & 0 & 0   \\
+				            0 & a  & a  & 1 & 1-a \\
+				            0 & 1  & a  & 1 & a-1
+			            \end{pmatrix}\xRightarrow{R_2\leftrightarrow R_3}$
 
-		  $\begin{pmatrix}
-				1 & -2 & -1 & 0 & 0   \\
-				0 & 1  & a  & 1 & a-1 \\
-				0 & a  & a  & 1 & 1-a
-			\end{pmatrix}\xRightarrow{R_3\leftrightarrow R_3-aR_2}
-			\begin{pmatrix}
-				1 & -2 & -1    & 0   & 0     \\
-				0 & 1  & a     & 1   & a-1   \\
-				0 & 0  & a-a^2 & 1-a & 1-a^2
-			\end{pmatrix}\leftarrow$ a scalini $\forall a$
+		            $\begin{pmatrix}
+				            1 & -2 & -1 & 0 & 0   \\
+				            0 & 1  & a  & 1 & a-1 \\
+				            0 & a  & a  & 1 & 1-a
+			            \end{pmatrix}\xRightarrow{R_3\leftrightarrow R_3-aR_2}
+			            \begin{pmatrix}
+				            1 & -2 & -1    & 0   & 0     \\
+				            0 & 1  & a     & 1   & a-1   \\
+				            0 & 0  & a-a^2 & 1-a & 1-a^2
+			            \end{pmatrix}\leftarrow$ a scalini $\forall a$
 
-		  $a-a^2=0\Leftrightarrow a=0\vee a=1$
+		            $a-a^2=0\Leftrightarrow a=0\vee a=1$
 
-		  $a=0\rightarrow
-			\begin{pmatrix}
-				1 & -2 & -1 & 0 & 0  \\
-				0 & 1  & 0  & 1 & -1 \\
-				0 & 0  & 0  & 1 & 1
-			\end{pmatrix}\leftarrow$ compatibile
+		            $a=0\rightarrow
+			            \begin{pmatrix}
+				            1 & -2 & -1 & 0 & 0  \\
+				            0 & 1  & 0  & 1 & -1 \\
+				            0 & 0  & 0  & 1 & 1
+			            \end{pmatrix}\leftarrow$ compatibile
 
-		  $a=1\rightarrow
-			\begin{pmatrix}
-				1 & -2 & -1 & 0 & 0 \\
-				0 & 1  & 1  & 1 & 0 \\
-				0 & 0  & 0  & 0 & 0
-			\end{pmatrix}\leftarrow$ compatibile
+		            $a=1\rightarrow
+			            \begin{pmatrix}
+				            1 & -2 & -1 & 0 & 0 \\
+				            0 & 1  & 1  & 1 & 0 \\
+				            0 & 0  & 0  & 0 & 0
+			            \end{pmatrix}\leftarrow$ compatibile
 
-		  $a\not=0,\ a\not=1\\
-			\begin{pmatrix}
-				1 & -2 & -1    & 0   & 0     \\
-				0 & 1  & a     & 1   & a-1   \\
-				0 & 0  & a-a^2 & 1-a & 1-a^2
-			\end{pmatrix}\rightarrow
-			\begin{cases}
-				x_1-2x_2-x_3=0   \\
-				x_2+ax_3=a-1-x_4 \\
-				(a-a^2)x_3=1-a^2-(1-a)x_4
-			\end{cases}$
-	\end{enumerate}
+		            $a\not=0,\ a\not=1\\
+			            \begin{pmatrix}
+				            1 & -2 & -1    & 0   & 0     \\
+				            0 & 1  & a     & 1   & a-1   \\
+				            0 & 0  & a-a^2 & 1-a & 1-a^2
+			            \end{pmatrix}\rightarrow
+			            \begin{cases}
+				            x_1-2x_2-x_3=0   \\
+				            x_2+ax_3=a-1-x_4 \\
+				            (a-a^2)x_3=1-a^2-(1-a)x_4
+			            \end{cases}$
+	      \end{enumerate}
 \end{enumerate}
 \section{05/04/22}
 \subsection{Ultime considerazioni sui sistemi lineari}
@@ -1338,42 +1423,42 @@ L'algoritmo di Gauss-Jordan offre un metodo efficiente per il calcolo dell'inver
 \ul{Idea}:
 
 $\begin{pmatrix}
-	1 & 2 & 3 \\
-	4 & 5 & 6 \\
-	7 & 8 & 9 \\
-\end{pmatrix}\xLeftrightarrow{R_3\leftarrow R_3-7R_1}
-\begin{pmatrix}
-	1 & 2  & 3   \\
-	4 & 5  & 6   \\
-	0 & -6 & -12 \\
-\end{pmatrix}$
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9 \\
+	\end{pmatrix}\xLeftrightarrow{R_3\leftarrow R_3-7R_1}
+	\begin{pmatrix}
+		1 & 2  & 3   \\
+		4 & 5  & 6   \\
+		0 & -6 & -12 \\
+	\end{pmatrix}$
 
 $\begin{pmatrix}
-	1 & 0 & 0 \\
-	0 & 1 & 0 \\
-	0 & 0 & 1
-\end{pmatrix}\rightarrow
-\begin{pmatrix}
-	1  & 0 & 0 \\
-	0  & 1 & 0 \\
-	-7 & 0 & 1
-\end{pmatrix}$
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1
+	\end{pmatrix}\rightarrow
+	\begin{pmatrix}
+		1  & 0 & 0 \\
+		0  & 1 & 0 \\
+		-7 & 0 & 1
+	\end{pmatrix}$
 
 $\begin{pmatrix}
-	1  & 0 & 0 \\
-	0  & 1 & 0 \\
-	-7 & 0 & 1
-\end{pmatrix}
-\begin{pmatrix}
-	1 & 2 & 3 \\
-	4 & 5 & 6 \\
-	7 & 8 & 9 \\
-\end{pmatrix}=
-\begin{pmatrix}
-	1 & 2  & 3   \\
-	4 & 5  & 6   \\
-	0 & -6 & -12 \\
-\end{pmatrix}$
+		1  & 0 & 0 \\
+		0  & 1 & 0 \\
+		-7 & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9 \\
+	\end{pmatrix}=
+	\begin{pmatrix}
+		1 & 2  & 3   \\
+		4 & 5  & 6   \\
+		0 & -6 & -12 \\
+	\end{pmatrix}$
 
 $A\in \M_n(K)$
 
@@ -1384,10 +1469,10 @@ $(A\quad\vdots\quad In)\rightarrow(In\quad\vdots\quad A^{-1})$
 Sistema lineare omogeneo a coefficienti in $\K$
 
 $(*)\begin{cases}
-	a_{11}x_1+\cdots+a_{1n}x_n=0 \\
-	\vdots                       \\
-	a_{m1}x_1+\cdots+a_{mn}x_n=0 \\
-\end{cases}$
+		a_{11}x_1+\cdots+a_{1n}x_n=0 \\
+		\vdots                       \\
+		a_{m1}x_1+\cdots+a_{mn}x_n=0 \\
+	\end{cases}$
 
 $S_0$: insieme delle soluzioni di (*)
 
@@ -1395,26 +1480,26 @@ $S_0$ è un sottoinsieme di $K^n$ con qualche interessante proprietà.
 \begin{enumerate}
 	\item \ul{0}$=(0,\cdots,0)\in S_0$ (il vettore nullo è sempre soluzione di un sistema omogeneo) $\Rightarrow S_0\not=0$
 	\item Se $(x_1,\cdots,x_n),(y_1,\cdots,y_n)\in S_0\Rightarrow(x_1,\cdots,x_n)+(y_1,\cdots,y_n)\in S_0$
-	  \ul{Dim}:
+	      \ul{Dim}:
 
-	  Se $(x_1,\cdots,x_n),(y_1,\cdots,y_n)\in S_0$
+	      Se $(x_1,\cdots,x_n),(y_1,\cdots,y_n)\in S_0$
 
-	  $\Updownarrow$
+	      $\Updownarrow$
 
-	  $\forall i,a_{i1}x_1+\cdots+a_{in}x_n=0,\quad a_{i1}y_1+\cdots+a_{in}y_n=0$
+	      $\forall i,a_{i1}x_1+\cdots+a_{in}x_n=0,\quad a_{i1}y_1+\cdots+a_{in}y_n=0$
 
-	  Mostriamo che $(x_1,\cdots,x_n)+(y_1,\cdots,y_n)=(x_1+y_1,\cdots,x_n+y_n)\in S_0$, cioè $(x_1+y_1,\cdots,x_n+y_n)$ verifica $a_{i1}x_1+\cdots+a_{in}x_n=0,\forall i$
+	      Mostriamo che $(x_1,\cdots,x_n)+(y_1,\cdots,y_n)=(x_1+y_1,\cdots,x_n+y_n)\in S_0$, cioè $(x_1+y_1,\cdots,x_n+y_n)$ verifica $a_{i1}x_1+\cdots+a_{in}x_n=0,\forall i$
 
-	  Abbiamo:
+	      Abbiamo:
 
-	  $\forall i\quad a_{i1}(x_1+y_1)+\cdots+a_{in}(x_n+y_n)=\\=a_{i1}x_1+a_{i1}+\cdots+a_{in}x_n+a_{in}y_n=\\=a_{i1}x_1+\cdots+a_{i1}x_n+a_{in}y_1+\cdots+a_{in}y_n$
+	      $\forall i\quad a_{i1}(x_1+y_1)+\cdots+a_{in}(x_n+y_n)=\\=a_{i1}x_1+a_{i1}+\cdots+a_{in}x_n+a_{in}y_n=\\=a_{i1}x_1+\cdots+a_{i1}x_n+a_{in}y_1+\cdots+a_{in}y_n$
 	\item Se $(x_1,\cdots,x_n)\in S_0\Rightarrow\lambda(x_1,\cdots,x_n)\in S_0,\forall\lambda\in\K$
 
-	  \ul{Dim}:
+	      \ul{Dim}:
 
-	  $(x_1,\cdots,x_n)\in S_0\Rightarrow\forall i\quad a_{i1}x_1+\cdots+a_{in}x_n=0$
+	      $(x_1,\cdots,x_n)\in S_0\Rightarrow\forall i\quad a_{i1}x_1+\cdots+a_{in}x_n=0$
 
-	  Mostriamo che $\forall\lambda\in K,\quad\lambda(x_1,\cdots,x_n)=(\lambda x_1,\cdots,\lambda x_n)\in S_0:\forall i$ abbiamo: $a_{i1}(\lambda x_1)+\cdots+a_{in}(\lambda x_n)=\lambda(a_{i1}x_1+\cdots+a_{in}x_n)=0$
+	      Mostriamo che $\forall\lambda\in K,\quad\lambda(x_1,\cdots,x_n)=(\lambda x_1,\cdots,\lambda x_n)\in S_0:\forall i$ abbiamo: $a_{i1}(\lambda x_1)+\cdots+a_{in}(\lambda x_n)=\lambda(a_{i1}x_1+\cdots+a_{in}x_n)=0$
 \end{enumerate}
 
 Le proprietà 1, 2 e 3 fanno di $S_0$ un "sottospazio vettoriale" di $K^n$
@@ -1453,43 +1538,43 @@ Vediamo che $W$ è un sottospazio vettoriale di $K^n$:
 	\item $W\not=\emptyset$, poichè $(0,\cdots,0)\in W$
 	\item Siano \ul{x} $=(0,x_2,\cdots,x_n),$ \ul{y} $=(0,y_2,\cdots,y_n)\in W$
 
-	  Allora
+	      Allora
 
-	  \ul{x}$+$\ul{y} $=(0,x_2,\cdots,x_n)+(0,y_2,\cdots,y_n)=(0,x_2+y_2,\cdots,x_n+y_n)$
+	      \ul{x}$+$\ul{y} $=(0,x_2,\cdots,x_n)+(0,y_2,\cdots,y_n)=(0,x_2+y_2,\cdots,x_n+y_n)$
 	\item Sia \ul{x} $=(0,x_2,\cdots,x_n)\in W,\quad\lambda\in K$
 
-	  Allora $\lambda\cdot$ \ul{x} $=(0,\lambda x_2,\cdots,\lambda x_n)\in W$
+	      Allora $\lambda\cdot$ \ul{x} $=(0,\lambda x_2,\cdots,\lambda x_n)\in W$
 
-	  Nota che $W$ è l'insieme delle soluzioni del sistema lineare omogeneo
+	      Nota che $W$ è l'insieme delle soluzioni del sistema lineare omogeneo
 
-	  $\begin{cases}x_1=0\end{cases}$
+	      $\begin{cases}x_1=0\end{cases}$
 	\item Ogni spazio vettoriale $V$ ha due sottospazi vettoriali "banali":
 
-	  $W_1=\{$\ul{0}$\}$
+	      $W_1=\{$\ul{0}$\}$
 
-	  $W_2=V$
+	      $W_2=V$
 	\item $V$ spazio vettoriale su $K$
 
-	  $v\in V$.
+	      $v\in V$.
 
-	  $W=<v>:=\{\lambda v:\lambda\in K\}$
-	  \begin{enumerate}
-		  \item \ul{0} $=0\cdot v\in W$
-		  \item $w_1,w_2\in W\Rightarrow\exists\lambda_1,\lambda_2\in K:w_1=\lambda_1v$ e
+	      $W=<v>:=\{\lambda v:\lambda\in K\}$
+	      \begin{enumerate}
+		      \item \ul{0} $=0\cdot v\in W$
+		      \item $w_1,w_2\in W\Rightarrow\exists\lambda_1,\lambda_2\in K:w_1=\lambda_1v$ e
 
-		    $w_2=\lambda_2v\Rightarrow w_1+w_2=\lambda_1v+\lambda_2v=(\lambda_1+\lambda_2)v\in W$
-		  \item $w\in W\Rightarrow\exists\lambda\in K:w=\lambda v$
+		            $w_2=\lambda_2v\Rightarrow w_1+w_2=\lambda_1v+\lambda_2v=(\lambda_1+\lambda_2)v\in W$
+		      \item $w\in W\Rightarrow\exists\lambda\in K:w=\lambda v$
 
-		    $\forall\mu\in K\quad\mu w=\mu\lambda v\in W$
+		            $\forall\mu\in K\quad\mu w=\mu\lambda v\in W$
 
-		    Quindi $W$ è un sottoinsieme vettoriale di $V$ chiamato \ul{retta vettoriale}
+		            Quindi $W$ è un sottoinsieme vettoriale di $V$ chiamato \ul{retta vettoriale}
 
-		    $V=\R^2,v=(1,1)$
+		            $V=\R^2,v=(1,1)$
 
-		    $W=<v>=\{\lambda(1,1):\lambda\in\R\}=\{(\lambda,\lambda):\lambda\in\R\}=\{(x,y)\in\R^2:y=x\}$ (passa per l'origine)
+		            $W=<v>=\{\lambda(1,1):\lambda\in\R\}=\{(\lambda,\lambda):\lambda\in\R\}=\{(x,y)\in\R^2:y=x\}$ (passa per l'origine)
 
-		    Più in generale, $v=(a,b)\in\R^2$ Allora $<v>=\{(\lambda a,\lambda b\lambda\in\R\}$ è la retta passante per l'origine definita dall'equazione $bx-ay=0$
-	  \end{enumerate}
+		            Più in generale, $v=(a,b)\in\R^2$ Allora $<v>=\{(\lambda a,\lambda b\lambda\in\R\}$ è la retta passante per l'origine definita dall'equazione $bx-ay=0$
+	      \end{enumerate}
 \end{enumerate}
 \section{06/04/22}
 \hl{Mi sono perso qualcosa, stavo mangiando una pizzetta}
@@ -1511,27 +1596,27 @@ $w_2=\{(x,y,x^2)\in\R^3:x,y\in\R\}$
 
 \begin{enumerate}
 	\item $w_1$ + un sottospazio di $\R^3$
-	  \begin{enumerate}
-		  \item $w_1\not=\emptyset$ poichè $(0,0,0)\in W_1$
-		  \item $(\forall w_1,w_2\in W_1,\forall\lambda,\mu\ni\R:\qquad\lambda w_1+\mu w_2\in W_1)$
+	      \begin{enumerate}
+		      \item $w_1\not=\emptyset$ poichè $(0,0,0)\in W_1$
+		      \item $(\forall w_1,w_2\in W_1,\forall\lambda,\mu\ni\R:\qquad\lambda w_1+\mu w_2\in W_1)$
 
-		    Siano $w_1,w_2\in W_1$. Allora $\exists x_1,y_1,x_2,y_2\in\R$ tali che $w_1=(x_1,y_1,z_1),w_2=(x_2,y_2,z_2)$.
+		            Siano $w_1,w_2\in W_1$. Allora $\exists x_1,y_1,x_2,y_2\in\R$ tali che $w_1=(x_1,y_1,z_1),w_2=(x_2,y_2,z_2)$.
 
-		    $\forall\lambda\mu\in\R$ abbiamo:
+		            $\forall\lambda\mu\in\R$ abbiamo:
 
-		    $\lambda w_1+\mu w_2=\lambda(x_1,y_1,z_1)+\mu(x_2,y_2,z_2)=(\lambda x_1+\mu x_2)\lambda y_1+\mu y_2,(\lambda x_1+\mu x_2)=(x',y',z')\in W_1,\\x'=\lambda x_1+\mu x_2\\y'=\lambda y_1+\mu y_2$ hl{potrebbe essere sbagliato}
-	  \end{enumerate}
+		            $\lambda w_1+\mu w_2=\lambda(x_1,y_1,z_1)+\mu(x_2,y_2,z_2)=(\lambda x_1+\mu x_2)\lambda y_1+\mu y_2,(\lambda x_1+\mu x_2)=(x',y',z')\in W_1,\\x'=\lambda x_1+\mu x_2\\y'=\lambda y_1+\mu y_2$ hl{potrebbe essere sbagliato}
+	      \end{enumerate}
 	\item $w_2=\{(x,y,x^2):x,y\in\R\}$
 
-	  $w_1=(3,0,9)$
+	      $w_1=(3,0,9)$
 
-	  $w_2=(2,1,4)$
+	      $w_2=(2,1,4)$
 
-	  $\lambda=1\qquad\qquad\lambda w_1+\mu w_2=(1,-1,5)\not\in W_2:\qquad5\not=1^2$
+	      $\lambda=1\qquad\qquad\lambda w_1+\mu w_2=(1,-1,5)\not\in W_2:\qquad5\not=1^2$
 
-	  $\mu=-1$
+	      $\mu=-1$
 
-	  $(x_1,y_1,x_1^2)+(x_2,y_2,x_2^2)=(x_1+x_2,y_1+y_2,x_1^2+x_2^2)\Rightarrow\\\Rightarrow(x_1+x_2)^2\not=x_1^2+x_2^2$
+	      $(x_1,y_1,x_1^2)+(x_2,y_2,x_2^2)=(x_1+x_2,y_1+y_2,x_1^2+x_2^2)\Rightarrow\\\Rightarrow(x_1+x_2)^2\not=x_1^2+x_2^2$
 \end{enumerate}
 
 \hl{tutte le $u$ e le $w$ sono maiuscole (si me ne sono accorto ora)}
@@ -1544,7 +1629,7 @@ $w_2=\{(x,y,x^2)\in\R^3:x,y\in\R\}$
 	\item $u\cap w\not=0$ poichè \ul{0} $\in u$ ($u$ è un sottospazio) e \ul{0} $\in w$ ($w$ è un sottospazio)
 	\item $\forall v_1,v_2\in u\cap w,\quad\forall\lambda,\mu\in K$
 
-	  Allora $\lambda v_1+\mu v_2\in u\cap W$ (poichè $u$ e $w$ sono sottospazi e $v_1,v_2\in u$ e $v_1,v_2\in W$)
+	      Allora $\lambda v_1+\mu v_2\in u\cap W$ (poichè $u$ e $w$ sono sottospazi e $v_1,v_2\in u$ e $v_1,v_2\in W$)
 \end{enumerate}
 
 Più in generale dati $n$ sottospazi $w_1,w_n\\w_1\cap\cdots\cap w_n=\bigcap^n_{i=1}w_i$ è un sottospazio.
@@ -1553,13 +1638,13 @@ Più in generale dati $n$ sottospazi $w_1,w_n\\w_1\cap\cdots\cap w_n=\bigcap^n_{
 \begin{enumerate}
 	\item $u\cup w$ in generale non è un sottospazio
 
-	  \ul{Esempio}:
+	      \ul{Esempio}:
 
-	  $V=\R^2\\u=\{(x,0):x\in\R\}\\w={0,y}:y\in\R$
+	      $V=\R^2\\u=\{(x,0):x\in\R\}\\w={0,y}:y\in\R$
 
-	  $v_1,v_2\in u\cup w:v_1+v_2\not\in u\cup w$
+	      $v_1,v_2\in u\cup w:v_1+v_2\not\in u\cup w$
 
-	  $v_1=(1,0)\\v_2=(0,1)\\v_1+v_2=(1,1)\not\in u\cup w$
+	      $v_1=(1,0)\\v_2=(0,1)\\v_1+v_2=(1,1)\not\in u\cup w$
 \end{enumerate}
 
 \ul{Osservazione}: $w\subseteq v$ sottospazio.
@@ -1633,113 +1718,113 @@ Siano $u_1\in U,w_1\in W$ e $u_2\in U,w_2\in W:\quad V=u_1+w_1=u_2+w_2$ (vogliam
 \begin{enumerate}
 	\item $V=\R^3$
 
-	  $v_1=(1,2,0),\quad v_2=(1,0,1)\in\R^3$
+	      $v_1=(1,2,0),\quad v_2=(1,0,1)\in\R^3$
 
-	  $v=(-1,4,-3)$ è combinazione lineare di $v_1$ e $v_2$.
+	      $v=(-1,4,-3)$ è combinazione lineare di $v_1$ e $v_2$.
 
-	  Infatti
+	      Infatti
 
-	  $$2v_1+(-3)v_2=(2,4,0)-(3,0,3)=(-1,4,-3)=v$$
+	      $$2v_1+(-3)v_2=(2,4,0)-(3,0,3)=(-1,4,-3)=v$$
 	\item $V=\R^3$
 
-	  $v_1=(1,2,3),\quad v_2=(3,2,1),\quad v_3=(-1,6,13)\in\R^3$
+	      $v_1=(1,2,3),\quad v_2=(3,2,1),\quad v_3=(-1,6,13)\in\R^3$
 
-	  Domande:
-	  \begin{enumerate}
-		  \item \ul{0} $=(0,0,0)$ è combinazione lineare di $v_1,\quad v_2$ e $v_3$?
+	      Domande:
+	      \begin{enumerate}
+		      \item \ul{0} $=(0,0,0)$ è combinazione lineare di $v_1,\quad v_2$ e $v_3$?
 
-		    Si! La combinazione lineare banale restituisce \ul{sempre} il vettore nullo:
+		            Si! La combinazione lineare banale restituisce \ul{sempre} il vettore nullo:
 
-		    $0\cdot v_1+0\cdot v_2+0\cdot v_3=$ \ul{0}
+		            $0\cdot v_1+0\cdot v_2+0\cdot v_3=$ \ul{0}
 
-		  \item esiste una combinazione lineare \ul{non banale} di $v_1,v_2,v_3$ che restituisce il vettore nullo?
+		      \item esiste una combinazione lineare \ul{non banale} di $v_1,v_2,v_3$ che restituisce il vettore nullo?
 
-		    $\exists\lambda,\mu,\delta\in\R,\quad(\lambda,\mu,\delta)\not=(0,0,0)$ tali che $\lambda v_1+\mu v_2+\delta v_3=$ \ul{0}?
+		            $\exists\lambda,\mu,\delta\in\R,\quad(\lambda,\mu,\delta)\not=(0,0,0)$ tali che $\lambda v_1+\mu v_2+\delta v_3=$ \ul{0}?
 
-		    $\lambda(1,2,3)+\mu(3,2,1)+\delta(-1,6,13)=(0,0,0)\Rightarrow$
+		            $\lambda(1,2,3)+\mu(3,2,1)+\delta(-1,6,13)=(0,0,0)\Rightarrow$
 
-		    $\Rightarrow(\lambda+3\mu-\delta,2\lambda+2\mu+6\delta,3\lambda+\mu+13\delta)\Rightarrow$
+		            $\Rightarrow(\lambda+3\mu-\delta,2\lambda+2\mu+6\delta,3\lambda+\mu+13\delta)\Rightarrow$
 
-		    $\Rightarrow
-			  \begin{cases}
-				  \lambda+3\mu-\delta=0   \\
-				  2\lambda+2\mu+6\delta=0 \\
-				  3\lambda+\mu+13\delta=0 \\
-			  \end{cases}$ sistema lineare \ul{omogeneo}
+		            $\Rightarrow
+			            \begin{cases}
+				            \lambda+3\mu-\delta=0   \\
+				            2\lambda+2\mu+6\delta=0 \\
+				            3\lambda+\mu+13\delta=0 \\
+			            \end{cases}$ sistema lineare \ul{omogeneo}
 
-		    $\begin{pmatrix}
-				  1 & 3 & -1 & 0 \\
-				  2 & 2 & 6  & 0 \\
-				  3 & 1 & 13 & 0
-			  \end{pmatrix}\xrightarrow{R_2\leftarrow-2R_1\wedge R_3\leftarrow R_3-3R_1}
-			  \begin{pmatrix}
-				  1 & 3  & -1 & 0 \\
-				  0 & -4 & 8  & 0 \\
-				  0 & -8 & 16 & 0
-			  \end{pmatrix}\xrightarrow{R_3\leftarrow R_3-2R_2}
-			  \begin{pmatrix}
-				  1 & 3  & -1 & 0 \\
-				  0 & -4 & 8  & 0 \\
-				  0 & 0  & 0  & 0
-			  \end{pmatrix}$
+		            $\begin{pmatrix}
+				            1 & 3 & -1 & 0 \\
+				            2 & 2 & 6  & 0 \\
+				            3 & 1 & 13 & 0
+			            \end{pmatrix}\xrightarrow{R_2\leftarrow-2R_1\wedge R_3\leftarrow R_3-3R_1}
+			            \begin{pmatrix}
+				            1 & 3  & -1 & 0 \\
+				            0 & -4 & 8  & 0 \\
+				            0 & -8 & 16 & 0
+			            \end{pmatrix}\xrightarrow{R_3\leftarrow R_3-2R_2}
+			            \begin{pmatrix}
+				            1 & 3  & -1 & 0 \\
+				            0 & -4 & 8  & 0 \\
+				            0 & 0  & 0  & 0
+			            \end{pmatrix}$
 
-		    $\begin{cases}
-				  \lambda+3\mu-\delta=0 \\
-				  -4\mu+8\delta=0
-			  \end{cases}\Rightarrow
-			  \begin{cases}
-				  \lambda=-3\mu+\delta=-5\delta \\
-				  \mu=2\delta
-			  \end{cases}$
+		            $\begin{cases}
+				            \lambda+3\mu-\delta=0 \\
+				            -4\mu+8\delta=0
+			            \end{cases}\Rightarrow
+			            \begin{cases}
+				            \lambda=-3\mu+\delta=-5\delta \\
+				            \mu=2\delta
+			            \end{cases}$
 
-		    $S=\{(-5\delta,2\delta,\delta):\delta\in\R\}$
+		            $S=\{(-5\delta,2\delta,\delta):\delta\in\R\}$
 
-		    $\forall\delta\not=0$ otteniamo i coefficienti di una combinazione lineare non banale che restituisce il vettore nullo
+		            $\forall\delta\not=0$ otteniamo i coefficienti di una combinazione lineare non banale che restituisce il vettore nullo
 
-		    $\delta=1:(-5,2,1)\\\qquad-5v_1+2v_2+v_3=-5(1,2,3)+2(3,2,1)+(-1,6,13)=(0,0,0)$
-	  \end{enumerate}
+		            $\delta=1:(-5,2,1)\\\qquad-5v_1+2v_2+v_3=-5(1,2,3)+2(3,2,1)+(-1,6,13)=(0,0,0)$
+	      \end{enumerate}
 \end{enumerate}
 
 \ul{Osservazioni}
 \begin{itemize}
 	\item L'insieme delle combinazioni lineari di $v\in V$ è la retta vettoriale $<v>$:
-	  $$<v>:=\{\lambda v:\lambda\in K\}$$
+	      $$<v>:=\{\lambda v:\lambda\in K\}$$
 	\item $\forall i=1,\cdots,n,\quad v_i$ è combinazione lineare di $v_1,\cdots,v_n$:
 
-	  $$v_i=0\cdot v_1+\cdots+0\cdot v_{i-1}+1\cdot v_i+0\cdot v_{i+1}+\cdots+0v_n$$
+	      $$v_i=0\cdot v_1+\cdots+0\cdot v_{i-1}+1\cdot v_i+0\cdot v_{i+1}+\cdots+0v_n$$
 	\item Dalla definizione di sottospazio segue che se $v_1,\cdots,v_n\in W$ e $W$ è un sottospazio, allora tutte le combinazioni lineari di $v_1,\cdots,v_n$ appartengono a $W$.
 
-	  L'insieme
-	  $$<v_1,\cdots,v_n>:=\{\lambda_1v_1+\cdots+\lambda_nv_n:\lambda_i\in K,\forall i=1,\cdots,n\}$$
+	      L'insieme
+	      $$<v_1,\cdots,v_n>:=\{\lambda_1v_1+\cdots+\lambda_nv_n:\lambda_i\in K,\forall i=1,\cdots,n\}$$
 
-	  è un sottospazio di $V$ chiamato il \ul{sottospazio generato} (o *span* o copertura lineare) da (di) $v_1,\cdots,v_n$.
+	      è un sottospazio di $V$ chiamato il \ul{sottospazio generato} (o *span* o copertura lineare) da (di) $v_1,\cdots,v_n$.
 
-	  È il "più piccolo" sottospazio di $V$ che contiene $v_1,\cdots,v_n$:
+	      È il "più piccolo" sottospazio di $V$ che contiene $v_1,\cdots,v_n$:
 
-	  Se $W$ è un sottospazio che contiene $v_1,\cdots,v_n$
-	  $$<v_1,\cdots,v_n>\subseteq W$$
+	      Se $W$ è un sottospazio che contiene $v_1,\cdots,v_n$
+	      $$<v_1,\cdots,v_n>\subseteq W$$
 
-	  \ul{Esempio}
+	      \ul{Esempio}
 
-	  $V=M_2(\R)$
+	      $V=M_2(\R)$
 
-	  $v_1=\begin{pmatrix}1&0\\0&1\end{pmatrix},\quad v_2=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$
+	      $v_1=\begin{pmatrix}1&0\\0&1\end{pmatrix},\quad v_2=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$
 
-	  $<v_1,v_2>=<\begin{pmatrix}1&0\\0&1\end{pmatrix},\begin{pmatrix}0&1\\-1&0\end{pmatrix}>=\begin{cases}a\begin{pmatrix}1&0\\0&1\end{pmatrix}+b\begin{pmatrix}0&1\\-1&0\end{pmatrix}:a,b\in\R\end{cases}=\\=\begin{cases}\begin{pmatrix}a&0\\0&a\end{pmatrix}+\begin{pmatrix}0&b\\-b&0\end{pmatrix}:a,b\in\R\end{cases}=\\=\begin{cases}\begin{pmatrix}a&b\\-b&a\end{pmatrix}:a,b\in\R\end{cases}$
+	      $<v_1,v_2>=<\begin{pmatrix}1&0\\0&1\end{pmatrix},\begin{pmatrix}0&1\\-1&0\end{pmatrix}>=\begin{cases}a\begin{pmatrix}1&0\\0&1\end{pmatrix}+b\begin{pmatrix}0&1\\-1&0\end{pmatrix}:a,b\in\R\end{cases}=\\=\begin{cases}\begin{pmatrix}a&0\\0&a\end{pmatrix}+\begin{pmatrix}0&b\\-b&0\end{pmatrix}:a,b\in\R\end{cases}=\\=\begin{cases}\begin{pmatrix}a&b\\-b&a\end{pmatrix}:a,b\in\R\end{cases}$
 
-	  $\begin{pmatrix}1&3\\-3&1\end{pmatrix}\in<v_1,v_2>$
+	      $\begin{pmatrix}1&3\\-3&1\end{pmatrix}\in<v_1,v_2>$
 
-	  $<v_1,v_2>=M_2(\R)$? No, perchè $\begin{pmatrix}1&2\\-3&2\end{pmatrix}\not\in<v_1,v_2>$
+	      $<v_1,v_2>=M_2(\R)$? No, perchè $\begin{pmatrix}1&2\\-3&2\end{pmatrix}\not\in<v_1,v_2>$
 
-	  $<v_1,v_2>\subset M_2(\R)$
+	      $<v_1,v_2>\subset M_2(\R)$
 
-	  \ul{Osservazione}
+	      \ul{Osservazione}
 
-	  $\forall m\leq n$
-	  $$<v_1,\cdots,v_m>\subseteq <v_1,\cdots,v_m,v_{m+1},\cdots,v_n$$
-	  $\uparrow$ ogni combinazione lineare di $v_1,\cdots,v_m$ è anche combinazione lineare di $v_1,\cdots,v_n$
+	      $\forall m\leq n$
+	      $$<v_1,\cdots,v_m>\subseteq <v_1,\cdots,v_m,v_{m+1},\cdots,v_n$$
+	      $\uparrow$ ogni combinazione lineare di $v_1,\cdots,v_m$ è anche combinazione lineare di $v_1,\cdots,v_n$
 
-	  $\lambda_1v_1+\lambda_nv_n=\lambda_1v_1+\cdots+\lambda_mv_m+0\cdot v_{m+1}+\cdots+0\cdot v_n$
+	      $\lambda_1v_1+\lambda_nv_n=\lambda_1v_1+\cdots+\lambda_mv_m+0\cdot v_{m+1}+\cdots+0\cdot v_n$
 \end{itemize}
 Ripartiamo dall'esercizio 1 del foglio 2:
 
@@ -1749,14 +1834,14 @@ Abbiamo mostrato che:
 \begin{itemize}
 	\item $\forall(a,b)\in\R^2,\exists\lambda,\mu\in\R:(a,b)=\lambda(1,2)+\mu(3,4)$, o equivalentemente,
 
-	  $(a,b)\in<(1,2),(3,4)>$
+	      $(a,b)\in<(1,2),(3,4)>$
 
-	  Poichè $<(1,2),(3,4)>\subseteq\R^2$, otteniamo che $<(1,2),(3,4)>=\R^2$, cioè $(1,2)$ e $(3,4)$ "generano" tutto $\R^2$ attraverso le loro combinazioni linerai.
+	      Poichè $<(1,2),(3,4)>\subseteq\R^2$, otteniamo che $<(1,2),(3,4)>=\R^2$, cioè $(1,2)$ e $(3,4)$ "generano" tutto $\R^2$ attraverso le loro combinazioni linerai.
 
-	  Diremo che $\{(1,2),(3,4)\}$ è un "sistema di generatori" di $\R^2$
+	      Diremo che $\{(1,2),(3,4)\}$ è un "sistema di generatori" di $\R^2$
 	\item $(0,0)=\lambda(1,2)+\mu(3,4)\Leftrightarrow\lambda=\mu=0$, cioè l'unica combinazione lineare di $(1,2)$ e $(3,4)$ che restituisce il vettore nullo è quella banale.
 
-	  Diremo che $(1,2)$ e $(3,4)$ sono linearmente indipendenti.
+	      Diremo che $(1,2)$ e $(3,4)$ sono linearmente indipendenti.
 \end{itemize}
 
 Più in generale definiamo:
@@ -1790,35 +1875,35 @@ Siano $\lambda,\mu,\delta\in\R$ tali che:
 
 $\lambda v_1+\mu v_2+\delta v_3=$ \ul{0} $\Rightarrow\lambda(8,-2,0)+\mu(0,3,4)+\delta(-2,2,2)=(0,0,0)\Rightarrow$
 $\Rightarrow
-\begin{cases}
-	8\lambda-2\delta=0       \\
-	-2\lambda+3\mu+2\delta=0 \\
-	4\mu+2\delta=0
-\end{cases}$
+	\begin{cases}
+		8\lambda-2\delta=0       \\
+		-2\lambda+3\mu+2\delta=0 \\
+		4\mu+2\delta=0
+	\end{cases}$
 
 $\begin{pmatrix}
-	8  & 0 & -2 & \vdots & 0 \\
-	-2 & 3 & 2  & \vdots & 0 \\
-	0  & 4 & 2  & \vdots & 0
-\end{pmatrix}\xrightarrow{R_2\leftarrow R_2+\frac{1}{4}R_1}
-\begin{pmatrix}
-	8 & 0 & -2          & 0 \\
-	0 & 3 & \frac{3}{2} & 0 \\
-	0 & 4 & 2           & 0
-\end{pmatrix}\xrightarrow{R_3\leftarrow R_3-\frac{4}{3}R_2}
-\begin{pmatrix}
-	8 & 0 & -2          & 0 \\
-	0 & 3 & \frac{3}{2} & 0 \\
-	0 & 0 & 0           & 0
-\end{pmatrix}\Rightarrow
-\begin{cases}
-	8\lambda-2\delta=0 \\
-	3\mu+\frac{3}{2}\delta=0
-\end{cases}\Rightarrow
-\begin{cases}
-	\lambda=\frac{1}{4}\delta \\
-	\mu=-\frac{1}{2}\delta
-\end{cases}$
+		8  & 0 & -2 & \vdots & 0 \\
+		-2 & 3 & 2  & \vdots & 0 \\
+		0  & 4 & 2  & \vdots & 0
+	\end{pmatrix}\xrightarrow{R_2\leftarrow R_2+\frac{1}{4}R_1}
+	\begin{pmatrix}
+		8 & 0 & -2          & 0 \\
+		0 & 3 & \frac{3}{2} & 0 \\
+		0 & 4 & 2           & 0
+	\end{pmatrix}\xrightarrow{R_3\leftarrow R_3-\frac{4}{3}R_2}
+	\begin{pmatrix}
+		8 & 0 & -2          & 0 \\
+		0 & 3 & \frac{3}{2} & 0 \\
+		0 & 0 & 0           & 0
+	\end{pmatrix}\Rightarrow
+	\begin{cases}
+		8\lambda-2\delta=0 \\
+		3\mu+\frac{3}{2}\delta=0
+	\end{cases}\Rightarrow
+	\begin{cases}
+		\lambda=\frac{1}{4}\delta \\
+		\mu=-\frac{1}{2}\delta
+	\end{cases}$
 
 $S=\{(\frac{1}{4}\delta,-\frac{1}{2}\delta,\delta):\delta\in\R\}$
 
@@ -1832,39 +1917,39 @@ $\Rightarrow v_1,v_2$ e $v_3$ sono \ul{linearmente dipendenti}
 \begin{enumerate}
 	\item Un vettore $v\in V$ è \ul{linearmente dipendente} se e solo se $v=$ \ul{0}
 
-	  $\Leftarrow)$ se $v=$ \ul{0} allora $1\cdot v=$ \ul{0} $\Rightarrow\ v$ è linearmente dipendente
+	      $\Leftarrow)$ se $v=$ \ul{0} allora $1\cdot v=$ \ul{0} $\Rightarrow\ v$ è linearmente dipendente
 
-	  $\Rightarrow)\quad\exists\lambda\not=0:\lambda v=$ \ul{0} $\Rightarrow\lambda^{-1}\lambda v=\lambda^{-1}$ \ul{0} $\Rightarrow1\cdot v=$ \ul{0}
+	      $\Rightarrow)\quad\exists\lambda\not=0:\lambda v=$ \ul{0} $\Rightarrow\lambda^{-1}\lambda v=\lambda^{-1}$ \ul{0} $\Rightarrow1\cdot v=$ \ul{0}
 	\item Due vettori $v_1,v_2\in V$ sono linearmente dipendenti $\Leftrightarrow\exists\lambda\in K$ tale che $v_1=\lambda v_2$ o $v_2=\lambda v_1$.
 
-	  \ul{Esempio}: $V=\R^3$
+	      \ul{Esempio}: $V=\R^3$
 
-	  $v_1=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad v_2=\begin{pmatrix}3\\6\\9\end{pmatrix}=3v_1\Rightarrow v_1,v_2$ sono linearmente dipendenti.
+	      $v_1=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad v_2=\begin{pmatrix}3\\6\\9\end{pmatrix}=3v_1\Rightarrow v_1,v_2$ sono linearmente dipendenti.
 
-	  Infatti se $v_2=3v_1\Rightarrow3v_1-v_2=$ \ul{0}
+	      Infatti se $v_2=3v_1\Rightarrow3v_1-v_2=$ \ul{0}
 
-	  $\Leftarrow)$ Supponiamo $\exists\lambda\in K:v_1=\lambda v_2$ o $v_2=\lambda v_1$.
+	      $\Leftarrow)$ Supponiamo $\exists\lambda\in K:v_1=\lambda v_2$ o $v_2=\lambda v_1$.
 
-	  Se $v_1=\lambda v_2\Rightarrow1\cdot v_1-\lambda v_2=$ \ul{0}
+	      Se $v_1=\lambda v_2\Rightarrow1\cdot v_1-\lambda v_2=$ \ul{0}
 
-	  Se $v_2=\lambda v_1\Rightarrow\lambda v_1-v_2=$ \ul{0}
+	      Se $v_2=\lambda v_1\Rightarrow\lambda v_1-v_2=$ \ul{0}
 
-	  In ogni caso $v_1,v_2$ sono linearmente dipendenti.
+	      In ogni caso $v_1,v_2$ sono linearmente dipendenti.
 
-	  $\Rightarrow)$ Supponiamo $v_1,v_2$ linearmente dipendenti $\Rightarrow\exists\lambda_1\lambda_2\in K,(\lambda_1,\lambda_2)\not=(0,0):\lambda_1v_1+\lambda_2v_2=$ \ul{0}
+	      $\Rightarrow)$ Supponiamo $v_1,v_2$ linearmente dipendenti $\Rightarrow\exists\lambda_1\lambda_2\in K,(\lambda_1,\lambda_2)\not=(0,0):\lambda_1v_1+\lambda_2v_2=$ \ul{0}
 
-	  Se $\lambda_1\not=0\Rightarrow v_1=-\frac{\lambda_2}{\lambda_1}v_2$
+	      Se $\lambda_1\not=0\Rightarrow v_1=-\frac{\lambda_2}{\lambda_1}v_2$
 
-	  Se $\lambda_2\not=0\Rightarrow v_2=-\frac{\lambda_1}{\lambda_2}v_1$
+	      Se $\lambda_2\not=0\Rightarrow v_2=-\frac{\lambda_1}{\lambda_2}v_1$
 
-	  Quindi $\exists\lambda\in K:v_1=\lambda v_2$ o $v_2=\lambda v_1$
+	      Quindi $\exists\lambda\in K:v_1=\lambda v_2$ o $v_2=\lambda v_1$
 
-	  \ul{Esempio}: $v_1=(1,2,3),\quad v_2=(0,0,0)\in\R^3$ sono linearmente dipendenti poichè $v_2=0\cdot v_1\Rightarrow0\cdot v_1+(-1)v_2=$ \ul{0}
+	      \ul{Esempio}: $v_1=(1,2,3),\quad v_2=(0,0,0)\in\R^3$ sono linearmente dipendenti poichè $v_2=0\cdot v_1\Rightarrow0\cdot v_1+(-1)v_2=$ \ul{0}
 	\item $v_1,\cdots,v_n\in V$ sono linearmente dipendenti $\Leftrightarrow\exists i\in\{1,\cdots,n\}$ tale che $v_i$ è combinazione lineare degli altri.
 
-	  \ul{Esempio}: $v_1=(1,1,1),\quad v_2=(1,-1,3),\quad v_3=(2,0,4)$
+	      \ul{Esempio}: $v_1=(1,1,1),\quad v_2=(1,-1,3),\quad v_3=(2,0,4)$
 
-	  $v_1,v_2,v_3$ sono linearmente dipendenti poichè $v_3=v_1+v_2\Rightarrow v_1+v_2-v_3=$ \ul{0}
+	      $v_1,v_2,v_3$ sono linearmente dipendenti poichè $v_3=v_1+v_2\Rightarrow v_1+v_2-v_3=$ \ul{0}
 	\item Se l'insieme $\{v_1,\cdots,v_n\}$ contiene il vettore nullo allora $v_1,\cdots,v_n$ sono linearmente dipendenti.
 \end{enumerate}
 
@@ -1879,20 +1964,20 @@ $\Rightarrow v_1,v_2$ e $v_3$ sono \ul{linearmente dipendenti}
 \Def{Sia $V$ uno spazio vettoriale su $K$ e siano $v_1,\cdots,v_n\in V$}{
 	\begin{itemize}
 		\item Diciamo che $\{v_1,\cdots,v_n\}$ è un sistema di generatori o che $v_1,\cdots,v_n$ generano $V$ se
-		  $$<v_1,\cdots,v_n>=V$$
-		  o equivalentemente se
-		  $$\forall v\in V,\exists(\lambda_1,\cdots,\lambda_n)\in K^n$$
-		  tali che
-		  $$(*)\lambda_1v_1+\cdots+\lambda_nv_n=v$$
+		      $$<v_1,\cdots,v_n>=V$$
+		      o equivalentemente se
+		      $$\forall v\in V,\exists(\lambda_1,\cdots,\lambda_n)\in K^n$$
+		      tali che
+		      $$(*)\lambda_1v_1+\cdots+\lambda_nv_n=v$$
 		\item Diciamo che $v_1,\cdots,v_n$ sono linearmente indipendenti se $\lambda_1v_1+\cdots+\lambda_nv_n=$ \ul{0} $\Rightarrow\lambda_1=\lambda_2=\cdots=\lambda_n=0$
 
-		  $[(\lambda_1,\cdots,\lambda_n)=(0,\cdots,0)]$
+		      $[(\lambda_1,\cdots,\lambda_n)=(0,\cdots,0)]$
 
 		\item Diciamo che $\{v_1,\cdots,v_n\}$ è una \ul{base} di $V$ se:
-		  \begin{enumerate}
-			  \item $v_1,\cdots,v_n$ generano $V$
-			  \item $v_1,\cdots,v_n$ sono linearmente indipendenti.
-		  \end{enumerate}
+		      \begin{enumerate}
+			      \item $v_1,\cdots,v_n$ generano $V$
+			      \item $v_1,\cdots,v_n$ sono linearmente indipendenti.
+		      \end{enumerate}
 	\end{itemize}
 }
 \ul{Proposizione}: Sia $V$ uno spazio vettoriale su $K$ e sia $\{v_1,\cdots,v_n\}$ una base di $V$
@@ -1917,17 +2002,17 @@ $v_1=(1,0),\quad v_1=(0,1)\in\R^2$
 \begin{itemize}
 	\item $v_1,v_2$ generano $\R^2:\forall(a,b)\in\R^2$
 
-	  $(a,b)=a(1,0)+b(0,1)$
+	      $(a,b)=a(1,0)+b(0,1)$
 	\item $v_1,v_2$ sono linearmente indipendenti. Infatti se $\lambda_1,\lambda_2\in\R$ sono tali che:
-	  $$\lambda_1(1,0)+\lambda(0,1)=(0,0)\Rightarrow(\lambda_1,\lambda_2)=(0,0)$$
+	      $$\lambda_1(1,0)+\lambda(0,1)=(0,0)\Rightarrow(\lambda_1,\lambda_2)=(0,0)$$
 
-	  Quindi $\B=\{(1,0),(0,1)\}$ è **una** base di $\R^2$
+	      Quindi $\B=\{(1,0),(0,1)\}$ è **una** base di $\R^2$
 
-	  Si noti che parliamo di **una** base di $\R^2$, in quanto essa non è unica.
+	      Si noti che parliamo di **una** base di $\R^2$, in quanto essa non è unica.
 
-	  $w_1=(1,2),w_2=(3,4)$ generano $\R^2$ e sono linearmente indipendenti
+	      $w_1=(1,2),w_2=(3,4)$ generano $\R^2$ e sono linearmente indipendenti
 
-	  $\Rightarrow\B'={w_1,w_2}$ è un'altra base di $\R^2$
+	      $\Rightarrow\B'={w_1,w_2}$ è un'altra base di $\R^2$
 \end{itemize}
 
 \Def{Due vettori $v_1,v_2\in\R^2$ si dicono collineari se $v_1,v_2$ sono linearmente dipendenti, cioè se $\exists\lambda\in K$ tale che:}{
@@ -1981,36 +2066,36 @@ Se $V=\{$\ul{0}$\}$ oppure se $V$ ha una base finita diciamo che $V$ ha \ul{dime
 \begin{enumerate}
 	\item $\R^2$ è uno spazio vettoriale di dimensione 2, poichè abbiamo visto che $\{(1,0),(0,1)\}$ è una base di $\R^2$.
 	\item $V=K^n=\{(x_1,\cdots,x_n):x_i\in K,\forall i=1,\cdots,n\},n\ge 1$
-	  Siano
+	      Siano
 
-	  $e_1=(1,0,\cdots,0)$
+	      $e_1=(1,0,\cdots,0)$
 
-	  $e_2=(0,1,\cdots,0)$
+	      $e_2=(0,1,\cdots,0)$
 
-	  $\vdots$
+	      $\vdots$
 
-	  $e_n=(0,\cdots,0,1)$
+	      $e_n=(0,\cdots,0,1)$
 
-	  È facile mostrare che $\{e_1,\cdots,e_n\}$ è una base di $K^n$ detta **base canonica** di $K^n$.
+	      È facile mostrare che $\{e_1,\cdots,e_n\}$ è una base di $K^n$ detta **base canonica** di $K^n$.
 
-	  Quindi $dim_KK^n=n$.
+	      Quindi $dim_KK^n=n$.
 
-	  $\forall x'=(x_1,\cdots,x_n)\in K^n$, abbiamo
+	      $\forall x'=(x_1,\cdots,x_n)\in K^n$, abbiamo
 
-	  $x'=x_1e_1+x_2e_2+\cdots+x_ne_n$
+	      $x'=x_1e_1+x_2e_2+\cdots+x_ne_n$
 
-	  cioè $x'$ è la $n$-upla delle coordinate di $x'$ rispetto a $\{e_1,\cdots,e_n\}$
+	      cioè $x'$ è la $n$-upla delle coordinate di $x'$ rispetto a $\{e_1,\cdots,e_n\}$
 	\item $V=M_2(\R)$
 
-	  Siano:
+	      Siano:
 
-	  $E_{11}=\begin{pmatrix}1&0\\0&0\end{pmatrix},E_{12}=\begin{pmatrix}0&1\\0&0\end{pmatrix},E_{21}=\begin{pmatrix}0&0\\1&0\end{pmatrix},E_{22}=\begin{pmatrix}0&0\\0&1\end{pmatrix}$
+	      $E_{11}=\begin{pmatrix}1&0\\0&0\end{pmatrix},E_{12}=\begin{pmatrix}0&1\\0&0\end{pmatrix},E_{21}=\begin{pmatrix}0&0\\1&0\end{pmatrix},E_{22}=\begin{pmatrix}0&0\\0&1\end{pmatrix}$
 
-	  $\forall\begin{pmatrix}a&b\\c&d\end{pmatrix}=aE_{11}+bE_{12}+cE_{21}+dE_{22}$.
+	      $\forall\begin{pmatrix}a&b\\c&d\end{pmatrix}=aE_{11}+bE_{12}+cE_{21}+dE_{22}$.
 
-	  Si mostra facilmente che $E_{11},E_{12},E_{21},E_{22}$ siano linearmente indipendenti.
+	      Si mostra facilmente che $E_{11},E_{12},E_{21},E_{22}$ siano linearmente indipendenti.
 
-	  Quindi $\{E_{11},E_{12},E_{21},E_{22}\}$ è una base di $M_2(\R)\Rightarrow dim_\R$ hl{incompleto}
+	      Quindi $\{E_{11},E_{12},E_{21},E_{22}\}$ è una base di $M_2(\R)\Rightarrow dim_\R$ hl{incompleto}
 \end{enumerate}
 
 
@@ -2023,9 +2108,9 @@ $$v=\lambda_1v_1+\cdots+\lambda_nv_n\mapsto(\lambda_1,\cdots,\lambda_n)$$
 \begin{itemize}
 	\item \ul{iniettiva}: se $v,w$ sono tali che $\varphi_\B(v)=\varphi_\B(w)\Rightarrow v=w$.
 
-	  $v,w\in V\Rightarrow v=\lambda_1v_1+\cdots+\lambda_nv_n\\\qquad\qquad\quad\ w=\mu_1v_1+\cdots+\mu_nv_n$
+	      $v,w\in V\Rightarrow v=\lambda_1v_1+\cdots+\lambda_nv_n\\\qquad\qquad\quad\ w=\mu_1v_1+\cdots+\mu_nv_n$
 	\item \ul{suriettiva}? $\forall(\lambda_1,\lambda_n)\in K^n,\exists v\in V$ tale che
-	  $$\varphi_\B=(\lambda_1,\cdots,\lambda_n)$$
+	      $$\varphi_\B=(\lambda_1,\cdots,\lambda_n)$$
 \end{itemize}
 Basta prendere $v=\lambda_1v_1+\cdots+\lambda_nv_n$ (\boxed)
 
@@ -2034,15 +2119,15 @@ Quindi $\varphi_\B$ è biettiva.
 Inoltre $\varphi_\B$ soddisfa le seguenti proprietà:
 \begin{enumerate}
 	\item $\forall w_1,w_2\in V,\varphi_\B(w_1+w_2)=\varphi_\B(w_1)+\varphi_\B(w_2)$.
-	  \ul{Dim}
+	      \ul{Dim}
 
-	  Siano $w_1w_2\in V$. Quindi $\exists\lambda_1,\cdots,\lambda_n,\mu_1,\cdots,\mu_n\in K$ tali che
-	  $$w_1=\lambda_1v_1+\cdots+\lambda_nv_n,\quad w_2=\mu_1v_1+\cdots+\mu_nv_n$$
-	  Quindi $\varphi_\B(w_1)=(\lambda_1,\cdots,\lambda_n),\varphi_\B(\mu_1,\cdots,\mu_n)$
+	      Siano $w_1w_2\in V$. Quindi $\exists\lambda_1,\cdots,\lambda_n,\mu_1,\cdots,\mu_n\in K$ tali che
+	      $$w_1=\lambda_1v_1+\cdots+\lambda_nv_n,\quad w_2=\mu_1v_1+\cdots+\mu_nv_n$$
+	      Quindi $\varphi_\B(w_1)=(\lambda_1,\cdots,\lambda_n),\varphi_\B(\mu_1,\cdots,\mu_n)$
 
-	  Ora $w_1+w_2=\lambda_1v_1+\cdots+\lambda_nv_n+\mu_1v_1+\cdots+\mu_nv_n=(\lambda_1\mu_1)v_1+\cdots+(\lambda_n\mu_n)v_n$
+	      Ora $w_1+w_2=\lambda_1v_1+\cdots+\lambda_nv_n+\mu_1v_1+\cdots+\mu_nv_n=(\lambda_1\mu_1)v_1+\cdots+(\lambda_n\mu_n)v_n$
 
-	  $\varphi_\B(w_1+w_2)=(\lambda_1+\mu_1,\cdots,\lambda_n+\mu_n)=(\lambda_1,\cdots,\lambda_n)+(\mu_1,\cdots,\mu_n)=\varphi_B(w_1)+\varphi_B(w_2)$
+	      $\varphi_\B(w_1+w_2)=(\lambda_1+\mu_1,\cdots,\lambda_n+\mu_n)=(\lambda_1,\cdots,\lambda_n)+(\mu_1,\cdots,\mu_n)=\varphi_B(w_1)+\varphi_B(w_2)$
 	\item $\forall\lambda\in K$ \hl{Incompleto}
 \end{enumerate}
 
@@ -2086,20 +2171,20 @@ $$L\subseteq B\subseteq G$$
 Linearmente indipendenti?: Siano $\lambda,\mu,\delta\in\R:$
 $$\lambda(1,2,3)+\mu(4,6,9)+\delta(1,0,0)=(0,0,0)$$
 $\Rightarrow\begin{cases}
-	\lambda+4\mu+\delta=0 \\
-	2\lambda+6\mu=0       \\
-	3\lambda+9\mu=0
-\end{cases}\Rightarrow
-\begin{cases}
-	\mu=-\delta \\
-	0=0         \\
-	\lambda=-3\mu
-\end{cases}\Rightarrow
-\begin{cases}
-	\mu=-\delta \\
-	\lambda=3\delta
-\end{cases}\Rightarrow
-S=\{(3\delta,-\delta,\delta):\delta\in\R\}$
+		\lambda+4\mu+\delta=0 \\
+		2\lambda+6\mu=0       \\
+		3\lambda+9\mu=0
+	\end{cases}\Rightarrow
+	\begin{cases}
+		\mu=-\delta \\
+		0=0         \\
+		\lambda=-3\mu
+	\end{cases}\Rightarrow
+	\begin{cases}
+		\mu=-\delta \\
+		\lambda=3\delta
+	\end{cases}\Rightarrow
+	S=\{(3\delta,-\delta,\delta):\delta\in\R\}$
 
 $\delta=1\leadsto(3,-1,1)\Rightarrow3(1,2,3)-(4,6,9)+(1,0,0)=(0,0,0)\Rightarrow$ sono linearmente dipendenti.
 
@@ -2121,16 +2206,16 @@ Linearmente indipendenti?
 \begin{enumerate}
 	\item $G=\{v_1,\cdots,v_n\}$ sistema di generatori
 
-	  Per il corollario 1 $\exists$ una base $B$ di $V$ tale che
+	      Per il corollario 1 $\exists$ una base $B$ di $V$ tale che
 
-	  $B\subseteq G\Rightarrow B=G$, cioè $G$ è una base di $V$
+	      $B\subseteq G\Rightarrow B=G$, cioè $G$ è una base di $V$
 
-	  $B$ ha $n$ elementi poichè $dim(V)=n$
+	      $B$ ha $n$ elementi poichè $dim(V)=n$
 	\item $L=\{v_1,\cdots,v_n\},v_1,\cdots,v_n$ sono linearmente indipendenti.
 
-	  Per il corollario 1, $\exists$ una base $B$ di $V$ tale che
+	      Per il corollario 1, $\exists$ una base $B$ di $V$ tale che
 
-	  $L\subseteq B\Rightarrow B=L$
+	      $L\subseteq B\Rightarrow B=L$
 \end{enumerate}
 
 \ul{Proposizione}: Sia $V$ uno spazio vettoriale di dimensione finita.
@@ -2147,20 +2232,20 @@ Sia $n=dim(V)$
 \begin{enumerate}
 	\item Si mostra che anche $W$ è di dimensione finita (non è scontato) hl{vedi note della prof, non lo spiega qui in classe}.
 
-	  Sia dunque $\{w_1,\cdots,w_m\}$ una base finita di $W$
+	      Sia dunque $\{w_1,\cdots,w_m\}$ una base finita di $W$
 
-	  Ora $w_1,\cdots,w_m$ sono vettori linearmente indipendenti di $W\subseteq V\xRightarrow{Lemma\ di\ Steinitz}m\le n\Leftrightarrow dim(W)\le dim(V)$
+	      Ora $w_1,\cdots,w_m$ sono vettori linearmente indipendenti di $W\subseteq V\xRightarrow{Lemma\ di\ Steinitz}m\le n\Leftrightarrow dim(W)\le dim(V)$
 	\item $\Leftarrow)$ ovvio.
 
-	  $\Rightarrow)$ Supponiamo $dim(W)=dim(V)=n$.
+	      $\Rightarrow)$ Supponiamo $dim(W)=dim(V)=n$.
 
-	  Sia $B=\{w_1,\cdots,w_n\}$ una base di $W$.
+	      Sia $B=\{w_1,\cdots,w_n\}$ una base di $W$.
 
-	  Ora $w_1,\cdots,w_n$ sono vettori linearmente indipendenti di $V$ e quindi B è anche una base di $V$.
+	      Ora $w_1,\cdots,w_n$ sono vettori linearmente indipendenti di $V$ e quindi B è anche una base di $V$.
 
-	  $W=<w_1,\cdots,w_n>=V$
+	      $W=<w_1,\cdots,w_n>=V$
 
-	  $\uparrow$ sistema di generatori di W, $\quad\uparrow$ sistema di generatori di V
+	      $\uparrow$ sistema di generatori di W, $\quad\uparrow$ sistema di generatori di V
 \end{enumerate}
 
 \ul{Osservazione}: $W$ è un sottospazio, $dim(W)=0\Leftrightarrow W=\{$\ul{0}$\}$
@@ -2202,10 +2287,10 @@ $v_1,v_2$ linearmente indipendenti.
 \ul{Osservazioni}:
 \begin{enumerate}
 	\item $0\leq rg(\{v_1,\cdots,v_p\})\leq p$
-	  \begin{itemize}
-		  \item $rg(\{v_1,\cdots,v_p\})=0\Leftrightarrow v_1=\cdots=v_p=$\ul{0}
-		  \item $rg(\{v_1,\cdots,v_p\})=p\Leftrightarrow v_1,\cdots,v_p$ sono linearmente indipendenti
-	  \end{itemize}
+	      \begin{itemize}
+		      \item $rg(\{v_1,\cdots,v_p\})=0\Leftrightarrow v_1=\cdots=v_p=$\ul{0}
+		      \item $rg(\{v_1,\cdots,v_p\})=p\Leftrightarrow v_1,\cdots,v_p$ sono linearmente indipendenti
+	      \end{itemize}
 	\item Se $dim(V)=n$ e $v_1,\cdots,v_p\in V$ allora $rg(\{v_1,\cdots,v_p\})\leq min\{p,n\}$
 \end{enumerate}
 \section{27/04/22}
@@ -2214,16 +2299,16 @@ $v_1,v_2$ linearmente indipendenti.
 
 	$rg(\{v_1,\cdots,v_p\})=dim(<v_1,\cdots,v_p>)$
 
-Equivalentemente è il numero massimo di vettori linearmente indipendenti in $\{v_1,\cdots,v_p\}$.}
+	Equivalentemente è il numero massimo di vettori linearmente indipendenti in $\{v_1,\cdots,v_p\}$.}
 \Def{Sia $A\in\M_{m,n}(\K)$.}{Il \ul{rango per righe} di $A$ è il rango dell'insieme delle sue righe (vettori in $\K^n$).
 
-Il \ul{rango per colonne} di $A$ è il rango dell'insieme delle sue colonne (vettori $n\ \K^m$)}
+	Il \ul{rango per colonne} di $A$ è il rango dell'insieme delle sue colonne (vettori $n\ \K^m$)}
 \Esempio{
 	$A=\begin{pmatrix}
-		1 & 0  & 0 & 1 \\
-		0 & 1  & 0 & 0 \\
-		1 & -1 & 0 & 1
-	\end{pmatrix}\in\M_(3,4)(\R).$\\
+			1 & 0  & 0 & 1 \\
+			0 & 1  & 0 & 0 \\
+			1 & -1 & 0 & 1
+		\end{pmatrix}\in\M_(3,4)(\R).$\\
 
 	Rango per righe di $A=rg(\{(1,0,0,1),(0,1,0,0),(1,-1,0,1)\})=dim(<(1,0,0,1),(0,1,0,0),(1,-1,0,1)>)=2$\\
 
@@ -2238,12 +2323,12 @@ Possiamo dunque chiamare semplicemente RANGO di $A\in\M_{m,n}(\K)$ il rango per 
 \paragraph*{\ul{Osservazione}:} Se $A\in\M_{m,n}(\K)\Rightarrow rg(A)\le min\{m,n\}$
 \Esempio{
 	$M=\begin{pmatrix}
-		\boxed{1} & 2         & 3 & 4          & 5          \\
-		0         & \boxed{6} & 7 & 8          & 9          \\
-		0         & 0         & 0 & \boxed{10} & 11         \\
-		0         & 0         & 0 & 0          & \boxed{12} \\
-		0         & 0         & 0 & 0          & 0
-	\end{pmatrix}$\\
+			\boxed{1} & 2         & 3 & 4          & 5          \\
+			0         & \boxed{6} & 7 & 8          & 9          \\
+			0         & 0         & 0 & \boxed{10} & 11         \\
+			0         & 0         & 0 & 0          & \boxed{12} \\
+			0         & 0         & 0 & 0          & 0
+		\end{pmatrix}$\\
 
 	$rg(M)=4$
 	\hl{Incompleto}
@@ -2269,107 +2354,107 @@ Inoltre il sottospazio generato dalle righe di $A$ è lo stesso del sottospazio 
 
 \begin{enumerate}
 	\item Calcolare una base e la dimensione di\\
-	  $\hspace*{5em}v_1\hspace*{4.8em}v_2\hspace*{5em}v_3\hspace*{5.6em}v_4\hspace*{4.8em}v_5$\\
-	  $U=<(1,-3,2,0,1),(1,1,3,1,3),(3,-5,2,1,7),(-1,7,-1,0,1),(0,4,1,1,2)>$\\
-	  $dim(U)=rg(\{v_1,v_2,v_3,v_4,v_5\})=rg\begin{pmatrix}v_1\\v_2\\v_3\\v_4\\v_5\end{pmatrix}$\\
-	  $A=\begin{pmatrix}
-			1  & -3 & 2  & 0 & 1 \\
-			1  & 1  & 3  & 1 & 3 \\
-			3  & -5 & 2  & 1 & 7 \\
-			-1 & 7  & -1 & 0 & 1 \\
-			0  & 4  & 1  & 1 & 2
-		  \end{pmatrix}\xRightarrow{\hl{incompleto}}\begin{pmatrix}
-			1 & -3 & 2  & 0 & 1 \\
-			0 & 4  & 1  & 1 & 2 \\
-			0 & 4  & -4 & 1 & 4 \\
-			0 & 4  & 1  & 0 & 2 \\
-			0 & 4  & 1  & 1 & 2
-		  \end{pmatrix}\xRightarrow{\hl{incompleto}}\begin{pmatrix}
-			1 & -3 & 2  & 0  & 1 \\
-			0 & 4  & 1  & 1  & 2 \\
-			0 & 0  & -5 & 0  & 2 \\
-			0 & 0  & 0  & -1 & 0 \\
-			0 & 0  & 0  & 0  & 0
-		\end{pmatrix}\leftarrow$ ha 4 righe non nulle\\
-	  $\Rightarrow rg(A)=dim(U)=4$\\
-	  e una base di $U$ è $\{(1,-3,2,0,1),(0,4,1,1,2),(0,0,-5,0,2),(0,0,0,-1,0)\}$
+	      $\hspace*{5em}v_1\hspace*{4.8em}v_2\hspace*{5em}v_3\hspace*{5.6em}v_4\hspace*{4.8em}v_5$\\
+	      $U=<(1,-3,2,0,1),(1,1,3,1,3),(3,-5,2,1,7),(-1,7,-1,0,1),(0,4,1,1,2)>$\\
+	      $dim(U)=rg(\{v_1,v_2,v_3,v_4,v_5\})=rg\begin{pmatrix}v_1\\v_2\\v_3\\v_4\\v_5\end{pmatrix}$\\
+	      $A=\begin{pmatrix}
+			      1  & -3 & 2  & 0 & 1 \\
+			      1  & 1  & 3  & 1 & 3 \\
+			      3  & -5 & 2  & 1 & 7 \\
+			      -1 & 7  & -1 & 0 & 1 \\
+			      0  & 4  & 1  & 1 & 2
+		      \end{pmatrix}\xRightarrow{\hl{incompleto}}\begin{pmatrix}
+			      1 & -3 & 2  & 0 & 1 \\
+			      0 & 4  & 1  & 1 & 2 \\
+			      0 & 4  & -4 & 1 & 4 \\
+			      0 & 4  & 1  & 0 & 2 \\
+			      0 & 4  & 1  & 1 & 2
+		      \end{pmatrix}\xRightarrow{\hl{incompleto}}\begin{pmatrix}
+			      1 & -3 & 2  & 0  & 1 \\
+			      0 & 4  & 1  & 1  & 2 \\
+			      0 & 0  & -5 & 0  & 2 \\
+			      0 & 0  & 0  & -1 & 0 \\
+			      0 & 0  & 0  & 0  & 0
+		      \end{pmatrix}\leftarrow$ ha 4 righe non nulle\\
+	      $\Rightarrow rg(A)=dim(U)=4$\\
+	      e una base di $U$ è $\{(1,-3,2,0,1),(0,4,1,1,2),(0,0,-5,0,2),(0,0,0,-1,0)\}$
 	\item $\{(1,1,1),(1,2,2),(1,2,3)\}$ è una base di $\R^3$?\\
-	  $\{(1,1,1),(1,2,2),(1,2,3)\}$ è una base di $\R^3\Leftrightarrow(1,1,1),(1,2,2),(1,2,3)$ sono linearmente indipendenti?\\
-	  $\Leftrightarrow rg\begin{pmatrix}
-			1 & 1 & 1 \\
-			1 & 2 & 2 \\
-			1 & 2 & 3
-		\end{pmatrix}=3$
-	  \hl{Incompleto}
+	      $\{(1,1,1),(1,2,2),(1,2,3)\}$ è una base di $\R^3\Leftrightarrow(1,1,1),(1,2,2),(1,2,3)$ sono linearmente indipendenti?\\
+	      $\Leftrightarrow rg\begin{pmatrix}
+			      1 & 1 & 1 \\
+			      1 & 2 & 2 \\
+			      1 & 2 & 3
+		      \end{pmatrix}=3$
+	      \hl{Incompleto}
 \end{enumerate}
 \paragraph*{\ul{Proposizione}:} Una matrice quadrata $A\in\M_n(\K)$ è invertibile $\Leftrightarrow\ rg(A)=n$.
 
 \hspace*{6em}(Una matrice quadrata è invertibili se e solo se ha rango massimo).
 
 \Esempio{
-	$A=\begin{pmatrix}
+$A=\begin{pmatrix}
 		1 & 2 & 3 \\
 		4 & 5 & 6 \\
 		7 & 8 & 9
 	\end{pmatrix}$ Per quali valori di $\K$ è invertibile?\\
 
-	\hspace*{2.4em}$\downarrow$ Riduzione a scalini\\
+\hspace*{2.4em}$\downarrow$ Riduzione a scalini\\
 
-	$\begin{pmatrix}
+$\begin{pmatrix}
 		1 & 2  & 3   \\
 		0 & -3 & -6  \\
 		0 & 0  & k-9
 	\end{pmatrix}$\\
 
-	$rg(A)=3\Leftrightarrow k-9\not=0\Leftrightarrow k\not=9$
+$rg(A)=3\Leftrightarrow k-9\not=0\Leftrightarrow k\not=9$
 
-	\hspace*{3em}$\Updownarrow$
+\hspace*{3em}$\Updownarrow$
 
-	$A$ è invertibile.\\
+$A$ è invertibile.\\
 
-	\ul{Dim}: $(A\in\M_n(\K)\text{ è invertibile}\Leftrightarrow rg(A)=n)$
+\ul{Dim}: $(A\in\M_n(\K)\text{ è invertibile}\Leftrightarrow rg(A)=n)$
 
-	$\Rightarrow)$ Sia $A\in\M_n(\K)$ invertibile $\Leftarrow\exists A^{-1}\in\M_n(\K)$
+$\Rightarrow)$ Sia $A\in\M_n(\K)$ invertibile $\Leftarrow\exists A^{-1}\in\M_n(\K)$
 
-	tale che $A\cdot A^{-1}=In$ \hl{creare nuova "rightdim" macro con minipage}
+tale che $A\cdot A^{-1}=In$ \hl{creare nuova "rightdim" macro con minipage}
 
-	Allora abbiamo $rg(A)=rg(AA^{-1})=rg(In)=n$ (il rango non cambia se moltiplicato per una matrice invertibile) (In è una matrice a scalini senza righe nulle).\\
+Allora abbiamo $rg(A)=rg(AA^{-1})=rg(In)=n$ (il rango non cambia se moltiplicato per una matrice invertibile) (In è una matrice a scalini senza righe nulle).\\
 
-	$\Leftarrow)$ Sia $A\in\M_n(\K)$ di rango n e siano $R_1,\cdots,R_n$ le righe di $A$.
+$\Leftarrow)$ Sia $A\in\M_n(\K)$ di rango n e siano $R_1,\cdots,R_n$ le righe di $A$.
 
-	$\Rightarrow\{R_1,\cdots,R_n\}$ è una base di $\K$\\
+$\Rightarrow\{R_1,\cdots,R_n\}$ è una base di $\K$\\
 
-	Siano:\\
+Siano:\\
 
-	$E_1=(1,0,\cdots,0)$
+$E_1=(1,0,\cdots,0)$
 
-	$E_2=(0,1,\cdots,0)$
+$E_2=(0,1,\cdots,0)$
 
-	$\vdots$
+$\vdots$
 
-	$E_n=(0,0,\cdots,1)$\\
+$E_n=(0,0,\cdots,1)$\\
 
-	Quindi $\exists\ b_{ij}\in\K$ tali che:
+Quindi $\exists\ b_{ij}\in\K$ tali che:
 
-	$E_1=b_{11}R_1+b_{12}R_2+\cdots+b_{1n}R_n$
+$E_1=b_{11}R_1+b_{12}R_2+\cdots+b_{1n}R_n$
 
-	$E_2=b_{21}R_1+b_{22}R_2+\cdots+b_{2n}R_n$
+$E_2=b_{21}R_1+b_{22}R_2+\cdots+b_{2n}R_n$
 
-	$\vdots$
+$\vdots$
 
-	$E_n=b_{n1}R_1+b_{n2}R_2+\cdots+b_{nn}R_n$\\
+$E_n=b_{n1}R_1+b_{n2}R_2+\cdots+b_{nn}R_n$\\
 
-	Sia $B=(b_{ij})_{1\le i\le n;\ 1\le j\le n}\in\M_n(\K)$\\
+Sia $B=(b_{ij})_{1\le i\le n;\ 1\le j\le n}\in\M_n(\K)$\\
 
-	È facile mostrare $BA=In\Rightarrow A$ è invertibile\\
+È facile mostrare $BA=In\Rightarrow A$ è invertibile\\
 
-	$A=\begin{pmatrix}1&0\\1&1\end{pmatrix}\qquad rg(A)=2$\\
+$A=\begin{pmatrix}1&0\\1&1\end{pmatrix}\qquad rg(A)=2$\\
 
-	$(1,0)=1(1,0)+0(1,1)$
+$(1,0)=1(1,0)+0(1,1)$
 
-	$(0,1)=-1(1,0)+1(1,1)$\\
+$(0,1)=-1(1,0)+1(1,1)$\\
 
-	$\boxed{\begin{pmatrix}1&0\\-1&1\end{pmatrix}}\begin{pmatrix}1&0\\1&1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$
+$\boxed{\begin{pmatrix}1&0\\-1&1\end{pmatrix}}\begin{pmatrix}1&0\\1&1\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}$
 
 }
 
@@ -2391,35 +2476,35 @@ In tal caso il sistema possiede $\infty^{r-r}$ soluzioni, dove $r=rg(A)$.
 
 \Esempio{
 	$\begin{cases}
-		x_1+x_2+x_3+x_4=1 \\
-		x_1+x_4=3         \\
-		-x_2-x_3+7x_4=6   \\
-		-x_1-2x_2-2x_3+3x_4=k
-	\end{cases}$
+			x_1+x_2+x_3+x_4=1 \\
+			x_1+x_4=3         \\
+			-x_2-x_3+7x_4=6   \\
+			-x_1-2x_2-2x_3+3x_4=k
+		\end{cases}$
 
 	Per quali valori di $k\in\R$ il sistema è compatibile?\\
 
 	$\begin{pmatrix}
-		1  & 1  & 1  & 1 & \vdots & 1 \\
-		1  & 0  & 0  & 1 & \vdots & 3 \\
-		0  & -1 & -1 & 7 & \vdots & 6 \\
-		-1 & -2 & -2 & 3 & \vdots & k
-	\end{pmatrix}$
+			1  & 1  & 1  & 1 & \vdots & 1 \\
+			1  & 0  & 0  & 1 & \vdots & 3 \\
+			0  & -1 & -1 & 7 & \vdots & 6 \\
+			-1 & -2 & -2 & 3 & \vdots & k
+		\end{pmatrix}$
 
 	\hspace*{5em}$\downarrow$ Riduzione a scalini
 
 	$\boxed{\begin{pmatrix}
-			1 & 1  & 1  & 1 & \vdots & 1               \\
-			0 & -1 & -1 & 0 & \vdots & 2               \\
-			0 & 0  & 0  & 7 & \vdots & 4               \\
-			0 & 0  & 0  & 0 & \vdots & \frac{7k-23}{7}
-	\end{pmatrix}}$
+				1 & 1  & 1  & 1 & \vdots & 1               \\
+				0 & -1 & -1 & 0 & \vdots & 2               \\
+				0 & 0  & 0  & 7 & \vdots & 4               \\
+				0 & 0  & 0  & 0 & \vdots & \frac{7k-23}{7}
+			\end{pmatrix}}$
 
 	$rg(A)=3$
 
 	$rg(A|b)=\begin{cases}
-		3 & \text{se}
-	\end{cases}$\hl{incompleto}
+			3 & \text{se}
+		\end{cases}$\hl{incompleto}
 }
 \paragraph*{\ul{Dim} (Rouchè-Capelli):}
 
@@ -2431,19 +2516,19 @@ $\exists(x_1,\cdots,x_n)\in\K^n$ tale che
 
 $\begin{pmatrix}
 
-\end{pmatrix}$\hl{incompleto}
+	\end{pmatrix}$\hl{incompleto}
 
 $\begin{pmatrix}
-	a_{11}x_1+\cdots+a_{1n}x_n \\
-	\vdots                     \\
-	a_{m1}x_1+\cdots+a_{mn}x_n
+		a_{11}x_1+\cdots+a_{1n}x_n \\
+		\vdots                     \\
+		a_{m1}x_1+\cdots+a_{mn}x_n
 	\end{pmatrix}=\begin{pmatrix}
-	b_1 \\\vdots\\b_n
+		b_1 \\\vdots\\b_n
 	\end{pmatrix}\Rightarrow1\begin{pmatrix}
-	a_{11} \\\vdots\\a_{m_1}
+		a_{11} \\\vdots\\a_{m_1}
 	\end{pmatrix}+\cdots+\begin{pmatrix}
-	a_{12} \\\vdots\\a_{m2}
-\end{pmatrix}$\hl{incompleto}\\
+		a_{12} \\\vdots\\a_{m2}
+	\end{pmatrix}$\hl{incompleto}\\
 
 Supponiamo ora che $AX=b$ sia un sistema compatibile.
 
@@ -2467,28 +2552,28 @@ L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $
 			x-2y+3t=0 \\
 			y-z+t=0   \\
 			2x-y-3z+9t=0
-	\end{cases}\}$
+		\end{cases}\}$
 
 	$dim(S)$ base di $S$
 
 	$\begin{pmatrix}
-		1 & -2 & 0  & 3 & \vdots & 0 \\
-		0 & 1  & -1 & 1 & \vdots & 0 \\
-		2 & -1 & -3 & 9 & \vdots & 0
-	\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-2R_1}
-	\begin{pmatrix}
-		1 & -2 & 0  & 3 & \vdots & 0 \\
-		0 & 1  & -1 & 1 & \vdots & 0 \\
-		0 & 3  & -3 & 3 & \vdots & 0
-	\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-3R_2}
-	\begin{pmatrix}
-		1 & -2 & 0  & 3 & \vdots & 0 \\
-		0 & 1  & -1 & 1 & \vdots & 0 \\
-		0 & 0  & 0  & 0 & \vdots & 0
+			1 & -2 & 0  & 3 & \vdots & 0 \\
+			0 & 1  & -1 & 1 & \vdots & 0 \\
+			2 & -1 & -3 & 9 & \vdots & 0
+		\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-2R_1}
+		\begin{pmatrix}
+			1 & -2 & 0  & 3 & \vdots & 0 \\
+			0 & 1  & -1 & 1 & \vdots & 0 \\
+			0 & 3  & -3 & 3 & \vdots & 0
+		\end{pmatrix}\xRightarrow{R_3\leftarrow R_3-3R_2}
+		\begin{pmatrix}
+			1 & -2 & 0  & 3 & \vdots & 0 \\
+			0 & 1  & -1 & 1 & \vdots & 0 \\
+			0 & 0  & 0  & 0 & \vdots & 0
 		\end{pmatrix}\rightarrow\begin{cases}
-		x=2y-3t=2z \\
-		y=z-t
-	\end{cases}$
+			x=2y-3t=2z \\
+			y=z-t
+		\end{cases}$
 
 	$dim(S)=4-2=2$
 
@@ -2499,37 +2584,37 @@ L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $
 \section{04/05/22}
 \begin{itemize}
 	\item Come calcolare il determinate di una matrice $A$?
-	  \begin{enumerate}
-		  \item Se $A=(a)\in\M_1(\K)\Rightarrow det(A)=a$
-		  \item Se $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\M_2(\K)\Rightarrow det(A)=ad-bc$
-		  \item Se $A\in\M_n(\K)$ (in particolare $n\le3$)
-		    \begin{itemize}
-			    \item Teorema di Laplace (è pratico quando esiste una riga o colonna con "tanti" zeri)
-			    \item Algoritmo di Gauss-Jordan
-			    \item Regola di Sarrus $(n=3)$
-		    \end{itemize}
-	  \end{enumerate}
+	      \begin{enumerate}
+		      \item Se $A=(a)\in\M_1(\K)\Rightarrow det(A)=a$
+		      \item Se $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\M_2(\K)\Rightarrow det(A)=ad-bc$
+		      \item Se $A\in\M_n(\K)$ (in particolare $n\le3$)
+		            \begin{itemize}
+			            \item Teorema di Laplace (è pratico quando esiste una riga o colonna con "tanti" zeri)
+			            \item Algoritmo di Gauss-Jordan
+			            \item Regola di Sarrus $(n=3)$
+		            \end{itemize}
+	      \end{enumerate}
 
 	\item Come calcolare il rango di una matrice $A$?
-	  \begin{enumerate}
-		  \item Se $A\in\M_{m,n}(\K)$
-		    \begin{itemize}
-			    \item Algoritmo di Gauss-Jordan (riduco a scalini e conto il numero di righe non nulle).
-			    \item Principio dei minori orlati.
-		    \end{itemize}
-		  \item Se $A\in\M_n(\K)$ e $det(A)\not=0\Rightarrow rg(A)=n$.
-	  \end{enumerate}
+	      \begin{enumerate}
+		      \item Se $A\in\M_{m,n}(\K)$
+		            \begin{itemize}
+			            \item Algoritmo di Gauss-Jordan (riduco a scalini e conto il numero di righe non nulle).
+			            \item Principio dei minori orlati.
+		            \end{itemize}
+		      \item Se $A\in\M_n(\K)$ e $det(A)\not=0\Rightarrow rg(A)=n$.
+	      \end{enumerate}
 	\item Come risolvere un sistema lineare $AX=b$?\\
-	  \ul{Compatibilità}:
-	  \begin{itemize}
-		  \item Algoritmo di Gauss-Jordan (guarda l'ultimo pivot)
-		  \item Teorema di Rouchè-Capelli $(rg(A)=rg(A|b))$
-	  \end{itemize}
-	  \ul{Risoluzione}
-	  \begin{itemize}
-		  \item Dopo Gauss-Jordan individuo le variabili libere e "risolvo" il sistema a scalini per determinare le soluzioni.
-		  \item Se $A\in\M(\K)$ e $det(A)\not=0\Rightarrow$ metodo di Cramer.
-	  \end{itemize}
+	      \ul{Compatibilità}:
+	      \begin{itemize}
+		      \item Algoritmo di Gauss-Jordan (guarda l'ultimo pivot)
+		      \item Teorema di Rouchè-Capelli $(rg(A)=rg(A|b))$
+	      \end{itemize}
+	      \ul{Risoluzione}
+	      \begin{itemize}
+		      \item Dopo Gauss-Jordan individuo le variabili libere e "risolvo" il sistema a scalini per determinare le soluzioni.
+		      \item Se $A\in\M(\K)$ e $det(A)\not=0\Rightarrow$ metodo di Cramer.
+	      \end{itemize}
 \end{itemize}
 \ul{Applicazioni lineari}
 \Def{Siano $V$ e $W$ due spazi vettoriali su $\K$.}{
@@ -2545,50 +2630,50 @@ L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $
 \Esempio{
 	\begin{enumerate}
 		\item $V=W=\R^2$\\
-		  $f:\R^2\rightarrow\R^2\\(x,y)\mapsto(x+y,x)$
+		      $f:\R^2\rightarrow\R^2\\(x,y)\mapsto(x+y,x)$
 
-		  $f((1,0))=(1+0,1)=(1,1)\\f((0,1))=(0+1,0)=(1,0)$
-		  \begin{enumerate}
-			  \item Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$. Allora:
+		      $f((1,0))=(1+0,1)=(1,1)\\f((0,1))=(0+1,0)=(1,0)$
+		      \begin{enumerate}
+			      \item Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$. Allora:
 
-			    $f(v_1+v_2)=f((x_1+x_2,y_1+y_2))=(x_1+x_2+y_1+y_2,x_1+x_2)=(x_1+y_1,x_1)+(x_2+y_2,x_2)$
-			  \item Sia $v=(x,y)\in\R^2,\lambda\in\R$. Allora:
+			            $f(v_1+v_2)=f((x_1+x_2,y_1+y_2))=(x_1+x_2+y_1+y_2,x_1+x_2)=(x_1+y_1,x_1)+(x_2+y_2,x_2)$
+			      \item Sia $v=(x,y)\in\R^2,\lambda\in\R$. Allora:
 
-			    $f(\lambda v)=f((\lambda x,\lambda y))=(\lambda x+\lambda y,\lambda x)=\lambda(x+y,x)=\lambda f(v)$
-		  \end{enumerate}
-		  Quindi $f$ è un'applicazione lineare.
+			            $f(\lambda v)=f((\lambda x,\lambda y))=(\lambda x+\lambda y,\lambda x)=\lambda(x+y,x)=\lambda f(v)$
+		      \end{enumerate}
+		      Quindi $f$ è un'applicazione lineare.
 
-		  \ul{Geometricamente}
+		      \ul{Geometricamente}
 
-		  $v_1=(1,1)\rightarrow f(v_1)=(2,1)\qquad\qquad v_1+v_2=(0,3)\rightarrow f(v_1+v_2)=(3,0)$
+		      $v_1=(1,1)\rightarrow f(v_1)=(2,1)\qquad\qquad v_1+v_2=(0,3)\rightarrow f(v_1+v_2)=(3,0)$
 
-		  $v_2=(-1,2)\rightarrow f(v2)=(1,-1)$
+		      $v_2=(-1,2)\rightarrow f(v2)=(1,-1)$
 
-		  \begin{tikzpicture}
-			  \draw[->] (0, 0) -- (1, 1) node[right] {$v_1$};
-			  \draw[->] (0, 0) -- (-1, 2) node[right] {$v_2$};
-			  \draw[->] (0, 0) -- (0, 2.6) node[right] {$v_1+v_2$};
-			  \draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
-			  \draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
-		  \end{tikzpicture}
-		  \begin{tikzpicture}
-			  \draw[->] (0, 0) -- (2, 1) node[right] {$f(v_1)$};
-			  \draw[->] (0, 0) -- (1, -1) node[right] {$f(v_2)$};
-			  \draw[->] (0, 0) -- (2.6, 0) node[below] {$f(v_1)+f(v_2)$};
-			  \draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
-			  \draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
-		  \end{tikzpicture}\hl{incompleto}
+		      \begin{tikzpicture}
+			      \draw[->] (0, 0) -- (1, 1) node[right] {$v_1$};
+			      \draw[->] (0, 0) -- (-1, 2) node[right] {$v_2$};
+			      \draw[->] (0, 0) -- (0, 2.6) node[right] {$v_1+v_2$};
+			      \draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
+			      \draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
+		      \end{tikzpicture}
+		      \begin{tikzpicture}
+			      \draw[->] (0, 0) -- (2, 1) node[right] {$f(v_1)$};
+			      \draw[->] (0, 0) -- (1, -1) node[right] {$f(v_2)$};
+			      \draw[->] (0, 0) -- (2.6, 0) node[below] {$f(v_1)+f(v_2)$};
+			      \draw[->] (-2, 0) -- (4, 0) node[right] {$x$};
+			      \draw[->] (0, -2) -- (0, 3.5) node[above] {$y$};
+		      \end{tikzpicture}\hl{incompleto}
 	\end{enumerate}
 }
 
 \paragraph*{\ul{Osservazioni}}
 \begin{enumerate}
 	\item \boxed{1} e \boxed{2} sono equivalenti alla condizione seguente:\\
-	  $f(\lambda v_1+\mu v_2)=f(\lambda v_1)+f(\mu v_2)=\lambda f(v_1)+\mu f(v_2)$
+	      $f(\lambda v_1+\mu v_2)=f(\lambda v_1)+f(\mu v_2)=\lambda f(v_1)+\mu f(v_2)$
 	\item Dalla prima osservazione si ottiene che se $f$ è un'applicazione lineare\\
-	  $f(\lambda_1v_1+\cdots+\lambda_nv_n)=\lambda_1f(v_1)+\cdots+\lambda_nf(v_n),\forall\lambda_1,\cdots,\lambda_n\in\K;\forall v_1,\cdots,v_n\in\V$
+	      $f(\lambda_1v_1+\cdots+\lambda_nv_n)=\lambda_1f(v_1)+\cdots+\lambda_nf(v_n),\forall\lambda_1,\cdots,\lambda_n\in\K;\forall v_1,\cdots,v_n\in\V$
 	\item Se $f:V\rightarrow W$ è un'applicazione lineare allora se $0_V$ è il vettore nullo di $V$ e $0_W$ è il vettore nullo di W, allora:
-	  \hl{incompleto}
+	      \hl{incompleto}
 \end{enumerate}
 
 \subsection*{Un po' di \ul{terminologia}}
@@ -2597,8 +2682,8 @@ L'insieme delle soluzioni è un sottospazio vettoriale di $\K^n$ di dimensione $
 		\item Un'applicazione lineare $f:V\rightarrow K$ è detta una funzione lineare
 		\item Un'applicazione lineare $f:V\rightarrow W$ è detta un isomorfismo se $f$ è biunivoca ($\Leftrightarrow f$ iniettiva e suriettiva)
 		\item Un isoformismo $f:V\rightarrow V$ è detto un \ul{automorfismo}\\
-		  Un automorfismo è un endomorfismo biunivoco.
-\end{itemize}}
+		      Un automorfismo è un endomorfismo biunivoco.
+	\end{itemize}}
 
 \hl{Esempi mancanti}
 
@@ -2640,21 +2725,21 @@ Quindi $f$ è unica.
 \ul{Dim}
 \begin{enumerate}
 	\item Mostriamo che $f(S_V)$ è un sottospazio di $W$:
-	  \begin{itemize}
-		  \item $f(S_V)\not=\emptyset:0_W\in f(S_V)$ poichè $0_W=f(0_V)\in S_V$ perchè $S_V$ è un sottospazio
-		  \item Siano $w_1,w_2\in f(S_V),\lambda,\mu\in\K$.
+	      \begin{itemize}
+		      \item $f(S_V)\not=\emptyset:0_W\in f(S_V)$ poichè $0_W=f(0_V)\in S_V$ perchè $S_V$ è un sottospazio
+		      \item Siano $w_1,w_2\in f(S_V),\lambda,\mu\in\K$.
 
-		    Allora, per definizione, $\exists v_1\in S_V$ tale che $w_1=f(v_1)$ e $\exists v_2\in S_V$ tale che $w_2=f(v_2)$ \hl{Disegno figo con tikz}
+		            Allora, per definizione, $\exists v_1\in S_V$ tale che $w_1=f(v_1)$ e $\exists v_2\in S_V$ tale che $w_2=f(v_2)$ \hl{Disegno figo con tikz}
 
-		    Allora abbiamo
+		            Allora abbiamo
 
-		    $\lambda w_1+\mu w_2=\lambda f(v_1)+\mu f(v_2)=(\leftarrow\text{linearità})f((\lambda v_1+\mu v_2)\in S_V)$ perchè $S_V$ è un sottospazio
+		            $\lambda w_1+\mu w_2=\lambda f(v_1)+\mu f(v_2)=(\leftarrow\text{linearità})f((\lambda v_1+\mu v_2)\in S_V)$ perchè $S_V$ è un sottospazio
 
-		    $\Rightarrow\lambda w_1+\mu w_2\in f(S_V)$
+		            $\Rightarrow\lambda w_1+\mu w_2\in f(S_V)$
 
-		    Quindi $f(S_V)$ è un sottospazio di $W$
-		    2) sulle note \hl{incompleto}
-	  \end{itemize}
+		            Quindi $f(S_V)$ è un sottospazio di $W$
+		            2) sulle note \hl{incompleto}
+	      \end{itemize}
 \end{enumerate}
 
 \ul{Due casi particolari}
@@ -2664,23 +2749,23 @@ $S_V=V\leadsto f(V):$ immagine di $f$
 $S_W=\{0_W\}\leadsto f^{-1}(\{0_W\}):$ nucleo di $f$
 
 \Def{Sia $f:V\rightarrow W$ un'applicazione lineare.}{
-	Il sottospazio di $V$
+Il sottospazio di $V$
 
-	ker (da kernel, nucleo), $ker(f):=f^{-1}(\{0_W\})=\{v\in V:f(V)=0_W\}$
+ker (da kernel, nucleo), $ker(f):=f^{-1}(\{0_W\})=\{v\in V:f(V)=0_W\}$
 
-	è detto \ul{nucleo} di $f$
+è detto \ul{nucleo} di $f$
 
-	Il sottospazio di $W$
+Il sottospazio di $W$
 
-	$Im(f):=f(V)=\{f(v):v\in V\}$
+$Im(f):=f(V)=\{f(v):v\in V\}$
 
-	è detto \ul{immagine} di $f$
+è detto \ul{immagine} di $f$
 
-	Se $ker(f)$ è $Im(f)$ hanno dimensione finita allora chiamiamo \ul{nullità} la dimensione di $ker(f)$ e rango la dimensione di $Im(f)$.
+Se $ker(f)$ è $Im(f)$ hanno dimensione finita allora chiamiamo \ul{nullità} la dimensione di $ker(f)$ e rango la dimensione di $Im(f)$.
 
-	$dim(ker(f))\\rg(f):=dim(Im(f))$
+$dim(ker(f))\\rg(f):=dim(Im(f))$
 
-	\hl{Esempio mancante}
+\hl{Esempio mancante}
 }
 \section{10/05/22}
 \subsection*{Applicazioni lineari (continuo)}
@@ -2696,169 +2781,168 @@ $f(\lambda_1v_1+\lambda_2v_2)=\lambda_1f(v_1)+\lambda_2f(v_2)$
 
 \ul{IMMAGINE}: $Im(f):=f(v)=\{f(v):v\in\V\}\subseteq W$ sottospazio vettoriale di $W$\\$rg(f):=dim(Im(f))$
 
-\paragraph{Osservazione}: Sia $f:\V\rightarrow W$ un'applicazione lineare e siano $v_1,\cdots,v_n\in\V$. Allora
+	\paragraph{Osservazione}: Sia $f:\V\rightarrow W$ un'applicazione lineare e siano $v_1,\cdots,v_n\in\V$. Allora
 
 $f(<v_1,\cdots,v_n>)=<f(v_1),\cdots,f(v_n)>$
 
-\ul{dim}
+	\ul{dim}
 
 $f(<v_1,\cdots,v_n>)=f(\{\lambda_1v_1,\cdots,\lambda_nv_n:\lambda_1,\cdots,\lambda_n\in\K\})=\{f(\lambda_1v_1,\cdots,\lambda_nv_n):\lambda_1,\cdots,\lambda_n\in\K\}=<f(v_1),\cdots,f(v_n)>$.
 
-Se $\{v_1,\cdots,v_n\}$ è una base di $\V$:
+	Se $\{v_1,\cdots,v_n\}$ è una base di $\V$:
 
 $Im(f)=f(v)=f(<v_1,\cdots,v_n>)=\text{($v_1,\cdots,v_n$ generano $V$)}<f(v_1,\cdots,v_n)>$
 
-Quindi l'immagine di $f:\V\rightarrow W$ è il sottospazio vettoriale generato dalle immagini degli elementi di una base di $\V$.
+	Quindi l'immagine di $f:\V\rightarrow W$ è il sottospazio vettoriale generato dalle immagini degli elementi di una base di $\V$.
 
 $rg(f)=dim(Im(f))\le dim(\V)\leadsto dim(\V)-rg(f)=dim(Ker(f))$
 
 
-\paragraph{Teorema del rango} (nullità + rango)
+	\paragraph{Teorema del rango} (nullità + rango)
 
-Sia $\V$ uno spazio vettoriale \ul{dimensione finito} e sia $f:\V\rightarrow W$ un'applicazione lineare. Allora $dim(Ker(f))\text{(nullità)}+rg(f)=dim(\V)$
+	Sia $\V$ uno spazio vettoriale \ul{dimensione finito} e sia $f:\V\rightarrow W$ un'applicazione lineare. Allora $dim(Ker(f))\text{(nullità)}+rg(f)=dim(\V)$
 
-\ul{Idea della dim}
+	\ul{Idea della dim}
 
 $\V,dim(\V)=n$, e $Ker(f)\le\V\Rightarrow dim(Ker(f)=p)\le dim(\V)$
 
-Sia $\{v_1,\cdots,v_p\}$ base di $Ker(f)$
+	Sia $\{v_1,\cdots,v_p\}$ base di $Ker(f)$
 
-Posso completare $\{v_1,\cdots,v_p\}$ a una base di $\V$.
-Quindi siano $v_{p+1},\cdots,v_n$ tali che $\{v_1,\cdots,v_p,v_{p+1},\cdots,v_n\}$ è una base di $\V$.
-Si mostra che $\{f(v_{p+1}),\cdots,f(v_n)\}$ è una bse di $Im(f)$.
-\paragraph{Osservazione}: Si noti che nell'enunciato del teorema non si è supposto che $W$ è di dimensione finita.
+	Posso completare $\{v_1,\cdots,v_p\}$ a una base di $\V$.
+	Quindi siano $v_{p+1},\cdots,v_n$ tali che $\{v_1,\cdots,v_p,v_{p+1},\cdots,v_n\}$ è una base di $\V$.
+	Si mostra che $\{f(v_{p+1}),\cdots,f(v_n)\}$ è una bse di $Im(f)$.
+	\paragraph{Osservazione}: Si noti che nell'enunciato del teorema non si è supposto che $W$ è di dimensione finita.
 
-\paragraph{Proposizione}: Siano $f:\V\rightarrow W$ e $g:W\rightarrow U$ due applicazioni lineari. Allora la composizione
+	\paragraph{Proposizione}: Siano $f:\V\rightarrow W$ e $g:W\rightarrow U$ due applicazioni lineari. Allora la composizione
 
 $g\circ f:V\longrightarrow U\\\hspace*{4.6em}v\longmapsto g\circ f(v):=g(f(v))$
 
-\ul{dim: per esercizio}
+	\ul{dim: per esercizio}
 
 $\forall v_1,v_2\in\V,\forall\lambda_1\lambda_2\in\K$
 
 $g\circ f(\lambda_1v_1+\lambda_2v_2)=\text{(da mostrare)}\lambda g\circ f(v_1)+\lambda_2 g\circ f(v_2)$
 
-\paragraph{Esempio}:
+	\paragraph{Esempio}:
 
 $f:\R^3\rightarrow\R^2\hspace{8em} g:R^2\rightarrow\\\hspace*{0.7em}(x,y,z)\mapsto(x+z,2x+y)\hspace*{3.2em}(x,y)\mapsto$ \hl{incompleto}
 
-\paragraph{Richiami}:
+	\paragraph{Richiami}:
 
-Sia $f:\V\rightarrow W$ un'applicazione lineare.+
-\begin{itemize}
-	\item $f$ è suriettiva se $Im(f)=W\Leftrightarrow rg(f)=dim(W)$
-	\item $f$ è iniettiva se $\forall v_1,v_2\in\V$ tali che\\
-		$f(v_1)=f(v_2)\Rightarrow v_1=v_2$.
-	\item $f$ è un isomorfismo se $f$ è biettiva, cioè se $f$ è iniettiva e suriettiva.\\
-		Se $f$ è un isomorfismo allora esiste $f^{-1}:W\rightarrow\V$ tale che\\
-		$f\circ f^{-1}=1_W\qquad e\qquad f^{-1}\circ f=1_\V$\\
-		È possibile mostrare che $f^{-1}$ è anch'essa un'applicazione lineare biettiva, quindi un isomorfismo.
-\end{itemize}
+	Sia $f:\V\rightarrow W$ un'applicazione lineare.+
+	\begin{itemize}
+		\item $f$ è suriettiva se $Im(f)=W\Leftrightarrow rg(f)=dim(W)$
+		\item $f$ è iniettiva se $\forall v_1,v_2\in\V$ tali che\\
+		      $f(v_1)=f(v_2)\Rightarrow v_1=v_2$.
+		\item $f$ è un isomorfismo se $f$ è biettiva, cioè se $f$ è iniettiva e suriettiva.\\
+		      Se $f$ è un isomorfismo allora esiste $f^{-1}:W\rightarrow\V$ tale che\\
+		      $f\circ f^{-1}=1_W\qquad e\qquad f^{-1}\circ f=1_\V$\\
+		      È possibile mostrare che $f^{-1}$ è anch'essa un'applicazione lineare biettiva, quindi un isomorfismo.
+	\end{itemize}
 
-\paragraph*{Esempio}
+	\paragraph*{Esempio}
 
 $f:\R^2\rightarrow\R^2\\\hspace*{3em}(x,y)\mapsto(x+y,x-y)$
 
-\begin{itemize}
-	\item $f$ è suriettiva?\\
-		Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$ tali che\\
-		$f(v_1)=f(v_2)\Rightarrow(x_1+y_1,x_1-y_1)=(x_2+y_2,x_2-y_2)\Rightarrow\begin{cases}
-			x_1+y_1=x_2+y_2 \\
-			x_1-y_1=x_2-y_2
-			\end{cases}\Rightarrow\begin{cases}
-			2x_1=2x_2 \\
-			x_1-y_1=x_2-y_2
-			\end{cases}\Rightarrow\begin{cases}
-			x_1=x_2 \\
-			y_1=y_2
-		\end{cases}\Rightarrow(x_1,y_1)=(x_2,y_2)\Rightarrow v_1,v_2$
-	\item $f$ è suriettiva?\\
-		$Im(f)=f(R^2)=<f(1,0),f(0,1)>=<(1,1),(1,-1)>=\R^2$\\
-		$rg(f)=dim(Im(f))=2$\\
-		Quindi $f$ è suriettiva
-\end{itemize}
-Quindi $f$ è un isomorfismo e quindi esiste l'applicazione lineare inversa
+	\begin{itemize}
+		\item $f$ è suriettiva?\\
+		      Siano $v_1=(x_1,y_1),v_2=(x_2,y_2)\in\R^2$ tali che\\
+		      $f(v_1)=f(v_2)\Rightarrow(x_1+y_1,x_1-y_1)=(x_2+y_2,x_2-y_2)\Rightarrow\begin{cases}
+				      x_1+y_1=x_2+y_2 \\
+				      x_1-y_1=x_2-y_2
+			      \end{cases}\Rightarrow\begin{cases}
+				      2x_1=2x_2 \\
+				      x_1-y_1=x_2-y_2
+			      \end{cases}\Rightarrow\begin{cases}
+				      x_1=x_2 \\
+				      y_1=y_2
+			      \end{cases}\Rightarrow(x_1,y_1)=(x_2,y_2)\Rightarrow v_1,v_2$
+		\item $f$ è suriettiva?\\
+		      $Im(f)=f(R^2)=<f(1,0),f(0,1)>=<(1,1),(1,-1)>=\R^2$\\
+		      $rg(f)=dim(Im(f))=2$\\
+		      Quindi $f$ è suriettiva
+	\end{itemize}
+	Quindi $f$ è un isomorfismo e quindi esiste l'applicazione lineare inversa
 
 $f^{-1}:\R^2\rightarrow\R^2:$
-(disegno con gli insiemi (tikz))
+	(disegno con gli insiemi (tikz))
 
-Sia $(x',y')\in\R^2$ e sia $(x,y)\in\R^2$ tale che
+	Sia $(x',y')\in\R^2$ e sia $(x,y)\in\R^2$ tale che
 
 $f(x,y)=(x',y')\Rightarrow(x+y,x-y)=(x',y')\Rightarrow\begin{cases}
 	x'=x+y \\
 	y'=x-y
-	\end{cases}\Rightarrow\begin{cases}
+\end{cases}\Rightarrow\begin{cases}
 	x'+y'=2x \\
 	y'=x-y
-	\end{cases}\Rightarrow\begin{cases}
+\end{cases}\Rightarrow\begin{cases}
 	x'+y'=2x \\
 	y'=x-y'=\frac{x'+y'}{2}-y'=\frac{x'-y'}{2}
 \end{cases}$
 
 $f^{-1}:\R^2\rightarrow\R^2\\(x',y')\mapsto(\frac{x'+y'}{2},\frac{x'-y'}{2})$
 
-Sia $(x,y)\in\R^2:$
+	Sia $(x,y)\in\R^2:$
 
 $f^{-1}(f(x,y))=f^{-1}(x+y,x-y)=(\frac{x+y+x-y}{2},\frac{x+y(x-y)}{2})=(x,y)\Rightarrow f^{-1}\circ f=f_{\R^2}$.
 
-\paragraph{Proposizione}: Un'applicazione lineare $f:\V\rightarrow W$ è iniettiva se e solo se $Ker(f)=(0_\V)$.
+	\paragraph{Proposizione}: Un'applicazione lineare $f:\V\rightarrow W$ è iniettiva se e solo se $Ker(f)=(0_\V)$.
 
-Nell'esempio $f:\R^2\rightarrow\R^2\\\hspace*{7.5em}(x,y)\mapsto(x+y,x-y)\\Ker(f)=\{(x,y):f(x,y)=(0,0)\}=\{(x,y):(x+y,x-y)=(0,0)\}=\{(x,y):\begin{cases}x+y=0\\x-y=0\end{cases}\}=\{(0,0)\}\Rightarrow f$ è iniettiva
+	Nell'esempio $f:\R^2\rightarrow\R^2\\\hspace*{7.5em}(x,y)\mapsto(x+y,x-y)\\Ker(f)=\{(x,y):f(x,y)=(0,0)\}=\{(x,y):(x+y,x-y)=(0,0)\}=\{(x,y):\begin{cases}x+y=0\\x-y=0\end{cases}\}=\{(0,0)\}\Rightarrow f$ è iniettiva
 
-\ul{dim}\\
+	\ul{dim}\\
 
 $\Rightarrow)$ Sia $f:\V\rightarrow W$ è iniettiva.
 
 $0_\V\in Ker(f)$ poichè $f(0_\V)=0_W$.
 
-Sia $v\in Ker(f)\Rightarrow f(\ul{v})=0_W=f(0_\V)\Rightarrow v=0_\V$.
+	Sia $v\in Ker(f)\Rightarrow f(\ul{v})=0_W=f(0_\V)\Rightarrow v=0_\V$.
 
-Quindi $Ker(f)=\{0_\V\}$\\
-
+	Quindi $Ker(f)=\{0_\V\}$\vspace{1em}\\
 $\Leftarrow)$ Supponiamo $Ker(f)=\{0_\V\}$.
 
-Siano $v_1,v_2\in\V$ tali che $f(v_1)=f(v_2)\Rightarrow f(v_1)-f(v_2)=0_W\Rightarrow v_1-v_2\in Ker(f)=\{0_\V\}\Rightarrow v_1-v_2=0_\V\Rightarrow v_1=v_2$
+	Siano $v_1,v_2\in\V$ tali che $f(v_1)=f(v_2)\Rightarrow f(v_1)-f(v_2)=0_W\Rightarrow v_1-v_2\in Ker(f)=\{0_\V\}\Rightarrow v_1-v_2=0_\V\Rightarrow v_1=v_2$
 
-Quindi $f$ è iniettiva.
+	Quindi $f$ è iniettiva.
 
-\paragraph{Corollario} (del teorema del rango)
+	\paragraph{Corollario} (del teorema del rango)
 
-Siano $\V$ e $W$ due spazi vettoriali tali che $dim(\V)=dim(W)$.
+	Siano $\V$ e $W$ due spazi vettoriali tali che $dim(\V)=dim(W)$.
 
-Sia $f:\V\rightarrow W$ un'applicazione lineare. Allora le seguenti affermazioni sono equivalenti:
-\begin{itemize}
-	\item $f$ è iniettiva
-	\item $f$ è suriettiva
-	\item $f$ è un isomorfismo
-\end{itemize}
+	Sia $f:\V\rightarrow W$ un'applicazione lineare. Allora le seguenti affermazioni sono equivalenti:
+	\begin{itemize}
+		\item $f$ è iniettiva
+		\item $f$ è suriettiva
+		\item $f$ è un isomorfismo
+	\end{itemize}
 
-\ul{dim}
+	\ul{dim}
 
 $f$ è iniettiva $\Leftrightarrow Ker(f)=\{0_\V\}\Leftrightarrow dim(Ker(f))=0\xLeftrightarrow{\text{Teorema del rango}}rg(f)=dim(W)\Leftrightarrow f$ è suriettiva.
 
-\paragraph{Osservazione}
+	\paragraph{Osservazione}
 
 $f:\V\rightarrow W$
-\begin{itemize}
-	\item se $dim(\V)>dim(W)\Rightarrow f$ non è iniettiva\\
-		$dim(Ker(f))=dim(\V)-rg(f)>dim(W)-rg(f)\ge0\Rightarrow dim(Ker(f))\ge1$
-	\item se $dim(\V)<dim(W)\Rightarrow f$ non è suriettiva
-\end{itemize}
+	\begin{itemize}
+		\item se $dim(\V)>dim(W)\Rightarrow f$ non è iniettiva\\
+		      $dim(Ker(f))=dim(\V)-rg(f)>dim(W)-rg(f)\ge0\Rightarrow dim(Ker(f))\ge1$
+		\item se $dim(\V)<dim(W)\Rightarrow f$ non è suriettiva
+	\end{itemize}
 
-\paragraph{Matrici associate alle applicazioni lineari}
+	\paragraph{Matrici associate alle applicazioni lineari}
 
 $\V,dim(V)=n,B=\{v_1,\cdots,v_n\}$base di $\V$\\$W,dim(W)=m,B'\{w_1,\cdots,w_m\}$ base di $W$
 
 $f:\V\rightarrow W$ un'applicazione lineare.
 
 $f(v_1)=a_{11}w_1+a_{21}w_2+\cdots+a_{m1}w_m\\
-\vdots\\
-f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
+	\vdots\\
+	f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
 
 $a_{ij}\in\K$
 
 \Def{Chiamiamo la matrice di $f:\V\rightarrow W$ nelle basi $B=\{v_1,\cdots,v_n\},B'{w_1,\cdots,w_m}$ una matrice \hl{incompleto}}{
-	$f(v_1),\cdots,f(v_n)$ nella base di \hl{incompleto}
+$f(v_1),\cdots,f(v_n)$ nella base di \hl{incompleto}
 }
 
 \hl{esempio mancante}
@@ -2872,20 +2956,20 @@ $W,\ B'=\{w_1,\cdots,w_m\}$
 $f:\V\rightarrow W$ applicazione lineare
 
 $f(v_1)=a_{11}w_1+a_{12}w_2+\cdots+a_{1m}w_m
-\\\vdots\\
-f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
+	\\\vdots\\
+	f(v_n)=a_{1n}w_1+a_{2n}w_2+\cdots+a_{mn}w_m$
 
 $M_{B'B}(f)=(a_{ij})_{1\le i\le m\\1\le j\le n}=\begin{pmatrix}
-	a_{11} & a_{12} & \cdots & a_{1m} \\
-	a_{21} & a_{22} & \cdots & a_{2m} \\
-	\vdots                            \\
-	a_{m1} & a_{m2} & \cdots & a_{mm}
-\end{pmatrix}$
+		a_{11} & a_{12} & \cdots & a_{1m} \\
+		a_{21} & a_{22} & \cdots & a_{2m} \\
+		\vdots                            \\
+		a_{m1} & a_{m2} & \cdots & a_{mm}
+	\end{pmatrix}$
 
 \Esempio{
 	$f:\R^2\rightarrow\R^2\\
-	(x,y,z)\mapsto(x+2y+3z,-x+5y-7z)\\
-	B=\{(1,0,0),(0,1,0),(0,0,1)\}$ base di $\R^3$
+		(x,y,z)\mapsto(x+2y+3z,-x+5y-7z)\\
+		B=\{(1,0,0),(0,1,0),(0,0,1)\}$ base di $\R^3$
 
 	$B'=\{(1,1),(1,-1)\}$ base di $\R^2$
 
@@ -2898,34 +2982,34 @@ $M_{B'B}(f)=(a_{ij})_{1\le i\le m\\1\le j\le n}=\begin{pmatrix}
 	$f(0,0,1)=(3,-7)=-2(1,1)+5(1,-1)$
 
 	$a(1,1)+b(1,-1)=(2,5)\Rightarrow\begin{cases}
-		a+b=2 \\
-		a-b=5
+			a+b=2 \\
+			a-b=5
 		\end{cases}\Rightarrow\begin{cases}
-		a=\frac{7}{2} \\
-		b=-\frac{3}{2}
-	\end{cases}$
+			a=\frac{7}{2} \\
+			b=-\frac{3}{2}
+		\end{cases}$
 
 	$a(1,1)+b(1,-1)=(3,-7)\Rightarrow\begin{cases}
-		a+b=3 \\
-		a-b=-7
+			a+b=3 \\
+			a-b=-7
 		\end{cases}\Rightarrow\begin{cases}
-		a=-2 \\
-		b=5
-	\end{cases}$
+			a=-2 \\
+			b=5
+		\end{cases}$
 
 	$\M_{B'B}=\begin{pmatrix}
-		0 & \frac{7}{2}  & -2 \\
-		1 & -\frac{3}{2} & 5
-	\end{pmatrix}$
+			0 & \frac{7}{2}  & -2 \\
+			1 & -\frac{3}{2} & 5
+		\end{pmatrix}$
 
 	$v=(1,-2,-1)\in\R^3$
 
 	$\M_{B'B}(f)\cdot v=\begin{pmatrix}
-		0 & \frac{7}{2}  & -2 \\
-		1 & -\frac{3}{2} & 5
+			0 & \frac{7}{2}  & -2 \\
+			1 & -\frac{3}{2} & 5
 		\end{pmatrix}\begin{pmatrix}1\\-2\\-1\end{pmatrix}=\begin{pmatrix}
-		\hl{incompleto}
-	\end{pmatrix}$
+			\hl{incompleto}
+		\end{pmatrix}$
 
 }
 
@@ -2991,32 +3075,32 @@ $\Rightarrow\M_{BB'}(idv)=(\M_{B'B}(idv))^{-1}$
 	$B'=\{(1,-1,0),(0,-2,-1),(1,1,2)\}$
 
 	$\begin{bmatrix}
-		1 & -1 & 0  \\
-		0 & -2 & -1 \\
-		1 & 1  & 2
-	\end{bmatrix}=-4+1+1=-2$
+			1 & -1 & 0  \\
+			0 & -2 & -1 \\
+			1 & 1  & 2
+		\end{bmatrix}=-4+1+1=-2$
 
 	$\M_{BB'}(idv)=\begin{pmatrix}
-		1  & 0  & 1 \\
-		-1 & -2 & 1 \\
-		0  & -1 & 2
-	\end{pmatrix}$
+			1  & 0  & 1 \\
+			-1 & -2 & 1 \\
+			0  & -1 & 2
+		\end{pmatrix}$
 
 	$idv(1,-1,0)=(1,-1,0)=1(1,0,0)+(-1)(0,1,0)+0(0,0,1)$
 
 	$\M_{B'B}(idv)=\begin{pmatrix}
-		\frac{3}{2}  & \frac{1}{2}  & -1 \\
-		-1           & -1           & 1  \\
-		-\frac{1}{2} & -\frac{1}{2} & 1
+			\frac{3}{2}  & \frac{1}{2}  & -1 \\
+			-1           & -1           & 1  \\
+			-\frac{1}{2} & -\frac{1}{2} & 1
 		\end{pmatrix}\begin{pmatrix}
-		1  & 0  & 1 \\
-		-1 & -2 & 1 \\
-		0  & -1 & 2
+			1  & 0  & 1 \\
+			-1 & -2 & 1 \\
+			0  & -1 & 2
 		\end{pmatrix}=\begin{pmatrix}
-		1 & 0 & 0 \\
-		0 & 1 & 0 \\
-		0 & 0 & 1
-	\end{pmatrix}$
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}$
 
 	$(1,0,0)=a_1(1,-1,0)+b_1(0,-2,-1)+c_1(1,1,2)$
 
@@ -3088,10 +3172,10 @@ Operatore diagonale
 	Un endomorfismo $f\in End(\V)$ si dice \ul{diagonalizzabile} se esiste una base $B=\{v_1,\cdots,v_n\}$ di $\V$ tale che $\M_B(f)$ sia una matrice diagonale, cioè della forma
 
 	$\begin{pmatrix}
-		\lambda_1 & 0         & 0         \\
-		0         & \lambda_2 & 0         \\
-		0         & 0         & \lambda_n
-	\end{pmatrix},\lambda_i\in\K$
+			\lambda_1 & 0         & 0         \\
+			0         & \lambda_2 & 0         \\
+			0         & 0         & \lambda_n
+		\end{pmatrix},\lambda_i\in\K$
 
 	Se ciò avviene $B$ è detta una base diagonalizzante di $f$ e $\forall v_i\in B$ si ha
 
@@ -3111,10 +3195,10 @@ Operatore diagonale
 \Esempio{
 	\begin{itemize}
 		\item $f=idv\in End(\V),dim(\V)=n$.\\
-		  Per ogni base $B$ di $\V$\\
-		  $\M_B=I_n\Rightarrow idv$ è diagonalizzabile.\\
-		  $\forall v\in\V, id(v)=v=1\cdot v$\\
-		  Quindi ogni $v\in\V\backslash\{0_\V\}$ è un autovettore di $idv$ di autovalore 1.
+		      Per ogni base $B$ di $\V$\\
+		      $\M_B=I_n\Rightarrow idv$ è diagonalizzabile.\\
+		      $\forall v\in\V, id(v)=v=1\cdot v$\\
+		      Quindi ogni $v\in\V\backslash\{0_\V\}$ è un autovettore di $idv$ di autovalore 1.
 		\item \hl{incompleto}
 	\end{itemize}
 }
@@ -3127,10 +3211,10 @@ Operatore diagonale
 	Il sottoinsieme di $\K$ costituito dagli autovalori di $f$ è detto \ul{spettro} di $f$.
 
 	L'endomorfismo $f$ si dice \ul{diagonalizzabile} se possiede una base $B=\{v_1,\cdots,v_n\}$ di autovettori, cioè se $\M_B(f)=\begin{pmatrix}
-		\lambda_1 & 0         \\
-		\hspace*{2em}\ddots   \\
-		0         & \lambda_n
-	\end{pmatrix}$
+			\lambda_1 & 0         \\
+			\hspace*{2em}\ddots   \\
+			0         & \lambda_n
+		\end{pmatrix}$
 
 	Una tale base si dice base diagonale.
 }
@@ -3175,11 +3259,11 @@ $det(f-\lambda idv)=0\Leftrightarrow det(\M_B(f-\lambda idv))=0\Leftrightarrow d
 
 \Def{Sia $A=(a_ij)\in\M_n(K)$ e sia $T$ un'indeterminata.}{
 	Il determinante $P_A(T):=det(A-TI_n)=\begin{pmatrix}
-		a_11   & a_12   & \cdots & a_1n   \\
-		a_21   & a_22   & \cdots & a_2n   \\
-		\vdots & \vdots & \ddots & \vdots \\
-		a_n1   & a_n2   & \cdots & a_nn
-	\end{pmatrix}$
+			a_11   & a_12   & \cdots & a_1n   \\
+			a_21   & a_22   & \cdots & a_2n   \\
+			\vdots & \vdots & \ddots & \vdots \\
+			a_n1   & a_n2   & \cdots & a_nn
+		\end{pmatrix}$
 	è un polinomio di grado $n$ in $T$ detto \ul{polinomio caratteristico} di $A$.
 
 	Siano $f\in End(\V)$, $B$ una base di $\V$ e $A=M_B(f)$, allora $P_A(T)$ è il polinomio caratteristico di $f$ e si denota $P_f(T)$
@@ -3201,9 +3285,9 @@ Ne segue che $f$ ha al più $n$ autovalori distinti.
 \begin{itemize}
 	\item $\lambda$ è un autovalore di $f\in End(\V)\Leftrightarrow P_f(T)=0$.
 	\item $\V_\lambda(f)=Ker(f-\lambda idv)$\begin{itemize}
-		\item $v=0_\V$
-		\item $v:f(v)=\lambda v\Leftrightarrow(f-\lambda idv)(v)=0_\V$
-	\end{itemize}
+		      \item $v=0_\V$
+		      \item $v:f(v)=\lambda v\Leftrightarrow(f-\lambda idv)(v)=0_\V$
+	      \end{itemize}
 \end{itemize}
 
 \Esempio{
@@ -3219,16 +3303,16 @@ Ne segue che $f$ ha al più $n$ autovalori distinti.
 	\end{itemize}
 
 	$M_B(f)=\begin{pmatrix}
-		0  & 1  & -1 \\
-		-1 & 2  & -1 \\
-		1  & -1 & 2
-	\end{pmatrix}$
+			0  & 1  & -1 \\
+			-1 & 2  & -1 \\
+			1  & -1 & 2
+		\end{pmatrix}$
 
 	$P_f(T)=\begin{pmatrix}
-		-T & 1   & -1  \\
-		-1 & 2-T & -1  \\
-		1  & -1  & 2-T
-	\end{pmatrix}$\hl{incompleto}
+			-T & 1   & -1  \\
+			-1 & 2-T & -1  \\
+			1  & -1  & 2-T
+		\end{pmatrix}$\hl{incompleto}
 }
 \Def{Sia $\V$ uno spazio vettoriale su $\K,dim(\V)=n$}{
 	Sia $f\in End(\V)$ e sia $\lambda\in\K$ un autovalore di $f$.

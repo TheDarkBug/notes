@@ -1,5 +1,8 @@
-clean:
-	rm *.aux *.fdb_latexmk *.fls *.log *.out *.synctex* *.toc
-
+NAME=geometria_algebra
 compile:
-	pdflatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error -recorder geometria_algebra.tex | grep ".*:[0-9]*:.*"
+	latexmk -c
+	zathura $(NAME).pdf&disown
+	latexmk -pdf -pvc -xelatex -interaction=nonstopmode -file-line-error $(NAME).tex
+indent:
+	latexindent -s -w $(NAME).tex
+
