@@ -1,5 +1,5 @@
 % packages to install (arch linux): texlive-bibtexextra texlive-bin texlive-core texlive-fontsextra texlive-formatsextra texlive-games texlive-humanities texlive-latexextra texlive-latexindent-meta texlive-music texlive-pictures texlive-pstricks texlive-publishers texlive-science
-% perl packages to install (cpan): File::HomeDir YAML::Tiny
+% sudo cpan install File::HomeDir YAML::Tiny
 \documentclass{article}
 
 % packages
@@ -542,33 +542,67 @@ $\begin{array}{ccc}
 					      \draw (1,-0.15) node {lunghezza};
 				      \end{scope}
 			      \end{scope}
-						\begin{scope}[shift={(6,0.7)}]
-							\draw (0,0) node {Costruisco $R$ tale che i segmenti};
-							\draw (0,-0.4) node {$OP$ e $RQ$ abbiano la stessa};
-							\draw (0,-0.8) node {lunghezza \colort{gray}{(in un parallelogramma}};
-						\draw[gray] (0,-1.2) node {i lati opposti sono congruenti).};
-						\end{scope}
+			      \begin{scope}[shift={(6,0.7)}]
+				      \draw (0,0) node {Costruisco $R$ tale che i segmenti};
+				      \draw (0,-0.4) node {$OP$ e $RQ$ abbiano la stessa};
+				      \draw (0,-0.8) node {lunghezza \colort{gray}{(in un parallelogramma}};
+				      \draw[gray] (0,-1.2) node {i lati opposti sono congruenti).};
+			      \end{scope}
 		      \end{tikzpicture}\\
 		      Otteniamo così un'\ul{operazione binaria interna}:\\
 		      \colort{purple}{$+:\V\times\V\longrightarrow\V$}\\
 		      \hspace*{1em}\colort{purple}{$(\overrightarrow{v},\overrightarrow{w})\mapsto\overrightarrow{v}+\overrightarrow{w}$}
-				\item \colort{cyan}{\ul{Moltiplicazione per scalari}}\\
+		\item \colort{cyan}{\ul{Moltiplicazione per scalari}}\\
 		      Sia $\overrightarrow{v}\in\V$ e sia $P\in\Pi:\overrightarrow{v}=\overrightarrow{OP}$. Sia $\lambda\in\R$.\vspace*{1em}\\
 		      Definiamo $\lambda\cdot\overrightarrow{v}=\overrightarrow{OR}$\\tale che
 		      \begin{itemize}
 			      \item $O,P,R$ sono collineari (sulla stessa retta)
-			      \item $\overline{OR}=|\lambda|\overline{OP}$
-			      \item $\overrightarrow{OR}$ è orientato concordemente a $\overrightarrow{OP}\\\overrightarrow{OR}$ è orientato discordemente a $\overrightarrow{OP}$ se\\
-			            $\lambda<0\vee\lambda=0,R=O$\\
-			            Questa è un'operazione binaria \ul{esterna}:\\
-			            $\cdot:\R\times\V\rightarrow \V$\\
-			            \hspace*{1.5em}$(\lambda,\overrightarrow{v})\rightarrow\lambda\cdot\overrightarrow{v}$
+			      \item $\underset{\colort{orange}{$\begin{matrix}\uparrow\\\text{lunghezza del}\\\text{segmento }OR\end{matrix}$}}{\overline{OR}}=|\lambda|\overline{OP}$
+			      \item $\overrightarrow{OR}$ è orientato concordemente a $\overrightarrow{OP}$, se $\lambda>0$\\
+			            $\overrightarrow{OR}$ è orientato discordemente a $\overrightarrow{OP}$, se $\lambda<0$\\
+			            $\overrightarrow{OR}=\overrightarrow{OO}$, se $\lambda=0$\\
+			            \hl{Qui ci sarebbe un grafico di esempio, per mancanza di tempo non lo ricopio. Lezione 3 - pg 2}
+			            Otteniamo così un'\ul{operazione binaria \colort{green}{esterna ($\R\not\subseteq\V$)}}:\\
+			            \colort{purple}{$\cdot:\R\times\V\rightarrow \V$}\\
+			            \hspace*{0.5em}\colort{purple}{$(\lambda,\overrightarrow{v})\rightarrow\lambda\cdot\overrightarrow{v}$}
 		      \end{itemize}
 	\end{itemize}
-	\subsection{Piano Cartesiano}
-	\par$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$\\
+	{\color{orange}
+	Siano $\Gamma$ e $\X$ due insiemi.\\
+	Un'operazione binaria\\
+	\ul{esterna}$\ast$ è una funzione:\vspace{1em}\\
+$\ast:\Gamma\times\X\rightarrow \X$\\
+	\hspace*{1.2em}$(\gamma,x)\mapsto\gamma\ast x$\vspace{1em}\\
+	\ul{Nota} che a priori non\\
+	esiste nessuna relazione\\
+	insiemistica tra $\Gamma$ e $\X$
+	}\\
+	Tuttavia è "complicato" lavorare con queste operazioni definite geometricamente. Vorremmo poterle tradurre in "forma algebrica".\\
+	A tale scopo partiamo da qualcosa che conoscete bene: il piano cartesiano.
+	\subsection{\colort{violet}{Piano Cartesiano}}
+	Il piano cartesiano è un sistema di riferimento basato sulle coordinate cartesiane.\\
+	A scuola vi hanno insegnato che per definirlo avete bisogno di:
+	\begin{itemize}
+		\item due rette perpendicolari e orientate (chiamate assi cartesiani) che si intersecano in un punto $O$ (chiamato origine)
+		\item un'unità di misura
+	\end{itemize}
+	\hl{Qui ci sarebbe un esempio di piano cartesiano che però non copio per mancanza di tempo}\\
+	Ora ogni punto $P$ del piano può essere identificato da due coordinate $x$ e $y$ (chiamate ascissa e ordinata) i cui valori assoluti sono le lunghezze delle proiezioni ortogonali $OH$ e $OK$ sugli assi,\\
+	\hl{Qui ci sarebbe un grafico di esempio, che come sempre, per mancanza di tempo non ricopio}\\
+	Quindi fissato un riferimento cartesiano abbiamo una biezione:
+	$$\{P:P\in\pi\}\leftrightarrow\{(x,y):x,y\in\R\}=\R^2$$\\
 $\V=\{$segmenti orientati $\overrightarrow{OP},P\in\pi\}=\{$vettori geometrici nel piano$\}$\\
 	In particolare esiste una biezione:\\
+	\begin{center}\hl{FINE DEFINITIVA DELLA REVISIONE}\end{center}
+	\hl{Ho realizzato che per completare la revisione ci vorrebbe troppo tempo (per arrivare fin qui ho impiegato circa 8}\\
+	\hl{giorni), e io ho solo un paio di settimane (forse), quindi mi limiterò a studiare dagli appunti della professoressa.}\\
+	\hl{Con molta probabilità non riprenderò mai la revisione di questi appunti, ho troppi esami arretrati. Però devo}\\
+	\hl{ammettere che non avrei mai imparato così tanto di \LaTeX senza questo file da 3400+ righe.}\\
+	\hl{SCONSIGLIO A CHIUNQUE DI STUDIARE DA QUI IN POI: A SEGUIRE CI SONO SOLO APPUNTI}\\
+	\hl{INCOMPLETI E MOLTO PROBABILMENTE SBAGLIATI}\\
+	\hl{OGNI AGGIUNTA PRESA DAGLI APPUNTI ORIGINALI SCRITTI A MANO VERRÀ ACCETTATA SOLO}\\
+	\hl{DOPO UNA REVISIONE MANUALE DA PARTE DELL'AUTORE (Adriano Oliviero).}
+
 $\V\leftrightarrow\R^2$\\
 $\forall P\in\pi,\overrightarrow{OP}\rightarrow(x,y)$, dove $x,y$ sono rispettivamente ascissa e ordinata di $P$\\
 $\overrightarrow{OP}\leftarrow(x,y)$ dove $P(x,y)$\\
