@@ -11,3 +11,4 @@
 *.synctex*
 *.bak*
 *.xdv
+*.nvim-session
