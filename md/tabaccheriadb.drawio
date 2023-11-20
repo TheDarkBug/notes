@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-11-20T14:38:39.865Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="p0cn9OggJdUMhixT3R6J" version="22.1.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-11-20T14:40:10.490Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0" etag="nqt3Vrq5EG4z3URm1hfS" version="22.1.3" type="github">
   <diagram name="Page-1" id="yC7KV2Ko1jgtMiXsxVH6">
     <mxGraphModel dx="2260" dy="1008" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -70,8 +70,8 @@
         <mxCell id="BWnH7RUJTYlGTLS44q7B-19" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Magazzino&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="72" y="252" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BWnH7RUJTYlGTLS44q7B-22" value="Ingrosso" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="222" y="316" width="80" height="67" as="geometry" />
+        <mxCell id="BWnH7RUJTYlGTLS44q7B-22" value="Acquisto all&#39;Ingrosso" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="223" y="317" width="88" height="77" as="geometry" />
         </mxCell>
         <mxCell id="BWnH7RUJTYlGTLS44q7B-23" value="(1, N)" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="BWnH7RUJTYlGTLS44q7B-19" target="BWnH7RUJTYlGTLS44q7B-22">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
