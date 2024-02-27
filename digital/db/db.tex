@@ -1,0 +1,100 @@
+\documentclass{article}
+
+% packages
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage[margin={1em, 2em}]{geometry}
+
+% Define colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Define highlighting for SQL
+\lstdefinestyle{sqlstyle}{
+	language=SQL,
+	basicstyle=\small\ttfamily,
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{blue},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	backgroundcolor=\color{backcolour},
+	frame=single,
+	breaklines=true,
+	breakatwhitespace=true,
+	numbers=left,
+	captionpos=b,
+	showstringspaces=false,
+	morekeywords={IF,ELSE,ENDIF,PRINT},
+}
+
+% metadata
+\title{Domande Basi di Dati}
+\author{Adriano Oliviero}
+\date{22/01/2024}
+
+% document
+\begin{document}
+\renewcommand*\contentsname{Indice}
+\tableofcontents
+\newpage
+\section{Cosa sono i cursori e come si usano in tutte le loro modalità}
+Per eseguire un comando SQL ORACLE, viene assegnato ad esso un’area di memoria detta context
+area.
+DI questa area, quella definita come active set contiene il risultato della query; i cursori puntano a
+questa area! Quindi ad ogni comando SQL è assegnato un cursore.
+Abbiamo due tipi diversi di cursori:
+Cursori Impliciti: detto anche cursore SQL, il server Oracle apre implicitamente un cursore durante•
+l’esecuizione di un qualsiasi comando DML o query PL/SQL Select Into. Questo cursore è gestito
+automaticamente e non è possibile utilizzare OPEN/FETCH/CLOSE per controllarlo.
+Cursori Esplciti: Sono dichiarati e gestiti direttamente dal codice, utilizzati per processare le singole•
+righe restituite da un comando e puntano alla riga corrente nell’active set.
+Attributi dei cursori impliciti:
+Oracle consente di verificare alcuni elementi del cursore SQL, ecco la tabella dei vari attributi
+osservabili:
+\newpage
+\section{Gestione delle eccezioni in \protect\texttt{PL/SQL}}
+\newpage
+\section{Definire l'operatore di \protect\texttt{ JOIN } in tutte le sue forme}
+\newpage
+\section{Definire il concetto e il funzionamento dei trigger}
+\newpage
+\section{Modello \protect\texttt{ ANSI-SPARC }, definizione delle viste e delle loro caratteristiche (cosa sono, a cosa servono e come devono essere gestite)}
+\newpage
+\section{Cursori e come vengono gestiti}
+\newpage
+\section{Impostazione e gestione delle eccezioni}
+\newpage
+\section{Metodi \protect\texttt{ GET } e \protect\texttt{ POST } e le loro differenze}
+\newpage
+\section{Descrivere le modalità di definizione degli utenti}
+\newpage
+\section{Modello a tre livelli dello sviluppo delle applicazioni}
+\newpage
+\section{Cosa sono le transazioni e quali proprietà devono avere (\protect\texttt{ ACID })}
+\newpage
+\section{Quali sono le possibili traduzioni delle generalizzazioni dei modelli \protect\texttt{ ER } estesi e come si può scegliere, tra le varie traduzioni, quella più appropriata}
+\newpage
+\section{Dipendenze funzionali: cosa sono, quali sono le loro proprietà, a che cosa servono, perché sono importanti}
+\newpage
+\section{Blocchi procedurali in \protect\texttt{ PL/SQL }: parlare dei diversi tipi}
+\newpage
+\section{Differenze tra \protect\texttt{ WHERE } e \protect\texttt{ HAVING }, fare come esempio la produzione dell’elenco degli editori con più di due autori riportando, per ogni editore, la lista degli autori}
+\newpage
+\section{Spiegare nella seguente query quali sono gli operatori relazionali usati}
+\begin{lstlisting}[language=SQL,style=sqlstyle]
+	SELECT s.cognome, u.codice
+	FROM studente s, universita u
+	WHERE s.universita = u.codice;
+\end{lstlisting}
+\newpage
+\section{Spiegare la \protect\texttt{ SELECT } sulla base degli operatori relazionali}
+\begin{lstlisting}[language=SQL,style=sqlstyle]
+SELECT s.nome NOME_SEDE, d.nome NOME_DIPARTIMENTO
+FROM sede s, dipartimento d
+WHERE s.chiave = d.sede;
+\end{lstlisting}
+\newpage
+\end{document}
